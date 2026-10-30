@@ -1,0 +1,32 @@
+name: Submit a package / Enviar um pacote
+description: Send a .json without opening a pull request / Envie um .json sem abrir pull request
+title: "[Package] "
+labels: [package]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Package name / Nome do pacote
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type / Tipo
+      options: [system, extension, theme, table]
+    validations:
+      required: true
+  - type: textarea
+    id: file
+    attributes:
+      label: File / Arquivo
+      description: Drag the .json here (rename it to .txt if GitHub refuses it) or paste a link. / Arraste o .json aqui (renomeie para .txt se o GitHub recusar) ou cole um link.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights / Direitos
+      options:
+        - label: I have the right to share this content and agree to its distribution through the hub. / Tenho direito de compartilhar este conteúdo e concordo com a distribuição pelo hub.
+          required: true

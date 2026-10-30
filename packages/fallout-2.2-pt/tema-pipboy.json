@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "id": "tema-pipboy",
+  "name": "Pip-Boy",
+  "version": "1.0.1",
+  "author": "GabrielGugg",
+  "language": "pt-BR",
+  "type": "theme",
+  "description": "Verde fósforo sobre preto, no estilo do Pip-Boy.",
+  "font": "'Share Tech Mono', ui-monospace, monospace",
+  "colors": {
+    "--bg": "#0a0f0a",
+    "--surface": "#0f1a10",
+    "--surface-2": "#142417",
+    "--text": "#4cff7a",
+    "--text-muted": "#2fbf57",
+    "--border": "#1f5a2c",
+    "--accent": "#4cff7a",
+    "--accent-text": "#0a0f0a",
+    "--danger": "#ff6b4a",
+    "--warning": "#e6d34a",
+    "--ok": "#4cff7a"
+  }
+}

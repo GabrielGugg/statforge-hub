@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "id": "tema-vault-tec",
+  "name": "Vault-Tec",
+  "version": "1.0.1",
+  "author": "GabrielGugg",
+  "language": "pt-BR",
+  "type": "theme",
+  "description": "Azul e amarelo da Vault-Tec. Claro ou escuro, conforme o aparelho.",
+  "colors": {
+    "light": {
+      "--bg": "#ffffff",
+      "--surface": "#f4f8fc",
+      "--surface-2": "#e3eef8",
+      "--text": "#001423",
+      "--text-muted": "#3d5468",
+      "--border": "#b9cfe3",
+      "--accent": "#0066b1",
+      "--accent-text": "#fff773",
+      "--danger": "#c62f2f",
+      "--warning": "#9a6a00",
+      "--ok": "#1e7a45"
+    },
+    "dark": {
+      "--bg": "#001423",
+      "--surface": "#002038",
+      "--surface-2": "#002b4a",
+      "--text": "#ffffff",
+      "--text-muted": "#a9c4dc",
+      "--border": "#0b4573",
+      "--accent": "#fff773",
+      "--accent-text": "#001423",
+      "--danger": "#ff7a6b",
+      "--warning": "#fff773",
+      "--ok": "#6ee7a0"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+# Checks every pull request: valid packages, unique ids, raised versions,
+# and that contributors only touch files inside packages/.
+name: Check packages
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get the StatForge validator
+        uses: actions/checkout@v4
+        with:
+          repository: GabrielGugg/statforge
+          path: .statforge
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Only packages/ may change (except for the owner)
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != github.repository_owner
+        run: |
+          outside=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -v '^packages/' || true)
+          if [ -n "$outside" ]; then
+            echo "These files are outside packages/ and can only be changed by the hub owner:"
+            echo "$outside"
+            exit 1
+          fi
+      - name: Validate packages
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/hub.mjs check --base "origin/${{ github.base_ref }}"
+          else
+            node scripts/hub.mjs check
+          fi
