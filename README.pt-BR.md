@@ -16,7 +16,7 @@ https://raw.githubusercontent.com/GabrielGugg/statforge-hub/main/packages/fallou
 
 ## Para criadores: envie seu pacote
 
-Ainda não tem um pacote? O [construtor de pacotes](builder/) permite criar um sistema, homebrew, tema ou mesa sem escrever código, confere com o validador do StatForge e exporta o `.json` (veja [builder/README.md](builder/README.md)).
+Ainda não tem um pacote? O [construtor de pacotes](https://gabrielgugg.github.io/statforge-hub/builder/) permite criar um sistema, homebrew, tema ou mesa sem escrever código, confere com o validador do StatForge e exporta o `.json` (veja [builder/README.md](builder/README.md)).
 
 Qualquer pessoa com conta no GitHub pode enviar um pacote. Não precisa instalar nada; tudo funciona no navegador.
 

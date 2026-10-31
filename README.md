@@ -16,7 +16,7 @@ https://raw.githubusercontent.com/GabrielGugg/statforge-hub/main/packages/fallou
 
 ## For creators: add your package
 
-No package yet? The [package builder](builder/) lets you make a system, homebrew, theme or table without writing code, checks it with the StatForge validator and exports the `.json` (see [builder/README.md](builder/README.md)).
+No package yet? The [package builder](https://gabrielgugg.github.io/statforge-hub/builder/) lets you make a system, homebrew, theme or table without writing code, checks it with the StatForge validator and exports the `.json` (see [builder/README.md](builder/README.md)).
 
 Anyone with a GitHub account can send a package. You do not need to install anything; it all works in the browser.
 
