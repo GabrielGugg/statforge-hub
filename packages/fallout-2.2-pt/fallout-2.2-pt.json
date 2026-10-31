@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.5.0",
+ "version": "1.6.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -14673,13 +14673,6 @@
       ],
       "w": 12,
       "columns": {
-       "armas": [
-        "dano"
-       ],
-       "armaduras": [
-        "df",
-        "td"
-       ],
        "equipamentos": [
         "carga"
        ]
@@ -14694,26 +14687,20 @@
     ]
    },
    {
-    "id": "rolar",
-    "name": "Rolar",
+    "id": "notas",
+    "name": "Notas",
     "blocks": [
      {
-      "block": "roller",
-      "shortcuts": [
-       "1d20 + disparo",
-       "1d20 + corpo_a_corpo",
-       "1d20 + pugilismo",
-       "1d20 + energia",
-       "1d20 + explosivos",
-       "1d20 + furtividade",
-       "1d20 + persuasao",
-       "1d20 + mod(SOR)"
-      ]
-     },
-     {
-      "block": "notes",
-      "id": "sessao",
-      "title": "Anotações da sessão"
+      "block": "notebook",
+      "id": "notas",
+      "title": "Notas",
+      "w": 12,
+      "import_notes": [
+       "sessao"
+      ],
+      "import_titles": {
+       "sessao": "Anotações da sessão"
+      }
      }
     ]
    }
