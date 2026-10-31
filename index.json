@@ -2,7 +2,7 @@
   "format": 1,
   "name": "StatForge Hub",
   "owner": "GabrielGugg",
-  "count": 4,
+  "count": 5,
   "packages": [
     {
       "id": "fallout-2.1-en",
@@ -13,8 +13,20 @@
       "author": "GabrielGugg",
       "description": "Arcane Arcade’s Fallout TTRPG 2.1, as written in the original English PDF, with no house rules. Where the book contradicts itself the sheet lets you choose (and explains), or leaves the value manual. Every text cites its page.",
       "url": "packages/fallout-2.1-en/fallout-2.1-en.json",
-      "bytes": 930095,
+      "bytes": 900818,
       "entities": 959
+    },
+    {
+      "id": "fallout-2.2-en",
+      "name": "Fallout TTRPG 2.2 (EN)",
+      "version": "0.1.0",
+      "type": "system",
+      "language": "en",
+      "author": "GabrielGugg",
+      "description": "Arcane Arcade’s Fallout TTRPG 2.1 in its original English, with the house rules of Fallout 2.2: contradictions settled, broken rules fixed and a few prices and kits corrected. Texts keep their book page; anything changed says \"changed in 2.2\".",
+      "url": "packages/fallout-2.2-en/fallout-2.2-en.json",
+      "bytes": 913517,
+      "entities": 957
     },
     {
       "id": "fallout-2.2-pt",
