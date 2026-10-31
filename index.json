@@ -2,31 +2,19 @@
   "format": 1,
   "name": "StatForge Hub",
   "owner": "GabrielGugg",
-  "count": 4,
+  "count": 3,
   "packages": [
     {
       "id": "fallout-2.2-pt",
-      "name": "Fallout TTRPG 2.2 (Vault Texas)",
+      "name": "Fallout TTRPG 2.2 (pt-BR)",
       "version": "1.2.1",
       "type": "system",
       "language": "pt-BR",
       "author": "GabrielGugg",
       "description": "Fallout TTRPG 2.1 da Arcane Arcade traduzido, com as regras da casa da versão 2.2 (veja a nota \"Changelog 2.1 - 2.2\"). Distribua o S.P.E.C.I.A.L. começando em 5 com 3 pontos extras; cada atributo vai de 1 a 10.",
       "url": "packages/fallout-2.2-pt/fallout-2.2-pt.json",
-      "bytes": 499030,
+      "bytes": 499024,
       "entities": 783
-    },
-    {
-      "id": "mesa-vault-texas",
-      "name": "Vault Texas",
-      "version": "1.0.1",
-      "type": "table",
-      "language": "pt-BR",
-      "author": "GabrielGugg",
-      "description": "Mesa Vault Texas: Fallout TTRPG 2.2 em português com o tema Pip-Boy.",
-      "url": "packages/fallout-2.2-pt/mesa-vault-texas.json",
-      "bytes": 358,
-      "system": "fallout-2.2-pt"
     },
     {
       "id": "tema-pipboy",
