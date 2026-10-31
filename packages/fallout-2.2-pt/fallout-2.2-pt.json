@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.13.0",
+ "version": "1.14.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -462,6 +462,7 @@
   },
   "tracos": {
    "name": "Traços",
+   "unique": true,
    "fields": {
     "requisito": {
      "type": "text",
@@ -471,6 +472,7 @@
   },
   "talentos": {
    "name": "Talentos",
+   "unique": true,
    "fields": {
     "grupo": {
      "type": "text",
@@ -5562,7 +5564,8 @@
       "target": "lr",
       "value": "3"
      }
-    ]
+    ],
+    "requires": "(has('humano'))"
    },
    {
     "id": "metabolismo_rapido_ermo",
@@ -5596,7 +5599,8 @@
       "target": "df",
       "value": "-1"
      }
-    ]
+    ],
+    "requires": "(has('robo'))"
    },
    {
     "id": "pecas_baratas_ermo",
@@ -5629,7 +5633,8 @@
     "name": "Circuitos Densos",
     "requisito": "Sintético",
     "description": "Requisito: Sintético\n\nSua fiação frágil é mais protegida, ao custo de lag de processamento. Você ganha um bônus de 2 no máximo do seu Fator de Cura. Porém, suas rolagens de Iniciativa diminuem em 2.",
-    "effects": []
+    "effects": [],
+    "requires": "(has('sintetico'))"
    },
    {
     "id": "circuitos_densos_ermo",
@@ -5646,7 +5651,8 @@
     "name": "Actinídios Ativados",
     "requisito": "Necrótico",
     "description": "Requisito: Necrótico\n\nPor alguma mutação, você não se necrosou por completo. Você se cura o valor total dos Stimpaks e pode usar pó curativo. Porém, você deixa de ser imune à radiação e aos seus efeitos, mas tem vantagem em qualquer teste de radiação e resistência a dano de radiação.",
-    "effects": []
+    "effects": [],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "actinidios_ativados_ermo",
@@ -5663,7 +5669,8 @@
     "name": "Regeneração Penosa",
     "requisito": "Super Mutante",
     "description": "Requisito: Super Mutante\n\nSeu metabolismo é acelerado. Seu Fator de Cura aumenta em 2. Porém, seus pontos de estamina máximos são reduzidos em um valor igual ao seu nível.",
-    "effects": []
+    "effects": [],
+    "requires": "(has('super_mutante'))"
    },
    {
     "id": "regeneracao_penosa_ermo",
@@ -6194,7 +6201,8 @@
     "name": "Habilidoso",
     "requisito": "Um valor de atributo igual ou inferior a 3",
     "description": "Requisito: Um valor de atributo igual ou inferior a 3\n\nAumente um modificador de perícia em 2.",
-    "effects": []
+    "effects": [],
+    "requires": "(FOR <= 3 or PER <= 3 or RES <= 3 or CAR <= 3 or INT <= 3 or AGI <= 3 or SOR <= 3)"
    },
    {
     "id": "habilidoso_ermo",
@@ -6785,7 +6793,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reflexos Adaptativos: Se você perdeu o pé ou a perna, você não está mais limitado a se mover apenas 6 m por turno. Se você perdeu a mão ou o pé: você ganha 3 pontos que pode usar para aumentar qualquer um dos seus valores de atributo na quantidade usada. …"
+     }
+    ],
+    "repeat": 99
    },
    {
     "id": "diabo_cego",
@@ -6796,7 +6810,22 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "sentidos",
+      "value": "5"
+     },
+     {
+      "type": "advantage",
+      "target": "iniciativa",
+      "text": "Rolagens de Iniciativa"
+     },
+     {
+      "type": "note",
+      "text": "Diabo Cego: Adaptar-se à perda da visão aguçou seus outros sentidos. Você percebe o ambiente ao redor com precisão milimétrica. Você consegue, na prática, \"ver\" qualquer alvo a uma distância, em pés, igual a 5 x seu valor de Percepção. …"
+     }
+    ]
    },
    {
     "id": "cowboy",
@@ -6807,7 +6836,12 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Cowboy: Sempre que você gastar PA para sacar um rifle de ação por alavanca, um repetidor cowboy ou um revólver, o custo em PA é reduzido para 1. …"
+     }
+    ]
    },
    {
     "id": "mira_cravada",
@@ -6818,7 +6852,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mira Cravada: Sempre que você rolar ataque ou dano com uma arma de longo alcance, some 2 ao resultado. Além disso, sempre que você fizer uma rolagem de ataque mirado à cabeça com uma arma de longo alcance, some mais 2 ao resultado."
+     }
+    ],
+    "repeat": 3
    },
    {
     "id": "duelista",
@@ -6829,7 +6869,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Duelista: Sempre que você rolar ataque ou dano com uma arma desarmada ou corpo a corpo, some 2 ao resultado."
+     }
+    ],
+    "repeat": 3
    },
    {
     "id": "instruido",
@@ -6840,7 +6886,18 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "pericia_por_concessao",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Instruído: Você ganha 4 pontos de perícia ao chegar aos Níveis 5, 9, 13, 17, 21, 25 e 29, em vez de 3. Além disso, você ganha um número de pontos de perícia igual ao total disponível no seu nível como se o seu valor de Inteligência fosse igual a 5. …"
+     }
+    ],
+    "requires": "INT <= 4"
    },
    {
     "id": "entomologo",
@@ -6851,7 +6908,12 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Entomólogo: Sempre que você rolar dano de uma rolagem de ataque contra os pontos de vida de uma criatura do tipo inseto, a TD dela não é subtraída do seu dano total. (Insetos incluem formigas, moscas-de-radiação, cazadores, escorpiões-rad etc.)"
+     }
+    ]
    },
    {
     "id": "viva_a_revolucao",
@@ -6862,7 +6924,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Viva a Revolução!: Sempre que você sofrer dano nos seus pontos de vida de uma criatura ligada a uma facção, sua TD aumenta em 1. Além disso, sempre que você causar dano a uma criatura ligada a uma facção, o dano aumenta em 1. …"
+     }
+    ],
+    "repeat": 2
    },
    {
     "id": "aqui_e_agora",
@@ -6873,7 +6941,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Aqui e Agora: Você e cada outro personagem jogador ganham imediatamente 1000 XP. Depois que este talento for pego, nenhum outro personagem jogador pode pegá-lo."
+     }
+    ],
+    "requires": "level >= 3"
    },
    {
     "id": "purificador",
@@ -6884,7 +6958,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Purificador: Sempre que você fizer uma rolagem de ataque com uma arma desarmada ou corpo a corpo contra uma abominação, some 3 ao resultado. (Abominações incluem Super Mutantes, garras da morte, mirelurks, rastejadores da névoa etc.)"
+     }
+    ],
+    "repeat": 3
    },
    {
     "id": "imperialista_desdenhoso",
@@ -6895,7 +6975,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Imperialista Desdenhoso: Sempre que você rolar dano de uma rolagem de ataque contra um humanoide sem ligação com nenhuma facção, some 3 ao resultado."
+     }
+    ],
+    "repeat": 2
    },
    {
     "id": "aprendiz_rapido",
@@ -6906,7 +6992,13 @@
     "tags": [
      "gerais"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Aprendiz Rápido: Sempre que o MJ conceder XP, você e cada outro personagem jogador ganham um bônus adicional de 20%."
+     }
+    ],
+    "repeat": 2
    },
    {
     "id": "peso_pesado",
@@ -6922,8 +7014,13 @@
       "type": "immunity",
       "text": "Sobrecarregado",
       "ref": "condicoes/sobrecarregado"
+     },
+     {
+      "type": "note",
+      "text": "Peso-Pesado: Você pode gastar 6 pontos de ação para fazer um ataque desarmado especial chamado ataque desarmado pesado. Um ataque desarmado pesado é idêntico a um ataque desarmado, mas o dano aumenta em 2d4. Além disso, você é imune à condição sobrecarregado. …"
      }
-    ]
+    ],
+    "requires": "FOR >= 4"
    },
    {
     "id": "manejo_de_armas",
@@ -6934,7 +7031,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Manejo de Armas: Você não tem mais desvantagem nas rolagens de ataque feitas com armas cujo requisito de Força você não cumpre. Além disso, você ignora os efeitos negativos dos dois primeiros Níveis de Desgaste de todas as armas."
+     }
+    ],
+    "requires": "FOR >= 4"
    },
    {
     "id": "acougueiro",
@@ -6945,7 +7048,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Açougueiro: Sempre que você rolar dano de uma rolagem de ataque feita com uma arma corpo a corpo, some 2 ao resultado. …"
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "pancadaria",
@@ -6956,7 +7065,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pancadaria: Sempre que você rolar dano de uma rolagem de ataque feita com um ataque desarmado e o dano for causado nos pontos de estamina do alvo, some 3 ao resultado. …"
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "arremesso_pesado",
@@ -6967,7 +7082,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Arremesso Pesado!: Sempre que você arremessar um objeto ou uma criatura, a distância que você consegue arremessá-lo é dobrada."
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "cargueiro",
@@ -6978,7 +7099,23 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "carga_max",
+      "value": "50"
+     },
+     {
+      "type": "immunity",
+      "text": "Lento por carregar objetos pesados",
+      "ref": "condicoes/lento"
+     },
+     {
+      "type": "note",
+      "text": "Cargueiro: Sua Capacidade de Carga máxima aumenta em 50. Além disso, quando você carrega objetos pesados, você não fica lento."
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "mostra_quem_manda",
@@ -6989,7 +7126,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mostra Quem Manda: Você pode gastar 4 pontos de ação no seu turno para amedrontar uma criatura alvo que esteja a até 9 m de você. (Veja a condição amedrontado.) Você não pode amedrontar uma criatura que você já amedrontou."
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "sai_de_cima",
@@ -7000,7 +7143,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sai de Cima: Você pode gastar 3 PA para Escapar de agarrões, amarras ou estrangulamentos, e sempre tem vantagem na rolagem. Além disso, você pode atravessar o espaço de um inimigo no seu turno sem gastar um ponto de ação adicional."
+     }
+    ],
+    "requires": "FOR >= 5"
    },
    {
     "id": "potencia_saltitante",
@@ -7011,7 +7160,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Potência Saltitante: Sempre que você fizer um salto em distância, você supera 3 m adicionais, e sempre que fizer um salto em altura, você supera 90 cm adicionais. Além disso, sempre que você sofrer dano de impacto por uma queda, você sofre metade."
+     }
+    ],
+    "requires": "FOR >= 6"
    },
    {
     "id": "supercolisao",
@@ -7022,7 +7177,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Supercolisão!: Se você gastar seus pontos de ação para se mover pelo menos 4,5 m em linha reta, seu próximo ataque desarmado ou com arma corpo a corpo tem vantagem. …"
+     }
+    ],
+    "requires": "FOR >= 6"
    },
    {
     "id": "parede_de_pedra",
@@ -7033,7 +7194,18 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "td",
+      "value": "2"
+     },
+     {
+      "type": "note",
+      "text": "Parede de Pedra: Sua tolerância a dano aumenta em 2 e, sempre que você fizer um teste de Força ou de atributo para resistir a ser agarrado, contido ou derrubado, você tem vantagem ou pode virar uma das suas Tampas de Karma para ser bem-sucedido automaticamente."
+     }
+    ],
+    "requires": "FOR >= 6"
    },
    {
     "id": "nocaute",
@@ -7044,7 +7216,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Nocaute: Sempre que você causar dano aos pontos de vida de uma criatura alvo pela primeira vez com uma rolagem de ataque desarmado ou com arma corpo a corpo, ela fica atordoada por 2 rodadas."
+     }
+    ],
+    "requires": "FOR >= 7"
    },
    {
     "id": "golpes_perfurantes",
@@ -7055,7 +7233,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Golpes Perfurantes: Sempre que você causar dano com um ataque desarmado ou com arma corpo a corpo, a TD do alvo é subtraída em um número igual ao seu modificador de Força, até um mínimo de 0."
+     }
+    ],
+    "requires": "FOR >= 7"
    },
    {
     "id": "mao_dupla",
@@ -7066,7 +7250,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mão Dupla: Se você empunhar uma arma corpo a corpo ou desarmada em uma mão enquanto empunha outra arma corpo a corpo ou desarmada na outra mão, você pode gastar PA adicionais quando atacar com uma arma para fazer outro ataque com a outra arma. …"
+     }
+    ],
+    "requires": "FOR >= 7"
    },
    {
     "id": "soco_paralisante",
@@ -7077,7 +7267,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Soco Paralisante: Se você acertar uma única criatura alvo com pelo menos três ataques corpo a corpo em um turno, ela ganha 2 níveis de fadiga. Se uma criatura chegar a 4 níveis de fadiga dessa forma, ela fica paralisada até o fim do seu próximo turno. …"
+     }
+    ],
+    "requires": "FOR >= 8"
    },
    {
     "id": "enraizado",
@@ -7088,7 +7284,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Enraizado: Você pode gastar 4 pontos de ação no seu turno para ficar Enraizado. Enquanto estiver Enraizado, sua TD aumenta em 5 e qualquer dano que você causar com um ataque feito com arma desarmada ou corpo a corpo aumenta em 2. …"
+     }
+    ],
+    "requires": "FOR >= 8"
    },
    {
     "id": "forca_imparavel",
@@ -7099,7 +7301,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Força Imparável: Sempre que você rolar dano de uma rolagem de ataque desarmado ou com arma corpo a corpo contra os pontos de vida de uma criatura, a TD dela não é subtraída do seu dano total."
+     }
+    ],
+    "requires": "FOR >= 9"
    },
    {
     "id": "nunca_desarmado",
@@ -7110,7 +7318,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Nunca Desarmado: Você não tem mais desvantagem nas rolagens de ataque improvisado (a menos que você já tenha desvantagem por outro motivo, como a condição caído ou o alcance longo de objetos arremessados), e sua chance de acerto crítico é reduzida em 2 quando você ataca com uma arma improvisada."
+     }
+    ],
+    "requires": "FOR >= 9"
    },
    {
     "id": "armas_vivas",
@@ -7121,7 +7335,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Armas Vivas: Usar uma criatura como arma improvisada custa 5 PA, usa sua perícia Corpo a Corpo para acertar, acerta criticamente com 20 (x2) e causa um número de d6 de dano de impacto dependendo do tamanho dela. …"
+     }
+    ],
+    "requires": "FOR >= 10"
    },
    {
     "id": "exterminador",
@@ -7132,7 +7352,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Exterminador: Sempre que você gastar PA para atacar com um ataque desarmado ou com arma corpo a corpo, ele custa 1 a menos. Além disso, sua chance de acerto crítico com todas as armas desarmadas e corpo a corpo diminui em 1."
+     }
+    ],
+    "requires": "FOR >= 10"
    },
    {
     "id": "mira_cuidadosa",
@@ -7143,7 +7369,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mira Cuidadosa: Sempre que você gastar pontos de ação para fazer uma rolagem de ataque com uma arma de longo alcance, você pode gastar 1 ponto de ação adicional para somar 1 ao resultado da rolagem. …"
+     }
+    ],
+    "requires": "PER >= 4"
    },
    {
     "id": "amigo_da_noite",
@@ -7154,7 +7386,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Amigo da Noite: Você não tem mais desvantagem em nenhuma rolagem de ataque, teste de atributo ou teste de perícia prejudicados por condições de pouca luz."
+     }
+    ],
+    "requires": "PER >= 4",
+    "repeat": 2
    },
    {
     "id": "alerta",
@@ -7165,7 +7404,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Alerta: Você aprendeu a manter seus sentidos atentos a qualquer perigo. Se você não sair de um único local, de no máximo 6 m de raio, por pelo menos 10 minutos, você ganha um bônus nos seus Sentidos Passivos igual ao seu modificador de Percepção. …"
+     }
+    ],
+    "requires": "PER >= 5"
    },
    {
     "id": "infiltrador",
@@ -7176,7 +7421,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Infiltrador: Você pode gastar 3 pontos de ação e examinar uma fechadura ou um computador a até 1,5 m de você para descobrir a CD de Sabotagem. …"
+     }
+    ],
+    "requires": "PER >= 5"
    },
    {
     "id": "energia_potencializada",
@@ -7187,7 +7438,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Energia Potencializada: Sempre que você rolar dano de um ataque com uma arma de energia, você pode rolar um dado de dano adicional. …"
+     }
+    ],
+    "requires": "PER >= 5",
+    "repeat": 3
    },
    {
     "id": "impasse",
@@ -7198,7 +7456,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Impasse: Sempre que você rolar Iniciativa, você e uma outra criatura a até 9 m de você ganham um bônus igual ao seu modificador de Percepção."
+     }
+    ],
+    "requires": "PER >= 5",
+    "repeat": 3
    },
    {
     "id": "diagnostico_eficiente",
@@ -7209,7 +7474,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Diagnóstico Eficiente: Sempre que você usar um Stimpak, um kit de primeiros socorros ou uma maleta médica em outra criatura, ela cura 2 pontos de vida adicionais; alternativamente, você pode virar uma das suas Tampas de Karma para curar o dobro do que normalmente curaria."
+     }
+    ],
+    "requires": "PER >= 5",
+    "repeat": 3
    },
    {
     "id": "faro_para_encrenca",
@@ -7220,7 +7492,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Faro para Encrenca: Ataques furtivos causam metade do dano em você. Se uma criatura rolar um teste de Furtividade contra os seus Sentidos Passivos e for bem-sucedida por 5 ou menos, você percebe a presença, mas não consegue detectar a localização da criatura escondida. …"
+     }
+    ],
+    "requires": "PER >= 5"
    },
    {
     "id": "rato_de_carga",
@@ -7236,8 +7514,14 @@
       "type": "add",
       "target": "carga_max",
       "value": "10"
+     },
+     {
+      "type": "note",
+      "text": "Rato de Carga: A Capacidade de Carga de cada personagem jogador aumenta em 10. Além disso, qualquer item que você carregue com carga menor que 3 passa a ter carga 1."
      }
-    ]
+    ],
+    "requires": "PER >= 6",
+    "repeat": 3
    },
    {
     "id": "estilhacos",
@@ -7248,7 +7532,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Estilhaços: Sempre que você atacar com uma arma ou equipamento que tenha área de efeito, a área aumenta em metade."
+     }
+    ],
+    "requires": "PER >= 6",
+    "repeat": 2
    },
    {
     "id": "detonacoes_cuidadosas",
@@ -7259,7 +7550,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Detonações Cuidadosas: Sempre que você arremessar um explosivo que não seja colocado, pode escolher uma área de 1,5 m de raio. Quaisquer criaturas ou objetos nessa área de 1,5 m não sofrem dano e não sofrem nenhum efeito do explosivo. …"
+     }
+    ],
+    "requires": "PER >= 6"
    },
    {
     "id": "perfuracao_pulsante",
@@ -7270,7 +7567,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Perfuração Pulsante: Sempre que você fizer uma rolagem de ataque com uma arma de energia, você pode escolher que o ataque atinja até três criaturas em linha. A linha é traçada a partir da sua posição."
+     }
+    ],
+    "requires": "PER >= 7",
+    "repeat": 2
    },
    {
     "id": "especialista_em_demolicao",
@@ -7281,7 +7585,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Especialista em Demolição: Sempre que você causar dano com um explosivo, o dano aumenta em um dado adicional."
+     }
+    ],
+    "requires": "PER >= 7",
+    "repeat": 3
    },
    {
     "id": "agir_por_instinto",
@@ -7292,7 +7603,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Agir por Instinto: Quando você rola Iniciativa, você ganha 3 PA que pode gastar imediatamente antes de qualquer outra criatura agir no combate. …"
+     }
+    ],
+    "requires": "PER >= 7"
    },
    {
     "id": "abaixa",
@@ -7303,7 +7620,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Abaixa!: Sempre que você sofrer dano nos seus pontos de estamina de um explosivo, o dano é reduzido pela metade."
+     }
+    ],
+    "requires": "PER >= 8"
    },
    {
     "id": "derretimento",
@@ -7314,7 +7637,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Derretimento: Sempre que você causar dano suficiente para levar outra criatura a 0 pontos de vida com uma rolagem de ataque feita com uma arma que cause dano de laser, plasma ou eletricidade, você pode escolher que essa criatura exploda em uma corona de energia. …"
+     }
+    ],
+    "requires": "PER >= 8"
    },
    {
     "id": "atirador_de_elite",
@@ -7325,7 +7654,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Atirador de Elite: Sempre que você gastar pontos de ação para fazer uma rolagem de ataque com uma arma de longo alcance de duas mãos, você pode gastar 1 ponto de ação adicional para somar 2 ao resultado da rolagem. …"
+     }
+    ],
+    "requires": "PER >= 9"
    },
    {
     "id": "arremessador_volatil",
@@ -7336,7 +7671,13 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Arremessador Volátil: Sempre que você gastar pontos de ação para arremessar um explosivo, você gasta 1 ponto de ação a menos, até o mínimo de 3. …"
+     }
+    ],
+    "requires": "PER >= 9"
    },
    {
     "id": "mestre_da_medicina",
@@ -7347,7 +7688,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mestre da Medicina: Quando outra criatura descansa por pelo menos uma hora, você pode usar um kit de primeiros socorros, um Stimpak ou uma maleta médica para curar metade do total dos pontos de vida dela. …"
+     }
+    ],
+    "requires": "PER >= 10",
+    "repeat": 2
    },
    {
     "id": "oraculo",
@@ -7358,7 +7706,14 @@
     "tags": [
      "percepção"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Oráculo: Sempre que você rolar Iniciativa, você pode trocar as rolagens de Iniciativa de qualquer número de criaturas dispostas."
+     }
+    ],
+    "requires": "PER >= 10",
+    "repeat": 2
    },
    {
     "id": "mestre_cuca",
@@ -7369,7 +7724,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mestre-Cuca: Você pode gastar 5 minutos cozinhando uma comida pronta ou, sempre que fizer uma comida cozida, ela sempre tem a propriedade saciante; se tiver a propriedade insosso, passa a ter a propriedade saboroso; e qualquer criatura que consumir a comida ganha pontos…"
+     }
+    ],
+    "requires": "RES >= 4"
    },
    {
     "id": "doador_de_vida",
@@ -7380,7 +7741,19 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "pv",
+      "value": "10"
+     },
+     {
+      "type": "note",
+      "text": "Doador de Vida: Seus pontos de vida máximos aumentam em 10 e os pontos de vida máximos de cada outro personagem jogador aumentam em 1."
+     }
+    ],
+    "requires": "RES >= 4",
+    "repeat": 2
    },
    {
     "id": "resiliente",
@@ -7391,7 +7764,19 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Resiliente: Sua TD aumenta em 1 e, sempre que você fizer um teste para resistir a ficar amedrontado, você não fica amedrontado se passar por 5 ou menos."
+     }
+    ],
+    "requires": "RES >= 5",
+    "repeat": 2
    },
    {
     "id": "alem_mar",
@@ -7402,7 +7787,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Além-Mar: Sempre que você gastar pontos de ação para se mover na água, você pode gastar 1 ponto de ação para se mover 1,5 m em vez de 3 m. Além disso, beber água suja não dá nenhum nível de radiação a você."
+     }
+    ],
+    "requires": "RES >= 5"
    },
    {
     "id": "corrida_louca",
@@ -7413,7 +7804,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Corrida Louca: Sempre que você gastar pontos de ação no seu turno para correr, você se move 24 m em linha reta em vez de 15 m."
+     }
+    ],
+    "requires": "RES >= 5"
    },
    {
     "id": "passa_logo",
@@ -7424,7 +7821,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Passa Logo: Sempre que você ganhar uma condição de membro, os efeitos duram metade do tempo. Além disso, desde que a condição de membro não seja grave, você pode virar sua Tampa de Karma para ignorar os efeitos da condição."
+     }
+    ],
+    "requires": "RES >= 5"
    },
    {
     "id": "instinto_de_desbravador",
@@ -7435,7 +7838,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Instinto de Desbravador: Quando você começa a viajar, uma vez por dia você pode fazer um teste da perícia Sobrevivência com CD 12. A CD aumenta em 2 se a rota que você está seguindo passar por terreno difícil, for mais longa que 3 dias de viagem ou for em território desconhecido. …"
+     }
+    ],
+    "requires": "RES >= 5"
    },
    {
     "id": "vies_do_sobrevivente",
@@ -7446,7 +7855,14 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Viés do Sobrevivente: Seu conhecimento sobre outras criaturas e o que elas podem fazer lhe dá vantagem contra elas. …"
+     }
+    ],
+    "requires": "RES >= 5",
+    "repeat": 3
    },
    {
     "id": "garra",
@@ -7457,7 +7873,14 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Garra: Sempre que você estiver morrendo, o movimento não custa pontos de ação extras e você ganha um ponto de ação adicional no início do seu turno."
+     }
+    ],
+    "requires": "RES >= 6",
+    "repeat": 2
    },
    {
     "id": "a_longa_estrada",
@@ -7468,7 +7891,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "A Longa Estrada: Além disso, você recupera todos os seus pontos de estamina depois de descansar por uma hora em vez de oito."
+     }
+    ],
+    "requires": "RES >= 6"
    },
    {
     "id": "vivinho_da_silva",
@@ -7479,7 +7908,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Vivinho da Silva: Você ignora os efeitos negativos dos três primeiros níveis de exaustão."
+     }
+    ],
+    "requires": "RES >= 6"
    },
    {
     "id": "movido_a_sol",
@@ -7490,7 +7925,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Movido a Sol: Sempre que você descansar por pelo menos uma hora sob luz solar direta, você ganha pontos de estamina temporários iguais ao seu nível. Além disso, você pode usar essa energia solar para carregar suas armas. …"
+     }
+    ],
+    "requires": "RES >= 7"
    },
    {
     "id": "vida_ao_relento",
@@ -7501,7 +7942,14 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Vida ao Relento: Sempre que você descansar ao ar livre por pelo menos 1 hora, você ganha pontos de vida temporários e pontos de estamina temporários iguais ao seu nível pelas próximas 8 horas."
+     }
+    ],
+    "requires": "RES >= 7",
+    "repeat": 2
    },
    {
     "id": "casca_grossa",
@@ -7512,7 +7960,18 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "df",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Casca Grossa: Sua DF aumenta em 1, mesmo que você não esteja de armadura. Além disso, quando você bloqueia, não precisa estar empunhando uma arma corpo a corpo. Se estiver empunhando uma arma corpo a corpo, sua TD aumenta em 2 contra outros ataques corpo a corpo."
+     }
+    ],
+    "requires": "RES >= 7"
    },
    {
     "id": "pura_determinacao",
@@ -7523,7 +7982,18 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "immunity",
+      "text": "Choque",
+      "ref": "condicoes/choque"
+     },
+     {
+      "type": "note",
+      "text": "Pura Determinação: Quando você chega a 0 pontos de vida pela primeira vez em um turno, você pode virar uma das suas Tampas de Karma para curar um número de pontos de vida igual ao seu Fator de Cura. Além disso, você é imune à condição choque."
+     }
+    ],
+    "requires": "RES >= 8"
    },
    {
     "id": "recuperacao_rapida",
@@ -7534,7 +8004,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Recuperação Rápida: Você pode gastar 3 pontos de ação no seu turno para curar um número de pontos de estamina ou de pontos de vida igual ao seu Fator de Cura. Depois de usar esta habilidade, você não pode usá-la de novo até descansar por pelo menos 6 horas. …"
+     }
+    ],
+    "requires": "RES >= 8"
    },
    {
     "id": "implante_y_7",
@@ -7545,7 +8021,23 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "pv",
+      "value": "2 * level"
+     },
+     {
+      "type": "add",
+      "target": "fator_cura",
+      "value": "2"
+     },
+     {
+      "type": "note",
+      "text": "Implante Y-7: Seus pontos de vida máximos aumentam em um número igual ao dobro do seu nível. Além disso, seu Fator de Cura aumenta em 2."
+     }
+    ],
+    "requires": "RES >= 9"
    },
    {
     "id": "armadura_subdermica_de_nemeia",
@@ -7556,7 +8048,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Armadura Subdérmica de Nemeia: Você pode gastar 3 pontos de ação para ativar seu implante e, quando fizer isso, você ganha resistência a três tipos de dano à sua escolha (ácido, contusão, balístico, frio, eletricidade, explosivo, fogo, impacto, laser, perfurante, plasma, veneno, radiação ou cortante). …"
+     }
+    ],
+    "requires": "RES >= 9"
    },
    {
     "id": "espirito_indomavel",
@@ -7567,7 +8065,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Espírito Indomável: Quando você rola Iniciativa, você e quaisquer criaturas à sua escolha ganham pontos de vida temporários iguais ao seu modificador de Resistência. …"
+     }
+    ],
+    "requires": "RES >= 10"
    },
    {
     "id": "implante_fenix",
@@ -7578,7 +8082,13 @@
     "tags": [
      "resistência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Implante Fênix: Você pode gastar 3 pontos de ação para ativar seu implante e, quando fizer isso, você cura, no início do seu turno, um número de pontos de vida igual ao seu Fator de Cura. Isso dura 6 rodadas (ou 30 segundos). …"
+     }
+    ],
+    "requires": "RES >= 10"
    },
    {
     "id": "vendedor_esperto",
@@ -7589,7 +8099,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Vendedor Esperto: Sempre que você comprar um item, o preço é reduzido em uma porcentagem igual a 2 x seu valor de Carisma."
+     }
+    ],
+    "requires": "CAR >= 4"
    },
    {
     "id": "rei_do_camarote",
@@ -7600,7 +8116,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Rei do Camarote: Você não pode ficar viciado em Álcool e, sempre que beber uma bebida alcoólica, você recupera um número de pontos de estamina igual ao seu nível."
+     }
+    ],
+    "requires": "CAR >= 4"
    },
    {
     "id": "provocar_e_zombar",
@@ -7611,7 +8133,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Provocar e Zombar: Você pode gastar 3 pontos de ação no seu turno para provocar uma criatura alvo. Faça um teste de Carisma; essa criatura deve ser bem-sucedida em um teste de atributo de Carisma com CD igual ao total do seu teste. …"
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "escolha_do_negociante",
@@ -7622,7 +8150,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Escolha do Negociante: Sempre que vender um item, você pode vendê-lo por 75% do preço em vez de 50%."
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "poker_face",
@@ -7633,7 +8167,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Poker Face: Sempre que você rolar um teste da perícia Persuasão e o resultado for menor que 9, o total passa a ser 9 + seu bônus de Persuasão. Além disso, sempre que você apostar em um jogo de cartas ou dados, pode somar seu valor de Carisma à rolagem."
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "ego_inflado",
@@ -7644,7 +8184,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ego Inflado: Seu modificador de Moral da Equipe é dobrado para você."
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "grito_de_guerra",
@@ -7655,7 +8201,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Grito de Guerra: Você pode gastar 3 PA no seu turno para encorajar seus aliados, soltar um grito de guerra ou, de alguma outra forma, instigar a vitória! Cada criatura à sua escolha a até 6 m de você ganha 2 pontos de ação adicionais, até um máximo de 15. …"
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "amigo_dos_animais",
@@ -7666,7 +8218,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Amigo dos Animais: Além disso, você tem vantagem em qualquer teste de Carisma para interagir com animais."
+     }
+    ],
+    "requires": "CAR >= 5"
    },
    {
     "id": "trabalho_em_equipe",
@@ -7677,7 +8235,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Trabalho em Equipe: Sempre que outro membro do grupo falhar em uma rolagem de ataque, você pode virar uma das suas Tampas de Karma para somar um bônus igual ao seu modificador de Carisma. …"
+     }
+    ],
+    "requires": "CAR >= 6"
    },
    {
     "id": "lealdade_feroz",
@@ -7688,7 +8252,14 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Lealdade Feroz: Quando você sofrer dano nos seus pontos de vida pela primeira vez, os membros do seu grupo podem recuperar todos os seus pontos de estamina, desde que consigam perceber você. …"
+     }
+    ],
+    "requires": "CAR >= 6",
+    "repeat": 2
    },
    {
     "id": "eu_te_cubro",
@@ -7699,7 +8270,14 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Eu Te Cubro: Quando você e esse aliado estiverem a até 1,5 m um do outro, vocês ganham os seguintes benefícios: sua DF aumenta em 1, sua TD aumenta em 2 e, sempre que você ou o aliado escolhido sofrerem dano, qualquer um dos dois pode escolher reduzir esse dano pela metade. …"
+     }
+    ],
+    "requires": "CAR >= 6",
+    "repeat": 2
    },
    {
     "id": "mantendo_a_calma",
@@ -7710,7 +8288,14 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mantendo a Calma: Durante o combate, você tem vantagem em todos os testes de Carisma e sua DF aumenta em 1, desde que você não tenha sofrido nenhum dano nos seus pontos de vida durante o combate. …"
+     }
+    ],
+    "requires": "CAR >= 7",
+    "repeat": 2
    },
    {
     "id": "presenca_aterrorizante",
@@ -7721,7 +8306,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Presença Aterrorizante: Cada inimigo que consiga ver você na ordem de Iniciativa e tenha Inteligência maior que 2 fica amedrontado até o fim do seu turno."
+     }
+    ],
+    "requires": "CAR >= 7"
    },
    {
     "id": "acao_inspiradora",
@@ -7732,7 +8323,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ação Inspiradora: Você pode gastar 3 PA no seu turno para inspirar uma criatura a até 9 m. Essa criatura pode somar 2d10 a qualquer rolagem de d20 que fizer durante o próximo minuto. Depois que ela usar os 2d10, não pode usá-los de novo. …"
+     }
+    ],
+    "requires": "CAR >= 7"
    },
    {
     "id": "lenda_dos_ermos",
@@ -7743,7 +8340,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Lenda dos Ermos: Quando você rola Iniciativa, os pontos de estamina máximos de cada criatura inimiga são reduzidos em um valor igual à sua Moral da Equipe. Sim, mesmo que sejam criaturas incapazes de compreender a ideia de uma lenda."
+     }
+    ],
+    "requires": "CAR >= 8"
    },
    {
     "id": "personalidade_impulsionadora",
@@ -7754,7 +8357,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Personalidade Impulsionadora: Você lidera pelo exemplo: sempre que outra criatura a até 9 m de você causar dano com uma rolagem de ataque, você pode virar uma das suas Tampas de Karma para aumentar o dano em um bônus igual ao dobro do seu modificador de Carisma. …"
+     }
+    ],
+    "requires": "CAR >= 8"
    },
    {
     "id": "comandante",
@@ -7765,7 +8374,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Comandante: Uma vez por turno, você pode gastar 3 PA para dar uma ordem a qualquer criatura aliada a até 18 m de você. Essa criatura ganha 6 PA para completar imediatamente a ação descrita. Esses pontos de ação não passam para o próximo turno e não podem ser reciclados."
+     }
+    ],
+    "requires": "CAR >= 9"
    },
    {
     "id": "estrategista_astuto",
@@ -7776,7 +8391,14 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Estrategista Astuto: Sempre que outro personagem jogador desvirar a Tampa de Karma dele ao rolar 1 em um d20 ou ao ser atingido por um acerto crítico, você também pode desvirar a sua Tampa de Karma."
+     }
+    ],
+    "requires": "CAR >= 9",
+    "repeat": 2
    },
    {
     "id": "celebridade",
@@ -7787,7 +8409,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Celebridade: Você ganha bebidas de graça em bares e tem um desconto permanente de 20% em todos os itens (desde que você não aja como um babaca). …"
+     }
+    ],
+    "requires": "CAR >= 10"
    },
    {
     "id": "fique_e_lute",
@@ -7798,7 +8426,13 @@
     "tags": [
      "carisma"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fique e Lute: Sempre que outra criatura a até 18 m de você falhar em um Suspiro Final e morrer, você pode transformar essa rolagem em um sucesso crítico. Depois que você usar esta habilidade em uma criatura, não pode usá-la nela de novo por 12 horas."
+     }
+    ],
+    "requires": "CAR >= 10"
    },
    {
     "id": "retencao",
@@ -7809,7 +8443,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Retenção: Sempre que outro personagem jogador for bem-sucedido em um teste das perícias Barganha, Sabotagem, Criação, Intimidação, Medicina, Ciência, Furtividade, Persuasão ou Sobrevivência, você ganha +3 nesse teste de perícia na próxima vez que rolá-lo (até um máximo de +3). …"
+     }
+    ],
+    "requires": "INT >= 4"
    },
    {
     "id": "furia_matematica",
@@ -7820,7 +8460,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fúria Matemática: Sempre que você fizer um ataque mirado, pode gastar metade da quantidade de PA adicionais (arredondada para cima). Além disso, você pode fazer um ataque especial com uma arma de longo alcance no seu turno chamado ataque Calculado. …"
+     }
+    ],
+    "requires": "INT >= 4"
    },
    {
     "id": "quimico",
@@ -7831,7 +8477,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Químico: A duração de qualquer químico que você tomar dura o dobro e você tem vantagem para resistir ao vício."
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "primeiros_socorros",
@@ -7842,7 +8494,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Primeiros Socorros: Você pode curar uma criatura até o Fator de Cura dela com 5 PA. Depois que você curar assim, essa criatura só pode ser curada de novo depois de descansar por pelo menos 8 horas."
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "explorador",
@@ -7853,7 +8511,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Explorador: Sempre que você descansar e ganhar um bônus de XP depois de ter descoberto novos locais, você ganha um bônus adicional de 50% de XP. Além disso, você pode descobrir a direção e a distância de até três locais nomeados, a critério do MJ."
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "meteorologista",
@@ -7864,7 +8528,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Meteorologista!: Você sempre sabe onde fica o norte, como será o tempo nos próximos três dias e se a área por onde você está viajando é povoada ou vazia (o que determina os encontros)."
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "mecanico_itinerante",
@@ -7875,7 +8545,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mecânico Itinerante: Suas ferramentas equivalem a 5 de carga."
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "virologista_de_quintal",
@@ -7886,7 +8562,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Virologista de Quintal: A duração de uma doença é reduzida pela metade (arredondada para baixo), desde que você passe 10 minutos ininterruptos com a criatura doente e use um item de comida do tipo Produto combinado com um item de Químico ou de Medicina. …"
+     }
+    ],
+    "requires": "INT >= 5"
    },
    {
     "id": "toque_leve",
@@ -7897,7 +8579,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Toque Leve: Quando você sofre dano e é reduzido a 0 pontos de vida, sua armadura ganha apenas 1 Nível de Desgaste. Além disso, sempre que você sofrer dano nos seus pontos de vida, você pode fazer sua armadura absorver o golpe. …"
+     }
+    ],
+    "requires": "INT >= 6"
    },
    {
     "id": "municao_eficiente",
@@ -7908,7 +8596,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Munição Eficiente: Sempre que você fabricar qualquer tipo de munição, as rolagens de ataque e de dano feitas com essa munição aumentam em 2. …"
+     }
+    ],
+    "requires": "INT >= 6"
    },
    {
     "id": "alquimista_habilidoso",
@@ -7919,7 +8613,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Alquimista Habilidoso: Os efeitos de um Químico potente são dobrados, mas a CD de vício aumenta em 2. Os efeitos de um Químico diluído são pela metade, mas você não pode ficar viciado em um Químico diluído."
+     }
+    ],
+    "requires": "INT >= 6"
    },
    {
     "id": "furia_de_nerd",
@@ -7930,7 +8630,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fúria de Nerd!: Sempre que você começar seu turno com menos da metade dos seus pontos de vida totais, sua TD aumenta em 3 e você causa 3 de dano adicional."
+     }
+    ],
+    "requires": "INT >= 7"
    },
    {
     "id": "armadura_reluzente",
@@ -7941,7 +8647,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Armadura Reluzente: Você tem resistência a dano de laser e de plasma. Além disso, cada vez que você for atingido por dano de laser ou de plasma, role um teste de Sorte. Com 19 ou mais, o feixe é refratado e atinge o atacante, causando o mesmo dano a ele."
+     }
+    ],
+    "requires": "INT >= 7"
    },
    {
     "id": "mestre_da_armadura_potente",
@@ -7952,7 +8664,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mestre da Armadura Potente: Quando você usa armadura potente, ela não superaquece se você gastar mais de 15 PA em um turno. Além disso, você pode fabricar um aprimoramento especial para qualquer armadura potente que aumenta em 2 os pontos de defesa máximos e recuperados dela. …"
+     }
+    ],
+    "requires": "INT >= 7"
    },
    {
     "id": "especialista_em_robos",
@@ -7963,7 +8681,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Especialista em Robôs: Você ignora 2 pontos de TD ao causar dano a robôs. Além disso, você pode tentar desligar robôs com um teste de Ciência bem-sucedido; a CD é igual ao valor de Inteligência do robô + 10. Você não pode desligar robôs se estiver em combate com eles."
+     }
+    ],
+    "requires": "INT >= 8"
    },
    {
     "id": "genio_da_computacao",
@@ -7974,7 +8698,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Gênio da Computação: Sempre que você falhar em um teste de Sabotagem para hackear um computador, você pode gastar 10 minutos para fazer seu resultado ser igual a 8 + seu bônus de Sabotagem, ou gastar uma hora para fazer seu resultado ser igual a 8 + o dobro do seu bônus de Sabotagem."
+     }
+    ],
+    "requires": "INT >= 8"
    },
    {
     "id": "reparo_rapido",
@@ -7985,7 +8715,14 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reparo Rápido: Você pode gastar 6 pontos de ação para fazer um reparo rápido. O reparo rápido remove dois níveis de desgaste de um item. Depois de fazer um reparo rápido, você não pode fazer outro até descansar por pelo menos 8 horas."
+     }
+    ],
+    "requires": "INT >= 9",
+    "repeat": 3
    },
    {
     "id": "atomizador_curativo",
@@ -7996,7 +8733,14 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Atomizador Curativo: Você pode gastar 6 pontos de ação e dois Stimpaks para fazer cada criatura não robótica a até 6 m de você recuperar pontos de vida iguais ao Fator de Cura dela. …"
+     }
+    ],
+    "requires": "INT >= 9",
+    "repeat": 2
    },
    {
     "id": "sobrecarga",
@@ -8007,7 +8751,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sobrecarga: Quando você gastar pontos de ação para fazer uma rolagem de ataque com uma arma de longo alcance, você pode gastar até 3 PA adicionais para somar dados de dano adicionais ao dano. O número de dados de dano adicionais é igual à quantidade de PA extras gastos. …"
+     }
+    ],
+    "requires": "INT >= 10"
    },
    {
     "id": "engenheiro_especialista",
@@ -8018,7 +8768,13 @@
     "tags": [
      "inteligência"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Engenheiro Especialista: Sempre que você fabricar um item, você usa dois materiais a menos de cada material listado, até o mínimo de um."
+     }
+    ],
+    "requires": "INT >= 10"
    },
    {
     "id": "saque_rapido",
@@ -8029,7 +8785,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Saque Rápido: Sempre que você gastar pontos de ação para equipar ou guardar um item, custa 2 a menos, até o mínimo de 1."
+     }
+    ],
+    "requires": "AGI >= 4"
    },
    {
     "id": "heroi_de_acao",
@@ -8040,7 +8802,18 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "pa",
+      "value": "min(2, 15 - min(15, 10 + mod(AGI)))"
+     },
+     {
+      "type": "note",
+      "text": "Herói de Ação: Seu máximo de pontos de ação aumenta em 2, até o máximo de 15."
+     }
+    ],
+    "requires": "AGI >= 4"
    },
    {
     "id": "martelo_rapido",
@@ -8051,7 +8824,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Martelo Rápido: Sempre que você atacar com um revólver, você pode virar uma das suas Tampas de Karma e gastar 10 PA para fazer ataques adicionais sem gastar nenhum PA adicional; o alvo desses ataques deve estar a até 3 m do alvo anterior. …"
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "recarga_rapida",
@@ -8062,7 +8841,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Recarga Rápida: Sempre que você gastar PA para recarregar ou se abrigar, custa 3 a menos, até o mínimo de 1. Além disso, quando você recarregar uma arma com Recarga Manual, pode gastar 1 PA para recarregar três balas."
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "reator_de_reacao",
@@ -8073,7 +8858,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reator de Reação: Se você terminar seu turno com pelo menos 3 pontos de ação não usados, pode usá-los no fim do turno de outra criatura. Se não os usar, você recicla todos eles no início do seu próximo turno."
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "a_danca",
@@ -8084,7 +8875,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "A Dança: Sempre que você rolar dano de um ataque feito com uma arma corpo a corpo cortante, pode escolher somar seu modificador de atributo de Agilidade ao dano em vez do seu modificador de Força."
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "corrida_agil",
@@ -8095,7 +8892,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Corrida Ágil: Sempre que você gastar pontos de ação no seu turno para disparar numa corrida, você não para o movimento quando barreiras pequenas bloquearem o caminho. Em vez disso, você pode gastar 3 m desse movimento para pular por cima ou deslizar por baixo da barreira. …"
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "acao_evasiva",
@@ -8106,7 +8909,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ação Evasiva: Sempre que você sofrer dano nos seus pontos de estamina pela primeira vez depois de rolar Iniciativa, o dano é reduzido a 0."
+     }
+    ],
+    "requires": "AGI >= 5"
    },
    {
     "id": "pistoleiro",
@@ -8117,7 +8926,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pistoleiro: Sempre que você fizer uma rolagem de ataque com uma arma de mão, some 2 ao resultado. …"
+     }
+    ],
+    "requires": "AGI >= 6"
    },
    {
     "id": "e_fique_longe",
@@ -8128,7 +8943,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "E Fique Longe: Sempre que você causar dano a uma criatura com uma escopeta, você ignora 2 pontos de TD. Além disso, se o alvo estiver a até 1,5 m de você, você pode escolher empurrá-lo 4,5 m para longe de você."
+     }
+    ],
+    "requires": "AGI >= 6"
    },
    {
     "id": "atirador_multialvo",
@@ -8139,7 +8960,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Atirador Multialvo: Sempre que você acertar uma criatura com um ataque à distância, sua próxima rolagem de ataque à distância aumenta em 2, desde que você mire em uma criatura diferente. …"
+     }
+    ],
+    "requires": "AGI >= 6"
    },
    {
     "id": "ninja",
@@ -8150,7 +8977,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ninja: Você pode gastar 5 pontos de ação no seu turno para fazer um ataque giratório; esse ataque atinge 3 criaturas a até 1,5 m de você e conta como um ataque de pugilismo. …"
+     }
+    ],
+    "requires": "AGI >= 7"
    },
    {
     "id": "fogo_concentrado",
@@ -8161,7 +8994,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fogo Concentrado: Sempre que você acertar com uma rolagem de ataque mirado, você pode escolher a condição de membro. Além disso, suas rolagens de ataque contra criaturas aumentam em 2 para cada condição de membro que elas tenham."
+     }
+    ],
+    "requires": "AGI >= 7"
    },
    {
     "id": "armas_dobradas",
@@ -8172,7 +9011,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Armas Dobradas!: Se você empunhar uma arma de fogo ou de energia em uma mão e outra arma de fogo ou de energia na outra, pode gastar PA adicionais ao atacar com uma arma para fazer outro ataque com a outra. …"
+     }
+    ],
+    "requires": "AGI >= 7"
    },
    {
     "id": "sr_sandman",
@@ -8183,7 +9028,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sr. Sandman: Se você atacar uma criatura inconsciente, ela morre."
+     }
+    ],
+    "requires": "AGI >= 8"
    },
    {
     "id": "mira_letal_do_sentinela",
@@ -8194,7 +9045,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mira Letal do Sentinela: Se você for o primeiro a agir na Iniciativa, pode escolher que sua primeira rolagem de ataque seja um acerto crítico ou, então, atacar até três vezes sem gastar nenhum PA."
+     }
+    ],
+    "requires": "AGI >= 8"
    },
    {
     "id": "camuflagem_de_equipe",
@@ -8205,7 +9062,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Camuflagem de Equipe: Sua Furtividade da Equipe é igual a 20, assim como a de quaisquer aliados a até 9 m de você."
+     }
+    ],
+    "requires": "AGI >= 9"
    },
    {
     "id": "velocista_eficiente",
@@ -8216,7 +9079,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Velocista Eficiente: Você recicla todos os seus pontos de ação não usados no início do seu turno. Além disso, sempre que você disparar numa corrida, pode mudar de direção uma vez e continuar correndo."
+     }
+    ],
+    "requires": "AGI >= 9"
    },
    {
     "id": "reflexos_antecipados",
@@ -8227,7 +9096,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reflexos Antecipados: Sempre que um ataque superar sua DF e acertar você, você pode escolher gastar 3 pontos de ação para aumentar sua DF em 1, 6 pontos de ação para aumentá-la em 2, ou 9 pontos de ação para aumentá-la em 3. …"
+     }
+    ],
+    "requires": "AGI >= 10"
    },
    {
     "id": "nervos_de_aco",
@@ -8238,7 +9113,13 @@
     "tags": [
      "agilidade"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Nervos de Aço: No início de cada um dos seus turnos, desde que seu total de pontos de vida não esteja abaixo da metade, você recupera pontos de estamina iguais à metade do seu nível (arredondada para baixo)."
+     }
+    ],
+    "requires": "AGI >= 10"
    },
    {
     "id": "fucador",
@@ -8249,7 +9130,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fuçador: Sempre que você fizer um teste de atributo de Sorte para determinar o saque que encontra, você pode rolar dois testes e escolher qual resultado vale."
+     }
+    ],
+    "requires": "SOR >= 4"
    },
    {
     "id": "critao",
@@ -8260,7 +9147,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Critão: Os acertos críticos que você causa em combate são mais devastadores. Se você tirar 20 em uma rolagem de ataque com uma arma, você acerta criticamente e o dano do crítico é dobrado."
+     }
+    ],
+    "requires": "SOR >= 4"
    },
    {
     "id": "bagunca_sangrenta",
@@ -8271,7 +9164,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bagunça Sangrenta: Sempre que você causar dano com uma arma ou explosivo, o dano aumenta em 2. Além disso, sempre que você reduzir uma criatura a 0 pontos de vida, role um teste de Sorte com CD 20. Se for bem-sucedido, o corpo da criatura explode em uma horrível papa visceral. …"
+     }
+    ],
+    "requires": "SOR >= 5"
    },
    {
     "id": "cacador_de_fortuna",
@@ -8282,7 +9181,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Caçador de Fortuna: Quando você pega este talento, você de repente se vê dono de 800 tampinhas! Além disso, sempre que você encontrar tampinhas, encontra uma quantidade a mais igual ao seu modificador de atributo de Sorte."
+     }
+    ],
+    "requires": "SOR >= 5"
    },
    {
     "id": "em_dobro",
@@ -8293,7 +9198,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Em Dobro: Você ganha uma Tampa de Karma adicional."
+     }
+    ],
+    "requires": "SOR >= 5"
    },
    {
     "id": "simplesmente_funciona",
@@ -8304,7 +9215,14 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Simplesmente Funciona: Sempre que qualquer uma das suas armas ou armaduras fosse ganhar um nível de desgaste, role um teste de Sorte com CD igual a 12 + os níveis de desgaste atuais da arma ou armadura. Se falhar, a arma ou armadura ganha um nível de desgaste. …"
+     }
+    ],
+    "requires": "SOR >= 5",
+    "repeat": 2
    },
    {
     "id": "no_acaso",
@@ -8315,7 +9233,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "No Acaso!: Sempre que você ou outro membro do grupo errar um ataque ou falhar em um teste de atributo ou de perícia, você pode virar uma das suas Tampas de Karma para transformar isso em um sucesso (a critério do MJ)."
+     }
+    ],
+    "requires": "SOR >= 5"
    },
    {
     "id": "imuno_trevo_de_quatro_folhas",
@@ -8326,7 +9250,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Imuno-Trevo-de-Quatro-Folhas: Quando você ou outro personagem jogador contrair uma doença, você pode rolar um teste de Sorte com CD igual a 10 + 2d4. Se for bem-sucedido, você não contrai a doença e, da próxima vez que rolar este teste, a CD aumenta em 1d4. …"
+     }
+    ],
+    "requires": "SOR >= 5"
    },
    {
     "id": "correria_do_ceifador",
@@ -8337,7 +9267,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Correria do Ceifador: Sempre que você levar uma criatura a 0 pontos de vida com um ataque mirado, você ganha imediatamente 8 pontos de ação. Se levar outra criatura a 0 pontos de vida com um ataque mirado no mesmo turno, você ganha imediatamente 6 pontos de ação. …"
+     }
+    ],
+    "requires": "SOR >= 6"
    },
    {
     "id": "reza_e_atira",
@@ -8348,7 +9284,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reza e Atira: Sempre que fizer um ataque às cegas, você tem vantagem na rolagem de ataque. Além disso, a CD do ataque às cegas é reduzida pela metade."
+     }
+    ],
+    "requires": "SOR >= 6"
    },
    {
     "id": "randomizador",
@@ -8359,7 +9301,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Randomizador: Sempre que você fabricar ou reparar um item, pode escolher aleatoriamente um dos materiais necessários; o material necessário é reduzido em uma quantidade igual ao seu modificador de atributo de Sorte, até o mínimo de 1. …"
+     }
+    ],
+    "requires": "SOR >= 6"
    },
    {
     "id": "banqueiro_de_criticos",
@@ -8370,7 +9318,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Banqueiro de Críticos: Sempre que você acertar um crítico, pode escolher não causar dano extra. Se fizer isso, você ganha uma Tampa de Karma temporária que se perde quando virada. …"
+     }
+    ],
+    "requires": "SOR >= 7"
    },
    {
     "id": "ricochete",
@@ -8381,7 +9335,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ricochete: Sempre que outra criatura fizer uma rolagem de ataque contra você e tirar 1, o ataque acerta ela em vez de você. …"
+     }
+    ],
+    "requires": "SOR >= 7"
    },
    {
     "id": "oportunidade_infligivel",
@@ -8392,7 +9352,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Oportunidade Infligível: Você pode usar a ação de ajudar com 3 PA em vez de 6. Além disso, quando você ajudar outra criatura em um teste de perícia, ela pode somar seu bônus de perícia inteiro à rolagem, em vez de metade."
+     }
+    ],
+    "requires": "SOR >= 7"
    },
    {
     "id": "estranho_misterioso",
@@ -8403,7 +9369,14 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Estranho Misterioso: Escolha um número de 2 a 19. Sempre que você fizer uma rolagem de ataque e o resultado for o número escolhido, o Estranho Misterioso aparece! …"
+     }
+    ],
+    "requires": "SOR >= 8",
+    "repeat": 2
    },
    {
     "id": "sorte_de_tolo",
@@ -8414,7 +9387,84 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "barganha",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "ciencia",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "corpo_a_corpo",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "criacao",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "disparo",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "energia",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "explosivos",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "furtividade",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "intimidacao",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "medicina",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "persuasao",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "pugilismo",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "sabotagem",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "add",
+      "target": "sobrevivencia",
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+     },
+     {
+      "type": "note",
+      "text": "Sorte de Tolo: Além disso, sempre que você virar sua Tampa de Karma para ganhar vantagem em um teste de atributo ou de perícia, pode somar o dobro do seu modificador de Sorte ao total."
+     }
+    ],
+    "requires": "SOR >= 8",
+    "repeat": 2
    },
    {
     "id": "ja_vi_esse_filme",
@@ -8425,7 +9475,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Já Vi Esse Filme: Sempre que você ou um aliado a até 30 m de você fizer um teste de atributo de Sorte, ele aumenta em 3. Além disso, sempre que você ganhar XP, ganha um bônus igual a 5d10 + a soma dos valores de Sorte de todos os personagens jogadores, dividido pela metade."
+     }
+    ],
+    "requires": "SOR >= 9"
    },
    {
     "id": "a_sorte_favorece_os_audazes",
@@ -8436,7 +9492,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "A Sorte Favorece os Audazes: Sempre que você ou qualquer outro personagem jogador virar a Tampa de Karma para ganhar vantagem ou uma nova rolagem em um teste de atributo, teste de perícia ou rolagem de ataque, estale o dedo e vire fisicamente a Tampa de Karma. …"
+     }
+    ],
+    "requires": "SOR >= 9"
    },
    {
     "id": "vantagem_absurda",
@@ -8447,7 +9509,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Vantagem Absurda: Sempre que você ou qualquer outro personagem jogador rolar um teste de atributo, teste de perícia ou rolagem de ataque com vantagem, role três d20 em vez de dois e escolha o maior resultado."
+     }
+    ],
+    "requires": "SOR >= 10"
    },
    {
     "id": "nunca_me_diga_as_chances",
@@ -8458,7 +9526,13 @@
     "tags": [
      "sorte"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Nunca Me Diga as Chances: Sempre que outra criatura acertar você com um ataque, você pode virar uma das suas Tampas de Karma para transformar o acerto em erro. Além disso, sempre que você estiver na condição morrendo, todos os ataques rolados contra você erram automaticamente."
+     }
+    ],
+    "requires": "SOR >= 10"
    },
    {
     "id": "canibal",
@@ -8469,7 +9543,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Canibal: Sempre que você consumir a carne de um humano, necrótico ou Super Mutante que tenha morrido nos últimos 15 minutos, você cura pontos de vida iguais ao dobro do seu Fator de Cura; depois de curar assim, você não pode curar assim de novo até descansar por pelo menos 8 horas. …"
+     }
+    ],
+    "requires": "(has('humano') or has('necrotico') or has('super_mutante'))"
    },
    {
     "id": "gourmet_do_velho_mundo",
@@ -8480,7 +9560,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Gourmet do Velho Mundo: Comidas e Bebidas não dão mais níveis de radiação a você."
+     }
+    ],
+    "requires": "(has('humano'))"
    },
    {
     "id": "sabedoria_do_cacador",
@@ -8491,7 +9577,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sabedoria do Caçador: Sempre que você sofrer dano de ataques feitos por animais ou insetos, sua TD aumenta em 2. …"
+     }
+    ],
+    "requires": "(has('humano') or has('necrotico') or has('super_mutante'))"
    },
    {
     "id": "catador_macabro",
@@ -8502,7 +9594,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Catador Macabro: Sempre que você consumir a carne de uma abominação que tenha morrido nos últimos 15 minutos, você cura pontos de vida iguais ao dobro do seu Fator de Cura; depois de curar assim, você não pode curar assim de novo até descansar por pelo menos 8 horas. …"
+     }
+    ],
+    "requires": "(has('humano') or has('necrotico') or has('super_mutante'))"
    },
    {
     "id": "sorvete_e_torta_de_maca",
@@ -8513,7 +9611,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sorvete e Torta de Maçã: Além disso, se você consumir uma comida com a propriedade insosso, ela passa a ser considerada saborosa."
+     }
+    ],
+    "requires": "(has('humano') or has('necrotico') or has('super_mutante'))"
    },
    {
     "id": "primo_do_computador",
@@ -8524,7 +9628,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Primo do Computador: Robôs não atacam você, a menos que você seja o único alvo hostil a até 18 m. Além disso, você tem vantagem em testes de Sabotagem com qualquer computador."
+     }
+    ],
+    "requires": "(has('robo') or has('sintetico')) and level >= 5"
    },
    {
     "id": "reset_de_particao",
@@ -8535,7 +9645,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reset de Partição: Reduza qualquer um dos seus valores de atributo em 1, 2 ou 3. Você pode aumentar qualquer outro valor de atributo no valor que reduziu mais 1."
+     }
+    ],
+    "requires": "(has('robo') or has('sintetico')) and level >= 10"
    },
    {
     "id": "reset_de_fabrica",
@@ -8546,7 +9662,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reset de Fábrica: Quando você pega este talento, seu personagem volta a ser de 1º nível e mantém todo o XP que tinha. Você pode refazer seu personagem e escolher novos traços, bônus de perícia, valores de atributo e talentos. …"
+     }
+    ],
+    "requires": "(has('robo') or has('sintetico')) and level >= 10"
    },
    {
     "id": "determinacao_nao_e_defeito",
@@ -8557,7 +9679,18 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "immunity",
+      "text": "Amedrontado",
+      "ref": "condicoes/amedrontado"
+     },
+     {
+      "type": "note",
+      "text": "Determinação Não é Defeito: Você é imune à condição amedrontado. Além disso, quando você tiver pontos de ação não usados no fim do seu turno, você recicla todos eles no seu próximo turno."
+     }
+    ],
+    "requires": "(has('robo') or has('sintetico')) and level >= 10"
    },
    {
     "id": "reator_nuclear",
@@ -8568,7 +9701,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reator Nuclear: Enquanto estiver em uma zona irradiada, você tem vantagem em todos os testes de atributo e de perícia. Além disso, sua DF aumenta em 1, sua TD aumenta em 2 e você ganha pontos de vida temporários iguais ao seu nível."
+     }
+    ],
+    "requires": "(has('humano'))"
    },
    {
     "id": "absorcao_radioativa",
@@ -8579,7 +9718,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Absorção Radioativa: Toda vez que você dormir e não estiver em uma zona irradiada, seu nível de rad diminui em um."
+     }
+    ],
+    "requires": "(has('humano'))"
    },
    {
     "id": "radical",
@@ -8590,7 +9735,18 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "lr",
+      "value": "-3"
+     },
+     {
+      "type": "note",
+      "text": "RADical!: Seu Limiar de Radiação (LR) diminui em 3. Além disso, você ignora os efeitos negativos dos 3 primeiros níveis de radiação."
+     }
+    ],
+    "requires": "(has('humano')) and RES >= 5"
    },
    {
     "id": "atomico",
@@ -8601,7 +9757,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Atômico!: Enquanto estiver em uma zona irradiada, você ganha pontos de ação adicionais iguais ao seu modificador de atributo de Resistência, até o máximo de 15. …"
+     }
+    ],
+    "requires": "(has('humano')) and RES >= 8"
    },
    {
     "id": "recuperacao_trampolim",
@@ -8612,7 +9774,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Recuperação Trampolim: No seu turno, você pode gastar 3 PA para curar pontos de estamina iguais ao seu Fator de Cura. Depois de usar esta ação, você não pode usá-la de novo até descansar por pelo menos 8 horas."
+     }
+    ],
+    "requires": "(has('humano'))"
    },
    {
     "id": "furado_furadinho",
@@ -8623,7 +9791,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Furado Furadinho: Uma vez por turno, quando você fizer um ataque de pugilismo, pode gastar 1 PA para fazer mais um. Isso inclui gastar 5 PA para fazer dois ataques de pugilismo e 6 PA para fazer três."
+     }
+    ],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "resistente_a_quimicos",
@@ -8634,7 +9808,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Resistente a Químicos: Além disso, seringas não têm efeito em você, a menos que sejam um Stimpak ou um químico."
+     }
+    ],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "olho_por_olho",
@@ -8645,7 +9825,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Olho por Olho: Sempre que outra criatura causar dano aos seus pontos de vida pela primeira vez em um turno, essa criatura fica marcada. Na próxima vez que você atacar e acertar a criatura marcada, o acerto é automaticamente crítico. …"
+     }
+    ],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "remendado",
@@ -8656,7 +9842,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Remendado: Se você perder qualquer um dos seus membros, exceto a cabeça, pode gastar 5 minutos para reatachar o membro, desde que tenha um kit de primeiros socorros e ainda tenha o membro perdido. …"
+     }
+    ],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "disparada_selvagem",
@@ -8667,7 +9859,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Disparada Selvagem: Você pode gastar 3 pontos de ação no seu turno para disparar numa corrida, em vez de 5. Além disso, sempre que você fizer um salto em distância, pode ultrapassar 3 m adicionais e, sempre que fizer um salto em altura, pode ultrapassar 90 cm adicionais."
+     }
+    ],
+    "requires": "(has('necrotico'))"
    },
    {
     "id": "como_vao_colegas_necroticos",
@@ -8678,7 +9876,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Como Vão, Colegas Necróticos?: Necróticos Ferozes não atacam você, a menos que você seja o único alvo hostil a até 18 m. Além disso, você tem vantagem em testes de Persuasão com qualquer necrótico."
+     }
+    ],
+    "requires": "(has('necrotico')) and level >= 5"
    },
    {
     "id": "num_mi_dirruba",
@@ -8689,7 +9893,23 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "advantage",
+      "target": "suspiro",
+      "text": "Suspiros Finais"
+     },
+     {
+      "type": "note",
+      "text": "Num Mi Dirruba: Sua TD aumenta em 1 e você ganha vantagem em todos os Suspiros Finais. Se você já tiver vantagem em Suspiros Finais, role três d20 e fique com o maior resultado."
+     }
+    ],
+    "requires": "(has('necrotico')) and level >= 5"
    },
    {
     "id": "reanimado",
@@ -8700,7 +9920,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Reanimado: Enquanto estiver morrendo, seu deslocamento não é reduzido pela metade e você ganha um ponto de ação adicional no início do seu turno. Além disso, quando você morrer, ganha imediatamente 20 pontos de ação. …"
+     }
+    ],
+    "requires": "(has('necrotico')) and level >= 10"
    },
    {
     "id": "trem_da_dor",
@@ -8711,7 +9937,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Trem da Dor: Se você disparar numa corrida pelo espaço de outra criatura com valor de Força igual ou menor que o seu, ela fica caída."
+     }
+    ],
+    "requires": "(has('robo'))"
    },
    {
     "id": "atualizacao_de_hardware",
@@ -8722,7 +9954,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Atualização de Hardware: Você pode escolher duas armas quaisquer para virarem armas de Robô suas, desde que tenha as tampinhas para comprá-las, os materiais para fabricá-las ou já seja dono das armas."
+     }
+    ],
+    "requires": "(has('robo'))"
    },
    {
     "id": "blindagem_grossa",
@@ -8733,7 +9971,24 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "df",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Blindagem Grossa: Sua DF e sua TD aumentam em 1."
+     }
+    ],
+    "requires": "(has('robo')) and level >= 8",
+    "repeat": 3
    },
    {
     "id": "esqueleto_de_adamantium",
@@ -8744,7 +9999,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Esqueleto de Adamantium: Você é imune a todas as condições de membro e, sempre que sofrer dano nos seus pontos de vida de um ataque mirado, o dano é reduzido pela metade."
+     }
+    ],
+    "requires": "(has('sintetico'))"
    },
    {
     "id": "passo_leve",
@@ -8755,7 +10016,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Passo Leve: Você nunca ativa explosivos colocados nem armadilhas."
+     }
+    ],
+    "requires": "(has('sintetico'))"
    },
    {
     "id": "bota_pra_gelar",
@@ -8766,7 +10033,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bota pra Gelar: Você pode gastar 6 pontos de ação no seu turno para curar pontos de estamina iguais ao dobro do seu Fator de Cura. Depois de usar esta habilidade, você não pode usá-la de novo até descansar por pelo menos 8 horas."
+     }
+    ],
+    "requires": "(has('sintetico')) and level >= 5"
    },
    {
     "id": "recuperacao_reforcada",
@@ -8777,7 +10050,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Recuperação Reforçada: No seu turno, você pode gastar 6 PA para curar pontos de vida iguais ao seu Fator de Cura. Depois de usar esta ação, você não pode usá-la de novo até descansar por pelo menos 8 horas."
+     }
+    ],
+    "requires": "(has('super_mutante'))"
    },
    {
     "id": "gigante_detalhista",
@@ -8788,7 +10067,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Gigante Detalhista: Além disso, sempre que fizer um teste de Criação para reparar um item, a CD é reduzida em 5."
+     }
+    ],
+    "requires": "(has('super_mutante'))"
    },
    {
     "id": "camelo_do_ermo",
@@ -8799,7 +10084,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Camelo do Ermo: Além disso, água suja tem a propriedade \"hidratante\" para você."
+     }
+    ],
+    "requires": "(has('super_mutante'))"
    },
    {
     "id": "sem_deuses_sem_mestres",
@@ -8810,7 +10101,13 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sem Deuses, Sem Mestres: Super Mutantes não atacam você, a menos que você seja o único alvo hostil a até 18 m. Além disso, você pode gastar 3 PA no seu turno e escolher um Super Mutante alvo a até 18 m de você. Você descobre os valores de atributo totais desse alvo."
+     }
+    ],
+    "requires": "(has('super_mutante')) and level >= 5"
    },
    {
     "id": "sem_sentir_dor",
@@ -8821,7 +10118,18 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Sem Sentir Dor: Sua TD aumenta em 1. Além disso, se você terminar seu turno com pelo menos 6 PA, sempre que sofrer dano nos seus pontos de vida você pode gastar 6 PA para reduzir o dano pela metade (arredondado para baixo)."
+     }
+    ],
+    "requires": "(has('super_mutante')) and level >= 5"
    },
    {
     "id": "evolucao_suprema",
@@ -8832,7 +10140,33 @@
     "tags": [
      "raça"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "df",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "pv",
+      "value": "level"
+     },
+     {
+      "type": "add",
+      "target": "pe",
+      "value": "level"
+     },
+     {
+      "type": "note",
+      "text": "Evolução Suprema: Sua DF aumenta em 1, sua TD aumenta em 1, seus pontos de vida aumentam em um valor igual ao seu nível e seus pontos de estamina aumentam em um valor igual ao seu nível. Além disso, escolha um tipo de dano. …"
+     }
+    ],
+    "requires": "(has('super_mutante')) and level >= 10"
    }
   ],
   "condicoes": [
@@ -11837,7 +13171,13 @@
     "name": "Isolamento II",
     "nivel": 2,
     "custo": "100 tp",
-    "description": "Nível 2: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100.\n\nNíveis anteriores (já incluídos):\nNível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100.\n\nNíveis anteriores (já incluídos):\nNível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Isolamento II: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100. Níveis anteriores (já incluídos): Nível 1: Você fica isolado contra hipotermia. …"
+     }
+    ]
    },
    {
     "id": "camuflagem_1",
@@ -11850,6 +13190,10 @@
       "type": "advantage",
       "target": "furtividade",
       "text": "Furtividade (visão)"
+     },
+     {
+      "type": "note",
+      "text": "Camuflagem I: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3."
      }
     ]
    },
@@ -11864,6 +13208,10 @@
       "type": "advantage",
       "target": "furtividade",
       "text": "Furtividade (visão e som)"
+     },
+     {
+      "type": "note",
+      "text": "Camuflagem II: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3. …"
      }
     ]
    },
@@ -11878,6 +13226,10 @@
       "type": "advantage",
       "target": "furtividade",
       "text": "Furtividade (visão e som)"
+     },
+     {
+      "type": "note",
+      "text": "Camuflagem III: Sua Furtividade passiva aumenta em 3. Níveis anteriores (já incluídos): Nível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3. …"
      }
     ]
    },
@@ -11928,7 +13280,13 @@
     "name": "Justa I",
     "nivel": 1,
     "custo": "175 tp",
-    "description": "Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Justa I: Quando você sofre dano de uma área de efeito, sua TD é dobrada."
+     }
+    ]
    },
    {
     "id": "justa_2",
@@ -11941,6 +13299,10 @@
       "type": "add",
       "target": "pe",
       "value": "level"
+     },
+     {
+      "type": "note",
+      "text": "Justa II: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível. Níveis anteriores (já incluídos): Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada."
      }
     ]
    },
@@ -11955,6 +13317,10 @@
       "type": "add",
       "target": "pe",
       "value": "level"
+     },
+     {
+      "type": "note",
+      "text": "Justa III: Você tem vantagem nas rolagens de Iniciativa. Se já tem vantagem, ganha +5. Níveis anteriores (já incluídos): Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada. …"
      }
     ]
    },
@@ -12005,42 +13371,78 @@
     "name": "Fortalecida I",
     "nivel": 1,
     "custo": "410 tp",
-    "description": "Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fortalecida I: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3."
+     }
+    ]
    },
    {
     "id": "fortalecida_2",
     "name": "Fortalecida II",
     "nivel": 2,
     "custo": "410 tp",
-    "description": "Nível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fortalecida II: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5. Níveis anteriores (já incluídos): Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3."
+     }
+    ]
    },
    {
     "id": "fortalecida_3",
     "name": "Fortalecida III",
     "nivel": 3,
     "custo": "410 tp",
-    "description": "Nível 3: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\nNível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\nNível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Fortalecida III: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória. …"
+     }
+    ]
    },
    {
     "id": "robusta_1",
     "name": "Robusta I",
     "nivel": 1,
     "custo": "475 tp",
-    "description": "Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Robusta I: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura."
+     }
+    ]
    },
    {
     "id": "robusta_2",
     "name": "Robusta II",
     "nivel": 2,
     "custo": "475 tp",
-    "description": "Nível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Robusta II: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura. …"
+     }
+    ]
    },
    {
     "id": "robusta_3",
     "name": "Robusta III",
     "nivel": 3,
     "custo": "475 tp",
-    "description": "Nível 3: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\nNível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\nNível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Robusta III: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico. Níveis anteriores (já incluídos): Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura. …"
+     }
+    ]
    },
    {
     "id": "cheia_de_bolsos_1",
@@ -12282,133 +13684,247 @@
     "name": "Blindagem Antiexplosão I",
     "nivel": 1,
     "custo": "1.350 tp",
-    "description": "Nível 1: Reduz em 5 o dano explosivo sofrido"
+    "description": "Nível 1: Reduz em 5 o dano explosivo sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem Antiexplosão I: Reduz em 5 o dano explosivo sofrido"
+     }
+    ]
    },
    {
     "id": "blindagem_antiexplosao_2",
     "name": "Blindagem Antiexplosão II",
     "nivel": 2,
     "custo": "1.350 tp",
-    "description": "Nível 2: Reduz em 10 o dano explosivo sofrido"
+    "description": "Nível 2: Reduz em 10 o dano explosivo sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem Antiexplosão II: Reduz em 10 o dano explosivo sofrido"
+     }
+    ]
    },
    {
     "id": "blindagem_antiexplosao_3",
     "name": "Blindagem Antiexplosão III",
     "nivel": 3,
     "custo": "1.350 tp",
-    "description": "Nível 3: Reduz em 15 o dano explosivo sofrido"
+    "description": "Nível 3: Reduz em 15 o dano explosivo sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem Antiexplosão III: Reduz em 15 o dano explosivo sofrido"
+     }
+    ]
    },
    {
     "id": "blindagem_de_prisma_1",
     "name": "Blindagem de Prisma I",
     "nivel": 1,
     "custo": "1.800 tp",
-    "description": "Nível 1: Reduz em 5 o dano de laser e de plasma sofrido"
+    "description": "Nível 1: Reduz em 5 o dano de laser e de plasma sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem de Prisma I: Reduz em 5 o dano de laser e de plasma sofrido"
+     }
+    ]
    },
    {
     "id": "blindagem_de_prisma_2",
     "name": "Blindagem de Prisma II",
     "nivel": 2,
     "custo": "1.800 tp",
-    "description": "Nível 2: Reduz em 5 o dano de laser e de plasma sofrido"
+    "description": "Nível 2: Reduz em 5 o dano de laser e de plasma sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem de Prisma II: Reduz em 5 o dano de laser e de plasma sofrido"
+     }
+    ]
    },
    {
     "id": "blindagem_de_prisma_3",
     "name": "Blindagem de Prisma III",
     "nivel": 3,
     "custo": "1.800 tp",
-    "description": "Nível 3: Reduz em 10 o dano de laser e de plasma sofrido"
+    "description": "Nível 3: Reduz em 10 o dano de laser e de plasma sofrido",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Blindagem de Prisma III: Reduz em 10 o dano de laser e de plasma sofrido"
+     }
+    ]
    },
    {
     "id": "protocolos_de_emergencia_1",
     "name": "Protocolos de Emergência I",
     "nivel": 1,
     "custo": "1.800 tp",
-    "description": "Nível 1: Se você começa o turno com menos da metade dos seus pontos de vida, pode gastar 1 PA para se mover 3 m."
+    "description": "Nível 1: Se você começa o turno com menos da metade dos seus pontos de vida, pode gastar 1 PA para se mover 3 m.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Protocolos de Emergência I: Se você começa o turno com menos da metade dos seus pontos de vida, pode gastar 1 PA para se mover 3 m."
+     }
+    ]
    },
    {
     "id": "protocolos_de_emergencia_2",
     "name": "Protocolos de Emergência II",
     "nivel": 2,
     "custo": "1.800 tp",
-    "description": "Nível 2: Se você começa o turno com menos da metade dos seus pontos de vida, sua TD aumenta em 5 (só contra dano nos PV)."
+    "description": "Nível 2: Se você começa o turno com menos da metade dos seus pontos de vida, sua TD aumenta em 5 (só contra dano nos PV).",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Protocolos de Emergência II: Se você começa o turno com menos da metade dos seus pontos de vida, sua TD aumenta em 5 (só contra dano nos PV)."
+     }
+    ]
    },
    {
     "id": "dinamo_cinetico_1",
     "name": "Dínamo Cinético I",
     "nivel": 1,
     "custo": "2.400 tp",
-    "description": "Nível 1: Você ganha 1 PA adicional no início do seu turno para cada nível de desgaste que a armadura potente ganhou desde o seu último turno."
+    "description": "Nível 1: Você ganha 1 PA adicional no início do seu turno para cada nível de desgaste que a armadura potente ganhou desde o seu último turno.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Dínamo Cinético I: Você ganha 1 PA adicional no início do seu turno para cada nível de desgaste que a armadura potente ganhou desde o seu último turno."
+     }
+    ]
    },
    {
     "id": "bobinas_de_tesla_1",
     "name": "Bobinas de Tesla I",
     "nivel": 1,
     "custo": "2.400 tp",
-    "description": "Nível 1: Gaste 3 PA para ativar ou desativar; cada criatura a até 3 m de você sofre 1d6 de dano de eletricidade quando você ativa e no início dos turnos delas. Para cada rodada ativa, remova 10 minutos da autonomia."
+    "description": "Nível 1: Gaste 3 PA para ativar ou desativar; cada criatura a até 3 m de você sofre 1d6 de dano de eletricidade quando você ativa e no início dos turnos delas. Para cada rodada ativa, remova 10 minutos da autonomia.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bobinas de Tesla I: Gaste 3 PA para ativar ou desativar; cada criatura a até 3 m de você sofre 1d6 de dano de eletricidade quando você ativa e no início dos turnos delas. …"
+     }
+    ]
    },
    {
     "id": "bobinas_de_tesla_2",
     "name": "Bobinas de Tesla II",
     "nivel": 2,
     "custo": "2.400 tp",
-    "description": "Nível 2: O dano de eletricidade aumenta em 1d6. Para cada rodada ativa, remova 5 minutos adicionais da autonomia."
+    "description": "Nível 2: O dano de eletricidade aumenta em 1d6. Para cada rodada ativa, remova 5 minutos adicionais da autonomia.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bobinas de Tesla II: O dano de eletricidade aumenta em 1d6. Para cada rodada ativa, remova 5 minutos adicionais da autonomia."
+     }
+    ]
    },
    {
     "id": "bobinas_de_tesla_3",
     "name": "Bobinas de Tesla III",
     "nivel": 3,
     "custo": "2.400 tp",
-    "description": "Nível 3: O dano de eletricidade aumenta em 2d6. Para cada rodada ativa, remova 10 minutos adicionais da autonomia."
+    "description": "Nível 3: O dano de eletricidade aumenta em 2d6. Para cada rodada ativa, remova 10 minutos adicionais da autonomia.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bobinas de Tesla III: O dano de eletricidade aumenta em 2d6. Para cada rodada ativa, remova 10 minutos adicionais da autonomia."
+     }
+    ]
    },
    {
     "id": "placas_reativas_1",
     "name": "Placas Reativas I",
     "nivel": 1,
     "custo": "2.700 tp",
-    "description": "Nível 1: Quando você sofre dano de um ataque corpo a corpo, o atacante sofre um quarto (arredondado para baixo) do dano que causou."
+    "description": "Nível 1: Quando você sofre dano de um ataque corpo a corpo, o atacante sofre um quarto (arredondado para baixo) do dano que causou.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Placas Reativas I: Quando você sofre dano de um ataque corpo a corpo, o atacante sofre um quarto (arredondado para baixo) do dano que causou."
+     }
+    ]
    },
    {
     "id": "placas_reativas_2",
     "name": "Placas Reativas II",
     "nivel": 2,
     "custo": "2.700 tp",
-    "description": "Nível 2: O atacante sofre mais um quarto (arredondado para baixo) do dano que causou (na prática, metade do total)."
+    "description": "Nível 2: O atacante sofre mais um quarto (arredondado para baixo) do dano que causou (na prática, metade do total).",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Placas Reativas II: O atacante sofre mais um quarto (arredondado para baixo) do dano que causou (na prática, metade do total)."
+     }
+    ]
    },
    {
     "id": "placas_reativas_3",
     "name": "Placas Reativas III",
     "nivel": 3,
     "custo": "2.700 tp",
-    "description": "Nível 3: Quando você sofre dano de um ataque corpo a corpo, o atacante é empurrado 4,5 m."
+    "description": "Nível 3: Quando você sofre dano de um ataque corpo a corpo, o atacante é empurrado 4,5 m.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Placas Reativas III: Quando você sofre dano de um ataque corpo a corpo, o atacante é empurrado 4,5 m."
+     }
+    ]
    },
    {
     "id": "nucleo_montado_1",
     "name": "Núcleo Montado I",
     "nivel": 1,
     "custo": "2.250 tp",
-    "description": "Nível 1: Gastar mais de 18 PA no seu turno causa superaquecimento, em vez de 15."
+    "description": "Nível 1: Gastar mais de 18 PA no seu turno causa superaquecimento, em vez de 15.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Núcleo Montado I: Gastar mais de 18 PA no seu turno causa superaquecimento, em vez de 15."
+     }
+    ]
    },
    {
     "id": "nucleo_montado_2",
     "name": "Núcleo Montado II",
     "nivel": 2,
     "custo": "2.250 tp",
-    "description": "Nível 2: Gastar mais de 20 PA no seu turno causa superaquecimento, em vez de 15."
+    "description": "Nível 2: Gastar mais de 20 PA no seu turno causa superaquecimento, em vez de 15.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Núcleo Montado II: Gastar mais de 20 PA no seu turno causa superaquecimento, em vez de 15."
+     }
+    ]
    },
    {
     "id": "nucleo_montado_3",
     "name": "Núcleo Montado III",
     "nivel": 3,
     "custo": "2.250 tp",
-    "description": "Nível 3: O superaquecimento custa 15 minutos de autonomia, em vez de 30."
+    "description": "Nível 3: O superaquecimento custa 15 minutos de autonomia, em vez de 30.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Núcleo Montado III: O superaquecimento custa 15 minutos de autonomia, em vez de 30."
+     }
+    ]
    },
    {
     "id": "mochila_a_jato_1",
     "name": "Mochila a Jato I",
     "nivel": 1,
     "custo": "6.000 tp",
-    "description": "Nível 1: Você pode gastar 1 PA no seu turno para voar 1,5 m. A cada 3 m que você voar, ou a cada segundo que voar, você gasta 1 minuto da autonomia do núcleo de fusão."
+    "description": "Nível 1: Você pode gastar 1 PA no seu turno para voar 1,5 m. A cada 3 m que você voar, ou a cada segundo que voar, você gasta 1 minuto da autonomia do núcleo de fusão.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Mochila a Jato I: Você pode gastar 1 PA no seu turno para voar 1,5 m. A cada 3 m que você voar, ou a cada segundo que voar, você gasta 1 minuto da autonomia do núcleo de fusão."
+     }
+    ]
    },
    {
     "id": "matriz_de_sensores_1",
@@ -12457,84 +13973,151 @@
     "name": "Sobreposição VATS I",
     "nivel": 1,
     "custo": "2.700 tp",
-    "description": "Nível 1: Sempre que você fizer uma rolagem de ataque mirado, reduza em 1 o custo adicional de PA."
+    "description": "Nível 1: Sempre que você fizer uma rolagem de ataque mirado, reduza em 1 o custo adicional de PA.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sobreposição VATS I: Sempre que você fizer uma rolagem de ataque mirado, reduza em 1 o custo adicional de PA."
+     }
+    ]
    },
    {
     "id": "sobreposicao_vats_2",
     "name": "Sobreposição VATS II",
     "nivel": 2,
     "custo": "2.700 tp",
-    "description": "Nível 2: Sempre que você fizer uma rolagem de ataque mirado, reduza em mais 1 o custo adicional de PA."
+    "description": "Nível 2: Sempre que você fizer uma rolagem de ataque mirado, reduza em mais 1 o custo adicional de PA.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sobreposição VATS II: Sempre que você fizer uma rolagem de ataque mirado, reduza em mais 1 o custo adicional de PA."
+     }
+    ]
    },
    {
     "id": "banco_de_dados_interno_1",
     "name": "Banco de Dados Interno I",
     "nivel": 1,
     "custo": "2.400 tp",
-    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 6 PA no seu turno para descobrir o total de PV, de PE, a DF ou a TD dela."
+    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 6 PA no seu turno para descobrir o total de PV, de PE, a DF ou a TD dela.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Banco de Dados Interno I: Se você consegue ver uma criatura, pode gastar 6 PA no seu turno para descobrir o total de PV, de PE, a DF ou a TD dela."
+     }
+    ]
    },
    {
     "id": "hud_de_mira_1",
     "name": "HUD de Mira I",
     "nivel": 1,
     "custo": "1.800 tp",
-    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 3 PA para marcá-la. Você só pode ter uma criatura marcada por vez. Sempre que você causar dano a uma criatura marcada, causa um dado de dano adicional."
+    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 3 PA para marcá-la. Você só pode ter uma criatura marcada por vez. Sempre que você causar dano a uma criatura marcada, causa um dado de dano adicional.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "HUD de Mira I: Se você consegue ver uma criatura, pode gastar 3 PA para marcá-la. Você só pode ter uma criatura marcada por vez. Sempre que você causar dano a uma criatura marcada, causa um dado de dano adicional."
+     }
+    ]
    },
    {
     "id": "hud_de_mira_2",
     "name": "HUD de Mira II",
     "nivel": 2,
     "custo": "1.800 tp",
-    "description": "Nível 2: Você pode marcar até duas criaturas a mais. Sempre que causar dano a uma criatura marcada, causa um dado de dano adicional."
+    "description": "Nível 2: Você pode marcar até duas criaturas a mais. Sempre que causar dano a uma criatura marcada, causa um dado de dano adicional.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "HUD de Mira II: Sempre que causar dano a uma criatura marcada, causa um dado de dano adicional."
+     }
+    ]
    },
    {
     "id": "farolete_1",
     "name": "Farolete I",
     "nivel": 1,
     "custo": "250 tp",
-    "description": "Nível 1: Você pode gastar 1 PA no seu turno para ligar seu farolete. Ele ilumina com luz forte um cone de 12 m e com penumbra por mais 12 m."
+    "description": "Nível 1: Você pode gastar 1 PA no seu turno para ligar seu farolete. Ele ilumina com luz forte um cone de 12 m e com penumbra por mais 12 m.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Farolete I: Você pode gastar 1 PA no seu turno para ligar seu farolete. Ele ilumina com luz forte um cone de 12 m e com penumbra por mais 12 m."
+     }
+    ]
    },
    {
     "id": "farolete_2",
     "name": "Farolete II",
     "nivel": 2,
     "custo": "250 tp",
-    "description": "Nível 2: A luz forte e a penumbra iluminam 3 m a mais."
+    "description": "Nível 2: A luz forte e a penumbra iluminam 3 m a mais.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Farolete II: A luz forte e a penumbra iluminam 3 m a mais."
+     }
+    ]
    },
    {
     "id": "farolete_3",
     "name": "Farolete III",
     "nivel": 3,
     "custo": "250 tp",
-    "description": "Nível 3: A luz forte e a penumbra iluminam 3 m a mais. Se você ligar essa luz no escuro, cada criatura a até 1,5 m de você fica cega por uma rodada."
+    "description": "Nível 3: A luz forte e a penumbra iluminam 3 m a mais. Se você ligar essa luz no escuro, cada criatura a até 1,5 m de você fica cega por uma rodada.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Farolete III: A luz forte e a penumbra iluminam 3 m a mais. Se você ligar essa luz no escuro, cada criatura a até 1,5 m de você fica cega por uma rodada."
+     }
+    ]
    },
    {
     "id": "soqueira_enferrujada_1",
     "name": "Soqueira Enferrujada I",
     "nivel": 1,
     "custo": "100 tp",
-    "description": "Nível 1: Se você acertar uma criatura com um ataque de pugilismo, ela sangra."
+    "description": "Nível 1: Se você acertar uma criatura com um ataque de pugilismo, ela sangra.",
+    "effects": []
    },
    {
     "id": "bracadeiras_otimizadas_1",
     "name": "Braçadeiras Otimizadas I",
     "nivel": 1,
     "custo": "1.700 tp",
-    "description": "Nível 1: Você pode gastar 6 PA no seu turno para fazer um ataque de pugilismo poderoso que causa 2d6 de dano de contusão."
+    "description": "Nível 1: Você pode gastar 6 PA no seu turno para fazer um ataque de pugilismo poderoso que causa 2d6 de dano de contusão.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Braçadeiras Otimizadas I: Você pode gastar 6 PA no seu turno para fazer um ataque de pugilismo poderoso que causa 2d6 de dano de contusão."
+     }
+    ]
    },
    {
     "id": "bracadeiras_otimizadas_2",
     "name": "Braçadeiras Otimizadas II",
     "nivel": 2,
     "custo": "1.700 tp",
-    "description": "Nível 2: O dano aumenta em 1d6."
+    "description": "Nível 2: O dano aumenta em 1d6.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Braçadeiras Otimizadas II: O dano aumenta em 1d6."
+     }
+    ]
    },
    {
     "id": "bracadeiras_otimizadas_3",
     "name": "Braçadeiras Otimizadas III",
     "nivel": 3,
     "custo": "1.700 tp",
-    "description": "Nível 3: O dano aumenta em 1d6 e empurra os alvos 4,5 m para trás."
+    "description": "Nível 3: O dano aumenta em 1d6 e empurra os alvos 4,5 m para trás.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Braçadeiras Otimizadas III: O dano aumenta em 1d6 e empurra os alvos 4,5 m para trás."
+     }
+    ]
    },
    {
     "id": "amortecedores_calibrados_1",
@@ -12583,49 +14166,86 @@
     "name": "Hidráulica em Overclock I",
     "nivel": 1,
     "custo": "1.950 tp",
-    "description": "Nível 1: Enquanto estiver superaquecido, seu máximo de PA aumenta em 2, você tem vantagem em todas as rolagens de ataque, pode se mover 4,5 m com 1 PA e seus ataques de pugilismo causam 3d6 adicionais de dano de fogo."
+    "description": "Nível 1: Enquanto estiver superaquecido, seu máximo de PA aumenta em 2, você tem vantagem em todas as rolagens de ataque, pode se mover 4,5 m com 1 PA e seus ataques de pugilismo causam 3d6 adicionais de dano de fogo.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Hidráulica em Overclock I: Enquanto estiver superaquecido, seu máximo de PA aumenta em 2, você tem vantagem em todas as rolagens de ataque, pode se mover 4,5 m com 1 PA e seus ataques de pugilismo causam 3d6 adicionais de dano de fogo."
+     }
+    ]
    },
    {
     "id": "hidraulica_em_overclock_2",
     "name": "Hidráulica em Overclock II",
     "nivel": 2,
     "custo": "1.950 tp",
-    "description": "Nível 2: Você pode gastar 3 PA para superaquecer o núcleo de fusão."
+    "description": "Nível 2: Você pode gastar 3 PA para superaquecer o núcleo de fusão.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Hidráulica em Overclock II: Você pode gastar 3 PA para superaquecer o núcleo de fusão."
+     }
+    ]
    },
    {
     "id": "hidraulica_em_overclock_3",
     "name": "Hidráulica em Overclock III",
     "nivel": 3,
     "custo": "1.950 tp",
-    "description": "Nível 3: Seu máximo de PA aumenta em 2."
+    "description": "Nível 3: Seu máximo de PA aumenta em 2.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Hidráulica em Overclock III: Seu máximo de PA aumenta em 2."
+     }
+    ]
    },
    {
     "id": "duto_explosivo_1",
     "name": "Duto Explosivo I",
     "nivel": 1,
     "custo": "1.250 tp",
-    "description": "Nível 1: Se você cair pelo menos 4,5 m, ao atingir o chão pode escolher ativar esta melhoria. Cada criatura a até 6 m de você sofre 3d6 de dano de fogo e 3d6 de dano explosivo. Remova 20 minutos da autonomia da armadura cada vez que ativar esta melhoria."
+    "description": "Nível 1: Se você cair pelo menos 4,5 m, ao atingir o chão pode escolher ativar esta melhoria. Cada criatura a até 6 m de você sofre 3d6 de dano de fogo e 3d6 de dano explosivo. Remova 20 minutos da autonomia da armadura cada vez que ativar esta melhoria.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Duto Explosivo I: Se você cair pelo menos 4,5 m, ao atingir o chão pode escolher ativar esta melhoria. Cada criatura a até 6 m de você sofre 3d6 de dano de fogo e 3d6 de dano explosivo. …"
+     }
+    ]
    },
    {
     "id": "duto_explosivo_2",
     "name": "Duto Explosivo II",
     "nivel": 2,
     "custo": "1.250 tp",
-    "description": "Nível 2: O dano de fogo e o dano explosivo aumentam, cada um, em 1d6."
+    "description": "Nível 2: O dano de fogo e o dano explosivo aumentam, cada um, em 1d6.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Duto Explosivo II: O dano de fogo e o dano explosivo aumentam, cada um, em 1d6."
+     }
+    ]
    },
    {
     "id": "duto_explosivo_3",
     "name": "Duto Explosivo III",
     "nivel": 3,
     "custo": "1.250 tp",
-    "description": "Nível 3: O raio aumenta em 3 m."
+    "description": "Nível 3: O raio aumenta em 3 m.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Duto Explosivo III: O raio aumenta em 3 m."
+     }
+    ]
    },
    {
     "id": "ajuste_para_super_mutante_1",
     "name": "Ajuste para Super Mutante I",
     "nivel": 1,
     "custo": "50% do custo base",
-    "description": "Nível 1: A armadura é modificada e ajustada para permitir que um Super Mutante a use. Porém, humanos e necróticos não podem mais usá-la. Depois que esta melhoria é instalada, é preciso pagar o mesmo preço ou usar os mesmos materiais de fabricação para removê-la."
+    "description": "Nível 1: A armadura é modificada e ajustada para permitir que um Super Mutante a use. Porém, humanos e necróticos não podem mais usá-la. Depois que esta melhoria é instalada, é preciso pagar o mesmo preço ou usar os mesmos materiais de fabricação para removê-la.",
+    "effects": []
    }
   ],
   "mods": [
@@ -14746,7 +16366,13 @@
     "custo": "50 tp",
     "carga": 12,
     "carga_texto": "12 quando não vestida",
-    "description": "Esta bolsa única, de uma só alça, é mais comprida para guardar armas com facilidade. Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade."
+    "description": "Esta bolsa única, de uma só alça, é mais comprida para guardar armas com facilidade. Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Bolsa de Armas: Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_bandoleira",
@@ -14769,7 +16395,13 @@
     "custo": "10 tp",
     "carga": 2,
     "carga_texto": "2",
-    "description": "Você pode gastar 3 PA para espalhar essas esferinhas de metal em uma superfície plana, num raio de 1,5 m. Qualquer criatura que ande ou corra pela área cai caída e sofre 1d4 de dano de impacto, a menos que a criatura tenha Sentidos Passivos acima de 15 ou tenha notado as esferas de outro jeito; nesse caso, ela deve gastar 2 PA a cada 1,5 m de movimento."
+    "description": "Você pode gastar 3 PA para espalhar essas esferinhas de metal em uma superfície plana, num raio de 1,5 m. Qualquer criatura que ande ou corra pela área cai caída e sofre 1d4 de dano de impacto, a menos que a criatura tenha Sentidos Passivos acima de 15 ou tenha notado as esferas de outro jeito; nesse caso, ela deve gastar 2 PA a cada 1,5 m de movimento.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Esferas de Aço: Você pode gastar 3 PA para espalhar essas esferinhas de metal em uma superfície plana, num raio de 1,5 m. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_armadilha_de_urso",
@@ -14777,7 +16409,13 @@
     "custo": "60 tp",
     "carga": 30,
     "carga_texto": "30",
-    "description": "Você pode gastar 6 pontos de ação para armar esta armadilha de urso em uma área de 1,5 m. Se a armadilha já foi disparada, você pode rearmá-la com 6 PA e um teste de Força com CD 15. Se uma criatura entra na área, a armadilha dispara, e ela sofre 3d4 de dano perfurante nos pontos de vida e fica agarrada. Você pode desarmar uma armadilha de urso não disparada com 6 PA e um teste da perícia Criação com CD 15. Você pode tentar abrir à força uma armadilha de urso disparada com 6 PA e um teste de atributo de Força com CD 15. Se você está agarrado pela armadilha de urso quando tenta esse teste de atributo, tem desvantagem na rolagem, a menos que sua Resistência seja 6 ou maior. Em caso de sucesso, você abre a armadilha e as criaturas agarradas por ela deixam de estar agarradas. Em caso de falha, a armadilha se fecha de novo sobre a criatura agarrada e ela sofre 1d4 de dano perfurante."
+    "description": "Você pode gastar 6 pontos de ação para armar esta armadilha de urso em uma área de 1,5 m. Se a armadilha já foi disparada, você pode rearmá-la com 6 PA e um teste de Força com CD 15. Se uma criatura entra na área, a armadilha dispara, e ela sofre 3d4 de dano perfurante nos pontos de vida e fica agarrada. Você pode desarmar uma armadilha de urso não disparada com 6 PA e um teste da perícia Criação com CD 15. Você pode tentar abrir à força uma armadilha de urso disparada com 6 PA e um teste de atributo de Força com CD 15. Se você está agarrado pela armadilha de urso quando tenta esse teste de atributo, tem desvantagem na rolagem, a menos que sua Resistência seja 6 ou maior. Em caso de sucesso, você abre a armadilha e as criaturas agarradas por ela deixam de estar agarradas. Em caso de falha, a armadilha se fecha de novo sobre a criatura agarrada e ela sofre 1d4 de dano perfurante.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Armadilha de Urso: Você pode gastar 6 pontos de ação para armar esta armadilha de urso em uma área de 1,5 m. Se a armadilha já foi disparada, você pode rearmá-la com 6 PA e um teste de Força com CD 15. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_binoculos",
@@ -14785,7 +16423,13 @@
     "custo": "25 tp",
     "carga": 2,
     "carga_texto": "2",
-    "description": "Você pode gastar 3 PA para olhar pelos binóculos. Enquanto olha por eles, sua visão é ampliada. Você tem vantagem em qualquer teste de atributo de Percepção que dependa da visão ao observar objetos, criaturas ou um local a pelo menos 30 m de distância."
+    "description": "Você pode gastar 3 PA para olhar pelos binóculos. Enquanto olha por eles, sua visão é ampliada. Você tem vantagem em qualquer teste de atributo de Percepção que dependa da visão ao observar objetos, criaturas ou um local a pelo menos 30 m de distância.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Binóculos: Você pode gastar 3 PA para olhar pelos binóculos. Enquanto olha por eles, sua visão é ampliada. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_estrepes",
@@ -14793,7 +16437,13 @@
     "custo": "50 tp",
     "carga": 2,
     "carga_texto": "2",
-    "description": "Você pode gastar 3 PA para espalhar esses pequenos objetos pontiagudos em uma superfície plana, num raio de 1,5 m. Qualquer criatura que ande ou corra pela área sofre 2 de dano perfurante nos pontos de vida a cada 1,5 m de movimento pela área (esse dano não é reduzido pela TD), a menos que a criatura tenha Sentidos Passivos acima de 15 ou tenha notado os estrepes de outro jeito; nesse caso, ela deve gastar 2 PA a cada 1,5 m de movimento."
+    "description": "Você pode gastar 3 PA para espalhar esses pequenos objetos pontiagudos em uma superfície plana, num raio de 1,5 m. Qualquer criatura que ande ou corra pela área sofre 2 de dano perfurante nos pontos de vida a cada 1,5 m de movimento pela área (esse dano não é reduzido pela TD), a menos que a criatura tenha Sentidos Passivos acima de 15 ou tenha notado os estrepes de outro jeito; nesse caso, ela deve gastar 2 PA a cada 1,5 m de movimento.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Estrepes: Você pode gastar 3 PA para espalhar esses pequenos objetos pontiagudos em uma superfície plana, num raio de 1,5 m. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_cantil",
@@ -14801,7 +16451,13 @@
     "custo": "10 tp",
     "carga": 1,
     "carga_texto": "1, 2 quando cheio",
-    "description": "O cantil de metal comporta cerca de 1 litro (32 onças) de líquido."
+    "description": "O cantil de metal comporta cerca de 1 litro (32 onças) de líquido.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Cantil: O cantil de metal comporta cerca de 1 litro (32 onças) de líquido."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_corrente",
@@ -14809,7 +16465,13 @@
     "custo": "15 tp",
     "carga": 12,
     "carga_texto": "12",
-    "description": "Além dos usos práticos típicos de uma corrente: se você está segurando uma corrente ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. Correntes têm DF 10, TD 10, 10 pontos de vida e vulnerabilidade a dano balístico, de laser e de plasma."
+    "description": "Além dos usos práticos típicos de uma corrente: se você está segurando uma corrente ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. Correntes têm DF 10, TD 10, 10 pontos de vida e vulnerabilidade a dano balístico, de laser e de plasma.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Corrente: Além dos usos práticos típicos de uma corrente: se você está segurando uma corrente ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_sinalizador",
@@ -14817,7 +16479,13 @@
     "custo": "10 tp",
     "carga": 1,
     "carga_texto": "1",
-    "description": "Você pode gastar 6 PA no seu turno para acender este sinalizador. Ele cria luz vermelha forte em um raio de 9 m e luz vermelha fraca por mais 9 m. A luz dura 1 hora."
+    "description": "Você pode gastar 6 PA no seu turno para acender este sinalizador. Ele cria luz vermelha forte em um raio de 9 m e luz vermelha fraca por mais 9 m. A luz dura 1 hora.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Sinalizador: Você pode gastar 6 PA no seu turno para acender este sinalizador. Ele cria luz vermelha forte em um raio de 9 m e luz vermelha fraca por mais 9 m. A luz dura 1 hora."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_lanterna",
@@ -14825,7 +16493,13 @@
     "custo": "100 tp",
     "carga": 2,
     "carga_texto": "2",
-    "description": "Você pode gastar 1 PA enquanto segura esta lanterna para criar luz forte em um cone de 6 m e luz fraca por mais 6 m. A luz dura 8 horas, desde que você gaste 6 PA para colocar uma célula de energia na lanterna."
+    "description": "Você pode gastar 1 PA enquanto segura esta lanterna para criar luz forte em um cone de 6 m e luz fraca por mais 6 m. A luz dura 8 horas, desde que você gaste 6 PA para colocar uma célula de energia na lanterna.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Lanterna: Você pode gastar 1 PA enquanto segura esta lanterna para criar luz forte em um cone de 6 m e luz fraca por mais 6 m. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_mascara_de_gas",
@@ -14853,7 +16527,8 @@
     "custo": "200 tp",
     "carga": 4,
     "carga_texto": "4",
-    "description": "Quando você entra em uma zona irradiada, este aparelho detecta o nível de radiação e você descobre a Pontuação de Severidade de Radiação."
+    "description": "Quando você entra em uma zona irradiada, este aparelho detecta o nível de radiação e você descobre a Pontuação de Severidade de Radiação.",
+    "effects": []
    },
    {
     "id": "itens_e_equipamentos_gancho_de_escalada",
@@ -14861,7 +16536,13 @@
     "custo": "35 tp",
     "carga": 10,
     "carga_texto": "10",
-    "description": "Um gancho de metal que pode ser amarrado e preso a uma corda com 6 PA."
+    "description": "Um gancho de metal que pode ser amarrado e preso a uma corda com 6 PA.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Gancho de Escalada: Um gancho de metal que pode ser amarrado e preso a uma corda com 6 PA."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_traje_hazmat",
@@ -14944,7 +16625,13 @@
     "custo": "100 tp",
     "carga": 4,
     "carga_texto": "4",
-    "description": "Estas ferramentas de metal permitem arrombar fechaduras com muito mais proficiência. Quando você faz um teste da perícia Sabotagem para arrombar uma fechadura, a CD diminui em 5. Depois de usar essas gazuas um total de cinco vezes, elas quebram e param de funcionar."
+    "description": "Estas ferramentas de metal permitem arrombar fechaduras com muito mais proficiência. Quando você faz um teste da perícia Sabotagem para arrombar uma fechadura, a CD diminui em 5. Depois de usar essas gazuas um total de cinco vezes, elas quebram e param de funcionar.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Gazuas: Quando você faz um teste da perícia Sabotagem para arrombar uma fechadura, a CD diminui em 5. Depois de usar essas gazuas um total de cinco vezes, elas quebram e param de funcionar."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_corda",
@@ -14952,7 +16639,13 @@
     "custo": "10 tp",
     "carga": 8,
     "carga_texto": "8",
-    "description": "A corda pode ser usada para amarrar itens, montar um sistema de polias, escalar ou amarrar alguém. Se você está segurando uma corda ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. A corda tem DF 10, TD 2, 5 pontos de vida e vulnerabilidade a dano balístico, de laser, de plasma e cortante."
+    "description": "A corda pode ser usada para amarrar itens, montar um sistema de polias, escalar ou amarrar alguém. Se você está segurando uma corda ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. A corda tem DF 10, TD 2, 5 pontos de vida e vulnerabilidade a dano balístico, de laser, de plasma e cortante.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Corda: Se você está segurando uma corda ao tentar agarrar ou estrangular outra criatura, tem vantagem nas suas rolagens de Força. …"
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_saco_de_dormir",
@@ -14960,7 +16653,8 @@
     "custo": "25 tp",
     "carga": 10,
     "carga_texto": "10",
-    "description": "Este saco de nylon, tecido ou couro permite dormir até no terreno mais acidentado."
+    "description": "Este saco de nylon, tecido ou couro permite dormir até no terreno mais acidentado.",
+    "effects": []
    },
    {
     "id": "itens_e_equipamentos_barraca_uma_pessoa",
@@ -14968,7 +16662,8 @@
     "custo": "20 tp",
     "carga": 12,
     "carga_texto": "12",
-    "description": "Esta barraca pequena dá abrigo contra fontes externas, clima e terreno."
+    "description": "Esta barraca pequena dá abrigo contra fontes externas, clima e terreno.",
+    "effects": []
    },
    {
     "id": "itens_e_equipamentos_barraca_duas_pessoas",
@@ -14976,7 +16671,8 @@
     "custo": "25 tp",
     "carga": 18,
     "carga_texto": "18",
-    "description": "Esta barraca maior dá abrigo contra fontes externas, clima e terreno."
+    "description": "Esta barraca maior dá abrigo contra fontes externas, clima e terreno.",
+    "effects": []
    },
    {
     "id": "itens_e_equipamentos_odre",
@@ -14984,7 +16680,13 @@
     "custo": "30 tp",
     "carga": 2,
     "carga_texto": "2, 4 quando cheio",
-    "description": "Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido."
+    "description": "Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Odre: Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido."
+     }
+    ]
    },
    {
     "id": "itens_e_equipamentos_kit_de_reparo_de_armas",
@@ -14992,7 +16694,13 @@
     "custo": "90 tp",
     "carga": 10,
     "carga_texto": "10",
-    "description": "Esta caixa de plástico cheia de ferramentas e mecanismos foi usada na Grande Guerra para reparar armas de soldados com facilidade. Embora a tecnologia usada para criá-los tenha sido esquecida há muito tempo, muitos ainda são encontrados pelo ermo. Você pode gastar 6 PA para inserir qualquer arma no kit de reparo. Depois de 1 minuto, a arma é ejetada e perde 2 níveis de desgaste. O kit de reparo de armas para de funcionar depois de ser usado um total de três vezes."
+    "description": "Esta caixa de plástico cheia de ferramentas e mecanismos foi usada na Grande Guerra para reparar armas de soldados com facilidade. Embora a tecnologia usada para criá-los tenha sido esquecida há muito tempo, muitos ainda são encontrados pelo ermo. Você pode gastar 6 PA para inserir qualquer arma no kit de reparo. Depois de 1 minuto, a arma é ejetada e perde 2 níveis de desgaste. O kit de reparo de armas para de funcionar depois de ser usado um total de três vezes.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Kit de Reparo de Armas: Você pode gastar 6 PA para inserir qualquer arma no kit de reparo. Depois de 1 minuto, a arma é ejetada e perde 2 níveis de desgaste. …"
+     }
+    ]
    }
   ],
   "revistas": [
@@ -15087,55 +16795,105 @@
     "name": "Pip-Boy 2000",
     "custo": "300 tp",
     "carga": 4,
-    "description": "O tipo mais básico de Pip-Boy; este modelo não tem nenhum outro recurso."
+    "description": "O tipo mais básico de Pip-Boy; este modelo não tem nenhum outro recurso.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pip-Boy com Traje do Refúgio (até 5 níveis de desgaste): ao curar PV, cura também um valor igual ao seu nível.",
+      "if": "has('itens_unicos_traje_de_refugio')"
+     }
+    ]
    },
    {
     "id": "itens_unicos_pip_boy_2000_mark_vi",
     "name": "Pip-Boy 2000 Mark VI",
     "custo": "600 tp",
     "carga": 3,
-    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço."
+    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pip-Boy 2000 Mark VI: Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você…"
+     },
+     {
+      "type": "note",
+      "text": "Pip-Boy com Traje do Refúgio (até 5 níveis de desgaste): ao curar PV, cura também um valor igual ao seu nível.",
+      "if": "has('itens_unicos_traje_de_refugio')"
+     }
+    ]
    },
    {
     "id": "itens_unicos_pip_boy_3000",
     "name": "Pip-Boy 3000",
     "custo": "550 tp",
     "carga": 4,
-    "description": "Este modelo tem várias funções novas e melhoradas. Ele funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas."
+    "description": "Este modelo tem várias funções novas e melhoradas. Ele funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pip-Boy com Traje do Refúgio (até 5 níveis de desgaste): ao curar PV, cura também um valor igual ao seu nível.",
+      "if": "has('itens_unicos_traje_de_refugio')"
+     }
+    ]
    },
    {
     "id": "itens_unicos_pip_boy_3000_mark_iv",
     "name": "Pip-Boy 3000 Mark IV",
     "custo": "850 tp",
     "carga": 3,
-    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço. Além disso, este modelo funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas."
+    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço. Além disso, este modelo funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Pip-Boy 3000 Mark IV: Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você…"
+     },
+     {
+      "type": "note",
+      "text": "Pip-Boy com Traje do Refúgio (até 5 níveis de desgaste): ao curar PV, cura também um valor igual ao seu nível.",
+      "if": "has('itens_unicos_traje_de_refugio')"
+     }
+    ]
    },
    {
     "id": "itens_unicos_ocultador",
     "name": "Ocultador",
     "custo": "500 tp",
     "carga": 3,
-    "description": "Um dispositivo de furtividade pessoal RobCo Ocultador 3001. Esta maravilha tecnológica pré-guerra gera um campo modulado que transmite a luz refletida de um lado de um objeto para o outro. Você pode gastar 3 PA para ativar um Ocultador; depois de ativado, você fica invisível por 1 minuto, desde que mantenha o Ocultador no corpo. Depois que um Ocultador foi ativado, ele não pode ser ativado de novo."
+    "description": "Um dispositivo de furtividade pessoal RobCo Ocultador 3001. Esta maravilha tecnológica pré-guerra gera um campo modulado que transmite a luz refletida de um lado de um objeto para o outro. Você pode gastar 3 PA para ativar um Ocultador; depois de ativado, você fica invisível por 1 minuto, desde que mantenha o Ocultador no corpo. Depois que um Ocultador foi ativado, ele não pode ser ativado de novo.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Ocultador: Um dispositivo de furtividade pessoal RobCo Ocultador 3001. Esta maravilha tecnológica pré-guerra gera um campo modulado que transmite a luz refletida de um lado de um objeto para o outro. …"
+     }
+    ]
    },
    {
     "id": "itens_unicos_radio_comunicador",
     "name": "Rádio Comunicador",
     "custo": "120 tp",
     "carga": 2,
-    "description": "Estes pequenos aparelhos militares permitem comunicação a longa distância. O par de rádios funciona desde que você gaste 6 PA para colocar uma célula de energia em cada um, e assim cada um dura um total de 100 ativações. Você pode gastar 3 PA para ativar um dos rádios; quando você o ativa, qualquer som feito a até 1,5 m do rádio é transmitido ao outro rádio, onde pode ser ouvido a até 1,5 m. Se os dois rádios forem ativados ao mesmo tempo, nenhum emite som."
+    "description": "Estes pequenos aparelhos militares permitem comunicação a longa distância. O par de rádios funciona desde que você gaste 6 PA para colocar uma célula de energia em cada um, e assim cada um dura um total de 100 ativações. Você pode gastar 3 PA para ativar um dos rádios; quando você o ativa, qualquer som feito a até 1,5 m do rádio é transmitido ao outro rádio, onde pode ser ouvido a até 1,5 m. Se os dois rádios forem ativados ao mesmo tempo, nenhum emite som.",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Rádio Comunicador: O par de rádios funciona desde que você gaste 6 PA para colocar uma célula de energia em cada um, e assim cada um dura um total de 100 ativações. …"
+     }
+    ]
    },
    {
     "id": "itens_unicos_gazua_eletronica",
     "name": "Gazua Eletrônica",
     "custo": "500 tp",
-    "carga": 2
+    "carga": 2,
+    "effects": []
    },
    {
     "id": "itens_unicos_gazua_eletronica_mk_ii",
     "name": "Gazua Eletrônica Mk II",
     "custo": "750 tp",
     "carga": 3,
-    "description": "Bem mais elegante e robusta no design, a função deste item é idêntica à da gazua eletrônica, exceto que ela quebra depois de três usos, em vez de um."
+    "description": "Bem mais elegante e robusta no design, a função deste item é idêntica à da gazua eletrônica, exceto que ela quebra depois de três usos, em vez de um.",
+    "effects": []
    }
   ],
   "sucata": [
