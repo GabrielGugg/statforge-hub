@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.9.0",
+ "version": "1.10.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -502,6 +502,22 @@
      "type": "number",
      "label": "Req. de FOR"
     }
+   },
+   "custom": {
+    "fields": [
+     "pericia",
+     "tipo",
+     "dano",
+     "pa",
+     "critico",
+     "alcance",
+     "municao",
+     "propriedades",
+     "custo",
+     "carga",
+     "forca"
+    ],
+    "magazine": "municao"
    }
   },
   "armaduras": {
@@ -541,7 +557,8 @@
      "type": "number",
      "label": "Req. de FOR"
     }
-   }
+   },
+   "custom": true
   },
   "melhorias": {
    "name": "Melhorias de Armadura",
@@ -555,7 +572,8 @@
      "type": "text",
      "label": "Custo"
     }
-   }
+   },
+   "custom": true
   },
   "armadura_potente": {
    "name": "Armadura Potente",
@@ -588,7 +606,8 @@
      "type": "text",
      "label": "Custo"
     }
-   }
+   },
+   "custom": true
   },
   "melhorias_potente": {
    "name": "Melhorias de Armadura Potente",
@@ -602,7 +621,8 @@
      "type": "text",
      "label": "Custo"
     }
-   }
+   },
+   "custom": true
   },
   "mods": {
    "name": "Modificações de Armas",
@@ -620,7 +640,8 @@
      "type": "text",
      "label": "Custo"
     }
-   }
+   },
+   "custom": true
   },
   "explosivos": {
    "name": "Explosivos",
@@ -663,7 +684,8 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
   },
   "municao": {
    "name": "Munição",
@@ -685,7 +707,8 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
   },
   "quimicos": {
    "name": "Químicos e Programas de Robô",
@@ -708,7 +731,8 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
   },
   "medicina": {
    "name": "Medicina",
@@ -722,7 +746,8 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
   },
   "comida": {
    "name": "Comidas e Bebidas",
@@ -745,7 +770,8 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
   },
   "equipamentos": {
    "name": "Itens e Equipamentos",
@@ -764,7 +790,11 @@
      "type": "text",
      "label": "Carga (detalhe)"
     }
-   }
+   },
+   "custom": [
+    "custo",
+    "carga"
+   ]
   },
   "revistas": {
    "name": "Revistas de Perícia",
@@ -774,7 +804,8 @@
      "type": "text",
      "label": "Efeito"
     }
-   }
+   },
+   "custom": true
   },
   "itens_unicos": {
    "name": "Itens Únicos",
@@ -788,7 +819,19 @@
      "type": "number",
      "label": "Carga"
     }
-   }
+   },
+   "custom": true
+  },
+  "sucata": {
+   "name": "Sucata",
+   "quantity": true,
+   "fields": {
+    "carga": {
+     "type": "number",
+     "label": "Carga"
+    }
+   },
+   "custom": true
   }
  },
  "entities": {
@@ -14963,6 +15006,173 @@
     "carga": 3,
     "description": "Bem mais elegante e robusta no design, a função deste item é idêntica à da gazua eletrônica, exceto que ela quebra depois de três usos, em vez de um."
    }
+  ],
+  "sucata": [
+   {
+    "id": "aco",
+    "name": "Aço",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (169): .308, .357 Magnum, .44 Magnum, .45, .45-70 Gov't., .50, 10mm, 12,7mm, 5,56mm, 5mm, 9mm, Aço, Armadilha de Urso, Articulação Travada, Balote, Bandoleira, Bastão de Gado, Berserk, Braçadeiras Otimizadas, Calibre 12, Calibre 20, Canhão Tesla, Canivete, Cano de Chumbo, Cano Longo, Capacitor Turbinado, Carabina de Caça, Carregador Ampliado, Carregador de Químico, Carregador de Stimpak, Cassetete, CE de 2mm, Cerveja (475 ml / 16 oz), Célula Criogênica, Chassi de Armadura Potente, Chave de Roda, Chave Inglesa, Combustível, Contador Geiger, Corrente, Cortador de Plasma, Cravo de Trilho, Crânio de Urso, Cutelo, Dardo, Encamisada Perfurante, Escopeta Antimotim, Escopeta de Alavanca, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Esferas de Aço, Esguicho de Ácido, Espada, Espada-Esqui, Espada-Guitarra, Espara-choque de Aço, Espara-choque de Plástico, Estrepes, Estripador, Faca, Faca de Arremesso, Faca de Combate, Facão, Fat Man, Foice, Forcado, Furadeira, Fuzil de Assalto, Gancho de Escalada, Gazuas, Hemorragia, JFP, JSP, Lança, Lança-Chamas, Lança-Mísseis, Lança-Sucata, Lanterna, Laser Gatling, Lâmina de Assaultron, Lâmina Giratória de Mãozinha, Machadinha, Machado de Bombeiro, Magnum, Maleta Médica, Manopla de Destroçador, Marreta, Match, Metal, Mina Criogênica, Mina de Tampinhas, Mina Nuclear, Minigun, Mininuke, Míssil, Motosserra, Overdrive, Pá, Perfura-Blindagem, Pé de Cabra, Picareta, Pistola 10mm, Pistola 12,7mm, Pistola 5,56mm, Pistola 9mm, Pistola Automática .45, Pistola de Plasma, Pistola de Pregos H&H Tools, Pistola de Sucata, Pistola de Sucata de Ação por Ferrolho, Pistola Gama, Pistola Gauss, Pistola Laser, Placa de Pare, Ponta Oca, Pregos, Punho Cravado, Punho de Armadilha de Urso, Punho Potente, Queimador Solar, Raiamento Aprimorado, Repetidora Cowboy, Revólver .357 Magnum, Revólver .44 Magnum, Revólver de Sucata, Revólver Ranger Sequoia, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Plasma, Rifle de Precisão, Rifle de Trilho, Rifle Gauss, Rifle Laser, Rifle Laser Automático, Rifle Multiplas, Rum (475 ml / 16 oz), Saquinho de Feijão, Seringador, Shishkebab, Sinalizador, Sinalizadores, Soco Inglês, Soqueira Enferrujada, Stimpak, Submetralhadora 10mm, Submetralhadora 12,7mm, Submetralhadora 9mm, Super Marreta, Super Stimpak, T-45, T-51, T-60, Taco de Golfe (Ferro 9), Tambor de Guerra, Testo+, Testo+ Buff, Testo+ Jato, Tommy Gun, Torreta Controlada à Distância, Torreta de Disparo Automático, Traje Hazmat Motorizado, Veneno de Escorpião Radioativo, Vodca (475 ml / 16 oz), Walther PPK, X-01, X-02.\n\nUsado para reparar (2): Aço, Metal."
+   },
+   {
+    "id": "adesivo",
+    "name": "Adesivo",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (129): Ação Dupla, Amortecedores Calibrados, Aprimorada, Baioneta, Banco de Dados Interno, Bandoleira, Bastão de Gado, Blindagem Antiexplosão, Blindagem de Prisma, Bobinas de Tesla, Bolsa, Bolsa de Armas, Bolsa, Mochila, Bolsa, Mochila de Acampamento, Braçadeiras Otimizadas, Camuflagem, Canhão Tesla, Canivete, Capacitor em Overclock, Capacitor Turbinado, Carabina de Caça, Carregador de Químico, Carregador de Stimpak, Cheia de Bolsos, Chumbada, Coquetel Molotov, Coronha, Crânio de Urso, Criolador, Criolador Cristalizante, Dinamite, Dinamite de Pavio Longo, Dínamo Cinético, Duto Explosivo, Empunhadura Ergonômica, Endurecida, Ergonômica, Escopeta Antimotim, Escopeta de Alavanca, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Esguicho de Ácido, Espada-Guitarra, Explosiva, Explosivo Plástico C-4, Faca, Faca de Combate, Farolete, Flashbang, Foice, Forcado, Fortalecida, Fortificada, Freio de Boca, Fuzil de Assalto, Gazua Eletrônica, Gazua Eletrônica Mk II, Granada Criogênica, Granada de Fragmentação, Granada de Plasma, Granada de Pulso, Granada Incendiária, Hidráulica em Overclock, HUD de Mira, Isolamento, Kit de Primeiros Socorros, Lança, Lança-Chamas, Lança-Mísseis, Lança-Sucata, Lâmina Dupla, Leve, Luneta, Luneta Infravermelha, Manopla de Destroçador, Matriz de Sensores, Mina Criogênica, Mina de Fragmentação, Mina de Plasma, Mina de Pulso, Mina Nuclear, Minigun, Mininuke, Mira Holográfica, Mira Laser, Míssil, Mochila a Jato, Núcleo Montado, Pesada, Picareta, Pistola 10mm, Pistola 12,7mm, Pistola 5,56mm, Pistola 9mm, Pistola de Plasma, Pistola de Sucata, Pistola de Sucata de Ação por Ferrolho, Pistola Gama, Placas Reativas, Protocolos de Emergência, Punho de Armadilha de Urso, Rastreamento de Alvo Embarcado, Receptor Endurecido, Reforçada, Reforço Estrutural, Repetidora Cowboy, Revólver .357 Magnum, Revólver .44 Magnum, Revólver de Sucata, Revólver Ranger Sequoia, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Plasma, Rifle de Precisão, Rifle de Trilho, Rifle Multiplas, Robusta, Semiautomática, Seringador, Silenciador, Sobreposição VATS, Soqueira Enferrujada, Submetralhadora 10mm, Submetralhadora 12,7mm, Submetralhadora 9mm, Traje de Refúgio, Veneno de Escorpião Radioativo."
+   },
+   {
+    "id": "aluminio",
+    "name": "Alumínio",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (76): Amortecedores Calibrados, Bastão de Gado, Blindagem Antiexplosão, Blindagem de Prisma, Bobinas de Tesla, Braçadeiras Otimizadas, Cantil, Carregador Rápido (Speedloader), Chassi de Armadura Potente, Cortador de Plasma, Crânio de Urso, Dínamo Cinético, Duto Explosivo, Espada, Estripador, Explosiva, Explosivo Plástico C-4, Fat Man, Flashbang, Freio de Boca, Furadeira, Fuzil de Assalto, Gazua Eletrônica, Gazua Eletrônica Mk II, Gazuas, Granada Criogênica, Granada de Fragmentação, Granada de Plasma, Granada de Pulso, Granada Incendiária, Hidráulica em Overclock, HUD de Mira, Lança-Mísseis, Laser Gatling, Lâmina de Assaultron, Lâmina Giratória de Mãozinha, Matriz de Sensores, Mina Criogênica, Mina de Fragmentação, Mina de Plasma, Mina de Pulso, Mina Nuclear, Minigun, Mochila a Jato, Motosserra, Núcleo Montado, Pistola 12,7mm, Pistola 5,56mm, Pistola de Pregos H&H Tools, Pistola Gauss, Pistola Laser, Pistola Sinalizadora, Placas Reativas, Protocolos de Emergência, Punho Potente, Queimador Solar, Rastreamento de Alvo Embarcado, Rifle Gauss, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Shishkebab, Silenciador, Sinalizador, Sinalizadores, Sobreposição VATS, Submetralhadora 10mm, Submetralhadora 12,7mm, Submetralhadora 9mm, Super Marreta, T-45, T-51, T-60, Tambor de Guerra, X-01, X-02."
+   },
+   {
+    "id": "amianto",
+    "name": "Amianto",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (7): Duto Explosivo, Foguete, Lança-Chamas, Mochila a Jato, Nuvem Mental, Pistola Sinalizadora, Placas Reativas."
+   },
+   {
+    "id": "antisseptico",
+    "name": "Antisséptico",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (9): Kit de Primeiros Socorros, Maleta Médica, Overdrive, Stimpak, Super Stimpak, Testo+, Testo+ Buff, Testo+ Jato, TiraRad."
+   },
+   {
+    "id": "acido",
+    "name": "Ácido",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (16): Barriga Amarela, Berserk, Combustível, Endangerol, Esclerose, Granada Criogênica, Mina Criogênica, Overdrive, Pólvora, Sinalizador, Sinalizadores, Soro Miópico, Testo+, Testo+ Buff, Testo+ Jato, Tranquilizante."
+   },
+   {
+    "id": "borracha",
+    "name": "Borracha",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (31): Bastão de Gado, Bengala, Blindagem de Prisma, Bobinas de Tesla, Camuflagem, Cassetete, Chassi de Armadura Potente, Cortador de Plasma, Criolador, Criolador Cristalizante, Dínamo Cinético, Fat Man, Lança-Chamas, Lâmina Giratória de Mãozinha, Leve, Luvas de Boxe, Manopla de Destroçador, Máscara de Gás, Pistola Sinalizadora, Punho Potente, Stimpak de Autoinjeção, Super Stimpak, Super Stimpak de Autoinjeção, T-45, T-51, T-60, Traje de Refúgio, Traje Hazmat, Traje Hazmat Motorizado, X-01, X-02."
+   },
+   {
+    "id": "ceramica",
+    "name": "Cerâmica",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (4): Blindagem Antiexplosão, Braçadeiras Otimizadas, Contador Geiger, Dínamo Cinético."
+   },
+   {
+    "id": "chumbo",
+    "name": "Chumbo",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (42): .308, .357 Magnum, .44 Magnum, .45, .45-70 Gov't., .50, 10mm, 12,7mm, 5,56mm, 5mm, 9mm, Articulação Travada, Balote, Balote Pulsante, Bufftats, Calibre 12, Calibre 20, CE de 2mm, Célula Criogênica, Célula de Energia, Célula de Microfusão, Célula Gama, Chumbada, Encamisada Perfurante, Endangerol, Esclerose, JFP, JSP, Magnum, Match, Mentats, Mentats de Amora, Mentats de Laranja, Mentats de Uva, Mininuke, Perfura-Blindagem, Ponta Oca, Soro Miópico, Traje de Refúgio, Traje Hazmat, Traje Hazmat Motorizado, Tranquilizante."
+   },
+   {
+    "id": "circuitos",
+    "name": "Circuitos",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (59): Banco de Dados Interno, Bastão de Gado, Berserk, Canhão Tesla, Capacitor em Overclock, Capacitor Turbinado, Chassi de Armadura Potente, Contador Geiger, Cortador de Plasma, Criolador, Criolador Cristalizante, Explosivo Plástico C-4, Fat Man, Gazua Eletrônica, Gazua Eletrônica Mk II, Granada de Plasma, Granada de Pulso, Hidráulica em Overclock, HUD de Mira, Lanterna, Laser Gatling, Mina de Plasma, Mina de Pulso, Mina de Tampinhas, Mina Nuclear, Mininuke, Núcleo Montado, Ocultador, Overdrive, Pistola de Plasma, Pistola Gauss, Pistola Laser, Protocolos de Emergência, Queimador Solar, Rastreamento de Alvo Embarcado, Rádio Comunicador, Rifle de Plasma, Rifle Gauss, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Rifle Multiplas, Sobreposição VATS, Stimpak, Stimpak de Autoinjeção, Super Stimpak, Super Stimpak de Autoinjeção, T-45, T-51, T-60, Testo+, Testo+ Buff, Testo+ Jato, Torreta Controlada à Distância, Torreta de Disparo Automático, Traje de Refúgio, Traje Hazmat Motorizado, X-01, X-02."
+   },
+   {
+    "id": "cobre",
+    "name": "Cobre",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (11): Balote Pulsante, Bobinas de Tesla, Célula de Energia, Célula de Microfusão, Célula Gama, Farolete, HUD de Mira, Lança-Chamas, Mina de Tampinhas, Mina Nuclear, Shishkebab."
+   },
+   {
+    "id": "couro",
+    "name": "Couro",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (15): Aço, Bandoleira, Camuflagem, Cheia de Bolsos, Couro, Facão, Isolamento, Lança-Mísseis, Luvas de Boxe, Máscara de Gás, Multicamadas, Odre, Shishkebab, Tambor de Guerra, Traje Hazmat.\n\nUsado para reparar (2): Aço, Couro."
+   },
+   {
+    "id": "cristal",
+    "name": "Cristal",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (12): Banco de Dados Interno, Canhão Tesla, Capacitor em Overclock, Capacitor Turbinado, Célula Criogênica, Laser Gatling, Ocultador, Pistola Laser, Rastreamento de Alvo Embarcado, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe."
+   },
+   {
+    "id": "engrenagens",
+    "name": "Engrenagens",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (45): Canivete, Carabina de Caça, Chassi de Armadura Potente, Chave Inglesa, Escopeta Antimotim, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Estripador, Furadeira, Fuzil de Assalto, Lança-Mísseis, Lança-Sucata, Laser Gatling, Lâmina de Assaultron, Lâmina Giratória de Mãozinha, Minigun, Motosserra, Pistola Automática .45, Pistola de Pregos H&H Tools, Pistola de Sucata, Pistola de Sucata de Ação por Ferrolho, Punho Potente, Repetidora Cowboy, Revólver de Sucata, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Precisão, Rifle de Trilho, Shishkebab, Submetralhadora 10mm, Submetralhadora 9mm, Super Marreta, T-45, T-51, T-60, Taco de Golfe (Ferro 9), Tommy Gun, Torreta Controlada à Distância, Torreta de Disparo Automático, Walther PPK, X-01, X-02."
+   },
+   {
+    "id": "estanho",
+    "name": "Estanho",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (1): Cantil."
+   },
+   {
+    "id": "fertilizante",
+    "name": "Fertilizante",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (7): Barriga Amarela, Buffjet, Combustível de Jato, Foguete, Jato, Testo+ Jato, Ultrajato."
+   },
+   {
+    "id": "fibra_balistica",
+    "name": "Fibra balística",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (1): Fibra Balística.\n\nUsado para reparar (1): Fibra Balística."
+   },
+   {
+    "id": "fibra_de_vidro",
+    "name": "Fibra de vidro",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (6): Amortecedores Calibrados, Capacitor em Overclock, Hemorragia, Luneta Infravermelha, Matriz de Sensores, Mira Holográfica."
+   },
+   {
+    "id": "fibra_optica",
+    "name": "Fibra óptica",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (17): Banco de Dados Interno, Bobinas de Tesla, Farolete, Laser Gatling, Luneta Infravermelha, Matriz de Sensores, Mira Holográfica, Mira Laser, Pistola de Plasma, Pistola Laser, Rastreamento de Alvo Embarcado, Rifle de Plasma, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Rifle Multiplas, Sobreposição VATS."
+   },
+   {
+    "id": "latas",
+    "name": "Latas",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (1): Tambor de Guerra."
+   },
+   {
+    "id": "madeira",
+    "name": "Madeira",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (40): Bengala, Carabina de Caça, Coronha, Cutelo, Escopeta de Alavanca, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Espada-Guitarra, Estilete, Faca, Faca de Combate, Foice, Forcado, Iguana no Espeto, Lança, Lança Caseira, Machadinha, Machado de Bombeiro, Marreta, Pá, Picareta, Placa de Protesto, Raquetinha com Bolinha, Repetidora Cowboy, Revólver Ranger Sequoia, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Precisão, Rolo de Massa, Taco de Beisebol, Taco de Sinuca, Tábua, Tábua com Prego, Tommy Gun, Torreta Controlada à Distância, Torreta de Disparo Automático, Vinho do Ermo (barril de 227 L / 60 galões).\n\nUsado para reparar (1): Lança Caseira."
+   },
+   {
+    "id": "material_nuclear",
+    "name": "Material nuclear",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (40): Blindagem de Prisma, Canhão Tesla, Capacitor em Overclock, Capacitor Turbinado, Chassi de Armadura Potente, Contador Geiger, Duto Explosivo, Fat Man, Granada Criogênica, Granada de Plasma, Granada de Pulso, Hidráulica em Overclock, Lança-Sucata, Luneta Infravermelha, Mina Criogênica, Mina de Plasma, Mina de Pulso, Mininuke, Mira Holográfica, Mochila a Jato, Núcleo Montado, Ocultador, Pistola de Plasma, Pistola Gama, Pistola Gauss, Placas Reativas, Protocolos de Emergência, Rastreamento de Alvo Embarcado, Rifle Antimaterial, Rifle de Plasma, Rifle de Trilho, Rifle Gauss, Rifle Multiplas, Stimpak, Super Stimpak, T-45, T-51, T-60, X-01, X-02."
+   },
+   {
+    "id": "molas",
+    "name": "Molas",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (52): Armadilha de Urso, Bastão de Gado, Carabina de Caça, Chassi de Armadura Potente, Escopeta Antimotim, Escopeta de Combate, Escopeta de Tiro Único, Explosivo Plástico C-4, Fat Man, Flashbang, Fuzil de Assalto, Gazua Eletrônica, Gazua Eletrônica Mk II, Granada Criogênica, Granada de Fragmentação, Granada de Plasma, Granada de Pulso, Granada Incendiária, Lança-Chamas, Lança-Mísseis, Leve, Manopla de Destroçador, Mina Criogênica, Mina de Fragmentação, Mina de Plasma, Mina de Pulso, Minigun, Míssil, Pistola 12,7mm, Pistola 5,56mm, Pistola Automática .45, Pistola de Sucata, Pistola Gauss, Punho de Armadilha de Urso, Repetidora Cowboy, Revólver de Sucata, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Precisão, Rifle Gauss, Submetralhadora 10mm, Submetralhadora 12,7mm, Submetralhadora 9mm, Super Marreta, T-45, T-51, T-60, Tommy Gun, Walther PPK, X-01, X-02."
+   },
+   {
+    "id": "ouro",
+    "name": "Ouro",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (6): Capacitor em Overclock, Capacitor Turbinado, Luneta Infravermelha, Mira Holográfica, Rastreamento de Alvo Embarcado, Traje de Refúgio."
+   },
+   {
+    "id": "oleo",
+    "name": "Óleo",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (63): Carabina de Caça, Chassi de Armadura Potente, Chave Inglesa, Combustível, Coquetel Molotov, Dinamite, Dinamite de Pavio Longo, Escopeta Antimotim, Escopeta de Alavanca, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Esguicho de Ácido, Espada, Espada-Esqui, Espada-Guitarra, Estripador, Explosiva, Explosivo Plástico C-4, Forcado, Fuzil de Assalto, Granada de Fragmentação, Granada Incendiária, Hemorragia, Hidráulica em Overclock, Incendiária, Lança-Sucata, Lâmina de Assaultron, Machadinha, Machado de Bombeiro, Mina de Fragmentação, Minigun, Motosserra, Picareta, Pistola 10mm, Pistola 9mm, Pistola Automática .45, Pistola de Sucata, Pistola de Sucata de Ação por Ferrolho, Punho Potente, Repetidora Cowboy, Revólver .357 Magnum, Revólver .44 Magnum, Revólver de Sucata, Revólver Ranger Sequoia, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Precisão, Rifle de Trilho, Sopro do Dragão, Submetralhadora 10mm, Submetralhadora 9mm, T-45, T-51, T-60, Tommy Gun, Torreta Controlada à Distância, Torreta de Disparo Automático, Walther PPK, X-01, X-02."
+   },
+   {
+    "id": "papelao",
+    "name": "Papelão",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (1): Placa de Protesto."
+   },
+   {
+    "id": "parafusos",
+    "name": "Parafusos",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (113): Ação Dupla, Aço, Aprimorada, Armadilha de Urso, Baioneta, Canhão Tesla, Canivete, Capacitor em Overclock, Capacitor Turbinado, Carabina de Caça, Carregador Ampliado, Carregador Rápido (Speedloader), Chassi de Armadura Potente, Crânio de Urso, Criolador, Criolador Cristalizante, Cutelo, Empunhadura Ergonômica, Endurecida, Ergonômica, Escopeta Antimotim, Escopeta de Alavanca, Escopeta de Cano Duplo, Escopeta de Cano Serrado, Escopeta de Combate, Escopeta de Tiro Único, Esguicho de Ácido, Espada-Guitarra, Estripador, Facão, Fat Man, Forcado, Fortificada, Furadeira, Fuzil de Assalto, Lança-Chamas, Lança-Mísseis, Lança-Sucata, Lâmina de Assaultron, Lâmina Dupla, Lâmina Giratória de Mãozinha, Luneta, Luneta Infravermelha, Luvas de Boxe, Machadinha, Manopla de Destroçador, Marreta, Minigun, Mininuke, Mira Holográfica, Mira Laser, Míssil, Motosserra, Ocultador, Pá, Pesada, Picareta, Pistola 10mm, Pistola 12,7mm, Pistola 5,56mm, Pistola 9mm, Pistola Automática .45, Pistola de Plasma, Pistola de Pregos H&H Tools, Pistola de Sucata, Pistola de Sucata de Ação por Ferrolho, Pistola Gama, Pistola Gauss, Pistola Laser, Pistola Sinalizadora, Punho de Armadilha de Urso, Punho Potente, Queimador Solar, Rastreamento de Alvo Embarcado, Receptor Endurecido, Reforçada, Reforço Estrutural, Repetidora Cowboy, Revólver .357 Magnum, Revólver .44 Magnum, Revólver de Sucata, Revólver Ranger Sequoia, Rifle Anti-Praga, Rifle Antimaterial, Rifle de Alavanca, Rifle de Plasma, Rifle de Precisão, Rifle de Trilho, Rifle Gauss, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Rifle Multiplas, Semiautomática, Seringador, Shishkebab, Silenciador, Submetralhadora 10mm, Submetralhadora 12,7mm, Submetralhadora 9mm, Super Marreta, T-45, T-51, T-60, Taco de Golfe (Ferro 9), Tambor de Guerra, Tommy Gun, Torreta Controlada à Distância, Torreta de Disparo Automático, Traje de Refúgio, Walther PPK, X-01, X-02.\n\nUsado para reparar (1): Metal."
+   },
+   {
+    "id": "plastico",
+    "name": "Plástico",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (60): Balote Pulsante, Bandoleira, Barraca (duas pessoas), Barraca (uma pessoa), Bastão de Gado, Binóculos, Bolsa, Bolsa de Armas, Bolsa, Mochila de Acampamento, Buffjet, Café, Calibre 12, Calibre 20, Canhão Tesla, Cassetete, Célula de Energia, Célula de Microfusão, Célula Gama, Chassi de Armadura Potente, Combustível de Jato, Contador Geiger, Criolador, Criolador Cristalizante, Esguicho de Ácido, Espanca-Comunista, Explosivo Plástico C-4, Facão, Foguete, Jato, Lança-Sucata, Laser Gatling, Lâmina de Assaultron, Lâmina Giratória de Mãozinha, Maleta Médica, Manopla de Destroçador, Máscara de Gás, Ocultador, Pistola Gama, Punho Potente, Raquetinha com Bolinha, Rádio Comunicador, Rifle de Trilho, Rum (475 ml / 16 oz), Saquinho de Feijão, Silenciador, Sinalizador, Sinalizadores, Super Marreta, T-45, T-51, T-60, Taco de Sinuca, Testo+ Jato, TiraRad, Traje Hazmat, Ultrajato, Vinho do Defunto (3,8 L / 1 galão), Vinho do Ermo (barril de 227 L / 60 galões), Vodca (475 ml / 16 oz), X-01, X-02."
+   },
+   {
+    "id": "prata",
+    "name": "Prata",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (3): Barriga Amarela, Pistola Gauss, Rifle Gauss."
+   },
+   {
+    "id": "pregos",
+    "name": "Pregos",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (2): Punho Cravado, Tábua com Prego."
+   },
+   {
+    "id": "tecido",
+    "name": "Tecido",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (26): Bandoleira, Barraca (duas pessoas), Barraca (uma pessoa), Bolsa, Bolsa de Armas, Bolsa, Mochila, Bolsa, Mochila de Acampamento, Café, Camuflagem, Cerveja (475 ml / 16 oz), Cheia de Bolsos, Cigarro, Coquetel Molotov, Corda, Isolamento, Kit de Primeiros Socorros, Maleta Médica, Multicamadas, Pólvora, Saco de Dormir, Soqueira Enferrujada, Stimpak de Autoinjeção, Super Stimpak de Autoinjeção, Tecido, Tequila do Ermo, Traje de Refúgio, Vinho do Ermo (barril de 227 L / 60 galões).\n\nUsado para reparar (1): Tecido."
+   },
+   {
+    "id": "tinta",
+    "name": "Tinta",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (1): Camuflagem."
+   },
+   {
+    "id": "vidro",
+    "name": "Vidro",
+    "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (35): Barriga Amarela, Binóculos, Café, Cerveja (475 ml / 16 oz), Coquetel Molotov, Criolador, Criolador Cristalizante, Endangerol, Esclerose, Esguicho de Ácido, Lanterna, Luneta, Luneta Infravermelha, Máscara de Gás, Mira Holográfica, Mira Laser, Nuvem Mental, Ocultador, Pistola de Plasma, Pistola Laser, Queimador Solar, Rádio Comunicador, Rifle de Plasma, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Rifle Multiplas, Soro Miópico, Tequila do Ermo, Torreta Controlada à Distância, Torreta de Disparo Automático, Traje Hazmat, Traje Hazmat Motorizado, Tranquilizante, Vinho do Ermo (barril de 227 L / 60 galões)."
+   }
   ]
  },
  "layout": {
@@ -15240,7 +15450,8 @@
        "comida",
        "equipamentos",
        "revistas",
-       "itens_unicos"
+       "itens_unicos",
+       "sucata"
       ],
       "w": 12,
       "card_fields": {
