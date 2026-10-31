@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.2.1",
+ "version": "1.3.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -199,7 +199,8 @@
    "id": "iniciativa",
    "name": "Iniciativa",
    "abbr": "Inic.",
-   "formula": "10 + mod(PER)"
+   "formula": "mod(PER)",
+   "description": "Modificador de Percepção mais os bônus de iniciativa (traços, talentos…). A iniciativa passiva fica com o MJ."
   },
   {
    "id": "sentidos",
@@ -286,6 +287,7 @@
    "name": "Tampas de Karma",
    "abbr": "Karma",
    "max": "1 + (SOR >= 10)",
+   "display": "toggles",
    "recovery": "Renovam a cada sessão."
   }
  ],
@@ -385,11 +387,6 @@
     }
    }
   },
-  "subtipos": {
-   "name": "Tipo de robô",
-   "max": 1,
-   "fields": {}
-  },
   "antecedentes": {
    "name": "Antecedente",
    "max": 1,
@@ -428,6 +425,7 @@
   },
   "condicoes": {
    "name": "Condições",
+   "quick_remove": true,
    "fields": {}
   },
   "armas": {
@@ -777,7 +775,13 @@
     "effects": [
      {
       "type": "immunity",
-      "text": "Radiação (não ganha níveis de radiação)"
+      "text": "Radiação (não ganha níveis de radiação)",
+      "ref": "radiacao",
+      "if": "not has('actinidios_ativados') and not has('actinidios_ativados_ermo')"
+     },
+     {
+      "type": "resistance",
+      "text": "Dano de veneno"
      }
     ]
    },
@@ -800,7 +804,21 @@
      },
      {
       "type": "immunity",
-      "text": "Radiação e veneno"
+      "text": "Radiação e veneno",
+      "ref": [
+       "radiacao",
+       "condicoes/envenenado"
+      ]
+     },
+     {
+      "type": "immunity",
+      "text": "Comida, bebida e químicos não têm efeito; não precisa comer, beber, dormir nem respirar",
+      "ref": [
+       "fome",
+       "desidratacao",
+       "condicoes/bebado",
+       "condicoes/mamado"
+      ]
      }
     ]
    },
@@ -823,7 +841,26 @@
      },
      {
       "type": "immunity",
-      "text": "Radiação e veneno"
+      "text": "Radiação e veneno",
+      "ref": [
+       "radiacao",
+       "condicoes/envenenado"
+      ]
+     },
+     {
+      "type": "immunity",
+      "text": "Sangramento",
+      "ref": "sangramento"
+     },
+     {
+      "type": "immunity",
+      "text": "Comida, bebida e químicos não têm efeito; não precisa comer, beber, dormir nem respirar",
+      "ref": [
+       "fome",
+       "desidratacao",
+       "condicoes/bebado",
+       "condicoes/mamado"
+      ]
      }
     ]
    },
@@ -844,17 +881,18 @@
      },
      {
       "type": "immunity",
-      "text": "Radiação"
+      "text": "Radiação",
+      "ref": "radiacao"
      }
     ]
    }
   ],
   "variantes": [
    {
-    "id": "engenhoso",
-    "name": "Engenhoso",
+    "id": "humano_variante",
+    "name": "Humano Variante",
     "raca": "Humano",
-    "description": "Você ganha uma Tampa de Karma extra que pode usar a cada jogo. (Veja Tampas de Karma.)",
+    "description": "Engenhoso. Você ganha uma Tampa de Karma extra que pode usar a cada jogo. (Veja Tampas de Karma.)\n\nImaculado. Você tem desvantagem em todos os testes de Radiação e de Vício.\n\nSe o seu MJ permitir. Humano Variante e Sintético Gen 3 podem ser combinados.",
     "tags": [
      "humano"
     ],
@@ -863,18 +901,7 @@
       "type": "add",
       "target": "karma",
       "value": "1"
-     }
-    ]
-   },
-   {
-    "id": "imaculado",
-    "name": "Imaculado",
-    "raca": "Humano",
-    "description": "Você tem desvantagem em todos os testes de Radiação e de Vício.",
-    "tags": [
-     "humano"
-    ],
-    "effects": [
+     },
      {
       "type": "disadvantage",
       "target": "radiacao",
@@ -883,20 +910,20 @@
     ]
    },
    {
-    "id": "variante_sinttico_gen_3",
-    "name": "Variante: Sintético Gen 3",
+    "id": "sintetico_gen_3",
+    "name": "Sintético Gen 3",
     "raca": "Humano",
-    "description": "Muitas vezes, os humanos do ermo são, na verdade, máquinas sintéticas indistinguíveis de um humano comum, criadas por uma sociedade secreta de cientistas chamada \"O Instituto\". Esta variante não concede habilidades nem alterações estatísticas, mas pode trazer uma mudança psicológica ou narrativa. Converse com o seu MJ sobre como essa possibilidade poderia afetar seu personagem. Alternativamente, ao criar seu personagem humano, role um d20. Com um 20, seu personagem é secretamente um Sintético Gen 3.",
+    "description": "Muitas vezes, os humanos do ermo são, na verdade, máquinas sintéticas indistinguíveis de um humano comum, criadas por uma sociedade secreta de cientistas chamada \"O Instituto\". Esta variante não concede habilidades nem alterações estatísticas, mas pode trazer uma mudança psicológica ou narrativa. Converse com o seu MJ sobre como essa possibilidade poderia afetar seu personagem. Alternativamente, ao criar seu personagem humano, role um d20. Com um 20, seu personagem é secretamente um Sintético Gen 3.\n\nSe o seu MJ permitir. Humano Variante e Sintético Gen 3 podem ser combinados.",
     "tags": [
      "humano"
     ],
     "effects": []
    },
    {
-    "id": "muitas_estradas_percorridas",
-    "name": "Muitas Estradas Percorridas",
+    "id": "necrotico_variante",
+    "name": "Necrótico Variante",
     "raca": "Necrótico",
-    "description": "Você ganha +2 em todas as perícias e ganha um talento extra no 1º Nível.",
+    "description": "Muitas Estradas Percorridas. Você ganha +2 em todas as perícias e ganha um talento extra no 1º Nível.\n\nOssos Velhos. Você é imune a dano de veneno e ganha o talento Remendado.\n\nMeia-Vida. Sua mente escorrega um pouco a cada dia; a necrosificação cobrou um preço imenso de você, e você sente que está aos poucos se tornando feroz. Ao chegar ao Nível 15, você é completamente consumido pela necrosificação, sua mente deixa de ser sua e seu personagem passa a ser controlado pelo MJ.\n\nSe o seu MJ permitir. A variante traz todos estes traços juntos.",
     "tags": [
      "necrotico"
     ],
@@ -975,68 +1002,42 @@
       "type": "add",
       "target": "sobrevivencia",
       "value": "2"
-     }
-    ]
-   },
-   {
-    "id": "ossos_velhos",
-    "name": "Ossos Velhos",
-    "raca": "Necrótico",
-    "description": "Você é imune a dano de veneno e ganha o talento Remendado.",
-    "tags": [
-     "necrotico"
-    ],
-    "effects": [
+     },
      {
       "type": "immunity",
-      "text": "Veneno"
+      "text": "Dano de veneno"
+     },
+     {
+      "type": "grant",
+      "ref": "talentos/remendado"
+     },
+     {
+      "type": "note",
+      "text": "Meia-Vida: ao chegar ao Nível 15, o personagem passa a ser controlado pelo MJ."
      }
     ]
    },
    {
-    "id": "meia_vida",
-    "name": "Meia-Vida",
-    "raca": "Necrótico",
-    "description": "Sua mente escorrega um pouco a cada dia; a necrosificação cobrou um preço imenso de você, e você sente que está aos poucos se tornando feroz. Ao chegar ao Nível 15, você é completamente consumido pela necrosificação, sua mente deixa de ser sua e seu personagem passa a ser controlado pelo MJ.",
-    "tags": [
-     "necrotico"
-    ],
-    "effects": []
-   },
-   {
-    "id": "corpo_frgil",
-    "name": "Corpo Frágil",
+    "id": "sintetico_gen_2_variante",
+    "name": "Sintético Gen 2 Variante",
     "raca": "Sintético Gen 2",
-    "description": "Sempre que uma criatura fizer um ataque mirado contra você, você ganha duas condições de membro em vez de uma. Além disso, você é vulnerável a dano de eletricidade.",
+    "description": "Corpo Frágil. Sempre que uma criatura fizer um ataque mirado contra você, você ganha duas condições de membro em vez de uma. Além disso, você é vulnerável a dano de eletricidade.\n\nAtualizações de Software e Hardware. Sempre que você ganhar um talento, você é considerado um Robô para os requisitos de talento.\n\nAlgoritmos de Inteligência Artificial. Sempre que você ganhar pontos de perícia, você ganha 1 a mais.\n\nSe o seu MJ permitir. A variante traz todos estes traços juntos.",
     "tags": [
      "sintetico"
     ],
     "effects": [
      {
       "type": "vulnerability",
-      "text": "Eletricidade"
-     }
-    ]
-   },
-   {
-    "id": "atualizaes_de_software_e_hardware",
-    "name": "Atualizações de Software e Hardware",
-    "raca": "Sintético Gen 2",
-    "description": "Sempre que você ganhar um talento, você é considerado um Robô para os requisitos de talento.",
-    "tags": [
-     "sintetico"
-    ],
-    "effects": []
-   },
-   {
-    "id": "algoritmos_de_inteligncia_artificial",
-    "name": "Algoritmos de Inteligência Artificial",
-    "raca": "Sintético Gen 2",
-    "description": "Sempre que você ganhar pontos de perícia, você ganha 1 a mais.",
-    "tags": [
-     "sintetico"
-    ],
-    "effects": [
+      "text": "Dano de eletricidade"
+     },
+     {
+      "type": "note",
+      "text": "Corpo Frágil: ataques mirados contra você causam duas condições de membro."
+     },
+     {
+      "type": "note",
+      "text": "Atualizações de Software e Hardware: conta como Robô para requisitos de talento."
+     },
      {
       "type": "add",
       "target": "pericia_por_concessao",
@@ -1045,10 +1046,49 @@
     ]
    },
    {
+    "id": "maozinha",
+    "name": "Mãozinha",
+    "raca": "Robô",
+    "description": "Modelo de robô (obrigatório).\n\n\"O robô Mãozinha é um robô de manutenção e construção com múltiplos apêndices, que levita graças ao seu potente motor a jato. Eles eram geralmente usados como mordomos, trabalhadores de manutenção e, às vezes, também empregados como guardas antes da Grande Guerra.\"\n\n— Trecho da página \"Mister Handy\" na Fallout Fandom Wiki\n\nEmbora frequentemente seus nomes sugiram um gênero (\"Sr. Mãozinha\" ou \"Sra. Mãozinha\"), isso é simplesmente o nome do modelo. Mãozinhas têm múltiplas vozes, personalidades e podem apresentar-se em qualquer gênero.\n\nMembros e Ataques Mirados. Mãozinhas têm uma forma bem menos humana que a dos outros robôs: flutuam acima do chão, com três apêndices e três olhos presos a um grande núcleo redondo. Você tem três braços, três olhos e pode ter até três mãos, se escolher ter três Pinças na seção \"Incrível Aparelho Multitalentoso!\" abaixo. Você não tem cabeça, virilha nem pernas que possam ser alvo de ataques mirados ou decepadas. Em vez disso, ataques mirados aos seus olhos custam 2 PA a menos, e criaturas podem mirar no seu motor a jato. O motor a jato funciona exatamente como um ataque mirado nas pernas, exceto que o ataque custa 2 PA a mais. Se o seu motor a jato for decepado, você fica caído e não pode se mover até que ele seja reconectado.\n\nCombustível. Você precisa de combustível para continuar funcionando. A cada semana, 7 dias ou 168 horas, você pode gastar 6 PA para encher seu tanque com um galão de combustível ou seis itens de sucata de óleo, que são consumidos no uso. Se você não consumir um galão de combustível depois da semana, você deve ser bem-sucedido em um teste de Resistência com CD 12 para cada hora além das 168. A cada teste bem-sucedido, a CD aumenta em 2. Em uma falha, você fica inconsciente até que outra criatura encha seu tanque de combustível. Alternativamente, você pode instalar um núcleo de fusão no seu chassi. Se fizer isso, você pode funcionar por 30 dias sem precisar de combustível.\n\nMotor a Jato. Você flutua a alguns palmos do chão enquanto está ativo e em movimento. Você não aciona armadilhas de piso nem efeitos ativados por pisadas. Porém, se você for derrubado, ficar atordoado ou cair inconsciente, você cai no chão.\n\nIncrível Aparelho Multitalentoso. Mãozinhas são construídos com três ferramentas especiais, acopladas e embutidas em três dos seus braços. Essas ferramentas e armas podem ser modificadas como qualquer outra arma, exigem apenas uma mão para serem usadas e não custam PA para equipar ou guardar. Além disso, não podem ser removidas de você a menos que o braço ao qual a ferramenta ou arma está acoplada seja decepado. Escolha uma ferramenta ou arma da lista a seguir para cada um dos seus três braços; a mesma pode se repetir.\n\nSerra Circular. Uma serra mecânica alojada em estrutura de metal, usada para cortar madeira, comida, corpos ou detritos. Arma Corpo a Corpo. 5 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, x2, aplica sangramento. Propriedades Especiais: Talhar, Durável. (Veja Propriedades Especiais para detalhes).\n\nAlicates. Um conjunto grande e afiado de alicates para fiação, jardinagem ou abertura de caixas. Arma Corpo a Corpo. 3 Pontos de Ação. 1d4 perfurante. Acerto Crítico: 19, 20. 1d4 perfurante. Propriedades Especiais: Desmembrar, Durável. (Veja Propriedades Especiais para detalhes).\n\nBroca. Esta broca tem pontas intercambiáveis usadas para parafusos, porcas, cavilhas e furos-piloto. Arma Corpo a Corpo. 6 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, 2d8 cortante. Propriedades Especiais: Durável, Mutilar. (Veja Propriedades Especiais para detalhes).\n\nPinça. A Pinça é um apêndice com dois dedos que pode agarrar, torcer, operar, usar armas e segurar itens. Opera com eficiência semelhante a uma mão humana. Se você não tiver pelo menos duas dessas ferramentas, você efetivamente só tem uma mão. (Isso afeta armas com as propriedades Duas Mãos, Desajeitada ou Coice; veja Propriedades Especiais para detalhes.)\n\nMaçarico. Esta ferramenta de cozinha emite uma chama com um bico ajustável para cozinhar, flambar, cuidar de ninhos de insetos incômodos ou acender velas. Arma de Longo Alcance, linha de 3 m. 5 Pontos de Ação. 1d10 de fogo. Munição: combustível, 5 cargas. Propriedades Especiais: Área de Efeito, Durável, Incendiária. (Veja Propriedades Especiais para detalhes).",
+    "tags": [
+     "robo",
+     "tipo_de_robo"
+    ],
+    "effects": []
+   },
+   {
+    "id": "guardatron",
+    "name": "Guardatron",
+    "raca": "Robô",
+    "description": "Modelo de robô (obrigatório).\n\n\"Guardatron têm uma cúpula de vidro em cima de suas cabeças que atua como uma lente ocular que lhes permite escanear os arredores e agir de acordo. Embora Guardatrons sejam bastante lentos e pesados, sua parte superior do corpo pode girar até 90 graus para ambos os lados antes de terem que mudar de posição, o que significa que podem facilmente acompanhar seu alvo.\"\n\n— Trecho da página \"Protectron\" na Fallout Fandom Wiki\n\nMembros e Ataques Mirados. Guardatrons, embora ainda sejam uma esquisitice robótica, têm forma e apêndices semelhantes aos humanos. Você tem dois braços, duas pernas, duas mãos, dois pés, uma cabeça e um torso. Porém, você não tem olhos nem virilha que possam ser alvo de ataques mirados normais ou decepados.\n\nPlacas Reforçadas. Sua TD aumenta em 1 mesmo que você não esteja usando armadura.\n\nLento. Guardatrons só podem gastar no máximo 6 PA em movimento durante seus turnos.\n\nProteger e Servir. Guardatrons são construídos com uma ferramenta especial acoplada e embutida em um dos seus braços. Essas ferramentas e armas podem ser modificadas como qualquer outra arma, exigem apenas uma mão para serem usadas e não custam PA para equipar ou guardar. Além disso, não podem ser removidas de você a menos que o braço ao qual a ferramenta ou arma está acoplada seja decepado. Escolha uma ferramenta ou arma da lista a seguir para estar acoplada ao seu braço.\n\nTaser. Arma Corpo a Corpo. 4 Pontos de Ação. 2d8 de eletricidade. Acerto Crítico: 20, x2, aplica atordoado. Propriedades Especiais: Durável. (Veja Propriedades Especiais para detalhes).\n\nLaser. Arma de Longo Alcance, Alcance: x10/x20. 4 Pontos de Ação. 1d8 de laser. Acerto Crítico: 20, x2, aplica queimando. Munição: Célula de Fusão, 30 cargas. Propriedades Especiais: Durável, Semiautomática. (Veja Propriedades Especiais para detalhes).\n\nDesfibrilador. Ataque Desarmado. 6 PA. 2d8 de eletricidade. Acerto Crítico: 20, 1d8. Propriedades Especiais: Durável, Revitalizante. (Veja Propriedades Especiais para detalhes).\n\nSpray Criogênico. Arma de Longo Alcance, cone de 6 m. 5 PA. 2d4 de frio. Munição: Célula Criogênica, 3 cargas. Propriedades Especiais: Área de Efeito, Durável, Congelante, Lento. (Veja Propriedades Especiais para detalhes).\n\nPistola de Pregos. Arma de Longo Alcance, Alcance: x3/x10. 6 PA. 1 perfurante por ataque. Acerto Crítico: 20, 10 perfurante. Munição: Pregos, 90 cargas. Propriedades Especiais: Automática: 2, Durável. (Veja Propriedades Especiais para detalhes).",
+    "tags": [
+     "robo",
+     "tipo_de_robo"
+    ],
+    "effects": [
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     }
+    ]
+   },
+   {
+    "id": "miolotron",
+    "name": "Miolotron",
+    "raca": "Robô",
+    "description": "Modelo de robô (obrigatório).\n\n\"O Miolotron foi projetado do zero como uma plataforma multiuso para uso por militares e civis. Eles são mais flexíveis e poderosos do que os robôs, devido ao fato de que sua unidade central de controle e processamento é um cérebro real, em vez de uma cópia artificial. Juntamente com um Chassi de esteiras adaptável e armamentos poderosos, o Miolotron estava na vanguarda de uma nova revolução na robótica de combate.\"\n\n— Trecho da página \"Robobrain\" na Fallout Fandom Wiki\n\nMembros e Ataques Mirados. Miolotrons têm forma e apêndices humanoides. Você tem dois braços, duas mãos, uma cabeça e um torso. Porém, você não tem pernas, pés, olhos nem virilha que possam ser alvo de ataques mirados normais ou decepados. Em vez disso, criaturas podem mirar nos seus rolamentos para qualquer terreno. Os rolamentos funcionam exatamente como um ataque mirado nas pernas, exceto que não podem ser decepados.\n\nRolamentos para Qualquer Terreno. Você não precisa gastar PA extra para se mover por terreno difícil.\n\nNeurotransmissores. Você é vulnerável a dano de eletricidade. Além disso, quando sofrer dano de um ataque mirado na cabeça, você ganha duas condições em vez de uma.",
+    "tags": [
+     "robo",
+     "tipo_de_robo"
+    ],
+    "effects": []
+   },
+   {
     "id": "cepa_defeituosa",
     "name": "Cepa Defeituosa",
     "raca": "Super Mutante",
-    "description": "Devido aos diversos tipos de experimentos realizados em muitos humanos, quando você se tornou um Super Mutante, seu corpo foi fortalecido, mas sua mente foi enfraquecida. Seus valores de Força e Resistência aumentam em 2 e sua Capacidade de Carga aumenta em 40. Porém, seu valor de Inteligência é reduzido em 2 e não pode ser aumentado acima de 3.",
+    "description": "Cepa Defeituosa. Devido aos diversos tipos de experimentos realizados em muitos humanos, quando você se tornou um Super Mutante, seu corpo foi fortalecido, mas sua mente foi enfraquecida. Seus valores de Força e Resistência aumentam em 2 e sua Capacidade de Carga aumenta em 40. Porém, seu valor de Inteligência é reduzido em 2 e não pode ser aumentado acima de 3.\n\nSe o seu MJ permitir. Escolha uma variante; ela substitui o traço Força Superior.",
     "tags": [
      "super_mutante"
     ],
@@ -1078,37 +1118,16 @@
     "id": "noturno",
     "name": "Noturno",
     "raca": "Super Mutante",
-    "description": "Os Noturnos já serviram no exército do Mestre, mas agora vagam pelo ermo. Muito frequentemente sofrem de graves danos psicológicos, causados pelo uso prolongado de Ocultadores. Seu valor de Força aumenta em 1 e não pode ser menor que 6. Além disso, sua Capacidade de Carga aumenta em 40. Você também ganha uma habilidade chamada Campo Furtivo. Você pode gastar 3 pontos de ação no seu turno para tornar você e tudo o que está carregando invisível. Essa habilidade dura 1 minuto. Cada vez que usar essa habilidade depois do primeiro uso no dia, seu valor de Percepção diminui temporariamente em 1 por 24 horas (até o mínimo de 1). Seu valor de Percepção ser reduzido dessa forma não limita você no uso ou na escolha de talentos que tenham requisito de valor de Percepção. (Para referência rápida, seu valor de Percepção afeta seus testes de Sabotagem, Energia, Explosivos e Medicina, bem como seu bônus de Iniciativa e o alcance das suas armas.)",
+    "description": "Noturno. Os Noturnos já serviram no exército do Mestre, mas agora vagam pelo ermo. Muito frequentemente sofrem de graves danos psicológicos, causados pelo uso prolongado de Ocultadores. Seu valor de Força aumenta em 1 e não pode ser menor que 6. Além disso, sua Capacidade de Carga aumenta em 40. Você também ganha uma habilidade chamada Campo Furtivo. Você pode gastar 3 pontos de ação no seu turno para tornar você e tudo o que está carregando invisível. Essa habilidade dura 1 minuto. Cada vez que usar essa habilidade depois do primeiro uso no dia, seu valor de Percepção diminui temporariamente em 1 por 24 horas (até o mínimo de 1). Seu valor de Percepção ser reduzido dessa forma não limita você no uso ou na escolha de talentos que tenham requisito de valor de Percepção. (Para referência rápida, seu valor de Percepção afeta seus testes de Sabotagem, Energia, Explosivos e Medicina, bem como seu bônus de Iniciativa e o alcance das suas armas.)\n\nSe o seu MJ permitir. Escolha uma variante; ela substitui o traço Força Superior.",
     "tags": [
      "super_mutante"
     ],
-    "effects": []
-   }
-  ],
-  "subtipos": [
-   {
-    "id": "maozinha",
-    "name": "Mãozinha",
-    "description": "\"O robô Mãozinha é um robô de manutenção e construção com múltiplos apêndices, que levita graças ao seu potente motor a jato. Eles eram geralmente usados como mordomos, trabalhadores de manutenção e, às vezes, também empregados como guardas antes da Grande Guerra.\"\n\n— Trecho da página \"Mister Handy\" na Fallout Fandom Wiki\n\nEmbora frequentemente seus nomes sugiram um gênero (\"Sr. Mãozinha\" ou \"Sra. Mãozinha\"), isso é simplesmente o nome do modelo. Mãozinhas têm múltiplas vozes, personalidades e podem apresentar-se em qualquer gênero.\n\nMembros e Ataques Mirados. Mãozinhas têm uma forma bem menos humana que a dos outros robôs: flutuam acima do chão, com três apêndices e três olhos presos a um grande núcleo redondo. Você tem três braços, três olhos e pode ter até três mãos, se escolher ter três Pinças na seção \"Incrível Aparelho Multitalentoso!\" abaixo. Você não tem cabeça, virilha nem pernas que possam ser alvo de ataques mirados ou decepadas. Em vez disso, ataques mirados aos seus olhos custam 2 PA a menos, e criaturas podem mirar no seu motor a jato. O motor a jato funciona exatamente como um ataque mirado nas pernas, exceto que o ataque custa 2 PA a mais. Se o seu motor a jato for decepado, você fica caído e não pode se mover até que ele seja reconectado.\n\nCombustível. Você precisa de combustível para continuar funcionando. A cada semana, 7 dias ou 168 horas, você pode gastar 6 PA para encher seu tanque com um galão de combustível ou seis itens de sucata de óleo, que são consumidos no uso. Se você não consumir um galão de combustível depois da semana, você deve ser bem-sucedido em um teste de Resistência com CD 12 para cada hora além das 168. A cada teste bem-sucedido, a CD aumenta em 2. Em uma falha, você fica inconsciente até que outra criatura encha seu tanque de combustível. Alternativamente, você pode instalar um núcleo de fusão no seu chassi. Se fizer isso, você pode funcionar por 30 dias sem precisar de combustível.\n\nMotor a Jato. Você flutua a alguns palmos do chão enquanto está ativo e em movimento. Você não aciona armadilhas de piso nem efeitos ativados por pisadas. Porém, se você for derrubado, ficar atordoado ou cair inconsciente, você cai no chão.\n\nIncrível Aparelho Multitalentoso. Mãozinhas são construídos com três ferramentas especiais, acopladas e embutidas em três dos seus braços. Essas ferramentas e armas podem ser modificadas como qualquer outra arma, exigem apenas uma mão para serem usadas e não custam PA para equipar ou guardar. Além disso, não podem ser removidas de você a menos que o braço ao qual a ferramenta ou arma está acoplada seja decepado. Escolha uma ferramenta ou arma da lista a seguir para cada um dos seus três braços; a mesma pode se repetir.\n\nSerra Circular. Uma serra mecânica alojada em estrutura de metal, usada para cortar madeira, comida, corpos ou detritos. Arma Corpo a Corpo. 5 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, x2, aplica sangramento. Propriedades Especiais: Talhar, Durável. (Veja Propriedades Especiais para detalhes).\n\nAlicates. Um conjunto grande e afiado de alicates para fiação, jardinagem ou abertura de caixas. Arma Corpo a Corpo. 3 Pontos de Ação. 1d4 perfurante. Acerto Crítico: 19, 20. 1d4 perfurante. Propriedades Especiais: Desmembrar, Durável. (Veja Propriedades Especiais para detalhes).\n\nBroca. Esta broca tem pontas intercambiáveis usadas para parafusos, porcas, cavilhas e furos-piloto. Arma Corpo a Corpo. 6 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, 2d8 cortante. Propriedades Especiais: Durável, Mutilar. (Veja Propriedades Especiais para detalhes).\n\nPinça. A Pinça é um apêndice com dois dedos que pode agarrar, torcer, operar, usar armas e segurar itens. Opera com eficiência semelhante a uma mão humana. Se você não tiver pelo menos duas dessas ferramentas, você efetivamente só tem uma mão. (Isso afeta armas com as propriedades Duas Mãos, Desajeitada ou Coice; veja Propriedades Especiais para detalhes.)\n\nMaçarico. Esta ferramenta de cozinha emite uma chama com um bico ajustável para cozinhar, flambar, cuidar de ninhos de insetos incômodos ou acender velas. Arma de Longo Alcance, linha de 3 m. 5 Pontos de Ação. 1d10 de fogo. Munição: combustível, 5 cargas. Propriedades Especiais: Área de Efeito, Durável, Incendiária. (Veja Propriedades Especiais para detalhes).",
-    "effects": []
-   },
-   {
-    "id": "guardatron",
-    "name": "Guardatron",
-    "description": "\"Guardatron têm uma cúpula de vidro em cima de suas cabeças que atua como uma lente ocular que lhes permite escanear os arredores e agir de acordo. Embora Guardatrons sejam bastante lentos e pesados, sua parte superior do corpo pode girar até 90 graus para ambos os lados antes de terem que mudar de posição, o que significa que podem facilmente acompanhar seu alvo.\"\n\n— Trecho da página \"Protectron\" na Fallout Fandom Wiki\n\nMembros e Ataques Mirados. Guardatrons, embora ainda sejam uma esquisitice robótica, têm forma e apêndices semelhantes aos humanos. Você tem dois braços, duas pernas, duas mãos, dois pés, uma cabeça e um torso. Porém, você não tem olhos nem virilha que possam ser alvo de ataques mirados normais ou decepados.\n\nPlacas Reforçadas. Sua TD aumenta em 1 mesmo que você não esteja usando armadura.\n\nLento. Guardatrons só podem gastar no máximo 6 PA em movimento durante seus turnos.\n\nProteger e Servir. Guardatrons são construídos com uma ferramenta especial acoplada e embutida em um dos seus braços. Essas ferramentas e armas podem ser modificadas como qualquer outra arma, exigem apenas uma mão para serem usadas e não custam PA para equipar ou guardar. Além disso, não podem ser removidas de você a menos que o braço ao qual a ferramenta ou arma está acoplada seja decepado. Escolha uma ferramenta ou arma da lista a seguir para estar acoplada ao seu braço.\n\nTaser. Arma Corpo a Corpo. 4 Pontos de Ação. 2d8 de eletricidade. Acerto Crítico: 20, x2, aplica atordoado. Propriedades Especiais: Durável. (Veja Propriedades Especiais para detalhes).\n\nLaser. Arma de Longo Alcance, Alcance: x10/x20. 4 Pontos de Ação. 1d8 de laser. Acerto Crítico: 20, x2, aplica queimando. Munição: Célula de Fusão, 30 cargas. Propriedades Especiais: Durável, Semiautomática. (Veja Propriedades Especiais para detalhes).\n\nDesfibrilador. Ataque Desarmado. 6 PA. 2d8 de eletricidade. Acerto Crítico: 20, 1d8. Propriedades Especiais: Durável, Revitalizante. (Veja Propriedades Especiais para detalhes).\n\nSpray Criogênico. Arma de Longo Alcance, cone de 6 m. 5 PA. 2d4 de frio. Munição: Célula Criogênica, 3 cargas. Propriedades Especiais: Área de Efeito, Durável, Congelante, Lento. (Veja Propriedades Especiais para detalhes).\n\nPistola de Pregos. Arma de Longo Alcance, Alcance: x3/x10. 6 PA. 1 perfurante por ataque. Acerto Crítico: 20, 10 perfurante. Munição: Pregos, 90 cargas. Propriedades Especiais: Automática: 2, Durável. (Veja Propriedades Especiais para detalhes).",
     "effects": [
      {
-      "type": "add",
-      "target": "td",
-      "value": "1"
+      "type": "note",
+      "text": "Campo Furtivo: 3 PA para ficar invisível por 1 minuto; cada uso extra no dia tira 1 de Percepção por 24 horas."
      }
     ]
-   },
-   {
-    "id": "miolotron",
-    "name": "Miolotron",
-    "description": "\"O Miolotron foi projetado do zero como uma plataforma multiuso para uso por militares e civis. Eles são mais flexíveis e poderosos do que os robôs, devido ao fato de que sua unidade central de controle e processamento é um cérebro real, em vez de uma cópia artificial. Juntamente com um Chassi de esteiras adaptável e armamentos poderosos, o Miolotron estava na vanguarda de uma nova revolução na robótica de combate.\"\n\n— Trecho da página \"Robobrain\" na Fallout Fandom Wiki\n\nMembros e Ataques Mirados. Miolotrons têm forma e apêndices humanoides. Você tem dois braços, duas mãos, uma cabeça e um torso. Porém, você não tem pernas, pés, olhos nem virilha que possam ser alvo de ataques mirados normais ou decepados. Em vez disso, criaturas podem mirar nos seus rolamentos para qualquer terreno. Os rolamentos funcionam exatamente como um ataque mirado nas pernas, exceto que não podem ser decepados.\n\nRolamentos para Qualquer Terreno. Você não precisa gastar PA extra para se mover por terreno difícil.\n\nNeurotransmissores. Você é vulnerável a dano de eletricidade. Além disso, quando sofrer dano de um ataque mirado na cabeça, você ganha duas condições em vez de uma.",
-    "effects": []
    }
   ],
   "antecedentes": [
@@ -1117,7 +1136,7 @@
     "name": "Antecedente Personalizado",
     "pericias": "",
     "traco": "",
-    "description": "Se preferir criar sua própria história dentro do pós-apocalipse, escolha esta opção em vez das listadas abaixo.\n\nVocê pode escolher o equipamento inicial de qualquer antecedente, ou escolher seus próprios itens a critério do seu MJ, com um orçamento de 850 tampinhas.\n\nEscolha três perícias para receber +2: some os pontos na tela de perícias.",
+    "description": "Se preferir criar sua própria história dentro do pós-apocalipse, escolha esta opção em vez das listadas abaixo.\n\nVocê pode escolher o equipamento inicial de qualquer antecedente, ou escolher seus próprios itens a critério do seu MJ, com um orçamento de 850 tampinhas.\n\nEscolha três perícias para receber +2 e um traço à sua escolha.",
     "effects": []
    },
    {
@@ -1125,7 +1144,7 @@
     "name": "Cultista",
     "pericias": "Corpo a Corpo, Persuasão, Furtividade",
     "traco": "Visão do Além",
-    "description": "Tenha você nascido nesta vida ou tenha encontrado esperança quando atingiu o fundo do poço, você está a serviço de um grupo de seguidores que recrutam zelosamente todos que encontram para sua doutrina. Este novo mundo, nascido do fogo, é uma dádiva. Só agora que o mundo foi purificado a verdade pode ser vista. Você vagueia pelo ermo em busca de sinais e aguarda ordens do grande além.\n\nPerícias: +2 em Corpo a Corpo, Persuasão, Furtividade.\n\nTraço de antecedente: Visão do Além. Você costuma ouvir os sussurros do grande além, recebendo visões paranormais de profecias. Quando você termina um descanso de pelo menos 8 horas, pode rolar um d20 e anotar o resultado: esta é a sua rolagem de Visão. Com essa rolagem de Visão, você pode substituir qualquer rolagem de ataque, teste de perícia ou teste de atributo feito por você ou por uma criatura que você consiga ver. Depois de usar essa rolagem de Visão, você não pode usá-la de novo até descansar novamente por pelo menos 8 horas. Porém, você começa cada jogo com uma das suas Tampas de Karma virada.\n\nEquipamento (Cultista Humano): x1 armadura de tecido (com melhoria Chumbada nível 1), x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x3 cram, x1 TiraRad (Diluído), x1 Rad-X, x1 pó curativo, x3 água suja, x1 água purificada e x50 tampinhas.\n\nEquipamento (Cultista Necrótico ou Super Mutante): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x3 cram, x4 água suja, x1 Stimpak, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Cultista Sintético Gen 2): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x1 Stimpak (Diluído), x1 RobCo ConsertaJá 1.0, x1 overclock físico, x1 limpa cache e x50 tampinhas.\n\nEquipamento (Cultista Robô): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x2 RobCo ConsertaJá 1.0, x1 overclock físico, x1 limpa cache e x50 tampinhas.",
+    "description": "Tenha você nascido nesta vida ou tenha encontrado esperança quando atingiu o fundo do poço, você está a serviço de um grupo de seguidores que recrutam zelosamente todos que encontram para sua doutrina. Este novo mundo, nascido do fogo, é uma dádiva. Só agora que o mundo foi purificado a verdade pode ser vista. Você vagueia pelo ermo em busca de sinais e aguarda ordens do grande além.\n\nPerícias: +2 em Corpo a Corpo, Persuasão, Furtividade.\n\nTraço de antecedente: Visão do Além (vem junto e aparece em Traços).\n\nEquipamento (Cultista Humano): x1 armadura de tecido (com melhoria Chumbada nível 1), x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x3 cram, x1 TiraRad (Diluído), x1 Rad-X, x1 pó curativo, x3 água suja, x1 água purificada e x50 tampinhas.\n\nEquipamento (Cultista Necrótico ou Super Mutante): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x3 cram, x4 água suja, x1 Stimpak, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Cultista Sintético Gen 2): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x1 Stimpak (Diluído), x1 RobCo ConsertaJá 1.0, x1 overclock físico, x1 limpa cache e x50 tampinhas.\n\nEquipamento (Cultista Robô): x1 armadura de couro, x1 faca, x1 pistola de sucata de ação por ferrolho, x15 munição 9mm, x1 mochila, x1 corrente, x2 RobCo ConsertaJá 1.0, x1 overclock físico, x1 limpa cache e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -1141,6 +1160,10 @@
       "type": "add",
       "target": "furtividade",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/visao_do_alem"
      }
     ],
     "starting_items": [
@@ -1382,7 +1405,7 @@
     "name": "Doutor",
     "pericias": "Sabotagem, Medicina, Ciência",
     "traco": "Não Prejudique",
-    "description": "Desde jovem, você sempre quis ajudar os outros. Aprendeu a ter mão firme e manter a calma sob pressão com livros do Velho Mundo e outros doutores experientes. O trabalho é árduo, as pausas são raras e as pessoas estão desesperadas. Você vagueia pelo ermo em busca de quem ajudar, ou pelas tampinhas que oferecem.\n\nPerícias: +2 em Sabotagem, Medicina, Ciência.\n\nTraço de antecedente: Não Prejudique. \"Primum non nocere\", você fez o juramento de Hipócrates e pretende curar os outros. Sempre que você restaurar pontos de vida, você restaura 1 ponto de vida adicional. Sempre que você atacar outra criatura e causar dano a ela, o dano é reduzido em 1, até um mínimo de 1.\n\nEquipamento (Doutor Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 faca com quatro Níveis de Desgaste, x1 seringa, x2 carregadores de Stimpak, x1 seringa de Articulação Travada, x1 mochila, x1 kit de primeiros socorros, x2 Stimpaks (Diluídos), x1 TiraRad (Diluído), x1 Rad-X, x1 pó curativo, x1 saco de dormir, x1 barraca individual, x1 copo de macarrão, x1 InstaPurê, x2 água purificada e x50 tampinhas.\n\nEquipamento (Doutor Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 faca com quatro Níveis de Desgaste, x1 seringa, x2 carregadores de Stimpak, x1 seringa de Articulação Travada, x1 mochila, x1 kit de primeiros socorros, x2 RobCo ConsertaJá 1.0, x2 RobCo ConsertaJá 2.0, x1 TiraRad (Diluído), x1 Rad-X, x2 pó curativo e x50 tampinhas.",
+    "description": "Desde jovem, você sempre quis ajudar os outros. Aprendeu a ter mão firme e manter a calma sob pressão com livros do Velho Mundo e outros doutores experientes. O trabalho é árduo, as pausas são raras e as pessoas estão desesperadas. Você vagueia pelo ermo em busca de quem ajudar, ou pelas tampinhas que oferecem.\n\nPerícias: +2 em Sabotagem, Medicina, Ciência.\n\nTraço de antecedente: Não Prejudique (vem junto e aparece em Traços).\n\nEquipamento (Doutor Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 faca com quatro Níveis de Desgaste, x1 seringa, x2 carregadores de Stimpak, x1 seringa de Articulação Travada, x1 mochila, x1 kit de primeiros socorros, x2 Stimpaks (Diluídos), x1 TiraRad (Diluído), x1 Rad-X, x1 pó curativo, x1 saco de dormir, x1 barraca individual, x1 copo de macarrão, x1 InstaPurê, x2 água purificada e x50 tampinhas.\n\nEquipamento (Doutor Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 faca com quatro Níveis de Desgaste, x1 seringa, x2 carregadores de Stimpak, x1 seringa de Articulação Travada, x1 mochila, x1 kit de primeiros socorros, x2 RobCo ConsertaJá 1.0, x2 RobCo ConsertaJá 2.0, x1 TiraRad (Diluído), x1 Rad-X, x2 pó curativo e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -1398,6 +1421,10 @@
       "type": "add",
       "target": "ciencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/nao_prejudique"
      }
     ],
     "starting_items": [
@@ -1560,7 +1587,7 @@
     "name": "Errante",
     "pericias": "Sabotagem, Furtividade, Pugilismo",
     "traco": "Rato de Rua",
-    "description": "Nascido neste mundo podre e tratado como lixo, você vagueou de cidade em cidade, de abrigo em abrigo, tentando sobreviver. Os únicos amigos que teve foram ladrões, mendigos ou coisa pior. Você nunca conheceu riquezas e sobrevive apenas às custas dos outros. Tudo o que você possui tem sua própria história de como foi reivindicado. As coisas vão mudar agora; você toma as rédeas de sua vida pela primeira vez para consertá-la.\n\nPerícias: +2 em Sabotagem, Furtividade, Pugilismo.\n\nTraço de antecedente: Rato de Rua. Pelo tempo que passou em assentamentos, você sabe como parecer parte do cenário e se misturar. Você tem vantagem em qualquer teste de Furtividade ou Sabotagem que fizer em um assentamento, cidade, posto avançado ou qualquer local povoado. Porém, sua reputação duvidosa fez os outros pensarem duas vezes antes de ajudar você. Você tem desvantagem em qualquer teste de Persuasão ou Barganha que fizer em um assentamento, cidade, posto avançado ou qualquer local povoado.\n\nEquipamento (Errante Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x5 ração de cachorro enlatada, x1 iguana no espeto, x2 pó curativo, x4 água suja, x2 água purificada, x1 gazua, x1 barraca individual, x1 saco de dormir, x1 uísque, x1 Corretivo, x2 Jato, x3 cigarros, x1 Testo+, x1 café e x50 tampinhas.\n\nEquipamento (Errante Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x1 gazua, x2 RobCo ConsertaJá 1.0, x2 overclock físico, x2 limpa cache, x1 Código de IA Militar, x1 lanterna, x1 célula de energia, x1 revista de perícia ¡La Fantoma! e x50 tampinhas.",
+    "description": "Nascido neste mundo podre e tratado como lixo, você vagueou de cidade em cidade, de abrigo em abrigo, tentando sobreviver. Os únicos amigos que teve foram ladrões, mendigos ou coisa pior. Você nunca conheceu riquezas e sobrevive apenas às custas dos outros. Tudo o que você possui tem sua própria história de como foi reivindicado. As coisas vão mudar agora; você toma as rédeas de sua vida pela primeira vez para consertá-la.\n\nPerícias: +2 em Sabotagem, Furtividade, Pugilismo.\n\nTraço de antecedente: Rato de Rua (vem junto e aparece em Traços).\n\nEquipamento (Errante Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x5 ração de cachorro enlatada, x1 iguana no espeto, x2 pó curativo, x4 água suja, x2 água purificada, x1 gazua, x1 barraca individual, x1 saco de dormir, x1 uísque, x1 Corretivo, x2 Jato, x3 cigarros, x1 Testo+, x1 café e x50 tampinhas.\n\nEquipamento (Errante Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x1 gazua, x2 RobCo ConsertaJá 1.0, x2 overclock físico, x2 limpa cache, x1 Código de IA Militar, x1 lanterna, x1 célula de energia, x1 revista de perícia ¡La Fantoma! e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -1576,6 +1603,10 @@
       "type": "add",
       "target": "pugilismo",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/rato_de_rua"
      }
     ],
     "starting_items": [
@@ -1758,7 +1789,7 @@
     "name": "Artista",
     "pericias": "Barganha, Persuasão, Intimidação",
     "traco": "Um Momento de Trégua",
-    "description": "Talentoso desde jovem, você maravilha os habitantes do ermo com sua habilidade excepcional de atuar. Contudo, esta vida não é fácil. Você já foi extorquido, enganado, visado e feito de tolo mais de uma vez. Quando você é uma estrela, todos querem brilhar tanto quanto você.\n\nVocê vagueia pelo ermo buscando o próximo show, ou talvez prefira manter seus talentos em espera por enquanto.\n\nPerícias: +2 em Barganha, Persuasão, Intimidação.\n\nTraço de antecedente: Um Momento de Trégua. Você é um talento natural para levantar o moral. Sempre que você e outros personagens jogadores descansarem, você toca música, canta uma canção, conta uma história ou faz um discurso inspirador. Você e cada outro personagem jogador que está descansando ganham pontos de estamina temporários iguais ao seu valor de Carisma. Porém, a Furtividade da Equipe de você e de cada personagem jogador é reduzida em 2 enquanto você estiver a até 150 m deles.\n\nEquipamento (Artista Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 canivete, x1 pistola 10mm com três Níveis de Desgaste, x10 munição 10mm, x1 mochila, x2 dinamite, x3 sinalizadores, x3 Bife à Salisbury, x1 Salada do Deserto, x1 Nuka-Cola, x1 Desertor Sujo, x1 pó curativo, x1 Stimpak, x2 água purificada e x50 tampinhas.\n\nEquipamento (Artista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 canivete, x1 pistola 10mm com dois Níveis de Desgaste, x20 munição 10mm, x1 mochila, x2 dinamite, x3 sinalizadores, x2 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Talentoso desde jovem, você maravilha os habitantes do ermo com sua habilidade excepcional de atuar. Contudo, esta vida não é fácil. Você já foi extorquido, enganado, visado e feito de tolo mais de uma vez. Quando você é uma estrela, todos querem brilhar tanto quanto você.\n\nVocê vagueia pelo ermo buscando o próximo show, ou talvez prefira manter seus talentos em espera por enquanto.\n\nPerícias: +2 em Barganha, Persuasão, Intimidação.\n\nTraço de antecedente: Um Momento de Trégua (vem junto e aparece em Traços).\n\nEquipamento (Artista Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 canivete, x1 pistola 10mm com três Níveis de Desgaste, x10 munição 10mm, x1 mochila, x2 dinamite, x3 sinalizadores, x3 Bife à Salisbury, x1 Salada do Deserto, x1 Nuka-Cola, x1 Desertor Sujo, x1 pó curativo, x1 Stimpak, x2 água purificada e x50 tampinhas.\n\nEquipamento (Artista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 canivete, x1 pistola 10mm com dois Níveis de Desgaste, x20 munição 10mm, x1 mochila, x2 dinamite, x3 sinalizadores, x2 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -1774,6 +1805,10 @@
       "type": "add",
       "target": "intimidacao",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/um_momento_de_tregua"
      }
     ],
     "starting_items": [
@@ -1906,7 +1941,7 @@
     "name": "Fazendeiro",
     "pericias": "Criação, Intimidação, Sobrevivência",
     "traco": "Endurecido pela Terra",
-    "description": "Nascido em uma grande porção de terra, herdada da família, ou dada por um benfeitor rico. Sua vida se resume a trabalhar na terra para produzir um dos recursos mais valiosos do ermo: comida. Você sabe cozinhar, quais criaturas têm melhor sabor e como consertar quase tudo. Ser tão esperto no ermo atrai olhares, e você já viu sua parcela de pessoas que farão de tudo para pegar o que você construiu. Algo aconteceu com sua plantação, seus animais adoeceram ou algum desses desesperados finalmente incendiou sua casa. De qualquer forma, você vagueia pelo ermo para reconstruir ou reparar sua fazenda.\n\nPerícias: +2 em Criação, Intimidação, Sobrevivência.\n\nTraço de antecedente: Endurecido pela Terra. Você conheceu dias longos e trabalho duro: você tem vantagem sempre que fizer um teste de Resistência para resistir a um nível de Fome ou Fadiga. Porém, você fica morrendo se chegar a 8 níveis de Fome ou Fadiga, em vez de 10.\n\nEquipamento (Fazendeiro Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 forcado com cinco Níveis de Desgaste, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 pó curativo, x5 batatas, x5 tomates, x5 mutamaçã, x4 água purificada e x50 tampinhas.\n\nEquipamento (Fazendeiro Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 forcado com cinco Níveis de Desgaste, x1 foice, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 RobCo ConsertaJá 1.0, x2 batatas, x2 tomates, x1 mutamaçã e x50 tampinhas.",
+    "description": "Nascido em uma grande porção de terra, herdada da família, ou dada por um benfeitor rico. Sua vida se resume a trabalhar na terra para produzir um dos recursos mais valiosos do ermo: comida. Você sabe cozinhar, quais criaturas têm melhor sabor e como consertar quase tudo. Ser tão esperto no ermo atrai olhares, e você já viu sua parcela de pessoas que farão de tudo para pegar o que você construiu. Algo aconteceu com sua plantação, seus animais adoeceram ou algum desses desesperados finalmente incendiou sua casa. De qualquer forma, você vagueia pelo ermo para reconstruir ou reparar sua fazenda.\n\nPerícias: +2 em Criação, Intimidação, Sobrevivência.\n\nTraço de antecedente: Endurecido pela Terra (vem junto e aparece em Traços).\n\nEquipamento (Fazendeiro Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 forcado com cinco Níveis de Desgaste, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 pó curativo, x5 batatas, x5 tomates, x5 mutamaçã, x4 água purificada e x50 tampinhas.\n\nEquipamento (Fazendeiro Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 forcado com cinco Níveis de Desgaste, x1 foice, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 RobCo ConsertaJá 1.0, x2 batatas, x2 tomates, x1 mutamaçã e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -1922,6 +1957,10 @@
       "type": "add",
       "target": "sobrevivencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/endurecido_pela_terra"
      }
     ],
     "starting_items": [
@@ -2044,7 +2083,7 @@
     "name": "Guarda",
     "pericias": "Disparo, Persuasão, Corpo a Corpo",
     "traco": "Vigilância Atenta",
-    "description": "\"É um trabalho fácil\", você se lembra de ter ouvido de alguns amigos. Então você se lembra dos incontáveis necróticos que teve que incinerar, ou da ardência nos olhos ao vigiar ao amanhecer, ou das famílias que teve que afastar da segurança. Você foi treinado para proteger aqueles que o pagavam. Trabalhando ao lado de uma equipe que te apoiava nas situações mais difíceis. Mas desde então você deixou seu trabalho, colocando suas habilidades em uso no ermo.\n\nPerícias: +2 em Disparo, Persuasão, Corpo a Corpo.\n\nTraço de antecedente: Vigilância Atenta. Você aprendeu a não hesitar em momentos de perigo. Sempre que a Iniciativa for determinada, sua posição no turno é colocada automaticamente antes da criatura que, na ordem de turnos, está logo antes de você e que não seja um personagem jogador, independentemente da rolagem dela. Porém, seu bônus de Iniciativa é reduzido em 1.\n\nEquipamento (Guarda Humano, Necrótico ou Super Mutante): x1 armadura de metal com um Nível de Desgaste, x1 cassetete com dois Níveis de Desgaste, x1 pistola 9mm, x20 munição 9mm, x10 munição de borracha 9mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 binóculo, x1 Stimpak (Diluído), x3 água purificada, x2 Feijoada, x1 café, x2 rosquinhas e x50 tampinhas.\n\nEquipamento (Guarda Sintético Gen 2 ou Robô): x1 armadura de metal com um Nível de Desgaste, x1 cassetete com dois Níveis de Desgaste, x1 pistola 9mm, x35 munição 9mm, x20 munição de borracha 9mm, x1 mochila, x1 binóculo, x2 RobCo ConsertaJá 1.0, x1 revista Excedentes Militares, x1 limpa cache e x50 tampinhas.",
+    "description": "\"É um trabalho fácil\", você se lembra de ter ouvido de alguns amigos. Então você se lembra dos incontáveis necróticos que teve que incinerar, ou da ardência nos olhos ao vigiar ao amanhecer, ou das famílias que teve que afastar da segurança. Você foi treinado para proteger aqueles que o pagavam. Trabalhando ao lado de uma equipe que te apoiava nas situações mais difíceis. Mas desde então você deixou seu trabalho, colocando suas habilidades em uso no ermo.\n\nPerícias: +2 em Disparo, Persuasão, Corpo a Corpo.\n\nTraço de antecedente: Vigilância Atenta (vem junto e aparece em Traços).\n\nEquipamento (Guarda Humano, Necrótico ou Super Mutante): x1 armadura de metal com um Nível de Desgaste, x1 cassetete com dois Níveis de Desgaste, x1 pistola 9mm, x20 munição 9mm, x10 munição de borracha 9mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 binóculo, x1 Stimpak (Diluído), x3 água purificada, x2 Feijoada, x1 café, x2 rosquinhas e x50 tampinhas.\n\nEquipamento (Guarda Sintético Gen 2 ou Robô): x1 armadura de metal com um Nível de Desgaste, x1 cassetete com dois Níveis de Desgaste, x1 pistola 9mm, x35 munição 9mm, x20 munição de borracha 9mm, x1 mochila, x1 binóculo, x2 RobCo ConsertaJá 1.0, x1 revista Excedentes Militares, x1 limpa cache e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -2060,6 +2099,10 @@
       "type": "add",
       "target": "corpo_a_corpo",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/vigilancia_atenta"
      }
     ],
     "starting_items": [
@@ -2206,7 +2249,7 @@
     "name": "Eremita",
     "pericias": "Explosivos, Medicina, Sobrevivência",
     "traco": "Recluso",
-    "description": "Seja por escolha ou exílio, você viveu a maior parte da sua vida no meio do ermo, longe de qualquer civilização. Você aprendeu a manter vivo o único que importa: você. Construindo armadilhas, memorizando a terra e sobrevivendo no limite do mundo. Você viu criaturas e fenômenos que ninguém acreditaria. Você finalmente saiu de sua reclusão para garantir que o que aprendeu não morra com você.\n\nPerícias: +2 em Explosivos, Medicina, Sobrevivência.\n\nTraço de antecedente: Recluso. Você passou mais tempo aprimorando suas perícias do que aprendendo coisas novas. Em vez de ganhar um talento no 1º nível, cinco modificadores de perícia diferentes, à sua escolha, aumentam em 2.\n\nEquipamento (Eremita Humano): x1 armadura improvisada com dois Níveis de Desgaste, x1 lança caseira, x2 dinamite, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 armadilha de urso, x1 Costeletas de Vira-Lata, x1 bife de lagarto, x1 TiraRad (Diluído), x3 pó curativo, x1 kit de primeiros socorros, x1 água purificada, x2 água suja e x50 tampinhas.\n\nEquipamento (Eremita Necrótico ou Super Mutante): x1 armadura improvisada com dois Níveis de Desgaste, x1 lança caseira, x2 dinamite, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 armadilha de urso, x1 Costeletas de Vira-Lata, x1 bife de lagarto, x1 iguana no espeto, x4 pó curativo, x1 kit de primeiros socorros, x4 água suja e x50 tampinhas.\n\nEquipamento (Eremita Sintético Gen 2 ou Robô): x1 armadura improvisada, x1 lança caseira com modificação Fortificada, x3 dinamite, x1 mochila, x1 armadilha de urso, x2 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Seja por escolha ou exílio, você viveu a maior parte da sua vida no meio do ermo, longe de qualquer civilização. Você aprendeu a manter vivo o único que importa: você. Construindo armadilhas, memorizando a terra e sobrevivendo no limite do mundo. Você viu criaturas e fenômenos que ninguém acreditaria. Você finalmente saiu de sua reclusão para garantir que o que aprendeu não morra com você.\n\nPerícias: +2 em Explosivos, Medicina, Sobrevivência.\n\nTraço de antecedente: Recluso (vem junto e aparece em Traços).\n\nEquipamento (Eremita Humano): x1 armadura improvisada com dois Níveis de Desgaste, x1 lança caseira, x2 dinamite, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 armadilha de urso, x1 Costeletas de Vira-Lata, x1 bife de lagarto, x1 TiraRad (Diluído), x3 pó curativo, x1 kit de primeiros socorros, x1 água purificada, x2 água suja e x50 tampinhas.\n\nEquipamento (Eremita Necrótico ou Super Mutante): x1 armadura improvisada com dois Níveis de Desgaste, x1 lança caseira, x2 dinamite, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 armadilha de urso, x1 Costeletas de Vira-Lata, x1 bife de lagarto, x1 iguana no espeto, x4 pó curativo, x1 kit de primeiros socorros, x4 água suja e x50 tampinhas.\n\nEquipamento (Eremita Sintético Gen 2 ou Robô): x1 armadura improvisada, x1 lança caseira com modificação Fortificada, x3 dinamite, x1 mochila, x1 armadilha de urso, x2 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -2222,6 +2265,10 @@
       "type": "add",
       "target": "sobrevivencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/recluso"
      }
     ],
     "starting_items": [
@@ -2411,7 +2458,7 @@
     "name": "Jornalista",
     "pericias": "Sabotagem, Persuasão, Furtividade",
     "traco": "Persistente",
-    "description": "Embora muitos vejam a carreira de repórter como algo do Velho Mundo, você discorda veementemente. A verdade é importante no ermo; este mundo ainda tem sua parcela de pessoas competindo para sobreviver. E nas grandes cidades, muitos lucram às custas dos outros ou deixam a história cair no esquecimento. É seu trabalho garantir que o povo esteja devidamente informado, mesmo que você precise quebrar algumas leis para chegar à verdade. Mas ultimamente você não tem visto muita ação. Você se aventura no ermo para encontrar a história perfeita.\n\nPerícias: +2 em Sabotagem, Persuasão, Furtividade.\n\nTraço de antecedente: Persistente. Sempre que você virar uma Tampa de Karma para rolar de novo um teste de perícia, você faz a rolagem com vantagem. Porém, suas Tampas de Karma não desviram mais sempre que você rolar 1 em um d20.\n\nEquipamento (Jornalista Humano): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com três Níveis de Desgaste, x13 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x3 cram, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak (Diluído), x3 água purificada e x50 tampinhas.\n\nEquipamento (Jornalista Necrótico ou Super Mutante): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com três Níveis de Desgaste, x13 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x3 cram, x1 Stimpak (Diluído), x1 calmex, x3 água purificada e x50 tampinhas.\n\nEquipamento (Jornalista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com dois Níveis de Desgaste, x26 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x1 RobCo ConsertaJá 1.0, x1 Desviador de Arrefecimento e x50 tampinhas.",
+    "description": "Embora muitos vejam a carreira de repórter como algo do Velho Mundo, você discorda veementemente. A verdade é importante no ermo; este mundo ainda tem sua parcela de pessoas competindo para sobreviver. E nas grandes cidades, muitos lucram às custas dos outros ou deixam a história cair no esquecimento. É seu trabalho garantir que o povo esteja devidamente informado, mesmo que você precise quebrar algumas leis para chegar à verdade. Mas ultimamente você não tem visto muita ação. Você se aventura no ermo para encontrar a história perfeita.\n\nPerícias: +2 em Sabotagem, Persuasão, Furtividade.\n\nTraço de antecedente: Persistente (vem junto e aparece em Traços).\n\nEquipamento (Jornalista Humano): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com três Níveis de Desgaste, x13 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x3 cram, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak (Diluído), x3 água purificada e x50 tampinhas.\n\nEquipamento (Jornalista Necrótico ou Super Mutante): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com três Níveis de Desgaste, x13 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x3 cram, x1 Stimpak (Diluído), x1 calmex, x3 água purificada e x50 tampinhas.\n\nEquipamento (Jornalista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 canivete, x1 pistola 9mm com dois Níveis de Desgaste, x26 munição 9mm, x1 mochila, x1 lanterna, x1 célula de energia, x1 bandoleira, x1 gazua, x1 RobCo ConsertaJá 1.0, x1 Desviador de Arrefecimento e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -2427,6 +2474,10 @@
       "type": "add",
       "target": "furtividade",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/persistente"
      }
     ],
     "starting_items": [
@@ -2645,7 +2696,7 @@
     "name": "Operário",
     "pericias": "Criação, Persuasão, Corpo a Corpo",
     "traco": "Longos Dias, Longas Noites",
-    "description": "Longos dias, bom pagamento. No início, seu corpo doía ao voltar para casa. Mas agora você se acostumou ao trabalho pesado que fez dia após dia. Seja movendo pertences, reconstruindo casas, plantando sementes, entregando água, etc. Você ajudou os outros e a si mesmo com trabalho honesto. Mas os empregos ficaram escassos, e agora você se virou para vagar pelo ermo em busca de melhor sorte.\n\nPerícias: +2 em Criação, Persuasão, Corpo a Corpo.\n\nTraço de antecedente: Longos Dias, Longas Noites. Você está acostumado a forçar o corpo e aguentar trabalho físico: sempre que seus pontos de estamina aumentarem ao subir de nível, você ganha um ponto extra. Porém, você ganha um nível adicional de fadiga sempre que falhar em um teste de Resistência para resistir ao sono.\n\nEquipamento (Operário Humano ou Super Mutante): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x1 batatinhas crocantes, x2 InstaPurê, x1 ensopado de mutacervo, x2 água purificada, x2 pó curativo e x50 tampinhas.\n\nEquipamento (Operário Necrótico): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x1 batatinhas crocantes, x2 InstaPurê, x1 ensopado de mutacervo, x4 água suja, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Operário Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 corda, x1 lanterna, x1 célula de energia, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Longos dias, bom pagamento. No início, seu corpo doía ao voltar para casa. Mas agora você se acostumou ao trabalho pesado que fez dia após dia. Seja movendo pertences, reconstruindo casas, plantando sementes, entregando água, etc. Você ajudou os outros e a si mesmo com trabalho honesto. Mas os empregos ficaram escassos, e agora você se virou para vagar pelo ermo em busca de melhor sorte.\n\nPerícias: +2 em Criação, Persuasão, Corpo a Corpo.\n\nTraço de antecedente: Longos Dias, Longas Noites (vem junto e aparece em Traços).\n\nEquipamento (Operário Humano ou Super Mutante): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x1 batatinhas crocantes, x2 InstaPurê, x1 ensopado de mutacervo, x2 água purificada, x2 pó curativo e x50 tampinhas.\n\nEquipamento (Operário Necrótico): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x1 batatinhas crocantes, x2 InstaPurê, x1 ensopado de mutacervo, x4 água suja, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Operário Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pé de cabra, x1 pistola de sucata com dois Níveis de Desgaste, x10 munição 9mm, x1 mochila, x1 corda, x1 lanterna, x1 célula de energia, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -2661,6 +2712,10 @@
       "type": "add",
       "target": "corpo_a_corpo",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/longos_dias_longas_noites"
      }
     ],
     "starting_items": [
@@ -2874,7 +2929,7 @@
     "name": "Mecânico",
     "pericias": "Criação, Disparo, Ciência",
     "traco": "Manutenção Adequada",
-    "description": "Em um mundo em ruínas, você é um dos poucos fios que o mantêm unido. Consertar coisas é sua especialidade, e desde jovem você sempre se fascinou com o funcionamento das coisas, especialmente os mistérios da tecnologia da Velha Guerra. Você já lubrificou incontáveis armas, apertou gatilhos, sucateou peças velhas por novas e usou toneladas métricas de fita isolante. Você percebe que suas habilidades seriam mais bem utilizadas no ermo.\n\nPerícias: +2 em Criação, Disparo, Ciência.\n\nTraço de antecedente: Manutenção Adequada. Você sabe cuidar bem do seu equipamento. Sempre que qualquer uma das suas armas ou armaduras não tiver Níveis de Desgaste, o primeiro Nível de Desgaste que ganharem é ignorado. Porém, suas armas e armaduras deixam de funcionar quando têm 8 Níveis de Desgaste, em vez de 10.\n\nEquipamento (Mecânico Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 chave inglesa, x1 revólver de sucata, x10 munição .44 Magnum, x1 mochila, x1 bandoleira, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x3 cram, x3 água purificada, x1 kit de reparo de arma e x50 tampinhas.\n\nEquipamento (Mecânico Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 chave inglesa, x1 revólver de sucata, x15 munição .44 Magnum, x1 mochila, x1 bandoleira, x1 corda, x1 RobCo ConsertaJá 1.0, x2 kit de reparo de arma e x50 tampinhas.",
+    "description": "Em um mundo em ruínas, você é um dos poucos fios que o mantêm unido. Consertar coisas é sua especialidade, e desde jovem você sempre se fascinou com o funcionamento das coisas, especialmente os mistérios da tecnologia da Velha Guerra. Você já lubrificou incontáveis armas, apertou gatilhos, sucateou peças velhas por novas e usou toneladas métricas de fita isolante. Você percebe que suas habilidades seriam mais bem utilizadas no ermo.\n\nPerícias: +2 em Criação, Disparo, Ciência.\n\nTraço de antecedente: Manutenção Adequada (vem junto e aparece em Traços).\n\nEquipamento (Mecânico Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 chave inglesa, x1 revólver de sucata, x10 munição .44 Magnum, x1 mochila, x1 bandoleira, x1 cantil, x1 corda, x1 saco de dormir, x1 barraca individual, x3 cram, x3 água purificada, x1 kit de reparo de arma e x50 tampinhas.\n\nEquipamento (Mecânico Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 chave inglesa, x1 revólver de sucata, x15 munição .44 Magnum, x1 mochila, x1 bandoleira, x1 corda, x1 RobCo ConsertaJá 1.0, x2 kit de reparo de arma e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -2890,6 +2945,10 @@
       "type": "add",
       "target": "ciencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/manutencao_adequada"
      }
     ],
     "starting_items": [
@@ -3020,7 +3079,7 @@
     "name": "Mercenário",
     "pericias": "Disparo, Corpo a Corpo, Sobrevivência",
     "traco": "Melhorar o Negócio",
-    "description": "Para parecer durão, você tem que agir como tal. Seu nome ganhou reputação como um protetor confiável. Você percorreu centenas de quilômetros guardando caravanas e abateu incontáveis necróticos e escorpiões mutantes. É um trabalho perigoso, e muitos tentaram te enganar. Mas poucos vivem para contar a história.\n\nPerícias: +2 em Disparo, Corpo a Corpo, Sobrevivência.\n\nTraço de antecedente: Melhorar o Negócio. Você sabe fechar uma barganha e fazer qualquer coisa valer o seu tempo. Sempre que você usar sua habilidade Desconto, a porcentagem de tampinhas descontada do item escolhido é triplicada. Porém, todos os itens custam 10% a mais para você.\n\nEquipamento (Mercenário Humano, Necrótico ou Super Mutante): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x10 munição .44 Magnum, x1 mochila, x2 cram, x1 saco de dormir, x1 barraca individual, x1 Stimpak (Diluído), x1 água purificada e x50 tampinhas.\n\nEquipamento (Mercenário Sintético Gen 2 ou Robô): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x12 munição .44 Magnum, x1 mochila, x1 RobCo ConsertaJá 1.0, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Para parecer durão, você tem que agir como tal. Seu nome ganhou reputação como um protetor confiável. Você percorreu centenas de quilômetros guardando caravanas e abateu incontáveis necróticos e escorpiões mutantes. É um trabalho perigoso, e muitos tentaram te enganar. Mas poucos vivem para contar a história.\n\nPerícias: +2 em Disparo, Corpo a Corpo, Sobrevivência.\n\nTraço de antecedente: Melhorar o Negócio (vem junto e aparece em Traços).\n\nEquipamento (Mercenário Humano, Necrótico ou Super Mutante): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x10 munição .44 Magnum, x1 mochila, x2 cram, x1 saco de dormir, x1 barraca individual, x1 Stimpak (Diluído), x1 água purificada e x50 tampinhas.\n\nEquipamento (Mercenário Sintético Gen 2 ou Robô): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x12 munição .44 Magnum, x1 mochila, x1 RobCo ConsertaJá 1.0, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3036,6 +3095,10 @@
       "type": "add",
       "target": "sobrevivencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/melhorar_o_negocio"
      }
     ],
     "starting_items": [
@@ -3145,7 +3208,7 @@
     "name": "Pastor",
     "pericias": "Barganha, Intimidação, Persuasão",
     "traco": "Encorajar",
-    "description": "Nascido na igreja, você trouxe esperança e santidade a muitos que estavam perdidos na escuridão. Suas palavras de encorajamento trouxeram muitos para seu círculo, e você criou uma pequena comunidade de crentes que esperam moldar o mundo e a si mesmos em um lugar melhor, no que quer que acreditem. Mesmo assim, você já viu sua parcela de céticos, alguns até hostis. Você aprendeu a aceitar suas críticas e sempre manter sua crença à frente, mas nunca a deixá-lo vacilar. Você vagueia pelo ermo agora em busca de outros crentes, ou de provas da existência de seus poderes superiores.\n\nPerícias: +2 em Barganha, Intimidação, Persuasão.\n\nTraço de antecedente: Encorajar. Você sabe preparar os outros para o pior e inspirar a alma. Sempre que você rolar Iniciativa, cada outro personagem jogador ganha vantagem na primeira rolagem de ataque que fizer no seu turno. Porém, se algum personagem jogador causar um acerto crítico no primeiro ataque depois de rolar Iniciativa, ele não causa nenhum dano extra.\n\nEquipamento (Pastor Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 Feijoada, x1 rosquinha, x1 café, x3 água purificada, x1 kit de primeiros socorros, x3 pó curativo e x50 tampinhas.\n\nEquipamento (Pastor Robô ou Sintético Gen 2): x1 armadura de tecido, x1 escopeta de tiro único com dois Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 lanterna, x1 célula de energia, x1 kit de primeiros socorros, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Nascido na igreja, você trouxe esperança e santidade a muitos que estavam perdidos na escuridão. Suas palavras de encorajamento trouxeram muitos para seu círculo, e você criou uma pequena comunidade de crentes que esperam moldar o mundo e a si mesmos em um lugar melhor, no que quer que acreditem. Mesmo assim, você já viu sua parcela de céticos, alguns até hostis. Você aprendeu a aceitar suas críticas e sempre manter sua crença à frente, mas nunca a deixá-lo vacilar. Você vagueia pelo ermo agora em busca de outros crentes, ou de provas da existência de seus poderes superiores.\n\nPerícias: +2 em Barganha, Intimidação, Persuasão.\n\nTraço de antecedente: Encorajar (vem junto e aparece em Traços).\n\nEquipamento (Pastor Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 escopeta de tiro único com três Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 Feijoada, x1 rosquinha, x1 café, x3 água purificada, x1 kit de primeiros socorros, x3 pó curativo e x50 tampinhas.\n\nEquipamento (Pastor Robô ou Sintético Gen 2): x1 armadura de tecido, x1 escopeta de tiro único com dois Níveis de Desgaste, x8 munição calibre 12, x1 mochila, x1 lanterna, x1 célula de energia, x1 kit de primeiros socorros, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3161,6 +3224,10 @@
       "type": "add",
       "target": "persuasao",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/encorajar"
      }
     ],
     "starting_items": [
@@ -3283,7 +3350,7 @@
     "name": "Peregrino",
     "pericias": "Energia, Furtividade, Sobrevivência",
     "traco": "Longas Estradas",
-    "description": "Seu lar foi comprometido, seja por uma facção poderosa, necróticos ou invasores. Você e sua família fizeram uma longa jornada pelo ermo para encontrar um novo lar.\n\nUsando tudo o que podiam para sobreviver, até mesmo as armas do velho mundo que guardaram na linhagem de sua família. Mas seu povo agora se dispersou, e cabe a você encontrá-los ou um novo lar para se estabelecer.\n\nPerícias: +2 em Energia, Furtividade, Sobrevivência.\n\nTraço de antecedente: Longas Estradas. Você viajou longe e por toda parte e sabe lidar melhor com a estrada aberta. Quando você e outros personagens jogadores viajarem em ritmo acelerado, vocês podem se mover 3 km adicionais por hora. Porém, se fizerem isso, no fim de cada hora você e cada outro personagem jogador devem ser bem-sucedidos em um teste de Resistência com CD 12 ou ganhar um nível de fadiga. A CD aumenta em 2 para cada personagem jogador que passar neste teste.\n\nEquipamento (Peregrino Humano): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x2 água purificada, x1 pó curativo e x50 tampinhas.\n\nEquipamento (Peregrino Necrótico ou Super Mutante): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x3 água suja, x1 Nuka-Cola, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Peregrino Sintético Gen 2 ou Robô): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 bandoleira, x1 binóculo, x1 gancho de escalada, x1 corda, RobCo ConsertaJá 1.0 e x50 tampinhas.",
+    "description": "Seu lar foi comprometido, seja por uma facção poderosa, necróticos ou invasores. Você e sua família fizeram uma longa jornada pelo ermo para encontrar um novo lar.\n\nUsando tudo o que podiam para sobreviver, até mesmo as armas do velho mundo que guardaram na linhagem de sua família. Mas seu povo agora se dispersou, e cabe a você encontrá-los ou um novo lar para se estabelecer.\n\nPerícias: +2 em Energia, Furtividade, Sobrevivência.\n\nTraço de antecedente: Longas Estradas (vem junto e aparece em Traços).\n\nEquipamento (Peregrino Humano): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x2 água purificada, x1 pó curativo e x50 tampinhas.\n\nEquipamento (Peregrino Necrótico ou Super Mutante): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x3 água suja, x1 Nuka-Cola, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Peregrino Sintético Gen 2 ou Robô): x1 armadura de couro com melhoria leve, x1 lança caseira, x1 rifle laser com cinco Níveis de Desgaste, x1 célula de energia, x1 mochila, x1 bandoleira, x1 binóculo, x1 gancho de escalada, x1 corda, RobCo ConsertaJá 1.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3299,6 +3366,10 @@
       "type": "add",
       "target": "sobrevivencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/longas_estradas"
      }
     ],
     "starting_items": [
@@ -3520,7 +3591,7 @@
     "name": "Lutador de Arena",
     "pericias": "Barganha, Corpo a Corpo, Pugilismo",
     "traco": "Sobreviver à Batalha",
-    "description": "É preciso muita força para se levantar e continuar, mas é tudo o que você conhece. Os habitantes do ermo apostam suas tampinhas suadas em sua capacidade de lutar, e esse fardo alimenta cada um de seus socos. Você derrubou muitos competidores e sentiu o gosto amargo da derrota, mas isso só torna sua vitória ainda mais doce. No entanto, algo aconteceu com seu estabelecimento. E agora você deve vagar pelo ermo com suas habilidades para encontrar um novo propósito na vida.\n\nPerícias: +2 em Barganha, Corpo a Corpo, Pugilismo.\n\nTraço de antecedente: Sobreviver à Batalha. Você já voltou do limite mais de uma vez. Se você tirar 19 ou 20 no seu Suspiro Final, você volta a 1 ponto de vida. Porém, você não soma sua Sorte nem sua Resistência aos seus Suspiros Finais.\n\nEquipamento (Lutador de Arena Humano, Necrótico ou Super Mutante): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 saco de dormir, x1 barraca individual, x3 cram, x1 vodca, x3 pó curativo, x3 água purificada, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Lutador de Arena Sintético Gen 2 ou Robô): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "É preciso muita força para se levantar e continuar, mas é tudo o que você conhece. Os habitantes do ermo apostam suas tampinhas suadas em sua capacidade de lutar, e esse fardo alimenta cada um de seus socos. Você derrubou muitos competidores e sentiu o gosto amargo da derrota, mas isso só torna sua vitória ainda mais doce. No entanto, algo aconteceu com seu estabelecimento. E agora você deve vagar pelo ermo com suas habilidades para encontrar um novo propósito na vida.\n\nPerícias: +2 em Barganha, Corpo a Corpo, Pugilismo.\n\nTraço de antecedente: Sobreviver à Batalha (vem junto e aparece em Traços).\n\nEquipamento (Lutador de Arena Humano, Necrótico ou Super Mutante): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 saco de dormir, x1 barraca individual, x3 cram, x1 vodca, x3 pó curativo, x3 água purificada, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Lutador de Arena Sintético Gen 2 ou Robô): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3536,6 +3607,10 @@
       "type": "add",
       "target": "pugilismo",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/sobreviver_a_batalha"
      }
     ],
     "starting_items": [
@@ -3660,7 +3735,7 @@
     "name": "Cientista",
     "pericias": "Energia, Sabotagem, Ciência",
     "traco": "Pesquisa de Campo",
-    "description": "Estudar livros do velho mundo, criar teorias e usar o conhecimento para ajudar a reconstruir a civilização é o trabalho da sua vida. Você previu com sucesso resultados de eventos naturais e de criaturas para ajudar sua comunidade a entender melhor o mundo exterior.\n\nMas você aprendeu o que precisava e, para alimentar adequadamente sua curiosidade, é hora de pesquisa de campo!\n\nPerícias: +2 em Energia, Sabotagem, Ciência.\n\nTraço de antecedente: Pesquisa de Campo. Seu estudo de outras criaturas ajuda você a combatê-las melhor. Sempre que você causar dano com um ataque a uma criatura de um tipo contra o qual já lutou, o dano aumenta em 2. Porém, sempre que você causar dano com um ataque a uma criatura de um tipo contra o qual ainda não lutou, o dano é reduzido em 2.\n\nEquipamento (Cientista Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 cram, x2 água purificada, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Cientista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador, x1 Depurador Neural e x50 tampinhas.",
+    "description": "Estudar livros do velho mundo, criar teorias e usar o conhecimento para ajudar a reconstruir a civilização é o trabalho da sua vida. Você previu com sucesso resultados de eventos naturais e de criaturas para ajudar sua comunidade a entender melhor o mundo exterior.\n\nMas você aprendeu o que precisava e, para alimentar adequadamente sua curiosidade, é hora de pesquisa de campo!\n\nPerícias: +2 em Energia, Sabotagem, Ciência.\n\nTraço de antecedente: Pesquisa de Campo (vem junto e aparece em Traços).\n\nEquipamento (Cientista Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 cram, x2 água purificada, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Cientista Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador, x1 Depurador Neural e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3676,6 +3751,10 @@
       "type": "add",
       "target": "ciencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/pesquisa_de_campo"
      }
     ],
     "starting_items": [
@@ -3786,7 +3865,7 @@
     "name": "Escriba",
     "pericias": "Criação, Energia, Medicina",
     "traco": "Conhecimento do Ermo",
-    "description": "O que não lhe contam sobre ser um organizador de livros é que quanto mais rápido você faz isso, mais tempo você tem para ler. Você passou incontáveis horas organizando um tesouro de informações que gostaria de compartilhar com o mundo inteiro. O acúmulo de conhecimento desses textos poderia melhorar o mundo se os invasores parassem para ler um capítulo. Você está se aventurando no ermo para compartilhar seu conhecimento, ou para encontrar mais para adicionar à sua coleção.\n\nPerícias: +2 em Criação, Energia, Medicina.\n\nTraço de antecedente: Conhecimento do Ermo. Você acumulou informações sobre diferentes criaturas e pessoas do ermo. Sempre que você rolar Iniciativa, pode escolher saber o total de pontos de vida, pontos de estamina, pontos de ação, DF ou TD de qualquer criatura hostil a você na ordem de Iniciativa. Porém, para cada criatura que você escolher com esta habilidade, ela pode rolar a Iniciativa de novo para tentar obter um resultado maior.\n\nEquipamento (Escriba Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 cram, x2 água purificada, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Escriba Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador, x1 Depurador Neural e x50 tampinhas.",
+    "description": "O que não lhe contam sobre ser um organizador de livros é que quanto mais rápido você faz isso, mais tempo você tem para ler. Você passou incontáveis horas organizando um tesouro de informações que gostaria de compartilhar com o mundo inteiro. O acúmulo de conhecimento desses textos poderia melhorar o mundo se os invasores parassem para ler um capítulo. Você está se aventurando no ermo para compartilhar seu conhecimento, ou para encontrar mais para adicionar à sua coleção.\n\nPerícias: +2 em Criação, Energia, Medicina.\n\nTraço de antecedente: Conhecimento do Ermo (vem junto e aparece em Traços).\n\nEquipamento (Escriba Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x1 saco de dormir, x1 barraca individual, x3 cram, x2 água purificada, x1 TiraRad (Diluído), x1 Rad-X, x1 Stimpak e x50 tampinhas.\n\nEquipamento (Escriba Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 pistola laser, x2 célula de energia, x1 mochila, x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador, x1 Depurador Neural e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3802,6 +3881,10 @@
       "type": "add",
       "target": "medicina",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/conhecimento_do_ermo"
      }
     ],
     "starting_items": [
@@ -3912,7 +3995,7 @@
     "name": "Soldado",
     "pericias": "Explosivos, Disparo, Medicina",
     "traco": "Combatente Eficiente",
-    "description": "Desde jovem você admirava aqueles que protegiam seu lar. Agora você se juntou às fileiras para proteger os outros. Seguir ordens é seu dever para com seu povo e seus companheiros soldados. Você foi enviado em missões de reconhecimento, guardou postos avançados e também viu os horrores da guerra. Você obedeceu às ordens até o fim, mesmo que não concordasse com elas. Seu período de serviço terminou, e você está pensando em usar essas habilidades no ermo.\n\nPerícias: +2 em Explosivos, Disparo, Medicina.\n\nTraço de antecedente: Combatente Eficiente. Graças ao seu treinamento, você é mais confiável com uma arma. Sempre que você fizer uma rolagem de ataque e o resultado for 1, você soma seu modificador e não erra mais automaticamente. Porém, sua Tampa de Karma não desvira quando você rola 1 em rolagens de ataque.\n\nEquipamento (Soldado Humano, Necrótico ou Super Mutante): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x10 munição .44 Magnum, x1 mochila, x2 cram, x1 saco de dormir, x1 barraca individual, x1 Stimpak (Diluído), x1 água purificada e x50 tampinhas.\n\nEquipamento (Soldado Sintético Gen 2 ou Robô): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x12 munição .44 Magnum, x1 mochila, x1 RobCo ConsertaJá 1.0, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "description": "Desde jovem você admirava aqueles que protegiam seu lar. Agora você se juntou às fileiras para proteger os outros. Seguir ordens é seu dever para com seu povo e seus companheiros soldados. Você foi enviado em missões de reconhecimento, guardou postos avançados e também viu os horrores da guerra. Você obedeceu às ordens até o fim, mesmo que não concordasse com elas. Seu período de serviço terminou, e você está pensando em usar essas habilidades no ermo.\n\nPerícias: +2 em Explosivos, Disparo, Medicina.\n\nTraço de antecedente: Combatente Eficiente (vem junto e aparece em Traços).\n\nEquipamento (Soldado Humano, Necrótico ou Super Mutante): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x10 munição .44 Magnum, x1 mochila, x2 cram, x1 saco de dormir, x1 barraca individual, x1 Stimpak (Diluído), x1 água purificada e x50 tampinhas.\n\nEquipamento (Soldado Sintético Gen 2 ou Robô): x1 armadura de couro, x1 faca de combate com dois Níveis de Desgaste, x1 carabina de caça com dois Níveis de Desgaste, x12 munição .44 Magnum, x1 mochila, x1 RobCo ConsertaJá 1.0, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -3928,6 +4011,10 @@
       "type": "add",
       "target": "medicina",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/combatente_eficiente"
      }
     ],
     "starting_items": [
@@ -4037,7 +4124,7 @@
     "name": "Comerciante",
     "pericias": "Barganha, Persuasão, Intimidação",
     "traco": "Moeda de Troca",
-    "description": "Todos precisam de algo. Você é um coletor de objetos de valor que trouxe para muitas cidades através do ermo.\n\nVocê assinou acordos, barganhou tampinhas e deixou seus clientes satisfeitos. No final do dia, o que mais importa é sua reputação e todas as tampinhas que você ganhou. Mas seu estoque está baixo, é hora de partir novamente para recuperar todo esse dinheiro.\n\nPerícias: +2 em Barganha, Persuasão, Intimidação.\n\nTraço de antecedente: Moeda de Troca. Você tem faro para oportunidades e sabe fechar negócios. Sempre que você vender um item, pode usar sua habilidade Desconto para ganhar um bônus de tampinhas igual ao dobro do seu modificador da perícia Barganha. Porém, você vende todos os seus itens por 10% a menos que o valor listado.\n\nEquipamento (Comerciante Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x5 ração de cachorro enlatada, x1 iguana no espeto, x2 pó curativo, x4 água suja, x2 água purificada, x1 gazua, x1 barraca individual, x1 saco de dormir, x1 uísque, x1 Corretivo, x2 Jato, x3 cigarros, x1 Testo+, x1 café e x50 tampinhas.\n\nEquipamento (Comerciante Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x1 gazua, x2 RobCo ConsertaJá 1.0, x2 overclock físico, x2 limpa cache, x1 Código de IA Militar, x1 lanterna, x1 célula de energia, x1 revista de perícia ¡La Fantoma! e x50 tampinhas.",
+    "description": "Todos precisam de algo. Você é um coletor de objetos de valor que trouxe para muitas cidades através do ermo.\n\nVocê assinou acordos, barganhou tampinhas e deixou seus clientes satisfeitos. No final do dia, o que mais importa é sua reputação e todas as tampinhas que você ganhou. Mas seu estoque está baixo, é hora de partir novamente para recuperar todo esse dinheiro.\n\nPerícias: +2 em Barganha, Persuasão, Intimidação.\n\nTraço de antecedente: Moeda de Troca (vem junto e aparece em Traços).\n\nEquipamento (Comerciante Humano, Necrótico ou Super Mutante): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x5 ração de cachorro enlatada, x1 iguana no espeto, x2 pó curativo, x4 água suja, x2 água purificada, x1 gazua, x1 barraca individual, x1 saco de dormir, x1 uísque, x1 Corretivo, x2 Jato, x3 cigarros, x1 Testo+, x1 café e x50 tampinhas.\n\nEquipamento (Comerciante Sintético Gen 2 ou Robô): x1 armadura de tecido, x1 estilete, x1 pistola de sucata com dois Níveis de Desgaste, x15 munição 9mm, x1 mochila, x1 gazua, x2 RobCo ConsertaJá 1.0, x2 overclock físico, x2 limpa cache, x1 Código de IA Militar, x1 lanterna, x1 célula de energia, x1 revista de perícia ¡La Fantoma! e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -4053,6 +4140,10 @@
       "type": "add",
       "target": "intimidacao",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/moeda_de_troca"
      }
     ],
     "starting_items": [
@@ -4235,7 +4326,7 @@
     "name": "Morador do Refúgio",
     "pericias": "Medicina, Persuasão, Ciência",
     "traco": "Talentoso",
-    "description": "Por toda a sua vida, você só conheceu as frias paredes de aço de um refúgio subterrâneo. Todos usam macacões azul-amarelo, pip-boy e temem o lado de fora. Muitos refúgios hospedam algum tipo de experimento ou simulação que atormenta aqueles que estão dentro. No entanto, o seu ou não tinha um, ou era tão sutil que você nunca percebeu. Mas tudo isso mudou quando você finalmente colocou os pés para fora. O mundo nunca foi o que você pensou, as pessoas são diferentes e ele é maior do que você jamais imaginou.\n\nPerícias: +2 em Medicina, Persuasão, Ciência.\n\nTraço de antecedente: Talentoso. Você aprendeu muitos truques valiosos, mas não aprimorou tanto suas perícias. Você ganha um talento extra no 1º nível. Porém, cinco modificadores de perícia diferentes, à sua escolha, diminuem em 2.\n\nEquipamento (Morador do Refúgio Humano, Necrótico ou Super Mutante): x1 Roupa do Refúgio, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 cantil, x1 kit de reparo de arma, x1 pip-boy (qualquer), x1 Macarrão com Queijo BlamCo, x1 Bife à Salisbury, x1 Ovos Recheados Yum Yum, x1 café, x4 água purificada e x1 Stimpak.\n\nEquipamento (Morador do Refúgio Sintético Gen 2 ou Robô): x1 Roupa do Refúgio, x1 pistola laser, x2 célula de energia, x1 mochila, x1 pip-boy (qualquer), x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador e x1 Depurador Neural.\n\nO equipamento inicial neste antecedente concede itens únicos poderosos, consulte seu MJ antes de pegar estes itens.",
+    "description": "Por toda a sua vida, você só conheceu as frias paredes de aço de um refúgio subterrâneo. Todos usam macacões azul-amarelo, pip-boy e temem o lado de fora. Muitos refúgios hospedam algum tipo de experimento ou simulação que atormenta aqueles que estão dentro. No entanto, o seu ou não tinha um, ou era tão sutil que você nunca percebeu. Mas tudo isso mudou quando você finalmente colocou os pés para fora. O mundo nunca foi o que você pensou, as pessoas são diferentes e ele é maior do que você jamais imaginou.\n\nPerícias: +2 em Medicina, Persuasão, Ciência.\n\nTraço de antecedente: Talentoso (vem junto e aparece em Traços).\n\nEquipamento (Morador do Refúgio Humano, Necrótico ou Super Mutante): x1 Roupa do Refúgio, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 cantil, x1 kit de reparo de arma, x1 pip-boy (qualquer), x1 Macarrão com Queijo BlamCo, x1 Bife à Salisbury, x1 Ovos Recheados Yum Yum, x1 café, x4 água purificada e x1 Stimpak.\n\nEquipamento (Morador do Refúgio Sintético Gen 2 ou Robô): x1 Roupa do Refúgio, x1 pistola laser, x2 célula de energia, x1 mochila, x1 pip-boy (qualquer), x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador e x1 Depurador Neural.\n\nO equipamento inicial neste antecedente concede itens únicos poderosos, consulte seu MJ antes de pegar estes itens.",
     "effects": [
      {
       "type": "add",
@@ -4251,6 +4342,10 @@
       "type": "add",
       "target": "ciencia",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/talentoso"
      }
     ],
     "starting_items": [
@@ -4376,7 +4471,7 @@
     "name": "Sobrevivente do Ermo",
     "pericias": "Disparo, Sobrevivência, Pugilismo",
     "traco": "Instinto de Aventureiro",
-    "description": "Tudo o que você sempre precisou está nas suas costas. Você viajou por toda a extensão do ermo, negociando, conhecendo pessoas e seguindo em frente. Você matou invasores, explorou ruínas abandonadas e cruzou caminhos com soldados. Mas você é tão impactante para este mundo quanto uma bola de feno no deserto, e tudo isso está prestes a mudar.\n\nPerícias: +2 em Disparo, Sobrevivência, Pugilismo.\n\nTraço de antecedente: Instinto de Aventureiro. Este traço está listado no antecedente Sobrevivente do Ermo, mas não tem entrada no livro 2.1; o texto abaixo é da sua tradução da v2.0.\n\nVocê conhece os melhores lugares para vasculhar e onde os espólios costumam se esconder. Sempre que fizer um teste de Sorte para procurar itens, você tem vantagem. Porém, quaisquer armas ou armaduras que encontrar têm um Nível de Desgaste adicional.\n\nEquipamento (Sobrevivente do Ermo Humano): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x2 água purificada, x1 pó curativo e x50 tampinhas.\n\nEquipamento (Sobrevivente do Ermo Necrótico ou Super Mutante): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x3 água suja, x1 Nuka-Cola, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Sobrevivente do Ermo Sintético Gen 2 ou Robô): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 bandoleira, x1 binóculo, x1 gancho de escalada, x1 corda, RobCo ConsertaJá 1.0 e x50 tampinhas.",
+    "description": "Tudo o que você sempre precisou está nas suas costas. Você viajou por toda a extensão do ermo, negociando, conhecendo pessoas e seguindo em frente. Você matou invasores, explorou ruínas abandonadas e cruzou caminhos com soldados. Mas você é tão impactante para este mundo quanto uma bola de feno no deserto, e tudo isso está prestes a mudar.\n\nPerícias: +2 em Disparo, Sobrevivência, Pugilismo.\n\nTraço de antecedente: Instinto de Aventureiro (vem junto e aparece em Traços).\n\nEquipamento (Sobrevivente do Ermo Humano): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x2 água purificada, x1 pó curativo e x50 tampinhas.\n\nEquipamento (Sobrevivente do Ermo Necrótico ou Super Mutante): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x2 mutamaçã, x2 maçãs, x1 sopa de legumes, x3 água suja, x1 Nuka-Cola, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Sobrevivente do Ermo Sintético Gen 2 ou Robô): x1 armadura de couro, x1 lança caseira, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 bandoleira, x1 binóculo, x1 gancho de escalada, x1 corda, RobCo ConsertaJá 1.0 e x50 tampinhas.",
     "effects": [
      {
       "type": "add",
@@ -4392,6 +4487,10 @@
       "type": "add",
       "target": "pugilismo",
       "value": "2"
+     },
+     {
+      "type": "grant",
+      "ref": "tracos/instinto_de_aventureiro"
      }
     ],
     "starting_items": [
@@ -5295,6 +5394,518 @@
     "name": "Disciplina de Gatilho (Ermo Selvagem)",
     "requisito": "",
     "description": "Sempre que você fizer uma rolagem de ataque mirado com uma arma de longo alcance, o custo adicional é reduzido em 2 PA. Porém, seu bônus de Iniciativa é reduzido em 5.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "um_momento_de_tregua",
+    "name": "Um Momento de Trégua",
+    "requisito": "",
+    "description": "Você é um talento natural para levantar o moral. Sempre que você e outros personagens jogadores descansarem, você toca música, canta uma canção, conta uma história ou faz um discurso inspirador. Você e cada outro personagem jogador que está descansando ganham pontos de estamina temporários iguais ao seu valor de Carisma. Porém, a Furtividade da Equipe de você e de cada personagem jogador é reduzida em 2 enquanto você estiver a até 150 m deles.",
+    "effects": []
+   },
+   {
+    "id": "um_momento_de_tregua_ermo",
+    "name": "Um Momento de Trégua (Ermo Selvagem)",
+    "requisito": "",
+    "description": "A quantidade de pontos de estamina temporários ganhos passa a ser o dobro do seu valor de Carisma, mas a Furtividade da Equipe do seu grupo é reduzida em 5 enquanto você estiver no grupo.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "moeda_de_troca",
+    "name": "Moeda de Troca",
+    "requisito": "",
+    "description": "Você tem faro para oportunidades e sabe fechar negócios. Sempre que você vender um item, pode usar sua habilidade Desconto para ganhar um bônus de tampinhas igual ao dobro do seu modificador da perícia Barganha. Porém, você vende todos os seus itens por 10% a menos que o valor listado.",
+    "effects": []
+   },
+   {
+    "id": "moeda_de_troca_ermo",
+    "name": "Moeda de Troca (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você vender um item, pode usar sua habilidade Desconto para ganhar um bônus de tampinhas igual ao triplo do seu modificador da perícia Barganha. Porém, você vende todos os seus itens por 20% a menos que o valor listado.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "nao_prejudique",
+    "name": "Não Prejudique",
+    "requisito": "",
+    "description": "\"Primum non nocere\", você fez o juramento de Hipócrates e pretende curar os outros. Sempre que você restaurar pontos de vida, você restaura 1 ponto de vida adicional. Sempre que você atacar outra criatura e causar dano a ela, o dano é reduzido em 1, até um mínimo de 1.",
+    "effects": []
+   },
+   {
+    "id": "nao_prejudique_ermo",
+    "name": "Não Prejudique (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Além dos efeitos do traço: sempre que você gastar 6 PA para fazer um teste de Medicina em uma criatura morrendo para devolvê-la a 1 ponto de vida, o teste é bem-sucedido automaticamente. Porém, se você algum dia causar dano a outra criatura com um ataque que você fez contra ela, e esse dano a matar, você perde todas as habilidades deste traço.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "combatente_eficiente",
+    "name": "Combatente Eficiente",
+    "requisito": "",
+    "description": "Graças ao seu treinamento, você é mais confiável com uma arma. Sempre que você fizer uma rolagem de ataque e o resultado for 1, você soma seu modificador e não erra mais automaticamente. Porém, sua Tampa de Karma não desvira quando você rola 1 em rolagens de ataque.",
+    "effects": []
+   },
+   {
+    "id": "combatente_eficiente_ermo",
+    "name": "Combatente Eficiente (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você fizer uma rolagem de ataque e o resultado for 1, você pode rolar o ataque de novo, mas deve ficar com o novo resultado. Porém, sempre que você fizer uma rolagem de ataque e o resultado for um acerto crítico, você acerta automaticamente, mas não causa dano extra.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "sobreviver_a_batalha",
+    "name": "Sobreviver à Batalha",
+    "requisito": "",
+    "description": "Você já voltou do limite mais de uma vez. Se você tirar 19 ou 20 no seu Suspiro Final, você volta a 1 ponto de vida. Porém, você não soma sua Sorte nem sua Resistência aos seus Suspiros Finais.",
+    "effects": []
+   },
+   {
+    "id": "sobreviver_a_batalha_ermo",
+    "name": "Sobreviver à Batalha (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Se você tirar 18, 19 ou 20 no seu Suspiro Final, você volta a 1 ponto de vida. Porém, você não soma sua Sorte, sua Resistência nem sua Moral da Equipe aos seus Suspiros Finais.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "encorajar",
+    "name": "Encorajar",
+    "requisito": "",
+    "description": "Você sabe preparar os outros para o pior e inspirar a alma. Sempre que você rolar Iniciativa, cada outro personagem jogador ganha vantagem na primeira rolagem de ataque que fizer no seu turno. Porém, se algum personagem jogador causar um acerto crítico no primeiro ataque depois de rolar Iniciativa, ele não causa nenhum dano extra.",
+    "effects": []
+   },
+   {
+    "id": "encorajar_ermo",
+    "name": "Encorajar (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você rolar Iniciativa, cada outro personagem jogador ganha vantagem nas duas primeiras rolagens de ataque que fizer no seu turno. Porém, se algum personagem jogador causar um acerto crítico no primeiro ou no segundo ataque depois de rolar Iniciativa, ele não causa nenhum dano extra.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "pesquisa_de_campo",
+    "name": "Pesquisa de Campo",
+    "requisito": "",
+    "description": "Seu estudo de outras criaturas ajuda você a combatê-las melhor. Sempre que você causar dano com um ataque a uma criatura de um tipo contra o qual já lutou, o dano aumenta em 2. Porém, sempre que você causar dano com um ataque a uma criatura de um tipo contra o qual ainda não lutou, o dano é reduzido em 2.",
+    "effects": []
+   },
+   {
+    "id": "pesquisa_de_campo_ermo",
+    "name": "Pesquisa de Campo (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Além dos efeitos deste traço: sempre que você descansar e ganhar um bônus de XP depois de ter rolado Iniciativa contra uma criatura contra a qual nunca rolou Iniciativa antes, você ganha um bônus adicional de 20% de XP. Porém, sempre que você descansar e ganhar XP depois de ter rolado Iniciativa contra uma criatura contra a qual já rolou Iniciativa antes, você ganha 10% a menos de XP.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "endurecido_pela_terra",
+    "name": "Endurecido pela Terra",
+    "requisito": "",
+    "description": "Você conheceu dias longos e trabalho duro: você tem vantagem sempre que fizer um teste de Resistência para resistir a um nível de Fome ou Fadiga. Porém, você fica morrendo se chegar a 8 níveis de Fome ou Fadiga, em vez de 10.",
+    "effects": []
+   },
+   {
+    "id": "endurecido_pela_terra_ermo",
+    "name": "Endurecido pela Terra (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Além dos efeitos do traço: sempre que seus pontos de vida ou de estamina aumentarem ao subir de nível, você ganha um ponto extra em cada. Porém, os efeitos negativos dos níveis de Fome e Fadiga são dobrados.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "longos_dias_longas_noites",
+    "name": "Longos Dias, Longas Noites",
+    "requisito": "",
+    "description": "Você está acostumado a forçar o corpo e aguentar trabalho físico: sempre que seus pontos de estamina aumentarem ao subir de nível, você ganha um ponto extra. Porém, você ganha um nível adicional de fadiga sempre que falhar em um teste de Resistência para resistir ao sono.",
+    "effects": []
+   },
+   {
+    "id": "longos_dias_longas_noites_ermo",
+    "name": "Longos Dias, Longas Noites (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Além dos efeitos do traço: sempre que seus pontos de estamina aumentarem ao subir de nível, você ganha mais um ponto extra (um total de 2). Porém, sempre que você recuperar pontos de estamina de qualquer descanso que não seja dormir, você recupera um quarto dos seus pontos de estamina máximos em vez de metade.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "longas_estradas",
+    "name": "Longas Estradas",
+    "requisito": "",
+    "description": "Você viajou longe e por toda parte e sabe lidar melhor com a estrada aberta. Quando você e outros personagens jogadores viajarem em ritmo acelerado, vocês podem se mover 3 km adicionais por hora. Porém, se fizerem isso, no fim de cada hora você e cada outro personagem jogador devem ser bem-sucedidos em um teste de Resistência com CD 12 ou ganhar um nível de fadiga. A CD aumenta em 2 para cada personagem jogador que passar neste teste.",
+    "effects": []
+   },
+   {
+    "id": "longas_estradas_ermo",
+    "name": "Longas Estradas (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Quando você e outros personagens jogadores viajarem em ritmo acelerado, vocês podem se mover 8 km adicionais por hora. Porém, se fizerem isso, no fim de cada hora você e cada outro personagem jogador ganham um nível de fadiga.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "persistente",
+    "name": "Persistente",
+    "requisito": "",
+    "description": "Sempre que você virar uma Tampa de Karma para rolar de novo um teste de perícia, você faz a rolagem com vantagem. Porém, suas Tampas de Karma não desviram mais sempre que você rolar 1 em um d20.",
+    "effects": []
+   },
+   {
+    "id": "persistente_ermo",
+    "name": "Persistente (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você virar uma Tampa de Karma para rolar de novo um teste de atributo, um teste de perícia ou uma rolagem de ataque, você faz a rolagem com vantagem. Porém, você começa cada jogo com uma das suas Tampas de Karma virada.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "manutencao_adequada",
+    "name": "Manutenção Adequada",
+    "requisito": "",
+    "description": "Você sabe cuidar bem do seu equipamento. Sempre que qualquer uma das suas armas ou armaduras não tiver Níveis de Desgaste, o primeiro Nível de Desgaste que ganharem é ignorado. Porém, suas armas e armaduras deixam de funcionar quando têm 8 Níveis de Desgaste, em vez de 10.",
+    "effects": []
+   },
+   {
+    "id": "manutencao_adequada_ermo",
+    "name": "Manutenção Adequada (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que qualquer uma das suas armas ou armaduras tiver um ou dois Níveis de Desgaste, os efeitos negativos são ignorados. Porém, suas armas e armaduras deixam de funcionar quando têm 5 Níveis de Desgaste, em vez de 10.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "recluso",
+    "name": "Recluso",
+    "requisito": "",
+    "description": "Você passou mais tempo aprimorando suas perícias do que aprendendo coisas novas. Em vez de ganhar um talento no 1º nível, cinco modificadores de perícia diferentes, à sua escolha, aumentam em 2.",
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_talento",
+      "value": "-1"
+     },
+     {
+      "type": "note",
+      "text": "Recluso: em vez do talento do 1º nível, +2 em cinco perícias à sua escolha."
+     }
+    ]
+   },
+   {
+    "id": "recluso_ermo",
+    "name": "Recluso (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Em vez de ganhar um talento no 1º e no 2º nível, todos os seus modificadores de perícia aumentam em 2.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_talento",
+      "value": "-min(level, 2)"
+     },
+     {
+      "type": "add",
+      "target": "barganha",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "ciencia",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "corpo_a_corpo",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "criacao",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "disparo",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "energia",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "explosivos",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "furtividade",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "intimidacao",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "medicina",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "persuasao",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "pugilismo",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "sabotagem",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "sobrevivencia",
+      "value": "2"
+     }
+    ]
+   },
+   {
+    "id": "rato_de_rua",
+    "name": "Rato de Rua",
+    "requisito": "",
+    "description": "Pelo tempo que passou em assentamentos, você sabe como parecer parte do cenário e se misturar. Você tem vantagem em qualquer teste de Furtividade ou Sabotagem que fizer em um assentamento, cidade, posto avançado ou qualquer local povoado. Porém, sua reputação duvidosa fez os outros pensarem duas vezes antes de ajudar você. Você tem desvantagem em qualquer teste de Persuasão ou Barganha que fizer em um assentamento, cidade, posto avançado ou qualquer local povoado.",
+    "effects": []
+   },
+   {
+    "id": "rato_de_rua_ermo",
+    "name": "Rato de Rua (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Você tem amigos em lugares baixos, e sua reputação vai ainda mais longe. Além dos efeitos do traço: você pode usar sua habilidade Desconto três vezes antes de descansar. Porém, há uma recompensa de mais de 500 tampinhas pela sua cabeça. Combine com seu MJ como você conseguiu essa recompensa, quem estaria atrás de você e como isso afetará seu personagem.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "melhorar_o_negocio",
+    "name": "Melhorar o Negócio",
+    "requisito": "",
+    "description": "Você sabe fechar uma barganha e fazer qualquer coisa valer o seu tempo. Sempre que você usar sua habilidade Desconto, a porcentagem de tampinhas descontada do item escolhido é triplicada. Porém, todos os itens custam 10% a mais para você.",
+    "effects": []
+   },
+   {
+    "id": "melhorar_o_negocio_ermo",
+    "name": "Melhorar o Negócio (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você usar sua habilidade Desconto, a porcentagem de tampinhas descontada do item escolhido é sextuplicada. Porém, todos os itens custam 25% a mais para você.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "talentoso",
+    "name": "Talentoso",
+    "requisito": "",
+    "description": "Você aprendeu muitos truques valiosos, mas não aprimorou tanto suas perícias. Você ganha um talento extra no 1º nível. Porém, cinco modificadores de perícia diferentes, à sua escolha, diminuem em 2.",
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_talento",
+      "value": "1"
+     },
+     {
+      "type": "note",
+      "text": "Talentoso: um talento extra no 1º nível; −2 em cinco perícias à sua escolha."
+     }
+    ]
+   },
+   {
+    "id": "talentoso_ermo",
+    "name": "Talentoso (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Você ganha dois talentos extras no 1º nível. Porém, todos os seus modificadores de perícia diminuem em 2.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_talento",
+      "value": "2"
+     },
+     {
+      "type": "add",
+      "target": "barganha",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "ciencia",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "corpo_a_corpo",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "criacao",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "disparo",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "energia",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "explosivos",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "furtividade",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "intimidacao",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "medicina",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "persuasao",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "pugilismo",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "sabotagem",
+      "value": "-2"
+     },
+     {
+      "type": "add",
+      "target": "sobrevivencia",
+      "value": "-2"
+     }
+    ]
+   },
+   {
+    "id": "visao_do_alem",
+    "name": "Visão do Além",
+    "requisito": "",
+    "description": "Você costuma ouvir os sussurros do grande além, recebendo visões paranormais de profecias. Quando você termina um descanso de pelo menos 8 horas, pode rolar um d20 e anotar o resultado: esta é a sua rolagem de Visão. Com essa rolagem de Visão, você pode substituir qualquer rolagem de ataque, teste de perícia ou teste de atributo feito por você ou por uma criatura que você consiga ver. Depois de usar essa rolagem de Visão, você não pode usá-la de novo até descansar novamente por pelo menos 8 horas. Porém, você começa cada jogo com uma das suas Tampas de Karma virada.",
+    "effects": []
+   },
+   {
+    "id": "visao_do_alem_ermo",
+    "name": "Visão do Além (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Você pode fazer duas rolagens de Visão depois de descansar por pelo menos 8 horas, mas suas Tampas de Karma não desviram mais se você rolar 1 em um d20.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "vigilancia_atenta",
+    "name": "Vigilância Atenta",
+    "requisito": "",
+    "description": "Você aprendeu a não hesitar em momentos de perigo. Sempre que a Iniciativa for determinada, sua posição no turno é colocada automaticamente antes da criatura que, na ordem de turnos, está logo antes de você e que não seja um personagem jogador, independentemente da rolagem dela. Porém, seu bônus de Iniciativa é reduzido em 1.",
+    "effects": []
+   },
+   {
+    "id": "vigilancia_atenta_ermo",
+    "name": "Vigilância Atenta (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sua posição no turno é colocada automaticamente antes das duas criaturas anteriores na ordem de turnos que não sejam personagens jogadores, independentemente da rolagem delas. Porém, você tem desvantagem nas rolagens de Iniciativa e seu bônus é reduzido em 2.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "conhecimento_do_ermo",
+    "name": "Conhecimento do Ermo",
+    "requisito": "",
+    "description": "Você acumulou informações sobre diferentes criaturas e pessoas do ermo. Sempre que você rolar Iniciativa, pode escolher saber o total de pontos de vida, pontos de estamina, pontos de ação, DF ou TD de qualquer criatura hostil a você na ordem de Iniciativa. Porém, para cada criatura que você escolher com esta habilidade, ela pode rolar a Iniciativa de novo para tentar obter um resultado maior.",
+    "effects": []
+   },
+   {
+    "id": "conhecimento_do_ermo_ermo",
+    "name": "Conhecimento do Ermo (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que você rolar Iniciativa, pode escolher saber dois dos seguintes: total de pontos de vida, pontos de estamina, pontos de ação, DF ou TD de qualquer criatura hostil a você na ordem de Iniciativa. Porém, para cada criatura que você escolher com esta habilidade, ela pode rolar a Iniciativa de novo duas vezes para tentar obter um resultado maior.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "tags": [
+     "ermo_selvagem"
+    ],
+    "effects": []
+   },
+   {
+    "id": "instinto_de_aventureiro",
+    "name": "Instinto de Aventureiro",
+    "requisito": "",
+    "description": "Este traço está listado no antecedente Sobrevivente do Ermo, mas não tem entrada no livro 2.1; o texto abaixo é da sua tradução da v2.0.\n\nVocê conhece os melhores lugares para vasculhar e onde os espólios costumam se esconder. Sempre que fizer um teste de Sorte para procurar itens, você tem vantagem. Porém, quaisquer armas ou armaduras que encontrar têm um Nível de Desgaste adicional.",
+    "effects": []
+   },
+   {
+    "id": "instinto_de_aventureiro_ermo",
+    "name": "Instinto de Aventureiro (Ermo Selvagem)",
+    "requisito": "",
+    "description": "Sempre que fizer um teste de Sorte para procurar itens, você tem vantagem e pode rolar um dos dados de novo. Porém, quaisquer armas ou armaduras que encontrar têm dois Níveis de Desgaste adicionais devido ao estado dos locais.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
     "tags": [
      "ermo_selvagem"
     ],
@@ -12714,10 +13325,6 @@
      },
      {
       "block": "list",
-      "collection": "subtipos"
-     },
-     {
-      "block": "list",
       "collection": "antecedentes",
       "columns": [
        "pericias"
@@ -12896,21 +13503,12 @@
    },
    {
     "type": "pick",
-    "collection": "subtipos",
-    "title": "Tipo de robô",
-    "min": 1,
-    "max": 1,
-    "if": "has('robo')",
-    "description": "Robôs escolhem também o modelo."
-   },
-   {
-    "type": "pick",
     "collection": "variantes",
     "title": "Variante de raça",
-    "min": 0,
-    "max": 1,
     "match_field": "raca",
-    "description": "Opcional: algumas raças têm variantes com habilidades próprias."
+    "min": "has('robo')",
+    "max": "if(has('humano'), 2, 1)",
+    "description": "Robôs escolhem o modelo (Mãozinha, Guardatron ou Miolotron). As outras raças podem, se o MJ permitir, escolher uma variante, que traz todos os seus traços. Humanos podem ter Humano Variante, Sintético Gen 3, as duas ou nenhuma."
    },
    {
     "type": "attributes",
@@ -12936,11 +13534,29 @@
    },
    {
     "type": "pick",
-    "collection": "talentos",
-    "title": "Talento",
-    "min": "pontos_talento",
-    "max": "pontos_talento",
-    "description": "Passo 22: escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
+    "collection": "tracos",
+    "title": "Traço do antecedente",
+    "min": 1,
+    "max": 1,
+    "match_field": "requisito",
+    "if": "has('antecedente_personalizado')",
+    "description": "No Antecedente Personalizado você escolhe o traço que o antecedente daria: qualquer traço da lista."
+   },
+   {
+    "type": "skills",
+    "title": "Recluso: +2 em cinco perícias",
+    "choose": 5,
+    "bonus": 2,
+    "if": "has('recluso')",
+    "description": "Recluso: em vez de ganhar um talento no 1º nível, cinco perícias à sua escolha recebem +2."
+   },
+   {
+    "type": "skills",
+    "title": "Talentoso: −2 em cinco perícias",
+    "choose": 5,
+    "bonus": -2,
+    "if": "has('talentoso')",
+    "description": "Talentoso: você ganha um talento extra no 1º nível, mas cinco perícias à sua escolha perdem 2."
    },
    {
     "type": "pick",
@@ -12949,7 +13565,16 @@
     "min": 0,
     "max": 1,
     "match_field": "requisito",
-    "description": "Passo 23: você pode escolher 1 traço da lista, além do traço do seu antecedente. As versões \"Ermo Selvagem\" são a variante mais dura de cada traço."
+    "description": "Passo 23: você pode escolher 1 traço da lista, além do traço do seu antecedente. As versões \"Ermo Selvagem\" são a variante mais dura de cada traço. Os traços vêm antes dos talentos porque alguns mudam quantos talentos você ganha."
+   },
+   {
+    "type": "pick",
+    "collection": "talentos",
+    "title": "Talento",
+    "min": "pontos_talento",
+    "max": "pontos_talento",
+    "if": "pontos_talento > 0",
+    "description": "Passo 22: escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
    },
    {
     "type": "items",
