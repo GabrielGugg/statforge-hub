@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.1.0",
+ "version": "0.1.2",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -12744,6 +12744,215 @@
      ],
      "charge": true
     }
+   },
+   {
+    "id": "built_in_buzz_saw",
+    "name": "Buzz Saw",
+    "skill": "Melee Weapons",
+    "type": "Built-in (Handy)",
+    "damage": "1d8 slashing",
+    "ap": "5 AP",
+    "crit": "20, x2, applies bleeding",
+    "range": "5",
+    "properties": "Cleave. Durable.",
+    "cost": "-",
+    "load": 0,
+    "description": "A mechanical saw housed in a metal frame used to cut wood, food, bodies, or debris. Built into one of your three arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 9)",
+    "tags": [
+     "built_in",
+     "handy_tool"
+    ]
+   },
+   {
+    "id": "built_in_clippers",
+    "name": "Clippers",
+    "skill": "Melee Weapons",
+    "type": "Built-in (Handy)",
+    "damage": "1d4 piercing",
+    "ap": "3 AP",
+    "crit": "19, 20, 1d4 piercing",
+    "range": "5",
+    "properties": "Dismember. Durable.",
+    "cost": "-",
+    "load": 0,
+    "description": "A large, sharp set of clippers for wiring, gardening, or opening boxes. Built into one of your three arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 9)",
+    "tags": [
+     "built_in",
+     "handy_tool"
+    ]
+   },
+   {
+    "id": "built_in_drill_handy",
+    "name": "Drill (Handy)",
+    "skill": "Melee Weapons",
+    "type": "Built-in (Handy)",
+    "damage": "1d8 slashing",
+    "ap": "6 AP",
+    "crit": "20, 2d8 slashing",
+    "range": "5",
+    "properties": "Durable. Mangle.",
+    "cost": "-",
+    "load": 0,
+    "description": "This drill has interchanging bits used for screws, nuts, bolts, and pilot holes. Built into one of your three arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 9)",
+    "tags": [
+     "built_in",
+     "handy_tool"
+    ]
+   },
+   {
+    "id": "built_in_gripper",
+    "name": "Gripper",
+    "skill": "",
+    "type": "Built-in (Handy)",
+    "damage": "-",
+    "ap": "-",
+    "crit": "-",
+    "properties": "",
+    "cost": "-",
+    "load": 0,
+    "description": "The Gripper is two finger-like appendages that can grab, twist, operate, use weapons, and hold items. Operating at similar efficiency to a human hand. If you do not have at least two of these tools, you effectively only have one hand. (This affects some weapons which have the two handed, unwieldy, or kickback special properties.) Built into one of your three arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 9)",
+    "tags": [
+     "built_in",
+     "handy_tool"
+    ]
+   },
+   {
+    "id": "built_in_torch",
+    "name": "Torch",
+    "skill": "Guns",
+    "type": "Built-in (Handy)",
+    "damage": "1d10 fire",
+    "ap": "5 AP",
+    "crit": "-",
+    "range": "10 ft. line",
+    "ammo": "Fuel, 5 rounds",
+    "properties": "Area of Effect. Durable. Incendiary.",
+    "cost": "-",
+    "load": 0,
+    "description": "This kitchen tool emits a flame with an adjustable nozzle for cooking, flambéing, taking care of pesky bug nests, or lighting candles. The book does not name its skill; the sheet uses Guns, like the Flamer. Built into one of your three arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 9)",
+    "tags": [
+     "built_in",
+     "handy_tool"
+    ],
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "ammo/ammunition_heavy_ammunition_fuel"
+     ]
+    }
+   },
+   {
+    "id": "built_in_taser",
+    "name": "Taser",
+    "skill": "Melee Weapons",
+    "type": "Built-in (Protectron)",
+    "damage": "2d8 electricity",
+    "ap": "4 AP",
+    "crit": "20, x2, applies dazed",
+    "range": "5",
+    "properties": "Durable.",
+    "cost": "-",
+    "load": 0,
+    "description": "Built into one of your arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 10)",
+    "tags": [
+     "built_in",
+     "protectron_tool"
+    ]
+   },
+   {
+    "id": "built_in_laser_protectron",
+    "name": "Laser (Protectron)",
+    "skill": "Energy Weapons",
+    "type": "Built-in (Protectron)",
+    "damage": "1d8 laser",
+    "ap": "4 AP",
+    "crit": "20, x2, applies burning",
+    "range": "x10/x20",
+    "ammo": "Fusion cell, 30 rounds",
+    "properties": "Durable. Semi-Automatic.",
+    "cost": "-",
+    "load": 0,
+    "description": "Built into one of your arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 10)",
+    "tags": [
+     "built_in",
+     "protectron_tool"
+    ],
+    "magazine": {
+     "capacity": 30,
+     "ammo": [
+      "ammo/ammunition_energy_ammunition_microfusion_cell"
+     ],
+     "charge": true
+    }
+   },
+   {
+    "id": "built_in_defibrillator",
+    "name": "Defibrillator",
+    "skill": "Unarmed",
+    "type": "Built-in (Protectron)",
+    "damage": "2d8 electricity",
+    "ap": "6 AP",
+    "crit": "20, 1d8",
+    "range": "5",
+    "properties": "Durable. Revitalizing.",
+    "cost": "-",
+    "load": 0,
+    "description": "Built into one of your arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 10)",
+    "tags": [
+     "built_in",
+     "protectron_tool"
+    ]
+   },
+   {
+    "id": "built_in_cryo_spray",
+    "name": "Cryo Spray",
+    "skill": "Energy Weapons",
+    "type": "Built-in (Protectron)",
+    "damage": "2d4 cold",
+    "ap": "5 AP",
+    "crit": "-",
+    "range": "20 ft. cone",
+    "ammo": "Cryo cell, 3 rounds",
+    "properties": "Area of Effect. Durable. Freezing. Slow.",
+    "cost": "-",
+    "load": 0,
+    "description": "Built into one of your arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 10)",
+    "tags": [
+     "built_in",
+     "protectron_tool"
+    ],
+    "magazine": {
+     "capacity": 3,
+     "ammo": [
+      "ammo/ammunition_energy_ammunition_cryo_cell"
+     ],
+     "charge": true
+    }
+   },
+   {
+    "id": "built_in_nail_gun",
+    "name": "Nail Gun",
+    "skill": "Guns",
+    "type": "Built-in (Protectron)",
+    "damage": "1 piercing per attack",
+    "ap": "6 AP",
+    "crit": "20, 10 piercing",
+    "range": "x3/x10",
+    "ammo": "Nails, 90 rounds",
+    "properties": "Automatic: 2. Durable.",
+    "cost": "-",
+    "load": 0,
+    "description": "Built into one of your arms: it can be modified like any other weapon, only requires one hand, costs no AP to equip or stow, and cannot be detached unless that arm is severed. (p. 10)",
+    "tags": [
+     "built_in",
+     "protectron_tool"
+    ],
+    "magazine": {
+     "capacity": 90,
+     "ammo": [
+      "ammo/ammunition_guns_ammunition_nails_pack_of_5"
+     ]
+    }
    }
   ],
   "armor": [
@@ -17571,6 +17780,46 @@
     "max": "perk_points",
     "if": "perk_points > 0",
     "description": "Step 23: choose a Perk that you meet the requirements for. (p. 4)"
+   },
+   {
+    "type": "pick",
+    "collection": "weapons",
+    "tag": "protectron_tool",
+    "title": "Protectron: built-in tool",
+    "min": 1,
+    "max": 1,
+    "if": "has('protectron')",
+    "description": "Protect and Serve: choose one tool or weapon built into one of your arms. (p. 10)"
+   },
+   {
+    "type": "pick",
+    "collection": "weapons",
+    "tag": "handy_tool",
+    "title": "Handy: first arm",
+    "min": 1,
+    "max": 1,
+    "if": "has('handy')",
+    "description": "Incredible Multi-Talented Appliance: Handys are built with three special tools, one in each of three arms. Choose the tool or weapon for your first arm. (p. 9)"
+   },
+   {
+    "type": "pick",
+    "collection": "weapons",
+    "tag": "handy_tool",
+    "title": "Handy: second arm",
+    "min": 0,
+    "max": 1,
+    "if": "has('handy')",
+    "description": "The book says Handys are built with three tools (and can have three Grippers), but then says \"choose one tool or weapon\". Choose a tool for your second arm, or none, as agreed with your GM. The same tool can be chosen again. (p. 9)"
+   },
+   {
+    "type": "pick",
+    "collection": "weapons",
+    "tag": "handy_tool",
+    "title": "Handy: third arm",
+    "min": 0,
+    "max": 1,
+    "if": "has('handy')",
+    "description": "Same as the second arm: choose a tool for your third arm, or none, as agreed with your GM. (p. 9)"
    },
    {
     "type": "items",

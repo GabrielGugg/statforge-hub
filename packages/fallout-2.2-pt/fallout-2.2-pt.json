@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.14.0",
+ "version": "1.15.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -12975,6 +12975,215 @@
      ],
      "charge": true
     }
+   },
+   {
+    "id": "embutida_serra_circular",
+    "name": "Serra Circular",
+    "pericia": "Corpo a Corpo",
+    "tipo": "Embutida (Mãozinha)",
+    "dano": "1d8 cortante",
+    "pa": "5 PA",
+    "critico": "20, x2, aplica sangramento",
+    "alcance": "5",
+    "propriedades": "Talhar. Durável.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Uma serra mecânica alojada em estrutura de metal, usada para cortar madeira, comida, corpos ou detritos. Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_maozinha"
+    ]
+   },
+   {
+    "id": "embutida_alicates",
+    "name": "Alicates",
+    "pericia": "Corpo a Corpo",
+    "tipo": "Embutida (Mãozinha)",
+    "dano": "1d4 perfurante",
+    "pa": "3 PA",
+    "critico": "19, 20, 1d4 perfurante",
+    "alcance": "5",
+    "propriedades": "Desmembrar. Durável.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Um conjunto grande e afiado de alicates para fiação, jardinagem ou abertura de caixas. Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_maozinha"
+    ]
+   },
+   {
+    "id": "embutida_broca_maozinha",
+    "name": "Broca (Mãozinha)",
+    "pericia": "Corpo a Corpo",
+    "tipo": "Embutida (Mãozinha)",
+    "dano": "1d8 cortante",
+    "pa": "6 PA",
+    "critico": "20, 2d8 cortante",
+    "alcance": "5",
+    "propriedades": "Durável. Mutilar.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Esta broca tem pontas intercambiáveis usadas para parafusos, porcas, cavilhas e furos-piloto. Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_maozinha"
+    ]
+   },
+   {
+    "id": "embutida_pinca",
+    "name": "Pinça",
+    "pericia": "",
+    "tipo": "Embutida (Mãozinha)",
+    "dano": "—",
+    "pa": "—",
+    "critico": "—",
+    "propriedades": "",
+    "custo": "—",
+    "carga": 0,
+    "description": "A Pinça é um apêndice com dois dedos que pode agarrar, torcer, operar, usar armas e segurar itens. Opera com eficiência semelhante a uma mão humana. Se você não tiver pelo menos duas dessas ferramentas, você efetivamente só tem uma mão (isso afeta armas com as propriedades Duas Mãos, Desajeitada ou Coice). Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_maozinha"
+    ]
+   },
+   {
+    "id": "embutida_macarico",
+    "name": "Maçarico",
+    "pericia": "Disparo",
+    "tipo": "Embutida (Mãozinha)",
+    "dano": "1d10 fogo",
+    "pa": "5 PA",
+    "critico": "—",
+    "alcance": "Linha de 3 m",
+    "municao": "Combustível, 5 cargas",
+    "propriedades": "Área de Efeito. Durável. Incendiária.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Esta ferramenta de cozinha emite uma chama com um bico ajustável para cozinhar, flambar, cuidar de ninhos de insetos incômodos ou acender velas. O livro não diz a perícia; a ficha usa Disparo, como o Lança-chamas. Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_maozinha"
+    ],
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_pesada_combustivel"
+     ]
+    }
+   },
+   {
+    "id": "embutida_taser",
+    "name": "Taser",
+    "pericia": "Corpo a Corpo",
+    "tipo": "Embutida (Guardatron)",
+    "dano": "2d8 eletricidade",
+    "pa": "4 PA",
+    "critico": "20, x2, aplica Atordoado",
+    "alcance": "5",
+    "propriedades": "Durável.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_guardatron"
+    ]
+   },
+   {
+    "id": "embutida_laser_guardatron",
+    "name": "Laser (Guardatron)",
+    "pericia": "Energia",
+    "tipo": "Embutida (Guardatron)",
+    "dano": "1d8 laser",
+    "pa": "4 PA",
+    "critico": "20, x2, aplica Queimando",
+    "alcance": "x10/x20",
+    "municao": "Célula de Fusão, 30 cargas",
+    "propriedades": "Durável. Semiautomática.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_guardatron"
+    ],
+    "magazine": {
+     "capacity": 30,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_microfusao"
+     ],
+     "charge": true
+    }
+   },
+   {
+    "id": "embutida_desfibrilador",
+    "name": "Desfibrilador",
+    "pericia": "Pugilismo",
+    "tipo": "Embutida (Guardatron)",
+    "dano": "2d8 eletricidade",
+    "pa": "6 PA",
+    "critico": "20, 1d8",
+    "alcance": "5",
+    "propriedades": "Durável. Revitalizante.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_guardatron"
+    ]
+   },
+   {
+    "id": "embutida_spray_criogenico",
+    "name": "Spray Criogênico",
+    "pericia": "Energia",
+    "tipo": "Embutida (Guardatron)",
+    "dano": "2d4 frio",
+    "pa": "5 PA",
+    "critico": "—",
+    "alcance": "Cone de 6 m",
+    "municao": "Célula Criogênica, 3 cargas",
+    "propriedades": "Área de Efeito. Durável. Congelante. Lento.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_guardatron"
+    ],
+    "magazine": {
+     "capacity": 3,
+     "ammo": [
+      "municao/municao_de_energia_celula_criogenica"
+     ],
+     "charge": true
+    }
+   },
+   {
+    "id": "embutida_pistola_de_pregos",
+    "name": "Pistola de Pregos",
+    "pericia": "Disparo",
+    "tipo": "Embutida (Guardatron)",
+    "dano": "1 perfurante por ataque",
+    "pa": "6 PA",
+    "critico": "20, 10 perfurante",
+    "alcance": "x3/x10",
+    "municao": "Pregos, 90 cargas",
+    "propriedades": "Automática: 2. Durável.",
+    "custo": "—",
+    "carga": 0,
+    "description": "Embutida em um dos seus braços: pode ser modificada como qualquer outra arma, exige apenas uma mão, não custa PA para equipar ou guardar e não pode ser removida a menos que esse braço seja decepado.",
+    "tags": [
+     "embutida",
+     "ferramenta_guardatron"
+    ],
+    "magazine": {
+     "capacity": 90,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_pregos_pacote_de_5"
+     ]
+    }
    }
   ],
   "armaduras": [
@@ -17490,6 +17699,46 @@
     "max": "pontos_talento",
     "if": "pontos_talento > 0",
     "description": "Passo 22: escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
+   },
+   {
+    "type": "pick",
+    "collection": "armas",
+    "tag": "ferramenta_guardatron",
+    "title": "Guardatron: ferramenta embutida",
+    "min": 1,
+    "max": 1,
+    "if": "has('guardatron')",
+    "description": "Proteger e Servir: escolha uma ferramenta ou arma embutida em um dos seus braços."
+   },
+   {
+    "type": "pick",
+    "collection": "armas",
+    "tag": "ferramenta_maozinha",
+    "title": "Mãozinha: primeiro braço",
+    "min": 1,
+    "max": 1,
+    "if": "has('maozinha')",
+    "description": "Incrível Aparelho Multitalentoso!: escolha a ferramenta ou arma do seu primeiro braço. Você escolhe uma para cada um dos três braços, e a mesma pode se repetir."
+   },
+   {
+    "type": "pick",
+    "collection": "armas",
+    "tag": "ferramenta_maozinha",
+    "title": "Mãozinha: segundo braço",
+    "min": 1,
+    "max": 1,
+    "if": "has('maozinha')",
+    "description": "Escolha a ferramenta ou arma do seu segundo braço (pode repetir a do primeiro)."
+   },
+   {
+    "type": "pick",
+    "collection": "armas",
+    "tag": "ferramenta_maozinha",
+    "title": "Mãozinha: terceiro braço",
+    "min": 1,
+    "max": 1,
+    "if": "has('maozinha')",
+    "description": "Escolha a ferramenta ou arma do seu terceiro braço (pode repetir as anteriores)."
    },
    {
     "type": "items",
