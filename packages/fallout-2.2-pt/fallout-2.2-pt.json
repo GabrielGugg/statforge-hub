@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.8.0",
+ "version": "1.9.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -5920,6 +5920,11 @@
      {
       "type": "note",
       "text": "Acumulador (Ermo Selvagem): imune a sobrecarregado; ganha fadiga quando a carga fica abaixo do máximo."
+     },
+     {
+      "type": "immunity",
+      "text": "Sobrecarregado",
+      "ref": "condicoes/sobrecarregado"
      }
     ]
    },
@@ -6743,7 +6748,13 @@
     "tags": [
      "força"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "immunity",
+      "text": "Sobrecarregado",
+      "ref": "condicoes/sobrecarregado"
+     }
+    ]
    },
    {
     "id": "manejo_de_armas",
@@ -15387,5 +15398,27 @@
     ]
    }
   ]
- }
+ },
+ "auto_conditions": [
+  {
+   "ref": "condicoes/sobrecarregado",
+   "when": "carga > carga_max and carga <= 2 * carga_max",
+   "text": "Sua carga passou da capacidade."
+  },
+  {
+   "ref": "condicoes/muito_sobrecarregado",
+   "when": "carga > 2 * carga_max",
+   "text": "Sua carga passou do dobro da capacidade."
+  },
+  {
+   "ref": "condicoes/lento",
+   "when": "maxof('armaduras', 'forca', true) > FOR",
+   "text": "Você está vestindo uma armadura que exige mais Força do que você tem."
+  },
+  {
+   "ref": "condicoes/morrendo",
+   "when": "current('pv') <= 0",
+   "text": "Seus pontos de vida chegaram a 0."
+  }
+ ]
 }
