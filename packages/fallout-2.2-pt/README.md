@@ -1,4 +1,4 @@
-# Fallout TTRPG 2.2 (Vault Texas)
+# Fallout TTRPG 2.2
 
 Fallout TTRPG 2.1 (Arcane Arcade) traduzido para o português, com as regras da casa da versão 2.2. Por GabrielGugg.
 
@@ -7,4 +7,3 @@ Fallout TTRPG 2.1 (Arcane Arcade) traduzido para o português, com as regras da 
 | `fallout-2.2-pt.json` | sistema |
 | `tema-pipboy.json` | tema |
 | `tema-vault-tec.json` | tema |
-| `mesa-vault-texas.json` | mesa (instala o sistema e o tema Pip-Boy) |
