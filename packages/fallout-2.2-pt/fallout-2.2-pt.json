@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.7.0",
+ "version": "1.8.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -429,14 +429,31 @@
    "quick_remove": true,
    "fields": {}
   },
+  "propriedades": {
+   "name": "Propriedades de Itens",
+   "fields": {
+    "secao": {
+     "type": "text",
+     "label": "Tipo"
+    }
+   }
+  },
   "armas": {
    "name": "Armas",
    "equippable": true,
    "quantity": true,
-   "wear": {
-    "max": 10
-   },
    "mods": "mods",
+   "wear": {
+    "max": 10,
+    "breaks": true,
+    "stats": [
+     {
+      "label": "Ataque",
+      "value": "-wear"
+     }
+    ],
+    "text": "Cada nível de desgaste tira 1 das rolagens de ataque da arma. No 10º, ela quebra."
+   },
    "fields": {
     "pericia": {
      "type": "text",
@@ -470,7 +487,8 @@
     },
     "propriedades": {
      "type": "text",
-     "label": "Propriedades"
+     "label": "Propriedades",
+     "links": "propriedades"
     },
     "custo": {
      "type": "text",
@@ -490,7 +508,13 @@
    "name": "Armaduras",
    "equippable": true,
    "wear": {
-    "max": 10
+    "max": 10,
+    "breaks": true,
+    "fields": {
+     "df": "max(10, value - floor(wear / 2))",
+     "td": "max(0, value - floor(wear / 2))"
+    },
+    "text": "DF e TD da armadura caem metade dos níveis de desgaste (para baixo); a DF não fica abaixo de 10. No 10º, ela quebra."
    },
    "fields": {
     "df": {
@@ -628,7 +652,8 @@
     },
     "propriedades": {
      "type": "text",
-     "label": "Propriedades"
+     "label": "Propriedades",
+     "links": "propriedades"
     },
     "custo": {
      "type": "text",
@@ -672,7 +697,8 @@
     },
     "propriedades": {
      "type": "text",
-     "label": "Propriedades"
+     "label": "Propriedades",
+     "links": "propriedades"
     },
     "custo": {
      "type": "text",
@@ -708,7 +734,8 @@
     },
     "propriedades": {
      "type": "text",
-     "label": "Propriedades"
+     "label": "Propriedades",
+     "links": "propriedades"
     },
     "custo": {
      "type": "text",
@@ -889,6 +916,524 @@
       "ref": "radiacao"
      }
     ]
+   }
+  ],
+  "propriedades": [
+   {
+    "id": "certeiro",
+    "name": "Certeiro",
+    "secao": "Especiais à Distância",
+    "description": "Quando você faz uma rolagem de ataque mirado com uma arma que tem esta propriedade, você pode escolher a condição de membro em vez de rolar para determiná-la."
+   },
+   {
+    "id": "arco",
+    "name": "Arco",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano a uma criatura com uma arma que tem esta propriedade, a energia salta para outra criatura próxima. Cada criatura a até 6 m da criatura atingida anteriormente sofre o mesmo dano. A energia continua saltando enquanto houver um novo alvo a até 6 m do anterior."
+   },
+   {
+    "id": "area_de_efeito",
+    "name": "Área de Efeito",
+    "secao": "Especiais à Distância",
+    "description": "Quando você ataca com uma arma que tem esta propriedade, você não faz rolagem de ataque. Em vez disso, você usa a munição necessária e quaisquer criaturas ou objetos no alcance sofrem o dano da arma quando o ataque acerta. Você não soma seu modificador de Agilidade a esse dano."
+   },
+   {
+    "id": "automatica",
+    "name": "Automática",
+    "secao": "Especiais à Distância",
+    "description": "Quando você gasta PA para atacar com uma arma que tem esta propriedade, pode fazer um número de ataques adicionais sem gastar nenhum PA adicional; o alvo desses ataques adicionais deve estar a até 3 m do alvo anterior e você não soma seu modificador de Agilidade ao dano dos ataques adicionais. O número de ataques adicionais que você pode fazer está listado na coluna de propriedades especiais."
+   },
+   {
+    "id": "quebravel",
+    "name": "Quebrável",
+    "secao": "Especiais à Distância",
+    "description": "A arma ganha um nível de desgaste quando você tira 3 ou menos em uma rolagem de ataque."
+   },
+   {
+    "id": "carregavel",
+    "name": "Carregável",
+    "secao": "Especiais à Distância",
+    "description": "Quando você gasta pontos de ação para fazer uma rolagem de ataque com uma arma que tem esta propriedade, pode gastar 3 PA adicionais para somar um dado de dano adicional ao dano. Alternativamente, pode gastar 6 PA adicionais para somar dois dados de dano adicionais. Sempre que você carrega uma arma assim, soma seu modificador duas vezes ao total do dano, em vez de uma."
+   },
+   {
+    "id": "corrosivo",
+    "name": "Corrosivo",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura com uma arma que tem esta propriedade, a armadura dela ganha um nível de desgaste. Se ela tem armadura natural, sua DF e sua TD diminuem em 1, até o máximo de 3, até que seus pontos de vida voltem ao total. Armadura Potente não é afetada por esta condição."
+   },
+   {
+    "id": "debilitante",
+    "name": "Debilitante",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura com um ataque mirado feito com uma arma que tem esta propriedade, você rola duas vezes na tabela de condições e aplica as duas condições. Se tirar a mesma condição duas vezes, os efeitos se acumulam. Se a arma é Certeira, você só pode escolher uma das condições."
+   },
+   {
+    "id": "defensivo",
+    "name": "Defensivo",
+    "secao": "Especiais à Distância",
+    "description": "Se você bloquear enquanto empunha esta arma, sua TD aumenta em 2."
+   },
+   {
+    "id": "destrutivo",
+    "name": "Destrutivo",
+    "secao": "Especiais à Distância",
+    "description": "Quando você tira 1 no dado de dano com uma arma à distância que tem esta propriedade, o resultado passa a ser 2."
+   },
+   {
+    "id": "duravel",
+    "name": "Durável",
+    "secao": "Especiais à Distância",
+    "description": "Uma arma à distância com esta propriedade não ganha níveis de desgaste quando você tira 1 na rolagem de ataque."
+   },
+   {
+    "id": "eletromagnetico",
+    "name": "Eletromagnético",
+    "secao": "Especiais à Distância",
+    "description": "Quando um robô, sintético ou criatura feita de material inorgânico sofre dano de uma arma com esta propriedade, o dano é dobrado para ela."
+   },
+   {
+    "id": "arma_de_energia",
+    "name": "Arma de Energia",
+    "secao": "Especiais à Distância",
+    "description": "Quando você ataca com uma arma que tem esta propriedade, você soma seu bônus da perícia Energia à rolagem do d20, em vez de qualquer outro bônus de perícia. Além disso, quando você causa dano com um ataque de uma arma que tem esta propriedade, soma um bônus igual ao seu modificador de atributo de Percepção, em vez de qualquer outro modificador de atributo."
+   },
+   {
+    "id": "congelante",
+    "name": "Congelante",
+    "secao": "Especiais à Distância",
+    "description": "Quando uma criatura sofre dano de uma arma com esta propriedade, ela fica lenta até o fim do próximo turno dela."
+   },
+   {
+    "id": "incendiario",
+    "name": "Incendiário",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela fica queimando. Se um ataque com uma arma à distância com esta propriedade erra, o projétil pode cair por perto e incendiar objetos inflamáveis (a critério do MJ). Além disso, quaisquer objetos inflamáveis atingidos por uma arma com esta propriedade pegam fogo imediatamente. (Veja a regra de Chamas em O Ambiente.)"
+   },
+   {
+    "id": "coice",
+    "name": "Coice",
+    "secao": "Especiais à Distância",
+    "description": "Se você empunha com uma só mão uma arma à distância que tem esta propriedade, os alcances curto e longo são reduzidos pela metade."
+   },
+   {
+    "id": "recarga_manual",
+    "name": "Recarga Manual",
+    "secao": "Especiais à Distância",
+    "description": "Quando você recarrega uma arma com esta propriedade, pode escolher quantos PA gasta para recarregar, mas deve gastar pelo menos 3. Você recarrega 1 bala para cada PA gasto."
+   },
+   {
+    "id": "poderoso",
+    "name": "Poderoso",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano a uma criatura a até 1,5 m de você com uma arma que tem esta propriedade, você causa dano extra igual ao dano de acerto crítico."
+   },
+   {
+    "id": "recarga_agil",
+    "name": "Recarga Ágil",
+    "secao": "Especiais à Distância",
+    "description": "Recarregar uma arma com esta propriedade custa 4 PA em vez de 6."
+   },
+   {
+    "id": "radioativo",
+    "name": "Radioativo",
+    "secao": "Especiais à Distância",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela deve ser bem-sucedida em um teste de radiação ou sofrer 1 nível de rads."
+   },
+   {
+    "id": "semiautomatica",
+    "name": "Semiautomática",
+    "secao": "Especiais à Distância",
+    "description": "Se você gasta PA para atacar com esta arma logo depois de gastar PA para atacar com ela no mesmo turno, pode fazer outro ataque sem gastar nenhum PA. (Exemplo: se você gasta 4 PA para atacar com uma Pistola Laser no seu turno e logo depois gasta 4 PA para atacar de novo com a Pistola Laser, pode atacar mais uma vez sem gastar nenhum PA.)"
+   },
+   {
+    "id": "lento",
+    "name": "Lento",
+    "secao": "Especiais à Distância",
+    "description": "Quando você ataca com uma arma que tem esta propriedade, você só acerta o alvo no início do seu próximo turno. Se o alvo não estiver mais no alcance, você erra o ataque e não causa dano."
+   },
+   {
+    "id": "recarga_lenta",
+    "name": "Recarga Lenta",
+    "secao": "Especiais à Distância",
+    "description": "Recarregar uma arma com esta propriedade custa 10 PA em vez de 6. Se você e outra criatura estão a até 1,5 m da arma, você pode gastar 5 PA para recarregá-la, desde que ela tenha gastado 5 PA no turno anterior para ajudar você. Se o seu máximo de PA é 9 ou menos e você recarrega uma arma com esta propriedade sem a ajuda de outra criatura, você deve gastar todos os seus PA e depois gastar os PA que sobrarem no seu próximo turno para recarregar a arma."
+   },
+   {
+    "id": "dispersao",
+    "name": "Dispersão",
+    "secao": "Especiais à Distância",
+    "description": "Quando você ataca um alvo no segundo incremento de alcance de uma arma que tem esta propriedade, você também atinge cada criatura e objeto a até 1,5 m do alvo."
+   },
+   {
+    "id": "robusto",
+    "name": "Robusto",
+    "secao": "Especiais à Distância",
+    "description": "Uma arma à distância com esta propriedade ignora os efeitos negativos dos 2 primeiros níveis de desgaste."
+   },
+   {
+    "id": "duas_maos",
+    "name": "Duas Mãos",
+    "secao": "Especiais à Distância",
+    "description": "Se você ataca com apenas uma mão com uma arma à distância que tem esta propriedade, deve gastar 2 PA adicionais. Caso contrário, você tem desvantagem na rolagem de ataque e, depois de atacar, cai caído. Alternativamente, se o seu valor de atributo de Força for maior que o requisito de Força em pelo menos 3, você pode empunhar com uma só mão uma arma à distância com a propriedade Duas Mãos sem ter desvantagem na rolagem de ataque nem cair."
+   },
+   {
+    "id": "instavel",
+    "name": "Instável",
+    "secao": "Especiais à Distância",
+    "description": "Uma arma com esta propriedade ganha um nível de desgaste a cada cinco vezes que você a recarrega, em vez de dez."
+   },
+   {
+    "id": "desajeitada",
+    "name": "Desajeitada",
+    "secao": "Especiais à Distância",
+    "description": "Se você ataca com apenas uma mão com uma arma à distância que tem esta propriedade, tem desvantagem na rolagem de ataque, a menos que seu valor de Percepção seja igual a 10."
+   },
+   {
+    "id": "municao_e_esgotado",
+    "name": "Munição e Esgotado",
+    "secao": "Especiais",
+    "description": "Armas com essas propriedades precisam de certos tipos de munição ou combustível para funcionar com capacidade total, listados ao lado do nome da propriedade. Você causa o dano indicado na coluna Dano da arma enquanto houver cargas disponíveis nela. Se você atacar com uma arma que tem essa propriedade e não tem mais cargas, você causa o dano listado ao lado da propriedade Esgotado. Para colocar cargas na arma, você deve ter a munição necessária e gastar 6 PA para recarregar."
+   },
+   {
+    "id": "enganchar",
+    "name": "Enganchar",
+    "secao": "Especiais",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura com uma arma que tem esta propriedade, a arma se prende nela e a impede de se afastar de você. A criatura fica agarrada por você e qualquer teste de atributo de Força ou de Agilidade feito para escapar dessa agarrada tem desvantagem. Se a criatura agarrada for uma categoria de tamanho maior que você, ela não fica agarrada, a menos que seu valor de atributo de Força seja igual a 10. Uma criatura duas ou mais categorias de tamanho maior que você não pode ser agarrada dessa forma."
+   },
+   {
+    "id": "talhar",
+    "name": "Talhar",
+    "secao": "Especiais",
+    "description": "Você pode gastar 3 PA adicionais ao atacar com uma arma que tem esta propriedade para também atingir duas áreas adicionais com a rolagem de ataque. Essas áreas têm o comprimento do alcance da arma e devem estar a até 1,5 m da área atingida anteriormente. Cada criatura ou objeto na área é atacado com a rolagem de ataque e sofre dano se o ataque superar a DF dele. Se uma única criatura ocupa duas ou todas as áreas, ela é alvo de cada ataque, sofrendo dano de todas as rolagens de ataque. Se a arma especifica que \"sempre talha\", você não precisa gastar os PA adicionais para fazer esse ataque especial."
+   },
+   {
+    "id": "desmembrar",
+    "name": "Desmembrar",
+    "secao": "Especiais",
+    "description": "Ataques mirados nos braços ou nas pernas com esta arma não custam PA adicionais. Além disso, se você causar dano suficiente para levar uma criatura a 0 pontos de vida, pode escolher decepar a cabeça ou um membro dela. Cuidado com inimigos que tenham armas com esta propriedade."
+   },
+   {
+    "id": "fragil",
+    "name": "Frágil",
+    "secao": "Especiais",
+    "description": "Quando esta arma ganha um nível de desgaste, ela quebra e para de funcionar."
+   },
+   {
+    "id": "mutilar",
+    "name": "Mutilar",
+    "secao": "Especiais",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela ganha um nível de sangramento, ou um nível de curto-circuito se for robô ou sintético."
+   },
+   {
+    "id": "preciso",
+    "name": "Preciso",
+    "secao": "Especiais",
+    "description": "Quando você causa dano nos pontos de vida de uma criatura com um acerto crítico usando uma arma que tem esta propriedade, o alvo ganha dois níveis de sangramento, ou dois níveis de curto-circuito se for robô ou sintético."
+   },
+   {
+    "id": "alcance_estendido",
+    "name": "Alcance Estendido",
+    "secao": "Especiais",
+    "description": "O alcance da arma aumenta em 1,5 m."
+   },
+   {
+    "id": "revitalizante",
+    "name": "Revitalizante",
+    "secao": "Especiais",
+    "description": "Você pode gastar 6 PA para mirar em uma criatura morrendo com uma arma que tem esta propriedade; se fizer isso, a criatura alvo ganha 1 ponto de vida."
+   },
+   {
+    "id": "arremessavel",
+    "name": "Arremessável",
+    "secao": "Especiais",
+    "description": "Quando você ataca com uma arma que tem esta propriedade, pode arremessá-la a um número de pés igual ao seu valor de Força multiplicado pelos números listados na tabela. O primeiro número é o alcance base a que você pode arremessar a arma; o segundo é o alcance longo. Se o seu alvo estiver dentro do segundo incremento de alcance, você tem desvantagem na rolagem de ataque."
+   },
+   {
+    "id": "pugilista",
+    "name": "Pugilista",
+    "secao": "Especiais",
+    "description": "Quando você faz uma rolagem de ataque com uma arma que tem esta propriedade, soma seu bônus da perícia Pugilismo à rolagem do d20, em vez do seu bônus da perícia Corpo a Corpo."
+   },
+   {
+    "id": "pesado",
+    "name": "Pesado",
+    "secao": "Especiais",
+    "description": "Quando você tira 1 no dado de dano com uma arma que tem esta propriedade, o resultado passa a ser 2."
+   },
+   {
+    "id": "fraco",
+    "name": "Fraco",
+    "secao": "Especiais",
+    "description": "Quando você causa dano com uma arma que tem esta propriedade, não soma nenhum modificador de atributo à rolagem de dano."
+   },
+   {
+    "id": "cegante",
+    "name": "Cegante",
+    "secao": "Especiais de Explosivos",
+    "description": "Cada criatura na área de efeito listada ao lado do nome da propriedade fica cega por um número de rodadas igual a 4 − o modificador de atributo de Resistência dela, até o mínimo de 1."
+   },
+   {
+    "id": "ensurdecedor",
+    "name": "Ensurdecedor",
+    "secao": "Especiais de Explosivos",
+    "description": "Cada criatura na área de efeito listada ao lado do nome da propriedade fica surda por um número de rodadas igual a 4 − o modificador de atributo de Resistência dela, até o mínimo de 1."
+   },
+   {
+    "id": "detonador",
+    "name": "Detonador",
+    "secao": "Especiais de Explosivos",
+    "description": "Um explosivo com esta propriedade não detona depois do tempo previsto; em vez disso, você pode gastar 3 PA no seu turno para detonar o explosivo, desde que esteja dentro do alcance indicado ao lado do nome da propriedade."
+   },
+   {
+    "id": "proximidade",
+    "name": "Proximidade",
+    "secao": "Especiais de Explosivos",
+    "description": "Um explosivo com esta propriedade não detona depois de passado qualquer tempo; em vez disso, quando uma criatura entra pela primeira vez em um turno na área de proximidade do explosivo, ele detona no fim do turno dessa criatura. A área de proximidade de todo explosivo tem 3 m de raio."
+   },
+   {
+    "id": "estilhacante",
+    "name": "Estilhaçante",
+    "secao": "Especiais de Explosivos",
+    "description": "O explosivo sempre detona no fim do seu turno, independentemente da sua rolagem de explosivo."
+   },
+   {
+    "id": "fumaca",
+    "name": "Fumaça",
+    "secao": "Especiais de Explosivos",
+    "description": "Quando o explosivo detona, cria uma nuvem de fumaça na área de efeito. Essa fumaça se espalha por cantos, a área fica muito obscurecida e as criaturas dentro da fumaça ficam cegas. A fumaça dura 1 minuto."
+   },
+   {
+    "id": "viciante",
+    "name": "Viciante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma bebida com a propriedade Alcoólico que também tem esta propriedade, você deve ser bem-sucedido em um teste de atributo de Resistência com CD 5. Se falhar, você fica viciado em bebidas alcoólicas. Enquanto estiver viciado em bebidas alcoólicas, você sempre tem dois níveis de exaustão, a menos que esteja bêbado. Você perde o vício em álcool se passar um número de semanas igual a 6 menos o seu modificador de atributo de Resistência (mínimo de 1)."
+   },
+   {
+    "id": "alcoolico",
+    "name": "Alcoólico",
+    "secao": "de Comidas e Bebidas",
+    "description": "Quando você consome uma bebida com esta propriedade e seu valor de atributo de Resistência é 5 ou mais, você fica léso por 1d4 horas. Se o seu valor de Resistência é 4 ou menos, você fica bêbado em vez disso. Se você já está léso e consome outra bebida alcoólica ou de alto teor, fica bêbado por 1d4 horas. Se você está bêbado e bebe mais duas bebidas alcoólicas ou de alto teor, fica mamado por 1d4 horas. Se você está mamado e bebe mais duas bebidas alcoólicas ou de alto teor, fica esbagaçado por 1d4 horas."
+   },
+   {
+    "id": "cafeinado",
+    "name": "Cafeinado",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você não sofre mais os efeitos negativos dos três primeiros níveis de exaustão pelas próximas 6 horas. Se você não tem níveis de exaustão, sempre que rolar um d20, some 1 ao resultado. Se você bebe outra bebida cafeinada enquanto está sob os efeitos de uma, você ganha 1 PA no início do seu turno pelas próximas 6 horas. Porém, ao fim dessas 6 horas, você ganha um nível de exaustão para cada bebida cafeinada adicional que consumiu enquanto estava sob os efeitos de uma."
+   },
+   {
+    "id": "alto_teor",
+    "name": "Alto Teor",
+    "secao": "de Comidas e Bebidas",
+    "description": "Quando você consome uma bebida com esta propriedade e seu valor de atributo de Resistência é 5 ou mais, você fica bêbado por 1d4 horas. Se o seu valor de Resistência é 4 ou menos, você fica mamado em vez disso. Se você já está bêbado e consome outra bebida alcoólica ou de alto teor, fica mamado por 1d4 horas. Se você está mamado e bebe mais duas bebidas alcoólicas ou de alto teor, fica esbagaçado por 1d4 horas."
+   },
+   {
+    "id": "hidratante",
+    "name": "Hidratante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Quando você consome uma bebida com esta propriedade, você remove mais dois níveis de desidratação (um total de três, já que todas as bebidas removem um nível de desidratação)."
+   },
+   {
+    "id": "irradiado",
+    "name": "Irradiado",
+    "secao": "de Comidas e Bebidas",
+    "description": "Algumas comidas não são lá muito seguras para comer, mas pedinte não escolhe no ermo. Quando você consome uma comida irradiada, você ganha um nível de irradiação. Se você ganha dez níveis de irradiação, ganha um nível de rads."
+   },
+   {
+    "id": "saciante",
+    "name": "Saciante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você remove mais um nível de fome."
+   },
+   {
+    "id": "insosso",
+    "name": "Insosso",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você cura pontos de estamina iguais à metade do seu nível."
+   },
+   {
+    "id": "saboroso",
+    "name": "Saboroso",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você cura pontos de estamina iguais ao seu nível."
+   },
+   {
+    "id": "apetitoso",
+    "name": "Apetitoso",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você cura pontos de estamina iguais ao dobro do seu nível."
+   },
+   {
+    "id": "iguaria",
+    "name": "Iguaria",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você cura pontos de estamina iguais ao triplo do seu nível."
+   },
+   {
+    "id": "fortificante",
+    "name": "Fortificante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, seu Limiar de Radiação diminui em 2 por 6 horas."
+   },
+   {
+    "id": "energizante",
+    "name": "Energizante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você ganha 1 PA no início do seu turno pelas próximas 4 horas."
+   },
+   {
+    "id": "empoderador",
+    "name": "Empoderador",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você ganha 2 PA no início do seu turno pelas próximas 4 horas."
+   },
+   {
+    "id": "regenerador",
+    "name": "Regenerador",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você cura pontos de vida iguais ao seu Fator de Cura."
+   },
+   {
+    "id": "refrescante",
+    "name": "Refrescante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você remove um nível de desidratação."
+   },
+   {
+    "id": "petisco",
+    "name": "Petisco",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida com esta propriedade, você não remove nenhum nível de fome, a menos que consuma duas comidas com esta propriedade."
+   },
+   {
+    "id": "picante",
+    "name": "Picante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, sempre que sofrer dano de fogo ou de laser nas próximas 6 horas, sua TD aumenta em 3 para esse dano."
+   },
+   {
+    "id": "substancioso",
+    "name": "Substancioso",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, sua Capacidade de Carga aumenta em 50 pelas próximas 6 horas."
+   },
+   {
+    "id": "acre",
+    "name": "Acre",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, sua TD aumenta em 1 pelas próximas 6 horas."
+   },
+   {
+    "id": "podre",
+    "name": "Podre",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você fica envenenado pelas próximas 4 horas se o seu valor de Resistência for 5 ou menos."
+   },
+   {
+    "id": "purificante",
+    "name": "Purificante",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você cura um vício."
+   },
+   {
+    "id": "fortalecedor",
+    "name": "Fortalecedor",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, sempre que atacar outra criatura e rolar dano, o dano aumenta em 2."
+   },
+   {
+    "id": "sortudo",
+    "name": "Sortudo",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você tem vantagem em todos os testes de atributo de Sorte pelas próximas 6 horas."
+   },
+   {
+    "id": "carregado",
+    "name": "Carregado",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você recicla todos os seus PA não usados no início de cada um dos seus turnos pela próxima hora."
+   },
+   {
+    "id": "contaminado",
+    "name": "Contaminado",
+    "secao": "de Comidas e Bebidas",
+    "description": "Se você consome uma comida ou bebida com esta propriedade, você contrai uma doença aleatória. Porém, você pode virar sua Tampa de Karma para ignorar a doença."
+   },
+   {
+    "id": "anabolizante",
+    "name": "Anabolizante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, tem vantagem em todos os testes de atributo e de perícia de Força e de Resistência. Além disso, você ganha pontos de vida temporários iguais ao seu nível."
+   },
+   {
+    "id": "anestesico",
+    "name": "Anestésico",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, sua TD aumenta em 6."
+   },
+   {
+    "id": "ansiolitico",
+    "name": "Ansiolítico",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, tem vantagem em testes de atributo e de perícia de Carisma, em rolagens de Iniciativa e em quaisquer testes para resistir a ficar amedrontado."
+   },
+   {
+    "id": "extrapolante",
+    "name": "Extrapolante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, quaisquer rolagens que fizer com Inteligência ou Percepção aumentam em um valor igual ao seu nível."
+   },
+   {
+    "id": "alucinogeno",
+    "name": "Alucinógeno",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, tem vantagem em todos os testes de Sorte e pode virar sua Tampa de Karma."
+   },
+   {
+    "id": "hiperestimulante",
+    "name": "Hiperestimulante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, ganha 4 PA adicionais no início do seu turno (até o máximo de 20). Você não sofre mais os efeitos negativos dos oito primeiros níveis de exaustão. Se você não tem níveis de exaustão, sempre que rolar um d20, soma 2 ao resultado. Além disso, você é imune a ganhar níveis de fadiga."
+   },
+   {
+    "id": "revigorante",
+    "name": "Revigorante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, recupera pontos de estamina iguais à metade do seu nível."
+   },
+   {
+    "id": "analgesico",
+    "name": "Analgésico",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, sua TD aumenta em 3."
+   },
+   {
+    "id": "psicose",
+    "name": "Psicose",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, quando causa dano de uma rolagem de ataque, o dano aumenta em 5. Porém, você sempre ataca a criatura hostil mais próxima. Se não há criaturas hostis por perto, você deve fazer um teste de atributo de Resistência com CD 15. Se falhar, você ataca a criatura mais próxima."
+   },
+   {
+    "id": "neuroestimulante",
+    "name": "Neuroestimulante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, ganha 1 PA adicional no início do seu turno (até o máximo de 16). Além disso, tem vantagem em todos os testes de atributo e de perícia de Inteligência e de Percepção."
+   },
+   {
+    "id": "sedativo",
+    "name": "Sedativo",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, seus Sentidos Passivos aumentam em 5 e, se você acerta um crítico com uma rolagem de ataque, o dano aumenta em 10."
+   },
+   {
+    "id": "estimulante",
+    "name": "Estimulante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, ganha 1 PA adicional no início do seu turno (até o máximo de 16). Você não sofre mais os efeitos negativos dos três primeiros níveis de exaustão. Se você não tem níveis de exaustão, sempre que rolar um d20, soma 1 ao resultado."
+   },
+   {
+    "id": "superestimulante",
+    "name": "Superestimulante",
+    "secao": "de Químicos",
+    "description": "Se você usa um químico com esta propriedade, ganha 2 PA adicionais no início do seu turno (até o máximo de 20). Você não sofre mais os efeitos negativos dos cinco primeiros níveis de exaustão. Se você não tem níveis de exaustão, sempre que rolar um d20, soma 2 ao resultado. Além disso, você é imune a ganhar níveis de fadiga."
    }
   ],
   "variantes": [
@@ -8508,7 +9053,8 @@
     "propriedades": "Duas Mãos, Pesado, Robusto.",
     "custo": "270 tp",
     "carga": 10,
-    "forca": 6
+    "forca": 6,
+    "wear_ignore": 2
    },
    {
     "id": "armas_cortantes_machadinha",
@@ -8536,7 +9082,8 @@
     "propriedades": "Preciso. Robusto.",
     "custo": "165 tp",
     "carga": 3,
-    "forca": 4
+    "forca": 4,
+    "wear_ignore": 2
    },
    {
     "id": "armas_cortantes_lamina_de_assaultron",
@@ -8550,7 +9097,8 @@
     "propriedades": "Defensivo. Preciso. Robusto.",
     "custo": "225 tp",
     "carga": 4,
-    "forca": 5
+    "forca": 5,
+    "wear_ignore": 2
    },
    {
     "id": "armas_cortantes_espada_guitarra",
@@ -8592,7 +9140,8 @@
     "propriedades": "Defensivo. Robusto. Se você tiver duas, pode esquiar.",
     "custo": "210 tp",
     "carga": 4,
-    "forca": 5
+    "forca": 5,
+    "wear_ignore": 2
    },
    {
     "id": "armas_cortantes_picareta",
@@ -8606,7 +9155,8 @@
     "propriedades": "Duas Mãos. Pesado. Robusto.",
     "custo": "265 tp",
     "carga": 6,
-    "forca": 6
+    "forca": 6,
+    "wear_ignore": 2
    },
    {
     "id": "armas_cortantes_forcado",
@@ -8634,7 +9184,8 @@
     "propriedades": "Robusto.",
     "custo": "105 tp",
     "carga": 3,
-    "forca": 1
+    "forca": 1,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_chave_inglesa",
@@ -8648,7 +9199,8 @@
     "propriedades": "Robusto.",
     "custo": "140 tp",
     "carga": 5,
-    "forca": 2
+    "forca": 2,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_pe_de_cabra",
@@ -8676,7 +9228,8 @@
     "propriedades": "Robusto. Pesado. Duas Mãos.",
     "custo": "215 tp",
     "carga": 26,
-    "forca": 7
+    "forca": 7,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_taco_de_beisebol",
@@ -8690,7 +9243,8 @@
     "propriedades": "Pesado. Robusto. Defensivo. Duas Mãos.",
     "custo": "200 tp",
     "carga": 8,
-    "forca": 4
+    "forca": 4,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_super_marreta",
@@ -8746,7 +9300,8 @@
     "propriedades": "Robusto. Defensivo.",
     "custo": "130 tp",
     "carga": 6,
-    "forca": 5
+    "forca": 5,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_rolo_de_massa",
@@ -8816,7 +9371,8 @@
     "propriedades": "Debilitante. Robusto.",
     "custo": "145 tp",
     "carga": 5,
-    "forca": 4
+    "forca": 4,
+    "wear_ignore": 2
    },
    {
     "id": "armas_contundentes_espanca_comunista",
@@ -9054,7 +9610,8 @@
     "propriedades": "Defensivo. Robusto. Pugilista.",
     "custo": "115 tp",
     "carga": 6,
-    "forca": 3
+    "forca": 3,
+    "wear_ignore": 2
    },
    {
     "id": "armas_desarmadas_cranio_de_urso",
@@ -9281,7 +9838,8 @@
       "municao/municao_especial_armas_de_fogo_balote_x4",
       "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
      ]
-    }
+    },
+    "wear_ignore": 2
    },
    {
     "id": "armas_de_mao_pistola_9mm",
@@ -11054,16 +11612,17 @@
     "td": 1,
     "espacos": "4",
     "forca": 1,
+    "wear_ignore": 2,
     "effects": [
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 10 - floor(max(0, wear - 2) / 2))"
+      "value": "max(10, 10 - floor(wear / 2))"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 1 - floor(max(0, wear - 2) / 2))"
+      "value": "max(0, 1 - floor(wear / 2))"
      },
      {
       "type": "add",
@@ -14544,7 +15103,8 @@
        "dano",
        "pa",
        "critico",
-       "alcance"
+       "alcance",
+       "propriedades"
       ],
       "id": "armas",
       "title": "Armas equipadas",
