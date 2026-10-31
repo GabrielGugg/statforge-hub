@@ -7,14 +7,14 @@
     {
       "id": "fallout-2.2-pt",
       "name": "Fallout TTRPG 2.2 (pt-BR)",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "type": "system",
       "language": "pt-BR",
       "author": "GabrielGugg",
       "description": "Fallout TTRPG 2.1 da Arcane Arcade traduzido, com as regras da casa da versão 2.2 (veja a nota \"Changelog 2.1 - 2.2\"). Distribua o S.P.E.C.I.A.L. começando em 5 com 3 pontos extras; cada atributo vai de 1 a 10.",
       "url": "packages/fallout-2.2-pt/fallout-2.2-pt.json",
-      "bytes": 581048,
-      "entities": 818
+      "bytes": 610683,
+      "entities": 904
     },
     {
       "id": "tema-pipboy",
