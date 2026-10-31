@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.4.0",
+ "version": "1.5.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -241,7 +241,8 @@
    "id": "carga_max",
    "name": "Capacidade de Carga",
    "abbr": "Carga máx.",
-   "formula": "FOR * 10"
+   "formula": "FOR * 10",
+   "editable_bonus": true
   },
   {
    "id": "pontos_talento",
@@ -435,6 +436,7 @@
    "wear": {
     "max": 10
    },
+   "mods": "mods",
    "fields": {
     "pericia": {
      "type": "text",
@@ -457,8 +459,10 @@
      "label": "Crítico"
     },
     "alcance": {
-     "type": "text",
-     "label": "Alcance (× PER)"
+     "type": "range",
+     "label": "Alcance",
+     "unit": "ft",
+     "per": "PER"
     },
     "municao": {
      "type": "text",
@@ -1182,11 +1186,13 @@
      {
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata_de_acao_por_ferrolho",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -1197,6 +1203,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -1247,11 +1254,13 @@
      {
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata_de_acao_por_ferrolho",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -1262,6 +1271,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -1302,11 +1312,13 @@
      {
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
+      "equipped": true,
       "if": "has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata_de_acao_por_ferrolho",
       "qty": 1,
+      "equipped": true,
       "if": "has('sintetico')"
      },
      {
@@ -1317,6 +1329,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('sintetico')"
      },
      {
@@ -1357,11 +1370,13 @@
      {
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata_de_acao_por_ferrolho",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo')"
      },
      {
@@ -1372,6 +1387,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo')"
      },
      {
@@ -1438,11 +1454,13 @@
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
       "wear": 4,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/rifles_seringador",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1458,6 +1476,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1524,11 +1543,13 @@
       "ref": "armas/armas_cortantes_faca",
       "qty": 1,
       "wear": 4,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/rifles_seringador",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1544,6 +1565,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1619,12 +1641,14 @@
      {
       "ref": "armas/armas_cortantes_estilete",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1635,6 +1659,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1720,12 +1745,14 @@
      {
       "ref": "armas/armas_cortantes_estilete",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1736,6 +1763,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1821,12 +1849,14 @@
      {
       "ref": "armas/armas_cortantes_canivete",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1837,6 +1867,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1897,12 +1928,14 @@
      {
       "ref": "armas/armas_cortantes_canivete",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1913,6 +1946,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -1974,12 +2008,14 @@
       "ref": "armas/armas_cortantes_forcado",
       "qty": 1,
       "wear": 5,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/escopetas_escopeta_de_tiro_unico",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -1990,6 +2026,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2030,17 +2067,20 @@
       "ref": "armas/armas_cortantes_forcado",
       "qty": 1,
       "wear": 5,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_cortantes_foice",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/escopetas_escopeta_de_tiro_unico",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2051,6 +2091,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2117,11 +2158,13 @@
       "ref": "armas/armas_contundentes_cassetete",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_9mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2138,6 +2181,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2195,11 +2239,13 @@
       "ref": "armas/armas_contundentes_cassetete",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_9mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2216,6 +2262,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2275,6 +2322,7 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -2285,6 +2333,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -2348,6 +2397,7 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2358,6 +2408,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2416,6 +2467,7 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2431,6 +2483,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2490,12 +2543,14 @@
      {
       "ref": "armas/armas_cortantes_canivete",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_9mm",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -2506,6 +2561,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -2521,6 +2577,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -2566,12 +2623,14 @@
      {
       "ref": "armas/armas_cortantes_canivete",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_9mm",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2582,6 +2641,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2597,6 +2657,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2637,12 +2698,14 @@
      {
       "ref": "armas/armas_cortantes_canivete",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_9mm",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2653,6 +2716,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2668,6 +2732,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2728,12 +2793,14 @@
      {
       "ref": "armas/armas_contundentes_pe_de_cabra",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('super_mutante')"
      },
      {
@@ -2744,6 +2811,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('super_mutante')"
      },
      {
@@ -2804,12 +2872,14 @@
      {
       "ref": "armas/armas_contundentes_pe_de_cabra",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('necrotico')"
      },
      {
@@ -2820,6 +2890,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico')"
      },
      {
@@ -2880,12 +2951,14 @@
      {
       "ref": "armas/armas_contundentes_pe_de_cabra",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2896,6 +2969,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -2961,11 +3035,13 @@
      {
       "ref": "armas/armas_contundentes_chave_inglesa",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_revolver_de_sucata",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2976,11 +3052,13 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3031,11 +3109,13 @@
      {
       "ref": "armas/armas_contundentes_chave_inglesa",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_revolver_de_sucata",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3046,11 +3126,13 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3112,12 +3194,14 @@
       "ref": "armas/armas_cortantes_faca_de_combate",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/rifles_carabina_de_caca",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3128,6 +3212,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3169,12 +3254,14 @@
       "ref": "armas/armas_cortantes_faca_de_combate",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/rifles_carabina_de_caca",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3185,6 +3272,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3241,6 +3329,7 @@
       "ref": "armas/escopetas_escopeta_de_tiro_unico",
       "qty": 1,
       "wear": 3,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3251,6 +3340,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3307,6 +3397,7 @@
       "ref": "armas/escopetas_escopeta_de_tiro_unico",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3317,6 +3408,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3388,12 +3480,14 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
       "ref": "armas/armas_de_energia_rifle_laser",
       "qty": 1,
       "wear": 5,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -3404,6 +3498,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -3460,12 +3555,14 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_energia_rifle_laser",
       "qty": 1,
       "wear": 5,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -3476,6 +3573,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -3537,12 +3635,14 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_energia_rifle_laser",
       "qty": 1,
       "wear": 5,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3553,11 +3653,13 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3625,21 +3727,25 @@
       "ref": "armas/armas_contundentes_cano_de_chumbo",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_desarmadas_soco_ingles",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_desarmadas_punho_cravado",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3697,21 +3803,25 @@
       "ref": "armas/armas_contundentes_cano_de_chumbo",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_desarmadas_soco_ingles",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_desarmadas_punho_cravado",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3767,6 +3877,7 @@
      {
       "ref": "armas/armas_de_energia_pistola_laser",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3777,6 +3888,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3827,6 +3939,7 @@
      {
       "ref": "armas/armas_de_energia_pistola_laser",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3837,6 +3950,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3897,6 +4011,7 @@
      {
       "ref": "armas/armas_de_energia_pistola_laser",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3907,6 +4022,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3957,6 +4073,7 @@
      {
       "ref": "armas/armas_de_energia_pistola_laser",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -3967,6 +4084,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4028,12 +4146,14 @@
       "ref": "armas/armas_cortantes_faca_de_combate",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/rifles_carabina_de_caca",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4044,6 +4164,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4085,12 +4206,14 @@
       "ref": "armas/armas_cortantes_faca_de_combate",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/rifles_carabina_de_caca",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4101,6 +4224,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4156,12 +4280,14 @@
      {
       "ref": "armas/armas_cortantes_estilete",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4172,6 +4298,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4257,12 +4384,14 @@
      {
       "ref": "armas/armas_cortantes_estilete",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_de_sucata",
       "qty": 1,
       "wear": 2,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4273,6 +4402,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4358,6 +4488,7 @@
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4368,6 +4499,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4433,6 +4565,7 @@
      {
       "ref": "armas/armas_de_energia_pistola_laser",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4443,6 +4576,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4503,11 +4637,13 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -4518,6 +4654,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('humano')"
      },
      {
@@ -4568,11 +4705,13 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -4583,6 +4722,7 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -4638,11 +4778,13 @@
      {
       "ref": "armas/armas_cortantes_lanca_caseira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "armas/armas_de_mao_pistola_10mm",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -4653,11 +4795,13 @@
      {
       "ref": "equipamentos/itens_e_equipamentos_mochila",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
       "ref": "equipamentos/itens_e_equipamentos_bandoleira",
       "qty": 1,
+      "equipped": true,
       "if": "has('robo') or has('sintetico')"
      },
      {
@@ -8206,6 +8350,7 @@
     "dano": "1d4 perfurante",
     "pa": "3 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Frágil.",
     "custo": "65 tp",
     "carga": 1,
@@ -8219,6 +8364,7 @@
     "dano": "1d6 perfurante ou cortante",
     "pa": "3 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Arremessável, x3/x6.",
     "custo": "200 tp",
     "carga": 2,
@@ -8232,6 +8378,7 @@
     "dano": "1d6 perfurante ou cortante",
     "pa": "3 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Frágil, Pesado.",
     "custo": "120 tp",
     "carga": 1,
@@ -8245,6 +8392,7 @@
     "dano": "1d4 perfurante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Frágil, Alcance Estendido, Arremessável: x6/x10.",
     "custo": "85 tp",
     "carga": 7,
@@ -8258,6 +8406,7 @@
     "dano": "2d4 perfurante ou cortante",
     "pa": "3 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Preciso. Arremessável, x3/x8.",
     "custo": "220 tp",
     "carga": 2,
@@ -8271,6 +8420,7 @@
     "dano": "1d4 perfurante",
     "pa": "4 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Preciso. Frágil. Arremessável, x4/x8. Se arremessada, o dado de dano aumenta para 1d6.",
     "custo": "80 tp",
     "carga": 1,
@@ -8284,6 +8434,7 @@
     "dano": "1d10 perfurante ou cortante",
     "pa": "4 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Alcance Estendido, Arremessável: x6/x10.",
     "custo": "140 tp",
     "carga": 8,
@@ -8297,6 +8448,7 @@
     "dano": "2d6 perfurante ou cortante",
     "pa": "4 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Defensivo.",
     "custo": "195 tp",
     "carga": 4,
@@ -8310,6 +8462,7 @@
     "dano": "3d6 cortante",
     "pa": "6 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Talhar. Alcance Estendido.",
     "custo": "265 tp",
     "carga": 10,
@@ -8323,6 +8476,7 @@
     "dano": "10d6 cortante",
     "pa": "6 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Lento. Sempre Talha. Pesado. Alcance Estendido.",
     "custo": "415 tp",
     "carga": 30,
@@ -8336,6 +8490,7 @@
     "dano": "1d6 cortante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Debilitante. Pesado.",
     "custo": "175 tp",
     "carga": 2,
@@ -8349,6 +8504,7 @@
     "dano": "2d10 cortante",
     "pa": "6 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Duas Mãos, Pesado, Robusto.",
     "custo": "270 tp",
     "carga": 10,
@@ -8362,6 +8518,7 @@
     "dano": "2d6 perfurante",
     "pa": "4 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Arremessável: x4/x8.",
     "custo": "200 tp",
     "carga": 2,
@@ -8375,6 +8532,7 @@
     "dano": "2d4 cortante",
     "pa": "4 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Preciso. Robusto.",
     "custo": "165 tp",
     "carga": 3,
@@ -8388,6 +8546,7 @@
     "dano": "3d4 perfurante ou cortante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Defensivo. Preciso. Robusto.",
     "custo": "225 tp",
     "carga": 4,
@@ -8401,6 +8560,7 @@
     "dano": "1d8 cortante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Defensivo. Nas primeiras seis vezes em que a arma ganhar um nível de desgaste, você sofre 1 de dano.",
     "custo": "160 tp",
     "carga": 5,
@@ -8414,6 +8574,7 @@
     "dano": "1d8 perfurante",
     "pa": "4 PA",
     "critico": "19, 20",
+    "alcance": "5",
     "propriedades": "Defensivo. Debilitante. Preciso.",
     "custo": "130 tp",
     "carga": 2,
@@ -8427,6 +8588,7 @@
     "dano": "2d4 cortante",
     "pa": "4 PA",
     "critico": "20, x4",
+    "alcance": "5",
     "propriedades": "Defensivo. Robusto. Se você tiver duas, pode esquiar.",
     "custo": "210 tp",
     "carga": 4,
@@ -8440,6 +8602,7 @@
     "dano": "3d6 perfurante",
     "pa": "6 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Pesado. Robusto.",
     "custo": "265 tp",
     "carga": 6,
@@ -8453,6 +8616,7 @@
     "dano": "4d4 perfurante ou cortante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Alcance Estendido. Debilitante. Duas Mãos.",
     "custo": "290 tp",
     "carga": 8,
@@ -8466,6 +8630,7 @@
     "dano": "1d6 contusão",
     "pa": "4 PA",
     "critico": "20, 1d6",
+    "alcance": "5",
     "propriedades": "Robusto.",
     "custo": "105 tp",
     "carga": 3,
@@ -8479,6 +8644,7 @@
     "dano": "2d4 contusão",
     "pa": "4 PA",
     "critico": "20, 4d4",
+    "alcance": "5",
     "propriedades": "Robusto.",
     "custo": "140 tp",
     "carga": 5,
@@ -8492,6 +8658,7 @@
     "dano": "2d10 contusão",
     "pa": "6 PA",
     "critico": "20, 4d10",
+    "alcance": "5",
     "propriedades": "Pesado. Durável. Defensivo. Duas Mãos.",
     "custo": "335 tp",
     "carga": 20,
@@ -8505,6 +8672,7 @@
     "dano": "1d12 contusão",
     "pa": "6 PA",
     "critico": "20, 3d12, Atordoado",
+    "alcance": "5",
     "propriedades": "Robusto. Pesado. Duas Mãos.",
     "custo": "215 tp",
     "carga": 26,
@@ -8518,6 +8686,7 @@
     "dano": "3d4 contusão",
     "pa": "5 PA",
     "critico": "20, 2d4, empurra 1,5 m",
+    "alcance": "5",
     "propriedades": "Pesado. Robusto. Defensivo. Duas Mãos.",
     "custo": "200 tp",
     "carga": 8,
@@ -8531,6 +8700,7 @@
     "dano": "3d12 contusão",
     "pa": "6 PA",
     "critico": "20, 3d12, Atordoado",
+    "alcance": "5",
     "propriedades": "Pesado. Duas Mãos.",
     "custo": "310 tp",
     "carga": 30,
@@ -8544,6 +8714,7 @@
     "dano": "1d8 contusão",
     "pa": "5 PA",
     "critico": "20, 1d6, Caído",
+    "alcance": "5",
     "propriedades": "Pesado. Duas Mãos.",
     "custo": "130 tp",
     "carga": 5,
@@ -8557,6 +8728,7 @@
     "dano": "1d4 contusão",
     "pa": "4 PA",
     "critico": "20, 3d4, Caído",
+    "alcance": "5",
     "propriedades": "Defensivo.",
     "custo": "115 tp",
     "carga": 3,
@@ -8570,6 +8742,7 @@
     "dano": "1d8 contusão",
     "pa": "5 PA",
     "critico": "20, 1d6",
+    "alcance": "5",
     "propriedades": "Robusto. Defensivo.",
     "custo": "130 tp",
     "carga": 6,
@@ -8583,6 +8756,7 @@
     "dano": "1d6 contusão",
     "pa": "4 PA",
     "critico": "20, 2d6",
+    "alcance": "5",
     "propriedades": "Pesado. Quebrável. Defensivo.",
     "custo": "125 tp",
     "carga": 3,
@@ -8596,6 +8770,7 @@
     "dano": "3d4 contusão ou cortante",
     "pa": "4 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Pesado. Duas Mãos. Defensivo.",
     "custo": "255 tp",
     "carga": 10,
@@ -8609,6 +8784,7 @@
     "dano": "1d6 contusão",
     "pa": "4 PA",
     "critico": "20, 1d4, Caído",
+    "alcance": "5",
     "propriedades": "Pesado.",
     "custo": "100 tp",
     "carga": 4,
@@ -8622,6 +8798,7 @@
     "dano": "1d6 contusão",
     "pa": "5 PA",
     "critico": "20, 3d6",
+    "alcance": "5",
     "propriedades": "Pesado. Quebrável. Duas Mãos.",
     "custo": "125 tp",
     "carga": 4,
@@ -8635,6 +8812,7 @@
     "dano": "1d8 contusão",
     "pa": "4 PA",
     "critico": "20, 1d6",
+    "alcance": "5",
     "propriedades": "Debilitante. Robusto.",
     "custo": "145 tp",
     "carga": 5,
@@ -8648,6 +8826,7 @@
     "dano": "1 contusão",
     "pa": "4 PA",
     "critico": "20, +2",
+    "alcance": "5",
     "propriedades": "Se o alvo admitir que é comunista, a arma sempre acerta criticamente. Frágil. Fraco.",
     "custo": "15 tp",
     "carga": 2,
@@ -8661,6 +8840,7 @@
     "dano": "1 contusão",
     "pa": "2 PA",
     "critico": "20, +1",
+    "alcance": "5",
     "propriedades": "Frágil. Fraco.",
     "custo": "11 tp",
     "carga": 1,
@@ -8674,6 +8854,7 @@
     "dano": "1d8 contusão",
     "pa": "4 PA",
     "critico": "20, 1d8",
+    "alcance": "5",
     "propriedades": "Pesado. Quebrável. Duas Mãos.",
     "custo": "115 tp",
     "carga": 8,
@@ -8687,6 +8868,7 @@
     "dano": "1d8 + 1 contusão",
     "pa": "4 PA",
     "critico": "20, 1d8",
+    "alcance": "5",
     "propriedades": "Pesado. Quebrável. Duas Mãos.",
     "custo": "125 tp",
     "carga": 8,
@@ -8700,6 +8882,7 @@
     "dano": "1d4 contusão",
     "pa": "5 PA",
     "critico": "20, empurra 1,5 m",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Quebrável.",
     "custo": "50 tp",
     "carga": 8,
@@ -8713,6 +8896,7 @@
     "dano": "3d8 contusão ou cortante. Aplica Atordoado.",
     "pa": "6 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Alcance Estendido.",
     "custo": "75 tp",
     "carga": 45,
@@ -8726,6 +8910,7 @@
     "dano": "1d10 contusão",
     "pa": "4 PA",
     "critico": "20, 1d10. Ensurdece por 1 rodada.",
+    "alcance": "5",
     "propriedades": "Duas Mãos. Quebrável.",
     "custo": "100 tp",
     "carga": 10,
@@ -8739,6 +8924,7 @@
     "dano": "1d4 contusão, 2d8 eletricidade",
     "pa": "4 PA",
     "critico": "20. Atordoado.",
+    "alcance": "5",
     "propriedades": "Munição: Células de Energia, 10 cargas. Esgotado: 1d4 contusão.",
     "custo": "210 tp",
     "carga": 5,
@@ -8752,6 +8938,7 @@
     "dano": "3d8 cortante",
     "pa": "3 PA",
     "critico": "20, 3d8",
+    "alcance": "5",
     "propriedades": "Debilitante. Mutilar. Munição: Células de Energia, 10 cargas. Esgotado: 1d4 contusão.",
     "custo": "475 tp",
     "carga": 5,
@@ -8765,6 +8952,7 @@
     "dano": "1d10 cortante",
     "pa": "5 PA",
     "critico": "20, x3",
+    "alcance": "5",
     "propriedades": "Pesado. Mutilar. Munição: Células de Energia, 10 cargas. Esgotado: 1d6 cortante.",
     "custo": "220 tp",
     "carga": 10,
@@ -8778,6 +8966,7 @@
     "dano": "6d8 cortante",
     "pa": "6 PA",
     "critico": "20, 6d8",
+    "alcance": "5",
     "propriedades": "Debilitante. Duas Mãos. Mutilar. Munição: Células de Energia, 5 cargas. Esgotado: 1d8 contusão.",
     "custo": "670 tp",
     "carga": 20,
@@ -8791,6 +8980,7 @@
     "dano": "1d8 cortante",
     "pa": "4 PA",
     "critico": "19, 20",
+    "alcance": "5",
     "propriedades": "Debilitante. Mutilar. Preciso. Munição: Células de Energia, 20 cargas. Esgotado: 1d4 perfurante.",
     "custo": "190 tp",
     "carga": 8,
@@ -8804,6 +8994,7 @@
     "dano": "4d8 plasma",
     "pa": "5 PA",
     "critico": "20. Aplica condições graves de membro à sua escolha.",
+    "alcance": "5",
     "propriedades": "Desmembrar. Munição: Células de Microfusão, 5 cargas. Esgotado: 1d6 contusão.",
     "custo": "750 tp",
     "carga": 12,
@@ -8817,6 +9008,7 @@
     "dano": "2d6 cortante, 2d6 fogo",
     "pa": "4 PA",
     "critico": "20, x2. Aplica Queimando.",
+    "alcance": "5",
     "propriedades": "Debilitante. Desmembrar. Defensivo. Munição: combustível de lança-chamas, 10 cargas. Esgotado: 2d6 cortante.",
     "custo": "690 tp",
     "carga": 18,
@@ -8830,6 +9022,7 @@
     "dano": "1d4 + 1 contusão",
     "pa": "4 PA",
     "critico": "20, 4d4",
+    "alcance": "5",
     "propriedades": "Pugilista. Durável. Pesado.",
     "custo": "150 tp",
     "carga": 2,
@@ -8843,6 +9036,7 @@
     "dano": "1d4 + 1 perfurante",
     "pa": "4 PA",
     "critico": "19, 20",
+    "alcance": "5",
     "propriedades": "Pugilista. Preciso.",
     "custo": "120 tp",
     "carga": 2,
@@ -8856,6 +9050,7 @@
     "dano": "1d4 contusão",
     "pa": "4 PA",
     "critico": "20, 1d4. Aplica Atordoado.",
+    "alcance": "5",
     "propriedades": "Defensivo. Robusto. Pugilista.",
     "custo": "115 tp",
     "carga": 6,
@@ -8869,6 +9064,7 @@
     "dano": "3d6 perfurante ou cortante",
     "pa": "6 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Pugilista. Debilitante. Defensivo.",
     "custo": "190 tp",
     "carga": 15,
@@ -8882,6 +9078,7 @@
     "dano": "3d12 cortante",
     "pa": "6 PA",
     "critico": "20, 1d12",
+    "alcance": "5",
     "propriedades": "Pugilista. Debilitante. Mutilar. Defensivo.",
     "custo": "280 tp",
     "carga": 10,
@@ -8895,6 +9092,7 @@
     "dano": "3d12 perfurante",
     "pa": "6 PA",
     "critico": "20, x2",
+    "alcance": "5",
     "propriedades": "Enganchar. Debilitante. Defensivo. Mutilar. Pugilista.",
     "custo": "320 tp",
     "carga": 40,
@@ -8908,6 +9106,7 @@
     "dano": "4d6 contusão",
     "pa": "4 PA",
     "critico": "20, x2. Caído ou empurrão de 4,5 m.",
+    "alcance": "5",
     "propriedades": "Pugilista. Debilitante. Pesado. Munição: Células de Energia, 20 cargas. Esgotado: 1d6 contusão.",
     "custo": "350 tp",
     "carga": 12,
@@ -8926,7 +9125,31 @@
     "propriedades": "Incendiário. Recarga Ágil.",
     "custo": "90 tp",
     "carga": 3,
-    "forca": 1
+    "forca": 1,
+    "magazine": {
+     "capacity": 1,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_sinalizadores",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_esguicho_de_acido",
@@ -8956,7 +9179,31 @@
     "propriedades": "Quebrável. Coice. Semiautomática.",
     "custo": "165 tp",
     "carga": 6,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_9mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_de_sucata_de_acao_por_ferrolho",
@@ -8971,7 +9218,31 @@
     "propriedades": "Quebrável. Coice. Recarga Manual.",
     "custo": "200 tp",
     "carga": 6,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_308",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_10mm",
@@ -8986,7 +9257,31 @@
     "propriedades": "Robusto. Coice.",
     "custo": "315 tp",
     "carga": 6,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_10mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_9mm",
@@ -9001,7 +9296,31 @@
     "propriedades": "Coice.",
     "custo": "200 tp",
     "carga": 5,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 13,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_9mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_5_56mm",
@@ -9016,7 +9335,31 @@
     "propriedades": "Recarga Manual. Coice.",
     "custo": "335 tp",
     "carga": 7,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_5_56mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_revolver_de_sucata",
@@ -9031,7 +9374,31 @@
     "propriedades": "Quebrável. Recarga Manual.",
     "custo": "215 tp",
     "carga": 5,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_44_magnum",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_revolver_357_magnum",
@@ -9046,7 +9413,31 @@
     "propriedades": "Certeiro. Recarga Manual.",
     "custo": "375 tp",
     "carga": 4,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_357_magnum",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_revolver_44_magnum",
@@ -9061,7 +9452,31 @@
     "propriedades": "Certeiro. Recarga Manual.",
     "custo": "515 tp",
     "carga": 5,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_44_magnum",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_walther_ppk",
@@ -9076,7 +9491,31 @@
     "propriedades": "Semiautomática. Coice.",
     "custo": "400 tp",
     "carga": 3,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_10mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_12_7mm",
@@ -9091,7 +9530,31 @@
     "propriedades": "Semiautomática. Coice.",
     "custo": "310 tp",
     "carga": 8,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 7,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_12_7mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_pistola_automatica_45",
@@ -9106,7 +9569,31 @@
     "propriedades": "Semiautomática. Coice. Recarga Ágil.",
     "custo": "450 tp",
     "carga": 6,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 7,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_45",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_de_mao_revolver_ranger_sequoia",
@@ -9121,7 +9608,31 @@
     "propriedades": "Certeiro. Destrutivo. Recarga Manual.",
     "custo": "825 tp",
     "carga": 8,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_45_70_gov_t",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "submetralhadoras_pistola_de_pregos_h_h_tools",
@@ -9136,7 +9647,31 @@
     "propriedades": "Automática: 2. Duas Mãos. Instável.",
     "custo": "100 tp",
     "carga": 8,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 90,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_pregos_pacote_de_5",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "submetralhadoras_submetralhadora_9mm",
@@ -9151,7 +9686,31 @@
     "propriedades": "Automática: 2. Duas Mãos. Instável.",
     "custo": "190 tp",
     "carga": 6,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 30,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_9mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "submetralhadoras_submetralhadora_10mm",
@@ -9166,7 +9725,31 @@
     "propriedades": "Automática: 2. Duas Mãos. Instável.",
     "custo": "250 tp",
     "carga": 8,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 30,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_10mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "submetralhadoras_tommy_gun",
@@ -9181,7 +9764,31 @@
     "propriedades": "Automática: 4. Duas Mãos. Instável. Recarga Ágil.",
     "custo": "300 tp",
     "carga": 12,
-    "forca": 6
+    "forca": 6,
+    "magazine": {
+     "capacity": 50,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_45",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "submetralhadoras_submetralhadora_12_7mm",
@@ -9196,7 +9803,31 @@
     "propriedades": "Automática: 5. Duas Mãos. Instável.",
     "custo": "380 tp",
     "carga": 10,
-    "forca": 6
+    "forca": 6,
+    "magazine": {
+     "capacity": 21,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_12_7mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_seringador",
@@ -9211,7 +9842,24 @@
     "propriedades": "Certeiro. Poderoso. Recarga Ágil.",
     "custo": "130 tp",
     "carga": 8,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 1,
+     "ammo": [
+      "municao/municao_especial_seringador_carregador_de_stimpak",
+      "municao/municao_especial_seringador_carregador_de_quimico",
+      "municao/municao_especial_seringador_veneno_de_escorpiao_radioativo",
+      "municao/municao_especial_seringador_endangerol",
+      "municao/municao_especial_seringador_barriga_amarela",
+      "municao/municao_especial_seringador_berserk",
+      "municao/municao_especial_seringador_hemorragia",
+      "municao/municao_especial_seringador_articulacao_travada",
+      "municao/municao_especial_seringador_esclerose",
+      "municao/municao_especial_seringador_soro_miopico",
+      "municao/municao_especial_seringador_nuvem_mental",
+      "municao/municao_especial_seringador_tranquilizante"
+     ]
+    }
    },
    {
     "id": "rifles_rifle_de_alavanca",
@@ -9226,7 +9874,31 @@
     "propriedades": "Certeiro. Recarga Manual. Duas Mãos.",
     "custo": "455 tp",
     "carga": 12,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 10,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_10mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_repetidora_cowboy",
@@ -9241,7 +9913,31 @@
     "propriedades": "Certeiro. Recarga Manual. Duas Mãos.",
     "custo": "400 tp",
     "carga": 13,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 7,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_357_magnum",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_rifle_anti_praga",
@@ -9256,7 +9952,31 @@
     "propriedades": "Certeiro. Duas Mãos.",
     "custo": "275 tp",
     "carga": 13,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_5_56mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_carabina_de_caca",
@@ -9271,7 +9991,31 @@
     "propriedades": "Certeiro. Recarga Manual. Duas Mãos.",
     "custo": "310 tp",
     "carga": 13,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 8,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_44_magnum",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_rifle_de_trilho",
@@ -9286,7 +10030,31 @@
     "propriedades": "Debilitante. Destrutivo. Duas Mãos. Defensivo.",
     "custo": "730 tp",
     "carga": 21,
-    "forca": 6
+    "forca": 6,
+    "magazine": {
+     "capacity": 10,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_cravo_de_trilho",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_lanca_sucata",
@@ -9316,7 +10084,31 @@
     "propriedades": "Certeiro. Duas Mãos.",
     "custo": "710 tp",
     "carga": 16,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_308",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_fuzil_de_assalto",
@@ -9331,7 +10123,31 @@
     "propriedades": "Automática: 3 (Alternável). Duas Mãos. Tiro Único: Certeiro, Semiautomática. Automático: Instável. Recarga Ágil.",
     "custo": "375 tp",
     "carga": 14,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 24,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_5mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "rifles_rifle_antimaterial",
@@ -9346,7 +10162,31 @@
     "propriedades": "Certeiro. Destrutivo. Duas Mãos.",
     "custo": "1.200 tp",
     "carga": 20,
-    "forca": 7
+    "forca": 7,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_50",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_de_alavanca",
@@ -9361,7 +10201,31 @@
     "propriedades": "Poderoso. Recarga Manual. Dispersão. Duas Mãos.",
     "custo": "600 tp",
     "carga": 12,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_20",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_de_tiro_unico",
@@ -9376,7 +10240,31 @@
     "propriedades": "Poderoso. Recarga Manual. Dispersão. Duas Mãos.",
     "custo": "500 tp",
     "carga": 11,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 1,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_20",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_de_cano_serrado",
@@ -9391,7 +10279,31 @@
     "propriedades": "Destrutivo. Poderoso. Recarga Manual. Dispersão. Duas Mãos. Instável.",
     "custo": "700 tp",
     "carga": 8,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 2,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_12",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_de_cano_duplo",
@@ -9406,7 +10318,31 @@
     "propriedades": "Poderoso. Recarga Manual. Dispersão. Duas Mãos.",
     "custo": "700 tp",
     "carga": 12,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 2,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_12",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_de_combate",
@@ -9421,7 +10357,31 @@
     "propriedades": "Poderoso. Dispersão. Duas Mãos.",
     "custo": "800 tp",
     "carga": 12,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 8,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_12",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "escopetas_escopeta_antimotim",
@@ -9436,7 +10396,31 @@
     "propriedades": "Poderoso. Semiautomática. Dispersão. Duas Mãos.",
     "custo": "900 tp",
     "carga": 12,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_calibre_12",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ]
+    }
    },
    {
     "id": "armas_pesadas_lanca_chamas",
@@ -9451,7 +10435,13 @@
     "propriedades": "Área de Efeito. Incendiário. Recarga Lenta. Duas Mãos.",
     "custo": "240 tp",
     "carga": 60,
-    "forca": 7
+    "forca": 7,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_pesada_combustivel"
+     ]
+    }
    },
    {
     "id": "armas_pesadas_lanca_misseis",
@@ -9466,7 +10456,13 @@
     "propriedades": "Área de Efeito. Destrutivo. Durável. Lento. Duas Mãos.",
     "custo": "670 tp",
     "carga": 50,
-    "forca": 7
+    "forca": 7,
+    "magazine": {
+     "capacity": 1,
+     "ammo": [
+      "municao/municao_pesada_missil"
+     ]
+    }
    },
    {
     "id": "armas_pesadas_minigun",
@@ -9481,7 +10477,32 @@
     "propriedades": "Automática: 2. Destrutivo. Durável. Recarga Lenta. Dispersão. Duas Mãos.",
     "custo": "1.650 tp",
     "carga": 90,
-    "forca": 9
+    "forca": 9,
+    "magazine": {
+     "capacity": 120,
+     "ammo": [
+      "municao/municao_de_armas_de_fogo_5mm",
+      "municao/municao_especial_armas_de_fogo_perfura_blindagem_x3",
+      "municao/municao_especial_armas_de_fogo_saquinho_de_feijao_50",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_25",
+      "municao/municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
+      "municao/municao_especial_armas_de_fogo_sopro_do_dragao_x2",
+      "municao/municao_especial_armas_de_fogo_explosiva_x6",
+      "municao/municao_especial_armas_de_fogo_dardo_x2",
+      "municao/municao_especial_armas_de_fogo_encamisada_perfurante_x3",
+      "municao/municao_especial_armas_de_fogo_ponta_oca_x4",
+      "municao/municao_especial_armas_de_fogo_jfp_x3",
+      "municao/municao_especial_armas_de_fogo_jsp_x2",
+      "municao/municao_especial_armas_de_fogo_incendiaria_x4",
+      "municao/municao_especial_armas_de_fogo_match_x2",
+      "municao/municao_especial_armas_de_fogo_magnum_x3",
+      "municao/municao_especial_armas_de_fogo_borracha_50",
+      "municao/municao_especial_armas_de_fogo_balote_x4",
+      "municao/municao_especial_armas_de_fogo_balote_pulsante_x6"
+     ],
+     "per_shot": 10
+    }
    },
    {
     "id": "armas_pesadas_fat_man",
@@ -9496,7 +10517,13 @@
     "propriedades": "Área de Efeito. Destrutivo. Durável. Lento. Duas Mãos.",
     "custo": "665 tp",
     "carga": 30,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 1,
+     "ammo": [
+      "municao/municao_pesada_mininuke"
+     ]
+    }
    },
    {
     "id": "armas_de_energia_queimador_solar",
@@ -9526,7 +10553,18 @@
     "propriedades": "Arma de Energia. Semiautomática. Recarga Ágil.",
     "custo": "415 tp",
     "carga": 5,
-    "forca": 1
+    "forca": 1,
+    "magazine": {
+     "capacity": 30,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_energia",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_laser",
@@ -9541,7 +10579,18 @@
     "propriedades": "Certeiro. Arma de Energia. Desajeitada. Recarga Ágil.",
     "custo": "500 tp",
     "carga": 8,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 24,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_energia",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_laser_automatico",
@@ -9556,7 +10605,18 @@
     "propriedades": "Automática: 2. Arma de Energia. Instável. Desajeitada. Recarga Ágil.",
     "custo": "360 tp",
     "carga": 10,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 24,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_energia",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_laser_tri_feixe",
@@ -9571,7 +10631,18 @@
     "propriedades": "Arma de Energia. Dispersão. Poderoso. Desajeitada. Recarga Ágil.",
     "custo": "730 tp",
     "carga": 10,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 8,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_energia",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_pistola_de_plasma",
@@ -9586,7 +10657,18 @@
     "propriedades": "Destrutivo. Arma de Energia. Coice.",
     "custo": "430 tp",
     "carga": 4,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 16,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_microfusao",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_de_plasma",
@@ -9601,7 +10683,18 @@
     "propriedades": "Destrutivo. Debilitante. Arma de Energia. Desajeitada.",
     "custo": "610 tp",
     "carga": 8,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_microfusao",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_multiplas",
@@ -9616,7 +10709,18 @@
     "propriedades": "Arma de Energia. Dispersão. Poderoso. Desajeitada.",
     "custo": "690 tp",
     "carga": 10,
-    "forca": 3
+    "forca": 3,
+    "magazine": {
+     "capacity": 4,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_microfusao",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_canhao_tesla",
@@ -9631,7 +10735,18 @@
     "propriedades": "Arco. Carregável. Arma de Energia. Eletromagnético. Duas Mãos.",
     "custo": "425 tp",
     "carga": 12,
-    "forca": 4
+    "forca": 4,
+    "magazine": {
+     "capacity": 5,
+     "ammo": [
+      "municao/municao_de_energia_celula_de_microfusao",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_pistola_gama",
@@ -9646,7 +10761,18 @@
     "propriedades": "Coice. Radioativo.",
     "custo": "355 tp",
     "carga": 5,
-    "forca": 2
+    "forca": 2,
+    "magazine": {
+     "capacity": 8,
+     "ammo": [
+      "municao/municao_de_energia_celula_gama",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_criolador",
@@ -9661,7 +10787,18 @@
     "propriedades": "Área de Efeito. Congelante. Lento. Duas Mãos.",
     "custo": "360 tp",
     "carga": 20,
-    "forca": 6
+    "forca": 6,
+    "magazine": {
+     "capacity": 3,
+     "ammo": [
+      "municao/municao_de_energia_celula_criogenica",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_criolador_cristalizante",
@@ -9676,7 +10813,18 @@
     "propriedades": "Debilitante. Destrutivo. Duas Mãos.",
     "custo": "410 tp",
     "carga": 20,
-    "forca": 6
+    "forca": 6,
+    "magazine": {
+     "capacity": 9,
+     "ammo": [
+      "municao/municao_de_energia_celula_criogenica",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_pistola_gauss",
@@ -9691,7 +10839,18 @@
     "propriedades": "Carregável. Arma de Energia. Coice. Poderoso. Instável.",
     "custo": "710 tp",
     "carga": 14,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 12,
+     "ammo": [
+      "municao/municao_de_energia_ce_de_2mm",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_rifle_gauss",
@@ -9706,7 +10865,18 @@
     "propriedades": "Carregável. Arma de Energia. Poderoso. Duas Mãos. Instável.",
     "custo": "865 tp",
     "carga": 20,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 6,
+     "ammo": [
+      "municao/municao_de_energia_ce_de_2mm",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    },
    {
     "id": "armas_de_energia_laser_gatling",
@@ -9721,7 +10891,18 @@
     "propriedades": "Automática: 4. Destrutivo. Arma de Energia. Desajeitada.",
     "custo": "1.100 tp",
     "carga": 50,
-    "forca": 5
+    "forca": 5,
+    "magazine": {
+     "capacity": 100,
+     "ammo": [
+      "municao/municao_de_energia_nucleo_de_fusao",
+      "municao/municao_especial_armas_de_energia_a_granel_50",
+      "municao/municao_especial_armas_de_energia_otimizada_x2",
+      "municao/municao_especial_armas_de_energia_supercarregada_x3",
+      "municao/municao_especial_armas_de_energia_carga_maxima_x5"
+     ],
+     "charge": true
+    }
    }
   ],
   "armaduras": [
@@ -10823,7 +12004,8 @@
     "custo": "20% do custo base da arma",
     "compativeis": "Qualquer arma de mão, submetralhadora, rifle ou escopeta que não tenha Recarga Manual nem Recarga Ágil.",
     "instalar": "6 PA",
-    "description": "Espaços: 1. Um carregador mais longo e maior que alimenta o pente para permitir mais disparos. O número de balas da arma aumenta em 3."
+    "description": "Espaços: 1. Um carregador mais longo e maior que alimenta o pente para permitir mais disparos. O número de balas da arma aumenta em 3.",
+    "magazine_bonus": 3
    },
    {
     "id": "modificacoes_de_armas_a_distancia_luneta_infravermelha",
@@ -13357,57 +14539,102 @@
      {
       "block": "list",
       "collection": "armas",
+      "view": "equipped",
       "columns": [
        "dano",
        "pa",
-       "critico"
+       "critico",
+       "alcance"
       ],
-      "wide": true
+      "id": "armas",
+      "title": "Armas equipadas",
+      "w": 12
      },
      {
       "block": "list",
-      "collection": "municao"
+      "collection": "municao",
+      "id": "municao",
+      "w": 6
      },
      {
       "block": "list",
       "collection": "explosivos",
       "columns": [
        "dano"
-      ]
-     },
-     {
-      "block": "list",
-      "collection": "mods"
+      ],
+      "id": "explosivos",
+      "w": 6
      }
     ]
    },
    {
     "id": "armaduras",
-    "name": "Armaduras",
+    "name": "Equipamentos",
     "blocks": [
      {
       "block": "list",
       "collection": "armaduras",
+      "view": "equipped",
       "columns": [
        "df",
-       "td"
-      ]
+       "td",
+       "espacos"
+      ],
+      "id": "armaduras",
+      "title": "Armadura vestida",
+      "w": 6
      },
      {
       "block": "list",
-      "collection": "melhorias"
+      "collection": "melhorias",
+      "view": "equipped",
+      "columns": [
+       "nivel"
+      ],
+      "hide_empty": true,
+      "id": "melhorias",
+      "w": 6
      },
      {
       "block": "list",
       "collection": "armadura_potente",
+      "view": "equipped",
       "columns": [
        "df",
-       "pd"
-      ]
+       "pd",
+       "autonomia"
+      ],
+      "hide_empty": true,
+      "id": "armadura_potente",
+      "w": 6
      },
      {
       "block": "list",
-      "collection": "melhorias_potente"
+      "collection": "melhorias_potente",
+      "view": "equipped",
+      "columns": [
+       "nivel"
+      ],
+      "hide_empty": true,
+      "id": "melhorias_potente",
+      "w": 6
+     },
+     {
+      "block": "list",
+      "collection": "equipamentos",
+      "view": "equipped",
+      "hide_empty": true,
+      "id": "equipamentos",
+      "title": "Itens equipados",
+      "w": 6
+     },
+     {
+      "block": "list",
+      "collection": "itens_unicos",
+      "view": "equipped",
+      "hide_empty": true,
+      "id": "itens_unicos",
+      "w": 6
      }
     ]
    },
@@ -13417,43 +14644,52 @@
     "blocks": [
      {
       "block": "derived",
+      "id": "carga",
       "title": "Carga",
       "items": [
        "carga",
        "carga_max"
-      ]
+      ],
+      "w": 12
      },
      {
-      "block": "list",
-      "collection": "medicina"
-     },
-     {
-      "block": "list",
-      "collection": "quimicos"
-     },
-     {
-      "block": "list",
-      "collection": "comida"
-     },
-     {
-      "block": "list",
-      "collection": "equipamentos",
-      "columns": [
-       "carga"
-      ]
-     },
-     {
-      "block": "list",
-      "collection": "revistas"
-     },
-     {
-      "block": "list",
-      "collection": "itens_unicos"
+      "block": "inventory",
+      "id": "itens",
+      "collections": [
+       "armas",
+       "armaduras",
+       "melhorias",
+       "armadura_potente",
+       "melhorias_potente",
+       "mods",
+       "explosivos",
+       "municao",
+       "quimicos",
+       "medicina",
+       "comida",
+       "equipamentos",
+       "revistas",
+       "itens_unicos"
+      ],
+      "w": 12,
+      "columns": {
+       "armas": [
+        "dano"
+       ],
+       "armaduras": [
+        "df",
+        "td"
+       ],
+       "equipamentos": [
+        "carga"
+       ]
+      }
      },
      {
       "block": "notes",
       "id": "inventario",
-      "title": "Tampinhas e outros itens"
+      "title": "Tampinhas e outros itens",
+      "w": 12
      }
     ]
    },
