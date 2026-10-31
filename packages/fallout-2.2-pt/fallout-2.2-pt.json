@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.12.0",
+ "version": "1.13.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -290,7 +290,7 @@
   {
    "id": "carga",
    "name": "Carga atual",
-   "formula": "sum('armas', 'carga') + sum('armaduras', 'carga') + sum('armadura_potente', 'carga') + sum('explosivos', 'carga') + sum('municao', 'carga') + sum('quimicos', 'carga') + sum('medicina', 'carga') + sum('comida', 'carga') + sum('equipamentos', 'carga') + sum('revistas', 'carga') + sum('itens_unicos', 'carga') - sum('armaduras', 'carga', true) / 2",
+   "formula": "sum('armas', 'carga') + sum('armaduras', 'carga') + sum('armadura_potente', 'carga') + sum('explosivos', 'carga') + sum('municao', 'carga') + sum('quimicos', 'carga') + sum('medicina', 'carga') + sum('comida', 'carga') + sum('equipamentos', 'carga') + sum('revistas', 'carga') + sum('itens_unicos', 'carga') + sum('sucata', 'carga') + sum('moedas', 'carga') - sum('armaduras', 'carga', true) / 2",
    "description": "Soma a carga de tudo no inventário; a armadura vestida conta pela metade. Itens de vestir (mochila, trajes) usam a carga cheia: ajuste pelo nome se quiser."
   },
   {
@@ -895,6 +895,24 @@
     }
    },
    "custom": true
+  },
+  "moedas": {
+   "name": "Dinheiro",
+   "quantity": true,
+   "currency": {
+    "value": "valor",
+    "base": "tampinha"
+   },
+   "fields": {
+    "valor": {
+     "type": "number",
+     "label": "Valor (tp)"
+    },
+    "carga": {
+     "type": "number",
+     "label": "Carga"
+    }
+   }
   }
  },
  "entities": {
@@ -1893,7 +1911,8 @@
       "if": "has('humano')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano')"
      },
      {
@@ -1951,7 +1970,8 @@
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -2009,7 +2029,8 @@
       "if": "has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('sintetico')"
      },
      {
@@ -2062,7 +2083,8 @@
       "if": "has('robo')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo')"
      }
     ]
@@ -2181,7 +2203,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2250,7 +2273,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -2384,7 +2408,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2458,7 +2483,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -2567,7 +2593,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2616,7 +2643,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -2701,11 +2729,12 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "5× tomates",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "text": "5× tomates",
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2761,11 +2790,12 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "2× tomates",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "text": "2× tomates",
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -2876,7 +2906,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -2937,7 +2968,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -3038,11 +3070,12 @@
       "if": "has('humano')"
      },
      {
-      "text": "1× armadura improvisada",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano')"
      },
      {
-      "text": "50× tampinhas",
+      "text": "1× armadura improvisada",
       "if": "has('humano')"
      },
      {
@@ -3108,11 +3141,12 @@
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "1× armadura improvisada",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "text": "1× armadura improvisada",
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -3148,11 +3182,12 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "1× armadura improvisada",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "text": "1× armadura improvisada",
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -3262,7 +3297,8 @@
       "if": "has('humano')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano')"
      },
      {
@@ -3337,7 +3373,8 @@
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -3402,7 +3439,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -3511,7 +3549,8 @@
       "if": "has('humano') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('super_mutante')"
      },
      {
@@ -3590,7 +3629,8 @@
       "if": "has('necrotico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico')"
      },
      {
@@ -3644,7 +3684,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -3748,7 +3789,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3802,7 +3844,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -3892,7 +3935,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -3937,7 +3981,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4035,7 +4080,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4083,7 +4129,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4188,7 +4235,8 @@
       "if": "has('humano')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano')"
      },
      {
@@ -4268,7 +4316,8 @@
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -4334,7 +4383,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4440,7 +4490,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4486,7 +4537,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4578,7 +4630,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4620,7 +4673,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4712,7 +4766,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4754,7 +4809,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -4844,7 +4900,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -4889,7 +4946,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -5023,7 +5081,8 @@
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano') or has('necrotico') or has('super_mutante')"
      },
      {
@@ -5097,7 +5156,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -5344,7 +5404,8 @@
       "if": "has('humano')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('humano')"
      },
      {
@@ -5417,7 +5478,8 @@
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('necrotico') or has('super_mutante')"
      },
      {
@@ -5476,7 +5538,8 @@
       "if": "has('robo') or has('sintetico')"
      },
      {
-      "text": "50× tampinhas",
+      "ref": "moedas/tampinha",
+      "qty": 50,
       "if": "has('robo') or has('sintetico')"
      }
     ]
@@ -15241,6 +15304,16 @@
     "name": "Vidro",
     "description": "Material de sucata, usado para fabricar e reparar itens (veja Fabricação e a Enciclopédia de Esquemas de Itens).\n\nUsado para fabricar (35): Barriga Amarela, Binóculos, Café, Cerveja (475 ml / 16 oz), Coquetel Molotov, Criolador, Criolador Cristalizante, Endangerol, Esclerose, Esguicho de Ácido, Lanterna, Luneta, Luneta Infravermelha, Máscara de Gás, Mira Holográfica, Mira Laser, Nuvem Mental, Ocultador, Pistola de Plasma, Pistola Laser, Queimador Solar, Rádio Comunicador, Rifle de Plasma, Rifle Laser, Rifle Laser Automático, Rifle Laser Tri-Feixe, Rifle Multiplas, Soro Miópico, Tequila do Ermo, Torreta Controlada à Distância, Torreta de Disparo Automático, Traje Hazmat, Traje Hazmat Motorizado, Tranquilizante, Vinho do Ermo (barril de 227 L / 60 galões)."
    }
+  ],
+  "moedas": [
+   {
+    "id": "tampinha",
+    "name": "Tampinhas",
+    "abbr": "tp",
+    "valor": 1,
+    "carga": 0,
+    "description": "A moeda do ermo: tampinhas de garrafa de antes da guerra."
+   }
   ]
  },
  "layout": {
@@ -15500,7 +15573,13 @@
        "carga",
        "carga_max"
       ],
-      "w": 12
+      "w": 6
+     },
+     {
+      "block": "money",
+      "id": "dinheiro",
+      "collection": "moedas",
+      "w": 6
      },
      {
       "block": "inventory",
@@ -15535,7 +15614,7 @@
      {
       "block": "notes",
       "id": "inventario",
-      "title": "Tampinhas e outros itens",
+      "title": "Outros itens",
       "w": 12
      }
     ]
@@ -15662,9 +15741,14 @@
     "take_label": "Levar o equipamento do antecedente",
     "alternative": {
      "label": "Trocar por 850 tampinhas",
-     "text": "850 tampinhas para comprar o equipamento inicial (a critério do MJ)."
+     "items": [
+      {
+       "ref": "moedas/tampinha",
+       "qty": 850
+      }
+     ]
     },
-    "description": "Passo 15: o equipamento do seu antecedente (na versão da sua raça) vai direto para a ficha, com o desgaste certo e a armadura já vestida. O que não é item do jogo (tampinhas, Pip-Boy à escolha) vai para \"Tampinhas e outros itens\". Ou abra mão de tudo e fique com 850 tampinhas."
+    "description": "Passo 15: o equipamento do seu antecedente (na versão da sua raça) vai direto para a ficha, com o desgaste certo e a armadura já vestida. As tampinhas vão para o Dinheiro, e o que não é item do jogo (Pip-Boy à escolha) vai para \"Outros itens\". Ou abra mão de tudo e fique com 850 tampinhas."
    },
    {
     "type": "notes",
