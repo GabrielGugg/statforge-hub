@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.11.0",
+ "version": "1.12.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -337,7 +337,9 @@
    "id": "pa",
    "name": "Pontos de Ação",
    "abbr": "PA",
-   "max": "min(15, 10 + mod(AGI))"
+   "max": "min(15, 10 + mod(AGI))",
+   "display": "card",
+   "recovery": "Renovam a cada turno."
   },
   {
    "id": "karma",
@@ -612,6 +614,11 @@
     "forca": {
      "type": "number",
      "label": "Req. de FOR"
+    },
+    "embutidas": {
+     "type": "text",
+     "label": "Melhorias embutidas",
+     "links": "melhorias"
     }
    },
    "custom": true
@@ -11723,6 +11730,7 @@
     "espacos": "4",
     "forca": 1,
     "wear_ignore": 2,
+    "embutidas": "Chumbada I. Reforçada I. Justa I. Robusta I.",
     "effects": [
      {
       "type": "set",
@@ -11738,6 +11746,10 @@
       "type": "add",
       "target": "lr",
       "value": "-2"
+     },
+     {
+      "type": "note",
+      "text": "Traje do Refúgio (Justa I): TD dobrada contra dano de área de efeito."
      }
     ]
    }
@@ -15415,7 +15427,8 @@
       "columns": [
        "df",
        "td",
-       "espacos"
+       "espacos",
+       "embutidas"
       ],
       "id": "armaduras",
       "title": "Armadura vestida",
