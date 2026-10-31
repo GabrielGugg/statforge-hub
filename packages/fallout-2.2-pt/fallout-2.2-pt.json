@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.10.0",
+ "version": "1.11.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -13,7 +13,63 @@
  },
  "progression": {
   "max_level": 30,
-  "xp_per_level": "level * 1000"
+  "xp_per_level": "level * 1000",
+  "level_up": {
+   "summary": [
+    "pv",
+    "pe",
+    "pa",
+    "fator_cura",
+    "pontos_talento",
+    "pontos_pericia"
+   ],
+   "steps": [
+    {
+     "type": "info",
+     "title": "Novo nível",
+     "text": "PV e PE sobem nos níveis ímpares (5 + modificador de RES ou AGI) e já aparecem acima, junto com o resto que muda. Você ganha 1 Ponto de Talento em todo nível, menos nos níveis 5, 9, 13, 17 e 19, e Pontos de Perícia nos níveis 5, 9, 13, 17, 21, 25 e 29 (3, 4 ou 5, conforme sua Inteligência)."
+    },
+    {
+     "type": "choice",
+     "id": "uso_talento",
+     "title": "Ponto de Talento",
+     "if": "level != 5 and level != 9 and level != 13 and level != 17 and level != 19",
+     "description": "Use o Ponto de Talento deste nível.",
+     "options": [
+      {
+       "label": "Escolher um talento",
+       "text": "Um talento da lista cujos requisitos você cumpra. Os efeitos valem na hora."
+      },
+      {
+       "label": "Aumentar um atributo",
+       "text": "+1 em um atributo do S.P.E.C.I.A.L. (máximo 10)."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "collection": "talentos",
+     "title": "Talento",
+     "min": 1,
+     "max": 1,
+     "if": "(level != 5 and level != 9 and level != 13 and level != 17 and level != 19) and uso_talento == 1"
+    },
+    {
+     "type": "attributes",
+     "title": "Atributo",
+     "points": 1,
+     "if": "(level != 5 and level != 9 and level != 13 and level != 17 and level != 19) and uso_talento == 2",
+     "description": "Escolha o atributo que sobe 1 ponto."
+    },
+    {
+     "type": "skills",
+     "title": "Pontos de Perícia",
+     "points": "pericia_por_concessao",
+     "if": "level == 5 or level == 9 or level == 13 or level == 17 or level == 21 or level == 25 or level == 29",
+     "description": "Cada ponto dá +1 permanente na perícia."
+    }
+   ]
+  }
  },
  "attributes": [
   {
