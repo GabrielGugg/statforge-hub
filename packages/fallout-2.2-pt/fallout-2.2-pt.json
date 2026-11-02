@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.15.0",
+ "version": "1.16.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -17791,5 +17791,21 @@
    "when": "current('pv') <= 0",
    "text": "Seus pontos de vida chegaram a 0."
   }
- ]
+ ],
+ "party": {
+  "resources": [
+   {
+    "id": "furtividade_equipe",
+    "name": "Furtividade da Equipe",
+    "formula": "floor(avg(members('furtividade')))",
+    "description": "Média dos bônus de Furtividade dos personagens (arredondada para baixo). Usada ao viajar em meio ritmo."
+   },
+   {
+    "id": "moral_equipe",
+    "name": "Moral da Equipe",
+    "formula": "floor(sum(members(\"mod(CAR)\")) / 2)",
+    "description": "Metade (arredondada para baixo) da soma dos modificadores de Carisma. Somada aos Suspiros Finais e dada como PE temporários ao rolar Iniciativa."
+   }
+  ]
+ }
 }

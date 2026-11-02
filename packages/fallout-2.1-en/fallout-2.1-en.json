@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.1.2",
+ "version": "0.2.0",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -17872,5 +17872,21 @@
    "when": "current('hp') <= 0",
    "text": "Your hit points are 0. (p. 21)"
   }
- ]
+ ],
+ "party": {
+  "resources": [
+   {
+    "id": "group_sneak",
+    "name": "Group Sneak",
+    "formula": "floor(avg(members('sneak')))",
+    "description": "The average Sneak bonus of the characters (rounded down). Used while traveling at half pace."
+   },
+   {
+    "id": "party_nerve",
+    "name": "Party Nerve",
+    "formula": "floor(sum(members(\"mod(CHA)\")) / 2)",
+    "description": "Charisma modifiers added together, then halved (rounded down). Added to Death Saves, and gained as temporary SP when rolling combat sequence."
+   }
+  ]
+ }
 }
