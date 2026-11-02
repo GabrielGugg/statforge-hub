@@ -14,6 +14,8 @@ export const SECTIONS = ['attributes', 'skills', 'derived', 'resources', 'counte
 const OPS = ['add', 'replace', 'modify', 'remove', 'rename'];
 const ID_OK = /^[a-z0-9][a-z0-9_.-]*$/i;
 const LANG_OK = /^[a-z]{2,3}(-[a-z0-9]{2,8})*$/i;
+/** "language": "*" = a package with no text (a theme, for example): it fits every language. */
+export const ANY_LANGUAGE = '*';
 
 /** Reads "id@>=1.2" into { id, min }. */
 export function parseRequirement(txt) {
@@ -62,7 +64,7 @@ export function validatePackage(p) {
   if (!TYPES.includes(p.type)) errors.push(t('val.type', { types: TYPES.join(', ') }));
   if (!p.version) warnings.push(t('val.noVersion'));
   if (p.language === undefined) warnings.push(t('val.noLanguage'));
-  else if (typeof p.language !== 'string' || !LANG_OK.test(p.language)) errors.push(t('val.language'));
+  else if (typeof p.language !== 'string' || (p.language !== ANY_LANGUAGE && !LANG_OK.test(p.language))) errors.push(t('val.language'));
 
   if (p.type === 'system') {
     for (const s of SECTIONS) {
@@ -99,6 +101,13 @@ export function validatePackage(p) {
     if (!p.layout?.tabs?.length) warnings.push(t('val.noLayout'));
     checkCreation(p.creation, errors);
     checkCreation(p.progression?.level_up, errors, 'progression.level_up');
+    if (p.party !== undefined) {
+      if (!Array.isArray(p.party?.resources)) errors.push(t('val.needs', { where: 'party', op: 'party', field: 'resources' }));
+      else p.party.resources.forEach((r, i) => {
+        if (!r?.id || !r?.name || !r?.formula) errors.push(t('val.needs', { where: `party.resources[${i}]`, op: 'party', field: 'id, name, formula' }));
+        checkFormula(r?.formula, `party.resources[${i}]`, errors);
+      });
+    }
     (p.auto_conditions || []).forEach((a, i) => { checkFormula(a?.when, `auto_conditions[${i}].when`, errors); if (!a?.ref?.includes('/')) errors.push(t('val.needs', { where: `auto_conditions[${i}]`, op: 'auto', field: 'ref' })); });
   }
 

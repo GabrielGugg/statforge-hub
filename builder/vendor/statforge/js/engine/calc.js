@@ -103,7 +103,7 @@ export function compute(rules, sheet) {
   // 4) Values, memoized, with cycle detection.
   const memo = new Map();
   const computing = new Set();
-  const sectionOf = id => VALUE_SECTIONS.find(s => rules[s][id]);
+  const sectionOf = id => VALUE_SECTIONS.find(s => Object.hasOwn(rules[s], id) && rules[s][id]);
   const modFormula = rules.rolls?.modifier || 'value';
   const items = sheet.items || [];
   const matches = (i, ref) => i.ref === ref || key(i.collection, i.ref) === ref;
@@ -128,7 +128,7 @@ export function compute(rules, sheet) {
     if (name === 'level') return num(sheet.level);
     if (name === 'xp') return num(sheet.xp);
     if (sectionOf(name)) return value(name);
-    if (name in (sheet.fields || {})) return sheet.fields[name];
+    if (Object.hasOwn(sheet.fields || {}, name)) return sheet.fields[name];
     throw new FormulaError(t('formula.unknownValue', { name }));
   }
 

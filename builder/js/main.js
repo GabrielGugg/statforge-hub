@@ -6,6 +6,8 @@ import { t, setLang, getLang, otherLang, browserLang } from './i18n.js';
 import { TYPES, SECTIONS, newPackage, parseImport, exportText, hubChecks, setKey, deleteKey, slug, stats } from './model.js';
 import { loadEngine } from './engine.js';
 import { EDITORS as SECTION_EDITORS, initContext } from './editors.js';
+import { startWizard, savedWizard, discardWizard } from './wizard.js';
+import { L } from './schema.js';
 
 const DRAFT_KEY = 'statforge-builder:draft';
 const LANG_KEY = 'statforge-builder:lang';
@@ -144,7 +146,7 @@ async function copyJson() {
 }
 
 // ---------- header ----------
-function header(inEditor) {
+function header(inEditor, rerender = null) {
   return h('header.top',
     h('div.brand', h('strong', t('app.title'))),
     inEditor ? h('span#save-state.muted.small') : null,
@@ -152,14 +154,36 @@ function header(inEditor) {
     inEditor ? h('button.ghost', { onclick: () => { if (confirm(t('leave.ask'))) renderHome(); } }, t('nav.home')) : null,
     inEditor ? h('button.ghost', { onclick: copyJson }, t('export.copy')) : null,
     inEditor ? h('button.primary', { onclick: exportFile }, t('nav.export')) : null,
-    h('button.ghost', { onclick: () => { setLang(otherLang()); store.set(LANG_KEY, getLang()); state.engine?.setLanguage(getLang()); runCheck(); inEditor ? renderEditor() : renderHome(); }, title: 'Idioma / Language' }, t('app.lang')),
+    h('button.ghost', { onclick: () => { setLang(otherLang()); store.set(LANG_KEY, getLang()); state.engine?.setLanguage(getLang()); runCheck(); if (rerender) rerender(); else if (inEditor) renderEditor(); else renderHome(); }, title: 'Idioma / Language' }, t('app.lang')),
   );
 }
+
+// ---------- assistant ----------
+const WIZARD_TYPES = ['system', 'theme', 'table', 'extension'];
+const wizardEnv = {
+  app,
+  header: () => header(false, () => { const w = savedWizard(); if (w) startWizard(wizardEnv, w.type, w); else renderHome(); }),
+  engine: () => state.engine,
+  cancel: () => renderHome(),
+  finish(pkg, how) {
+    const old = readDraft();
+    if (old && !confirm(L(`Isso substitui o rascunho aberto no editor ("${old.pkg.name || old.pkg.id || '?'}"). Seguir?`, `This replaces the draft open in the editor ("${old.pkg.name || old.pkg.id || '?'}"). Go on?`))) return false;
+    openPackage(pkg);
+    if (how === 'export') setTimeout(exportFile, 400);
+  },
+};
+const wizardDesc = {
+  system: () => L('Responda algumas perguntas (dados, atributos, perícias, recursos) e saia com uma ficha pronta.', 'Answer a few questions (dice, attributes, skills, resources) and get a working sheet.'),
+  theme: () => L('Escolha três cores e veja a prévia.', 'Pick three colors and see the preview.'),
+  table: () => L('Junte um sistema do Hub, homebrews e um tema num link só para os jogadores.', 'Bundle a Hub system, homebrews and a theme into one link for the players.'),
+  extension: () => L('Escolha o sistema base e siga para as mudanças.', 'Pick the base system and go on to the changes.'),
+};
 
 // ---------- home ----------
 function renderHome() {
   state.pkg = null;
   const draft = readDraft();
+  const wiz = savedWizard();
   const fileInput = h('input', { type: 'file', accept: '.json,application/json', hidden: true,
     onchange: async e => { const f = e.target.files[0]; if (f) importText(await f.text()); e.target.value = ''; } });
   const urlInput = h('input', { type: 'url', placeholder: t('home.urlPlaceholder') });
@@ -175,13 +199,28 @@ function renderHome() {
           h('button.primary', { onclick: () => openPackage(draft.pkg, draft) }, t('home.draft')),
           h('button.ghost.danger', { onclick: () => { if (confirm(t('home.discardAsk'))) { store.del(DRAFT_KEY); renderHome(); } } }, t('home.discard')),
         )) : null,
-      h('h2', t('home.new')),
+      wiz ? h('section.card.draft',
+        h('p', L(`Você tem um assistente pela metade: ${t(`type.${wiz.type}`)}${wiz.answers?.name ? ` "${wiz.answers.name}"` : ''}.`, `You have an unfinished assistant: ${t(`type.${wiz.type}`)}${wiz.answers?.name ? ` "${wiz.answers.name}"` : ''}.`)),
+        h('div.row',
+          h('button.primary', { onclick: () => startWizard(wizardEnv, wiz.type, wiz) }, L('Continuar o assistente', 'Resume the assistant')),
+          h('button.ghost.danger', { onclick: () => { if (confirm(L('Apagar o assistente pela metade?', 'Discard the unfinished assistant?'))) { discardWizard(); renderHome(); } } }, t('home.discard')),
+        )) : null,
+      h('h2', L('Criar com o assistente (recomendado)', 'Create with the assistant (recommended)')),
+      h('p.muted', L('Passo a passo, uma pergunta de cada vez, como a criação de personagem do app. No fim você baixa o arquivo ou continua no editor completo.', 'Step by step, one question at a time, like the app\'s character creation. At the end you download the file or keep going in the full editor.')),
+      h('div.types', WIZARD_TYPES.map(type => h('button.type-card.wiz-type', {
+        onclick: () => {
+          if (wiz && !confirm(L('Começar de novo apaga o assistente pela metade. Seguir?', 'Starting over discards the unfinished assistant. Go on?'))) return;
+          startWizard(wizardEnv, type);
+        },
+      }, h('strong', t(`type.${type}`)), h('span', wizardDesc[type]())))),
+      h('details.advanced',
+        h('summary', L('Começar em branco no editor completo (avançado)', 'Start blank in the full editor (advanced)')),
       h('div.types', TYPES.map(type => h('button.type-card', {
         onclick: () => {
           if (draft && !confirm(t('home.discardAsk'))) return;
           openPackage(newPackage(type, { language: getLang() }));
         },
-      }, h('strong', t(`type.${type}`)), h('span', t(`type.${type}.desc`))))),
+      }, h('strong', t(`type.${type}`)), h('span', t(`type.${type}.desc`)))))),
       h('h2', t('home.open')),
       h('section.card.open',
         h('div.row', fileInput, h('button', { onclick: () => fileInput.click() }, t('home.openFile'))),

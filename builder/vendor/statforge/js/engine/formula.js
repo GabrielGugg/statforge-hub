@@ -122,7 +122,7 @@ export function evaluate(f, ctx = {}) {
     switch (n.k) {
       case 'lit': return n.v;
       case 'var':
-        if (n.n in vars) return vars[n.n];
+        if (Object.hasOwn(vars, n.n)) return vars[n.n];
         if (ctx.variable) return ctx.variable(n.n);
         throw new FormulaError(t('formula.unknownValue', { name: n.n }));
       case 'un': return n.op === '-' ? -num(ev(n.a)) : !ev(n.a);
@@ -146,7 +146,8 @@ export function evaluate(f, ctx = {}) {
         break;
       }
       case 'call': {
-        const fn = ext[n.f] || FUNCTIONS[n.f];
+        // Own properties only: names like "constructor" or "toString" must never reach built-in functions.
+        const fn = Object.hasOwn(ext, n.f) ? ext[n.f] : Object.hasOwn(FUNCTIONS, n.f) ? FUNCTIONS[n.f] : null;
         if (!fn) throw new FormulaError(t('formula.unknownFunction', { name: n.f }));
         if (n.f === 'if') return ev(n.args[0]) ? ev(n.args[1]) : ev(n.args[2]);
         return fn(...n.args.map(ev));

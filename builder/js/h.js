@@ -20,6 +20,7 @@ function add(el, r) {
       if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
       else if (k === 'value') el.value = v;
       else if (k === 'checked') el.checked = !!v;
+      else if (k === 'class') String(v).split(/\s+/).filter(Boolean).forEach(c => el.classList.add(c)); // adds to the classes in the tag
       else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
       else el.setAttribute(k, v === true ? '' : v);
     }
