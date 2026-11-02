@@ -7,60 +7,60 @@
     {
       "id": "fallout-2.1-en",
       "name": "Fallout TTRPG 2.1 (EN)",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "type": "system",
       "language": "en",
       "author": "GabrielGugg",
       "description": "Arcane Arcade’s Fallout TTRPG 2.1, as written in the original English PDF, with no house rules. Where the book contradicts itself the sheet lets you choose (and explains), or leaves the value manual. Every text cites its page.",
       "url": "packages/fallout-2.1-en/fallout-2.1-en.json",
-      "bytes": 909815,
+      "bytes": 910091,
       "entities": 969
     },
     {
       "id": "fallout-2.2-en",
       "name": "Fallout TTRPG 2.2 (EN)",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "type": "system",
       "language": "en",
       "author": "GabrielGugg",
       "description": "Arcane Arcade’s Fallout TTRPG 2.1 in its original English, with the house rules of Fallout 2.2: contradictions settled, broken rules fixed and a few prices and kits corrected. Texts keep their book page; anything changed says \"changed in 2.2\".",
       "url": "packages/fallout-2.2-en/fallout-2.2-en.json",
-      "bytes": 922623,
+      "bytes": 922899,
       "entities": 967
     },
     {
       "id": "fallout-2.2-pt",
       "name": "Fallout TTRPG 2.2 (pt-BR)",
-      "version": "1.16.0",
+      "version": "1.17.0",
       "type": "system",
       "language": "pt-BR",
       "author": "GabrielGugg",
       "description": "Fallout TTRPG 2.1 da Arcane Arcade traduzido, com as regras da casa da versão 2.2 (veja a nota \"Changelog 2.1 - 2.2\"). Distribua o S.P.E.C.I.A.L. começando em 5 com 3 pontos extras; cada atributo vai de 1 a 10.",
       "url": "packages/fallout-2.2-pt/fallout-2.2-pt.json",
-      "bytes": 726029,
+      "bytes": 726352,
       "entities": 948
     },
     {
       "id": "tema-pipboy",
       "name": "Pip-Boy",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "type": "theme",
-      "language": "pt-BR",
+      "language": "*",
       "author": "GabrielGugg",
-      "description": "Verde fósforo sobre preto, no estilo do Pip-Boy.",
+      "description": "Verde fósforo sobre preto, no estilo do Pip-Boy. / Phosphor green on black, Pip-Boy style.",
       "url": "packages/fallout-2.2-pt/tema-pipboy.json",
-      "bytes": 598
+      "bytes": 636
     },
     {
       "id": "tema-vault-tec",
       "name": "Vault-Tec",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "type": "theme",
-      "language": "pt-BR",
+      "language": "*",
       "author": "GabrielGugg",
-      "description": "Azul e amarelo da Vault-Tec. Claro ou escuro, conforme o aparelho.",
+      "description": "Azul e amarelo da Vault-Tec. Claro ou escuro, conforme o aparelho. / Vault-Tec blue and yellow. Light or dark, following the device.",
       "url": "packages/fallout-2.2-pt/tema-vault-tec.json",
-      "bytes": 950
+      "bytes": 1012
     }
   ]
 }
