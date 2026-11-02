@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.17.0",
+ "version": "1.18.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -16664,13 +16664,14 @@
     "custo": "10 tp",
     "carga": 1,
     "carga_texto": "1, 2 quando cheio",
-    "description": "O cantil de metal comporta cerca de 1 litro (32 onças) de líquido.",
+    "description": "O cantil de metal comporta cerca de 1 litro (32 onças) de líquido. Marque como equipado quando estiver cheio.",
     "effects": [
      {
       "type": "note",
       "text": "Cantil: O cantil de metal comporta cerca de 1 litro (32 onças) de líquido."
      }
-    ]
+    ],
+    "desconto_vestida": -1
    },
    {
     "id": "itens_e_equipamentos_corrente",
@@ -16897,13 +16898,14 @@
     "custo": "30 tp",
     "carga": 2,
     "carga_texto": "2, 4 quando cheio",
-    "description": "Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido.",
+    "description": "Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido. Marque como equipado quando estiver cheio.",
     "effects": [
      {
       "type": "note",
       "text": "Odre: Esta bolsa de couro tem tampa e bico e comporta cerca de 1,8 litro (60 onças) de líquido."
      }
-    ]
+    ],
+    "desconto_vestida": -2
    },
    {
     "id": "itens_e_equipamentos_kit_de_reparo_de_armas",

@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.2.1",
+ "version": "0.2.2",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -16669,13 +16669,14 @@
     "cost": "10c",
     "load": 1,
     "load_text": "1, 2 when full.",
-    "description": "The metal canteen holds 32 oz. of liquid. (p. 82)",
+    "description": "The metal canteen holds 32 oz. of liquid. (p. 82) Mark it as equipped while it is full.",
     "effects": [
      {
       "type": "note",
       "text": "Canteen: The metal canteen holds 32 oz. of liquid."
      }
-    ]
+    ],
+    "worn_relief": -1
    },
    {
     "id": "items_and_gear_chain",
@@ -16898,13 +16899,14 @@
     "cost": "30c",
     "load": 2,
     "load_text": "2, 4 when full.",
-    "description": "This leather pouch is fitted with a cap and nozzle and holds 60 oz. of liquid. (p. 82)",
+    "description": "This leather pouch is fitted with a cap and nozzle and holds 60 oz. of liquid. (p. 82) Mark it as equipped while it is full.",
     "effects": [
      {
       "type": "note",
       "text": "Water Skin: This leather pouch is fitted with a cap and nozzle and holds 60 oz. of liquid."
      }
-    ]
+    ],
+    "worn_relief": -2
    },
    {
     "id": "items_and_gear_weapon_repair_kit",
