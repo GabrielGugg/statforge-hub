@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-en",
  "name": "Fallout TTRPG 2.2 (EN)",
- "version": "0.2.0",
+ "version": "0.2.1",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -316,8 +316,8 @@
   {
    "id": "load",
    "name": "Current load",
-   "formula": "sum('weapons', 'load') + sum('armor', 'load') + sum('power_armor', 'load') + sum('explosives', 'load') + sum('ammo', 'load') + sum('chems', 'load') + sum('medicine', 'load') + sum('food', 'load') + sum('gear', 'load') + sum('unique_items', 'load') + sum('junk', 'load') + sum('currency', 'load') - sum('armor', 'load', true) / 2",
-   "description": "Everything in the inventory. Worn armor counts as half. Bags and suits show their worn load in the item."
+   "formula": "sum('weapons', 'load') + sum('armor', 'load') + sum('power_armor', 'load') + sum('explosives', 'load') + sum('ammo', 'load') + sum('chems', 'load') + sum('medicine', 'load') + sum('food', 'load') + sum('gear', 'load') + sum('unique_items', 'load') + sum('junk', 'load') + sum('currency', 'load') - sum('armor', 'load', true) / 2 - sum('gear', 'worn_relief', true)",
+   "description": "Everything in the inventory. Worn armor counts as half. Bags and suits weigh less while equipped, as the book says."
   },
   {
    "id": "carry_load",
@@ -15174,7 +15174,7 @@
     "type": "Chems",
     "properties": "Anabolic.",
     "cost": "20c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15187,7 +15187,7 @@
     "type": "Chems",
     "properties": "Anabolic. Stimulant.",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15200,7 +15200,7 @@
     "type": "Chems",
     "properties": "Anabolic. Stimulant.",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15226,7 +15226,7 @@
     "type": "Chems",
     "properties": "Anxiolytic.",
     "cost": "5c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15239,7 +15239,7 @@
     "type": "Chems",
     "properties": "Anxiolytic. Super Stimulant.",
     "cost": "15c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15252,7 +15252,7 @@
     "type": "Chems",
     "properties": "Extrapolating.",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15265,7 +15265,7 @@
     "type": "Chems",
     "properties": "Hallucinogenic.",
     "cost": "40c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15367,7 +15367,7 @@
     "type": "Chems",
     "properties": "Neuro-Stimulant.",
     "cost": "40c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15380,7 +15380,7 @@
     "type": "Chems",
     "properties": "Extrapolating. NeuroStimulant.",
     "cost": "60c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15393,7 +15393,7 @@
     "type": "Chems",
     "properties": "Anxiolytic. Neuro-Stimulant.",
     "cost": "60c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15406,7 +15406,7 @@
     "type": "Chems",
     "properties": "Sedative. Neuro-Stimulant.",
     "cost": "60c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "chem"
@@ -15471,7 +15471,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Anxiolytic. Stimulant.",
     "cost": "5c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15484,7 +15484,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Sedative.",
     "cost": "100c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15497,7 +15497,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Extrapolating.",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15510,7 +15510,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Painkilling. Psychosis. Super Stimulant.",
     "cost": "60c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15523,7 +15523,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Anesthetic.",
     "cost": "20c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15536,7 +15536,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Psychosis. Painkilling.",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15549,7 +15549,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Invigorating. Psychosis.",
     "cost": "55c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15562,7 +15562,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Super Stimulant.",
     "cost": "30c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15575,7 +15575,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Stimulant. Invigorating.",
     "cost": "40c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15588,7 +15588,7 @@
     "type": "Robot Overclock Programs",
     "properties": "Anabolic.",
     "cost": "20c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "1 (10)",
     "tags": [
      "robot_program"
@@ -15628,7 +15628,7 @@
     "id": "medicine_cateye",
     "name": "Cateye",
     "cost": "20c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "x10 = 1",
     "description": "You can consume this small pill with 3 AP. If you do; you have night vision for the next 3 hours. (p. 86)",
     "tags": []
@@ -15646,7 +15646,7 @@
     "id": "medicine_fixer",
     "name": "Fixer",
     "cost": "50c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "x10 = 1",
     "description": "A small pill typically found in a tin with up to 5. You can spend 4 AP to consume it. When you do; you become cured of one addiction of your choice. However, you gain one level of dehydration, hunger, and exhaustion. (p. 86)",
     "tags": []
@@ -15691,7 +15691,7 @@
     "id": "medicine_rad_x",
     "name": "Rad-X",
     "cost": "40c",
-    "load": 1,
+    "load": 0.1,
     "load_text": "x10 = 1",
     "description": "You can consume this small pill with 3 AP. If you do; your radiation DC decreases by 2 for the next 3 hours. You can consume a total of three Rad-X at one time to gain their benefits, if you consume more than three you do not gain any additional benefits. (p. 86)",
     "tags": []
@@ -16541,7 +16541,8 @@
       "target": "carry_load",
       "value": "50"
      }
-    ]
+    ],
+    "worn_relief": 10
    },
    {
     "id": "items_and_gear_bag_camping_backpack",
@@ -16556,7 +16557,8 @@
       "target": "carry_load",
       "value": "100"
      }
-    ]
+    ],
+    "worn_relief": 20
    },
    {
     "id": "items_and_gear_bag_range",
@@ -16570,7 +16572,8 @@
       "type": "note",
       "text": "Bag, Range: You can store up to three weapons in the bag that have the Two Handed or Unwieldy property, if you do; each weapon’s carry load is halved."
      }
-    ]
+    ],
+    "worn_relief": 12
    },
    {
     "id": "items_and_gear_bandolier",
@@ -16585,7 +16588,8 @@
       "target": "carry_load",
       "value": "25"
      }
-    ]
+    ],
+    "worn_relief": 8
    },
    {
     "id": "items_and_gear_ball_bearings",
@@ -16762,7 +16766,8 @@
       "type": "note",
       "text": "Hazmat Suit: if you fail a radiation check, your radiation DC does not increase."
      }
-    ]
+    ],
+    "worn_relief": 40
    },
    {
     "id": "items_and_gear_hazmat_suit_powered",
@@ -16781,7 +16786,8 @@
       "type": "immunity",
       "text": "Radiation damage; you cannot gain levels of radiation (while powered)"
      }
-    ]
+    ],
+    "worn_relief": 75
    },
    {
     "id": "items_and_gear_insulated_clothing",
@@ -16800,7 +16806,8 @@
       "type": "resistance",
       "text": "Insulated (hypothermia)"
      }
-    ]
+    ],
+    "worn_relief": 15
    },
    {
     "id": "items_and_gear_insulated_clothing_lightweight",
@@ -16814,7 +16821,8 @@
       "type": "resistance",
       "text": "Insulated (hypothermia)"
      }
-    ]
+    ],
+    "worn_relief": 8
    },
    {
     "id": "items_and_gear_lockpicks",

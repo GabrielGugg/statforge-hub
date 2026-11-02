@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.16.0",
+ "version": "1.17.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -290,8 +290,8 @@
   {
    "id": "carga",
    "name": "Carga atual",
-   "formula": "sum('armas', 'carga') + sum('armaduras', 'carga') + sum('armadura_potente', 'carga') + sum('explosivos', 'carga') + sum('municao', 'carga') + sum('quimicos', 'carga') + sum('medicina', 'carga') + sum('comida', 'carga') + sum('equipamentos', 'carga') + sum('revistas', 'carga') + sum('itens_unicos', 'carga') + sum('sucata', 'carga') + sum('moedas', 'carga') - sum('armaduras', 'carga', true) / 2",
-   "description": "Soma a carga de tudo no inventário; a armadura vestida conta pela metade. Itens de vestir (mochila, trajes) usam a carga cheia: ajuste pelo nome se quiser."
+   "formula": "sum('armas', 'carga') + sum('armaduras', 'carga') + sum('armadura_potente', 'carga') + sum('explosivos', 'carga') + sum('municao', 'carga') + sum('quimicos', 'carga') + sum('medicina', 'carga') + sum('comida', 'carga') + sum('equipamentos', 'carga') + sum('revistas', 'carga') + sum('itens_unicos', 'carga') + sum('sucata', 'carga') + sum('moedas', 'carga') - sum('armaduras', 'carga', true) / 2 - sum('equipamentos', 'desconto_vestida', true)",
+   "description": "Soma a carga de tudo no inventário; a armadura vestida conta pela metade. Itens de vestir (mochila, bolsas, trajes) pesam menos quando equipados, como diz o livro."
   },
   {
    "id": "carga_max",
@@ -15352,7 +15352,7 @@
     "tipo": "Químicos",
     "propriedades": "Anabolizante.",
     "custo": "20 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15363,7 +15363,7 @@
     "tipo": "Químicos",
     "propriedades": "Anabolizante. Estimulante.",
     "custo": "50 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15374,7 +15374,7 @@
     "tipo": "Químicos",
     "propriedades": "Anabolizante. Estimulante.",
     "custo": "50 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15396,7 +15396,7 @@
     "tipo": "Químicos",
     "propriedades": "Ansiolítico.",
     "custo": "5 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15407,7 +15407,7 @@
     "tipo": "Químicos",
     "propriedades": "Ansiolítico. Superestimulante.",
     "custo": "15 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15418,7 +15418,7 @@
     "tipo": "Químicos",
     "propriedades": "Extrapolante.",
     "custo": "50 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15429,7 +15429,7 @@
     "tipo": "Químicos",
     "propriedades": "Alucinógeno.",
     "custo": "40 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15516,7 +15516,7 @@
     "tipo": "Químicos",
     "propriedades": "Neuroestimulante.",
     "custo": "40 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15527,7 +15527,7 @@
     "tipo": "Químicos",
     "propriedades": "Extrapolante. Neuroestimulante.",
     "custo": "60 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15538,7 +15538,7 @@
     "tipo": "Químicos",
     "propriedades": "Ansiolítico. Neuroestimulante.",
     "custo": "60 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15549,7 +15549,7 @@
     "tipo": "Químicos",
     "propriedades": "Sedativo. Neuroestimulante.",
     "custo": "60 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "quimico"
     ]
@@ -15604,7 +15604,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Ansiolítico. Estimulante.",
     "custo": "5 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15615,7 +15615,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Sedativo.",
     "custo": "100 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15626,7 +15626,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Extrapolante.",
     "custo": "50 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15637,7 +15637,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Analgésico. Psicose. Superestimulante.",
     "custo": "60 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15648,7 +15648,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Anestésico.",
     "custo": "20 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15659,7 +15659,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Psicose. Analgésico.",
     "custo": "50 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15670,7 +15670,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Revigorante. Psicose.",
     "custo": "55 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15681,7 +15681,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Superestimulante.",
     "custo": "30 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15692,7 +15692,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Estimulante. Revigorante.",
     "custo": "40 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15703,7 +15703,7 @@
     "tipo": "Programas de Overclock de Robô",
     "propriedades": "Anabolizante.",
     "custo": "20 tp",
-    "carga": 1,
+    "carga": 0.1,
     "tags": [
      "programa_robo"
     ]
@@ -15738,7 +15738,7 @@
     "id": "medicina_olho_de_gato",
     "name": "Olho de Gato",
     "custo": "20 tp",
-    "carga": 10,
+    "carga": 0.1,
     "description": "Você pode consumir esta pílula pequena com 3 PA. Se fizer isso, você tem visão noturna pelas próximas 3 horas.",
     "tags": []
    },
@@ -15754,7 +15754,7 @@
     "id": "medicina_corretivo",
     "name": "Corretivo",
     "custo": "50 tp",
-    "carga": 10,
+    "carga": 0.1,
     "description": "Uma pílula pequena, em geral encontrada em uma lata com até 5. Você pode gastar 4 PA para consumi-la. Quando faz isso, você é curado de um vício à sua escolha. Porém, você ganha um nível de desidratação, de fome e de exaustão.",
     "tags": []
    },
@@ -15794,7 +15794,7 @@
     "id": "medicina_rad_x",
     "name": "Rad-X",
     "custo": "40 tp",
-    "carga": 10,
+    "carga": 0.1,
     "description": "Você pode consumir esta pílula pequena com 3 PA. Se fizer isso, seu Limiar de Radiação diminui em 2 pelas próximas 3 horas. Você pode consumir um total de três Rad-X ao mesmo tempo para ganhar os benefícios deles; se consumir mais de três, não ganha nenhum benefício adicional.",
     "tags": []
    },
@@ -16552,7 +16552,8 @@
       "target": "carga_max",
       "value": "50"
      }
-    ]
+    ],
+    "desconto_vestida": 10
    },
    {
     "id": "itens_e_equipamentos_mochila_de_acampamento",
@@ -16567,7 +16568,8 @@
       "target": "carga_max",
       "value": "100"
      }
-    ]
+    ],
+    "desconto_vestida": 20
    },
    {
     "id": "itens_e_equipamentos_bolsa_de_armas",
@@ -16581,7 +16583,8 @@
       "type": "note",
       "text": "Bolsa de Armas: Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade."
      }
-    ]
+    ],
+    "desconto_vestida": 12
    },
    {
     "id": "itens_e_equipamentos_bandoleira",
@@ -16596,7 +16599,8 @@
       "target": "carga_max",
       "value": "25"
      }
-    ]
+    ],
+    "desconto_vestida": 8
    },
    {
     "id": "itens_e_equipamentos_esferas_de_aco",
@@ -16774,7 +16778,8 @@
       "type": "note",
       "text": "Traje Hazmat: passar no teste de radiação não aumenta o LR."
      }
-    ]
+    ],
+    "desconto_vestida": 40
    },
    {
     "id": "itens_e_equipamentos_traje_hazmat_motorizado",
@@ -16793,7 +16798,8 @@
       "type": "immunity",
       "text": "Dano de radiação (com energia)"
      }
-    ]
+    ],
+    "desconto_vestida": 75
    },
    {
     "id": "itens_e_equipamentos_roupa_termica",
@@ -16812,7 +16818,8 @@
       "type": "resistance",
       "text": "Isolado contra hipotermia"
      }
-    ]
+    ],
+    "desconto_vestida": 15
    },
    {
     "id": "itens_e_equipamentos_roupa_termica_leve",
@@ -16826,7 +16833,8 @@
       "type": "resistance",
       "text": "Isolado contra hipotermia"
      }
-    ]
+    ],
+    "desconto_vestida": 8
    },
    {
     "id": "itens_e_equipamentos_gazuas",
