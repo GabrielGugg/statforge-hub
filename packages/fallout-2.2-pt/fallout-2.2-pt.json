@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.18.0",
+ "version": "1.19.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -390,7 +390,8 @@
     {
      "type": "add",
      "target": "pa",
-     "value": "-floor(n / 2)"
+     "value": "-floor(n / 2)",
+     "value_text": "− metade dos níveis (para baixo)"
     }
    ]
   },
@@ -403,7 +404,8 @@
     {
      "type": "add",
      "target": "pa",
-     "value": "-floor(n / 2)"
+     "value": "-floor(n / 2)",
+     "value_text": "− metade dos níveis (para baixo)"
     }
    ]
   },
@@ -422,7 +424,8 @@
     {
      "type": "add",
      "target": "pa",
-     "value": "-n"
+     "value": "-n",
+     "value_text": "− 1 por nível"
     },
     {
      "type": "note",
@@ -922,13 +925,13 @@
    {
     "id": "humano",
     "name": "Humano",
-    "description": "\"Os Humanos são a espécie dominante da Terra. Na era pós-apocalíptica, o termo \"humano\" é usado para denotar aqueles que foram pouco ou nada alterados pela radiação, em oposição aos mutantes, como Necróticos e Supermutantes, embora esses tipos mutantes se originem de humanos. Humanos não mutados são às vezes chamados de normais, peles-lisas, humanoides ou sangradores por seus equivalentes mutantes.\n\nApesar da existência de diversas mutações, humanos ainda são as criaturas humanoides mais comuns na Terra. Humanos pós-nucleares, como resultado direto da radiação e exposição ao Vírus de Evolução Forçada (VEF) e outros agentes bioquímicos liberados no ambiente durante e após a Grande Guerra, exibem maior diversidade, principalmente na estrutura genética. Os fatores mencionados resultaram numa taxa aumentada de mutações em humanos, embora poucas resultem em mudanças fenotípicas. A maioria dessas alterações são variações não letais e inofensivas no DNA humano, que apenas aumentam a variedade do acervo genético. Além disso, humanos com mutações menores, como dedos extras, lesões cutâneas por infecção de Síndrome da Degeneração Troglodita (SDT), olhos vermelhos permanentes, varizes permanentes ou calvície completa, ainda são considerados humanos.\"\n\n— [Trecho da página \"Human\" na Fallout Fandom Wiki.](https://fallout.fandom.com/wiki/Human)\n\nTRAÇOS DA RAÇA\n\nIdade. Humanos atingem a idade adulta no fim da adolescência e vivem menos de um século. Embora quem chegue a essa idade seja raro no ermo.\n\nTamanho. Humanos variam bastante em altura e porte; seu tamanho é Médio ou Pequeno.\n\nTenacidade. Quando você faz testes de Suspiro Final, você morre ao falhar no quarto teste, em vez do terceiro.",
+    "description": "\"Os Humanos são a espécie dominante da Terra. Na era pós-apocalíptica, o termo \"humano\" é usado para denotar aqueles que foram pouco ou nada alterados pela radiação, em oposição aos mutantes, como Necróticos e Supermutantes, embora esses tipos mutantes se originem de humanos. Humanos não mutados são às vezes chamados de normais, peles-lisas, humanoides ou sangradores por seus equivalentes mutantes.\n\nApesar da existência de diversas mutações, humanos ainda são as criaturas humanoides mais comuns na Terra. Humanos pós-nucleares, como resultado direto da radiação e exposição ao Vírus de Evolução Forçada (VEF) e outros agentes bioquímicos liberados no ambiente durante e após a Grande Guerra, exibem maior diversidade, principalmente na estrutura genética. Os fatores mencionados resultaram numa taxa aumentada de mutações em humanos, embora poucas resultem em mudanças fenotípicas. A maioria dessas alterações são variações não letais e inofensivas no DNA humano, que apenas aumentam a variedade do acervo genético. Além disso, humanos com mutações menores, como dedos extras, lesões cutâneas por infecção de Síndrome da Degeneração Troglodita (SDT), olhos vermelhos permanentes, varizes permanentes ou calvície completa, ainda são considerados humanos.\"\n\n— Fonte: Fallout Fandom Wiki, página \"Human\".\n\nTRAÇOS DA RAÇA\n\nIdade. Humanos atingem a idade adulta no fim da adolescência e vivem menos de um século. Embora quem chegue a essa idade seja raro no ermo.\n\nTamanho. Humanos variam bastante em altura e porte; seu tamanho é Médio ou Pequeno.\n\nTenacidade. Quando você faz testes de Suspiro Final, você morre ao falhar no quarto teste, em vez do terceiro.",
     "effects": []
    },
    {
     "id": "necrotico",
     "name": "Necrótico",
-    "description": "\"Necróticos são humanos mutados afetados pelo fenômeno da necrosificação. Apesar de sua aparência zumbi, a carne dos necróticos não está podre. Radiação intensa e prolongada devastou sua pele, grande parte de sua carne e, em alguns casos, muitos de seus ligamentos. Apesar de sua infertilidade e, em certos casos, deterioração mental, eles têm uma expectativa de vida geral muito estendida e são imunes (e às vezes até curados) por radiação de fundo e/ou precipitação nuclear.\n\nNecróticos geralmente conseguem viver bem em sociedades humanas, mas ainda são uma minoria. Existem comunidades e cidades de Necróticos. A Necrópole já foi uma delas, antes de ser parcialmente destruída por Supermutantes. Muitas cidades agrícolas pré-Guerra na Califórnia, incluindo Broken Hills, Dayglow e Gecko, também são exemplos.\n\nDevido à sua longevidade quase imortal, Necróticos frequentemente assumem novas personalidades a cada século. Eles aprendem novas habilidades e herdam uma identidade completamente diferente antes de seguirem para a próxima.\"\n\n— [Trecho da página \"Ghoul\" na Fallout Fandom Wiki.](https://fallout.fandom.com/wiki/Ghoul)\n\nTRAÇOS DA RAÇA\n\nIdade. Necróticos são quase imortais; sua expectativa de vida é desconhecida. Alguns sobreviveram desde antes da Grande Guerra, há mais de 200 anos.\n\nTamanho. Necróticos variam bastante em altura e porte; seu tamanho é Médio ou Pequeno.\n\nEvolução. Você não pode ganhar níveis de radiação e é imune a dano de radiação. Além disso, você não ganha níveis de radiação por consumir comida ou água.\n\nAnatomia Resiliente. Você tem resistência a dano de veneno. Todo ponto de estamina que você ganharia ao consumir comidas, bebidas ou químicos é reduzido pela metade (arredondado para baixo). Todo ponto de vida que você ganharia com Stimpaks é reduzido pela metade (arredondado para baixo). Você não pode ganhar pontos de vida com pó curativo. Seringas que não sejam carregadores (Carregador de Stimpak ou de Químico) não têm efeito em você. Além disso, sempre que você sofrer dano da condição sangramento, você sofre metade.",
+    "description": "\"Necróticos são humanos mutados afetados pelo fenômeno da necrosificação. Apesar de sua aparência zumbi, a carne dos necróticos não está podre. Radiação intensa e prolongada devastou sua pele, grande parte de sua carne e, em alguns casos, muitos de seus ligamentos. Apesar de sua infertilidade e, em certos casos, deterioração mental, eles têm uma expectativa de vida geral muito estendida e são imunes (e às vezes até curados) por radiação de fundo e/ou precipitação nuclear.\n\nNecróticos geralmente conseguem viver bem em sociedades humanas, mas ainda são uma minoria. Existem comunidades e cidades de Necróticos. A Necrópole já foi uma delas, antes de ser parcialmente destruída por Supermutantes. Muitas cidades agrícolas pré-Guerra na Califórnia, incluindo Broken Hills, Dayglow e Gecko, também são exemplos.\n\nDevido à sua longevidade quase imortal, Necróticos frequentemente assumem novas personalidades a cada século. Eles aprendem novas habilidades e herdam uma identidade completamente diferente antes de seguirem para a próxima.\"\n\n— Fonte: Fallout Fandom Wiki, página \"Ghoul\".\n\nTRAÇOS DA RAÇA\n\nIdade. Necróticos são quase imortais; sua expectativa de vida é desconhecida. Alguns sobreviveram desde antes da Grande Guerra, há mais de 200 anos.\n\nTamanho. Necróticos variam bastante em altura e porte; seu tamanho é Médio ou Pequeno.\n\nEvolução. Você não pode ganhar níveis de radiação e é imune a dano de radiação. Além disso, você não ganha níveis de radiação por consumir comida ou água.\n\nAnatomia Resiliente. Você tem resistência a dano de veneno. Todo ponto de estamina que você ganharia ao consumir comidas, bebidas ou químicos é reduzido pela metade (arredondado para baixo). Todo ponto de vida que você ganharia com Stimpaks é reduzido pela metade (arredondado para baixo). Você não pode ganhar pontos de vida com pó curativo. Seringas que não sejam carregadores (Carregador de Stimpak ou de Químico) não têm efeito em você. Além disso, sempre que você sofrer dano da condição sangramento, você sofre metade.",
     "effects": [
      {
       "type": "immunity",
@@ -5579,7 +5582,8 @@
      {
       "type": "add",
       "target": "fator_cura",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      }
     ]
    },
@@ -5614,7 +5618,8 @@
      {
       "type": "add",
       "target": "fator_cura",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "add",
@@ -6037,12 +6042,14 @@
      {
       "type": "add",
       "target": "pv",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "add",
       "target": "pe",
-      "value": "-level"
+      "value": "-level",
+      "value_text": "− seu nível"
      }
     ]
    },
@@ -6058,12 +6065,14 @@
      {
       "type": "add",
       "target": "pv",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ o dobro do seu nível"
      },
      {
       "type": "add",
       "target": "pe",
-      "value": "-2 * level"
+      "value": "-2 * level",
+      "value_text": "− o dobro do seu nível"
      }
     ]
    },
@@ -6201,18 +6210,33 @@
     "name": "Habilidoso",
     "requisito": "Um valor de atributo igual ou inferior a 3",
     "description": "Requisito: Um valor de atributo igual ou inferior a 3\n\nAumente um modificador de perícia em 2.",
-    "effects": [],
-    "requires": "(FOR <= 3 or PER <= 3 or RES <= 3 or CAR <= 3 or INT <= 3 or AGI <= 3 or SOR <= 3)"
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_pericia",
+      "value": "2"
+     }
+    ],
+    "requires": "(FOR <= 3 or PER <= 3 or RES <= 3 or CAR <= 3 or INT <= 3 or AGI <= 3 or SOR <= 3)",
+    "requires_text": "Um valor de atributo igual ou inferior a 3"
    },
    {
     "id": "habilidoso_ermo",
     "name": "Habilidoso (Ermo Selvagem)",
-    "requisito": "Um valor de atributo igual ou inferior a 3",
-    "description": "Requisito: Um valor de atributo igual ou inferior a 3\n\nPré-requisito: Um valor de atributo igual a 1. Aumente um modificador de perícia em 5.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
+    "requisito": "Um valor de atributo igual a 1",
+    "description": "Requisito: Um valor de atributo igual a 1\n\nAumente um modificador de perícia em 5.\n\nErmo Selvagem. Alguns traços podem ser modificados por esta regra opcional, que dobra todos os valores numéricos, tanto dos benefícios quanto das penalidades de cada traço, ou concede habilidades totalmente novas. Para os jogadores do \"tudo ou nada\", você pode optar por aplicar o \"Ermo Selvagem\" ao(s) traço(s) que escolher. Se fizer isso, modifique seu traço com a seção Ermo Selvagem que aparece no fim de cada traço.",
     "tags": [
      "ermo_selvagem"
     ],
-    "effects": []
+    "effects": [
+     {
+      "type": "add",
+      "target": "pontos_pericia",
+      "value": "5"
+     }
+    ],
+    "requires": "(FOR == 1 or PER == 1 or RES == 1 or CAR == 1 or INT == 1 or AGI == 1 or SOR == 1)",
+    "requires_text": "Um valor de atributo igual a 1"
    },
    {
     "id": "estrutura_pequena",
@@ -6223,12 +6247,14 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "add",
       "target": "pv",
-      "value": "-level"
+      "value": "-level",
+      "value_text": "− seu nível"
      }
     ]
    },
@@ -6244,12 +6270,14 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ o dobro do seu nível"
      },
      {
       "type": "add",
       "target": "pv",
-      "value": "-2 * level"
+      "value": "-2 * level",
+      "value_text": "− o dobro do seu nível"
      }
     ]
    },
@@ -6503,7 +6531,8 @@
      {
       "type": "add",
       "target": "pontos_talento",
-      "value": "-min(level, 2)"
+      "value": "-min(level, 2)",
+      "value_text": "− seu nível (no máximo 2)"
      },
      {
       "type": "add",
@@ -7390,6 +7419,12 @@
      {
       "type": "note",
       "text": "Amigo da Noite: Você não tem mais desvantagem em nenhuma rolagem de ataque, teste de atributo ou teste de perícia prejudicados por condições de pouca luz."
+     },
+     {
+      "type": "note",
+      "text": "Amigo da Noite (repetição): Se você pegar este talento de novo, você sofreu uma mutação ou uma melhoria para se adaptar à escuridão. Você tem visão noturna até 30 m.",
+      "if": "qty('talentos/amigo_da_noite') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 4",
@@ -7442,6 +7477,12 @@
      {
       "type": "note",
       "text": "Energia Potencializada: Sempre que você rolar dano de um ataque com uma arma de energia, você pode rolar um dado de dano adicional. …"
+     },
+     {
+      "type": "note",
+      "text": "Energia Potencializada (repetição): Você pode pegar este talento no máximo três vezes, aumentando a cada vez em um os dados de dano da sua arma de energia.",
+      "if": "qty('talentos/energia_potencializada') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 5",
@@ -7460,6 +7501,12 @@
      {
       "type": "note",
       "text": "Impasse: Sempre que você rolar Iniciativa, você e uma outra criatura a até 9 m de você ganham um bônus igual ao seu modificador de Percepção."
+     },
+     {
+      "type": "note",
+      "text": "Impasse (repetição): Você pode pegar este talento no máximo três vezes; a cada vez que o pegar, aumenta em um o número de criaturas que você pode afetar.",
+      "if": "qty('talentos/impasse') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 5",
@@ -7478,6 +7525,12 @@
      {
       "type": "note",
       "text": "Diagnóstico Eficiente: Sempre que você usar um Stimpak, um kit de primeiros socorros ou uma maleta médica em outra criatura, ela cura 2 pontos de vida adicionais; alternativamente, você pode virar uma das suas Tampas de Karma para curar o dobro do que normalmente curaria."
+     },
+     {
+      "type": "note",
+      "text": "Diagnóstico Eficiente (repetição): Você pode pegar este talento no máximo três vezes, aumentando a cada vez em 2 a quantidade curada.",
+      "if": "qty('talentos/diagnostico_eficiente') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 5",
@@ -7518,6 +7571,12 @@
      {
       "type": "note",
       "text": "Rato de Carga: A Capacidade de Carga de cada personagem jogador aumenta em 10. Além disso, qualquer item que você carregue com carga menor que 3 passa a ter carga 1."
+     },
+     {
+      "type": "note",
+      "text": "Rato de Carga (repetição): Você pode pegar este talento no máximo três vezes, aumentando a cada vez em 10 a Capacidade de Carga de cada personagem jogador.",
+      "if": "qty('talentos/rato_de_carga') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 6",
@@ -7536,6 +7595,12 @@
      {
       "type": "note",
       "text": "Estilhaços: Sempre que você atacar com uma arma ou equipamento que tenha área de efeito, a área aumenta em metade."
+     },
+     {
+      "type": "note",
+      "text": "Estilhaços (repetição): Se você pegar este talento de novo, o tamanho da área de efeito aumenta em metade outra vez (na prática, dobrando o tamanho da sua área de efeito).",
+      "if": "qty('talentos/estilhacos') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 6",
@@ -7571,6 +7636,12 @@
      {
       "type": "note",
       "text": "Perfuração Pulsante: Sempre que você fizer uma rolagem de ataque com uma arma de energia, você pode escolher que o ataque atinja até três criaturas em linha. A linha é traçada a partir da sua posição."
+     },
+     {
+      "type": "note",
+      "text": "Perfuração Pulsante (repetição): Você pode pegar este talento no máximo duas vezes. Se pegá-lo de novo, você pode atingir até seis criaturas em linha.",
+      "if": "qty('talentos/perfuracao_pulsante') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 7",
@@ -7692,6 +7763,12 @@
      {
       "type": "note",
       "text": "Mestre da Medicina: Quando outra criatura descansa por pelo menos uma hora, você pode usar um kit de primeiros socorros, um Stimpak ou uma maleta médica para curar metade do total dos pontos de vida dela. …"
+     },
+     {
+      "type": "note",
+      "text": "Mestre da Medicina (repetição): Se você pegar este talento de novo, quando outra criatura descansa por pelo menos uma hora, você pode usar um kit de primeiros socorros, um Stimpak ou uma maleta médica para curar todos os pontos de vida dela.",
+      "if": "qty('talentos/mestre_da_medicina') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 10",
@@ -7710,6 +7787,12 @@
      {
       "type": "note",
       "text": "Oráculo: Sempre que você rolar Iniciativa, você pode trocar as rolagens de Iniciativa de qualquer número de criaturas dispostas."
+     },
+     {
+      "type": "note",
+      "text": "Oráculo (repetição): Se você pegar este talento de novo, sempre que rolar Iniciativa, você pode trocar as rolagens de Iniciativa de até três criaturas adicionais (elas não precisam estar dispostas).",
+      "if": "qty('talentos/oraculo') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "PER >= 10",
@@ -7750,6 +7833,12 @@
      {
       "type": "note",
       "text": "Doador de Vida: Seus pontos de vida máximos aumentam em 10 e os pontos de vida máximos de cada outro personagem jogador aumentam em 1."
+     },
+     {
+      "type": "note",
+      "text": "Doador de Vida (repetição): Se você pegar este talento de novo, seus pontos de vida máximos aumentam em 10 e os pontos de vida máximos de cada outro personagem jogador aumentam em 1.",
+      "if": "qty('talentos/doador_de_vida') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "RES >= 4",
@@ -7773,6 +7862,12 @@
      {
       "type": "note",
       "text": "Resiliente: Sua TD aumenta em 1 e, sempre que você fizer um teste para resistir a ficar amedrontado, você não fica amedrontado se passar por 5 ou menos."
+     },
+     {
+      "type": "note",
+      "text": "Resiliente (repetição): Se você pegar este talento de novo, sua TD aumenta em 1 e você tem vantagem em testes para resistir a ficar amedrontado.",
+      "if": "qty('talentos/resiliente') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "RES >= 5",
@@ -7859,6 +7954,12 @@
      {
       "type": "note",
       "text": "Viés do Sobrevivente: Seu conhecimento sobre outras criaturas e o que elas podem fazer lhe dá vantagem contra elas. …"
+     },
+     {
+      "type": "note",
+      "text": "Viés do Sobrevivente (repetição): Você pode pegar este talento no máximo três vezes. A cada vez que o pegar, você descobre uma estatística, ação ou fraqueza adicional ao gastar seus pontos de ação.",
+      "if": "qty('talentos/vies_do_sobrevivente') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "RES >= 5",
@@ -7877,6 +7978,12 @@
      {
       "type": "note",
       "text": "Garra: Sempre que você estiver morrendo, o movimento não custa pontos de ação extras e você ganha um ponto de ação adicional no início do seu turno."
+     },
+     {
+      "type": "note",
+      "text": "Garra (repetição): Se você pegar este talento de novo, você ganha dois pontos de ação adicionais no início do seu turno enquanto estiver morrendo (num total de 3).",
+      "if": "qty('talentos/garra') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "RES >= 6",
@@ -7946,6 +8053,12 @@
      {
       "type": "note",
       "text": "Vida ao Relento: Sempre que você descansar ao ar livre por pelo menos 1 hora, você ganha pontos de vida temporários e pontos de estamina temporários iguais ao seu nível pelas próximas 8 horas."
+     },
+     {
+      "type": "note",
+      "text": "Vida ao Relento (repetição): Você pode pegar este talento no máximo duas vezes. Quando o pegar de novo, cada outra criatura à sua escolha que também descansar com você ganha o mesmo bônus.",
+      "if": "qty('talentos/vida_ao_relento') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "RES >= 7",
@@ -8025,7 +8138,8 @@
      {
       "type": "add",
       "target": "pv",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ o dobro do seu nível"
      },
      {
       "type": "add",
@@ -8274,6 +8388,12 @@
      {
       "type": "note",
       "text": "Eu Te Cubro: Quando você e esse aliado estiverem a até 1,5 m um do outro, vocês ganham os seguintes benefícios: sua DF aumenta em 1, sua TD aumenta em 2 e, sempre que você ou o aliado escolhido sofrerem dano, qualquer um dos dois pode escolher reduzir esse dano pela metade. …"
+     },
+     {
+      "type": "note",
+      "text": "Eu Te Cubro (repetição): Depois que um personagem jogador pegar este talento, ele não pode ser pego por nenhum outro personagem. Se você pegá-lo de novo, o bônus de DF aumenta em 1, o bônus de TD aumenta em 2 e, sempre que você ou esse aliado sofrerem dano, qualquer um dos dois pode escolher reduzir esse dano a 0. Então, o outro sofre o dano no lugar.",
+      "if": "qty('talentos/eu_te_cubro') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "CAR >= 6",
@@ -8292,6 +8412,12 @@
      {
       "type": "note",
       "text": "Mantendo a Calma: Durante o combate, você tem vantagem em todos os testes de Carisma e sua DF aumenta em 1, desde que você não tenha sofrido nenhum dano nos seus pontos de vida durante o combate. …"
+     },
+     {
+      "type": "note",
+      "text": "Mantendo a Calma (repetição): Você pode pegar este talento no máximo duas vezes. Quando o pegar de novo, o bônus de DF aumenta em 1 (num total de 2) e, sempre que você sofrer dano nos seus pontos de estamina, ele é reduzido em 1.",
+      "if": "qty('talentos/mantendo_a_calma') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "CAR >= 7",
@@ -8395,6 +8521,12 @@
      {
       "type": "note",
       "text": "Estrategista Astuto: Sempre que outro personagem jogador desvirar a Tampa de Karma dele ao rolar 1 em um d20 ou ao ser atingido por um acerto crítico, você também pode desvirar a sua Tampa de Karma."
+     },
+     {
+      "type": "note",
+      "text": "Estrategista Astuto (repetição): Você pode pegar este talento no máximo duas vezes; quando o pegar de novo, sempre que outro personagem jogador desvirar a Tampa de Karma dele ao rolar 1 em um d20 ou ao ser atingido por um acerto crítico, você pode escolher que outro personagem jogador desvire a Tampa de Karma dele.",
+      "if": "qty('talentos/estrategista_astuto') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "CAR >= 9",
@@ -8719,6 +8851,12 @@
      {
       "type": "note",
       "text": "Reparo Rápido: Você pode gastar 6 pontos de ação para fazer um reparo rápido. O reparo rápido remove dois níveis de desgaste de um item. Depois de fazer um reparo rápido, você não pode fazer outro até descansar por pelo menos 8 horas."
+     },
+     {
+      "type": "note",
+      "text": "Reparo Rápido (repetição): Você pode pegar este talento no máximo três vezes. Quando o pegar de novo, você pode fazer um reparo rápido adicional por descanso de 8 horas.",
+      "if": "qty('talentos/reparo_rapido') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "INT >= 9",
@@ -8737,6 +8875,12 @@
      {
       "type": "note",
       "text": "Atomizador Curativo: Você pode gastar 6 pontos de ação e dois Stimpaks para fazer cada criatura não robótica a até 6 m de você recuperar pontos de vida iguais ao Fator de Cura dela. …"
+     },
+     {
+      "type": "note",
+      "text": "Atomizador Curativo (repetição): Você pode pegar este talento no máximo duas vezes. Se pegá-lo de novo, você pode usar quatro Stimpaks ou RobCo ConsertaJá para fazer cada criatura curar o dobro do Fator de Cura dela.",
+      "if": "qty('talentos/atomizador_curativo') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "INT >= 9",
@@ -8806,7 +8950,8 @@
      {
       "type": "add",
       "target": "pa",
-      "value": "min(2, 15 - min(15, 10 + mod(AGI)))"
+      "value": "min(2, 15 - min(15, 10 + mod(AGI)))",
+      "value_text": "+2 (até o máximo de 15)"
      },
      {
       "type": "note",
@@ -9219,6 +9364,12 @@
      {
       "type": "note",
       "text": "Simplesmente Funciona: Sempre que qualquer uma das suas armas ou armaduras fosse ganhar um nível de desgaste, role um teste de Sorte com CD igual a 12 + os níveis de desgaste atuais da arma ou armadura. Se falhar, a arma ou armadura ganha um nível de desgaste. …"
+     },
+     {
+      "type": "note",
+      "text": "Simplesmente Funciona (repetição): Você pode pegar este talento no máximo duas vezes. Se o pegar de novo, sempre que for bem-sucedido no teste de Sorte citado, a arma ou armadura não ganha nenhum nível de desgaste.",
+      "if": "qty('talentos/simplesmente_funciona') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "SOR >= 5",
@@ -9391,76 +9542,96 @@
      {
       "type": "add",
       "target": "barganha",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "ciencia",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "corpo_a_corpo",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "criacao",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "disparo",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "energia",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "explosivos",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "furtividade",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "intimidacao",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "medicina",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "persuasao",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "pugilismo",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "sabotagem",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "add",
       "target": "sobrevivencia",
-      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')"
+      "value": "(if(mod(SOR) < 0, 0, mod(SOR) - floor(mod(SOR) / 2)) + 2 * (qty('sorte_de_tolo') - 1)) / qty('sorte_de_tolo')",
+      "value_text": "+ a outra metade do modificador de Sorte (+2 se pegar de novo)"
      },
      {
       "type": "note",
       "text": "Sorte de Tolo: Além disso, sempre que você virar sua Tampa de Karma para ganhar vantagem em um teste de atributo ou de perícia, pode somar o dobro do seu modificador de Sorte ao total."
+     },
+     {
+      "type": "note",
+      "text": "Sorte de Tolo (repetição): Você pode pegar este talento no máximo duas vezes. Se o pegar de novo, todos os seus modificadores de perícia aumentam em 2. Além disso, sempre que você virar sua Tampa de Karma para rolar de novo um teste de atributo ou de perícia, pode somar o dobro do seu modificador de Sorte à segunda rolagem.",
+      "if": "qty('talentos/sorte_de_tolo') >= 2",
+      "if_text": "se pegar o talento de novo"
      }
     ],
     "requires": "SOR >= 8",
@@ -10154,12 +10325,14 @@
      {
       "type": "add",
       "target": "pv",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "note",
@@ -10257,7 +10430,8 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      }
     ]
    },
@@ -10287,7 +10461,8 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "add",
@@ -10376,6 +10551,12 @@
     "description": "Uma criatura lenta começa seu turno com um máximo de 6 PA.",
     "effects": [
      {
+      "type": "limit",
+      "target": "pa",
+      "value": "6",
+      "value_text": "6"
+     },
+     {
       "type": "note",
       "text": "Lento: começa o turno com no máximo 6 PA."
      }
@@ -10396,7 +10577,7 @@
    {
     "id": "morrendo",
     "name": "Morrendo",
-    "description": "[Condição citada no original (veja \"Suspiro Final\" em Dano e Cura), mas sem entrada própria na lista de condições.] Uma criatura morrendo está caída, tem seus PA limitados conforme descrito em Chegando a 0 Pontos de Vida e faz testes de Suspiro Final no início dos seus turnos.",
+    "description": "Uma criatura morrendo está caída, tem seus PA limitados conforme descrito em Chegando a 0 Pontos de Vida e faz testes de Suspiro Final no início dos seus turnos.",
     "effects": []
    }
   ],
@@ -13201,12 +13382,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 0 - floor(wear / 2))"
+      "value": "max(0, 0 - floor(wear / 2))",
+      "value_text": "+0, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13224,12 +13407,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 11 - floor(wear / 2))"
+      "value": "max(10, 11 - floor(wear / 2))",
+      "value_text": "11, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 1 - floor(wear / 2))"
+      "value": "max(0, 1 - floor(wear / 2))",
+      "value_text": "+1, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13247,12 +13432,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 12 - floor(wear / 2))"
+      "value": "max(10, 12 - floor(wear / 2))",
+      "value_text": "12, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 0 - floor(wear / 2))"
+      "value": "max(0, 0 - floor(wear / 2))",
+      "value_text": "+0, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13270,12 +13457,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 2 - floor(wear / 2))"
+      "value": "max(0, 2 - floor(wear / 2))",
+      "value_text": "+2, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13293,12 +13482,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 12 - floor(wear / 2))"
+      "value": "max(10, 12 - floor(wear / 2))",
+      "value_text": "12, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 3 - floor(wear / 2))"
+      "value": "max(0, 3 - floor(wear / 2))",
+      "value_text": "+3, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13316,12 +13507,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 13 - floor(wear / 2))"
+      "value": "max(10, 13 - floor(wear / 2))",
+      "value_text": "13, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 2 - floor(wear / 2))"
+      "value": "max(0, 2 - floor(wear / 2))",
+      "value_text": "+2, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      }
     ]
    },
@@ -13341,12 +13534,14 @@
      {
       "type": "set",
       "target": "df",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, menos 1 a cada 2 níveis de desgaste (mínimo 10)"
      },
      {
       "type": "add",
       "target": "td",
-      "value": "max(0, 1 - floor(wear / 2))"
+      "value": "max(0, 1 - floor(wear / 2))",
+      "value_text": "+1, menos 1 a cada 2 níveis de desgaste (mínimo 0)"
      },
      {
       "type": "add",
@@ -13507,7 +13702,8 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "note",
@@ -13525,7 +13721,8 @@
      {
       "type": "add",
       "target": "pe",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ seu nível"
      },
      {
       "type": "note",
@@ -17633,7 +17830,7 @@
     "title": "Raça",
     "min": 1,
     "max": 1,
-    "description": "Passo 1: escolha sua raça. Ela define imunidades, limites e o que funciona em você (químicos, comida, stimpaks)."
+    "description": "Escolha sua raça. Ela define imunidades, limites e o que funciona em você (químicos, comida, stimpaks)."
    },
    {
     "type": "pick",
@@ -17648,7 +17845,7 @@
     "type": "attributes",
     "title": "S.P.E.C.I.A.L.",
     "points": 3,
-    "description": "Passo 2: cada atributo começa em 5 e você tem 3 pontos para aumentar. Diminuir um atributo devolve pontos. Mínimo 1, máximo 10.\nO modificador é o valor menos 5. Metade do modificador de Sorte (para baixo) vai em todas as perícias; se for negativo, as perícias perdem só 1."
+    "description": "Cada atributo começa em 5 e você tem 3 pontos para aumentar. Diminuir um atributo devolve pontos. Mínimo 1, máximo 10.\nO modificador é o valor menos 5. Metade do modificador de Sorte (para baixo) vai em todas as perícias; se for negativo, as perícias perdem só 1."
    },
    {
     "type": "pick",
@@ -17656,7 +17853,7 @@
     "title": "Antecedente",
     "min": 1,
     "max": 1,
-    "description": "Passo 6: seu antecedente dá +2 em três perícias, um traço de antecedente e o equipamento inicial."
+    "description": "Seu antecedente dá +2 em três perícias, um traço de antecedente e o equipamento inicial."
    },
    {
     "type": "skills",
@@ -17699,7 +17896,23 @@
     "min": 0,
     "max": 1,
     "match_field": "requisito",
-    "description": "Passo 23: você pode escolher 1 traço da lista, além do traço do seu antecedente. As versões \"Ermo Selvagem\" são a variante mais dura de cada traço. Os traços vêm antes dos talentos porque alguns mudam quantos talentos você ganha."
+    "description": "Você pode escolher 1 traço da lista, além do traço do seu antecedente. As versões \"Ermo Selvagem\" são a variante mais dura de cada traço. Os traços vêm antes dos talentos porque alguns mudam quantos talentos você ganha."
+   },
+   {
+    "type": "skills",
+    "title": "Habilidoso: +2 em uma perícia",
+    "choose": 1,
+    "bonus": 2,
+    "if": "has('habilidoso')",
+    "description": "Habilidoso: escolha a perícia cujo modificador aumenta em 2."
+   },
+   {
+    "type": "skills",
+    "title": "Habilidoso (Ermo Selvagem): +5 em uma perícia",
+    "choose": 1,
+    "bonus": 5,
+    "if": "has('habilidoso_ermo')",
+    "description": "Habilidoso (Ermo Selvagem): escolha a perícia cujo modificador aumenta em 5."
    },
    {
     "type": "pick",
@@ -17708,7 +17921,7 @@
     "min": "pontos_talento",
     "max": "pontos_talento",
     "if": "pontos_talento > 0",
-    "description": "Passo 22: escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
+    "description": "Escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
    },
    {
     "type": "pick",
@@ -17765,7 +17978,7 @@
       }
      ]
     },
-    "description": "Passo 15: o equipamento do seu antecedente (na versão da sua raça) vai direto para a ficha, com o desgaste certo e a armadura já vestida. As tampinhas vão para o Dinheiro, e o que não é item do jogo (Pip-Boy à escolha) vai para \"Outros itens\". Ou abra mão de tudo e fique com 850 tampinhas."
+    "description": "O equipamento do seu antecedente (na versão da sua raça) vai direto para a ficha, com o desgaste certo e a armadura já vestida. As tampinhas vão para o Dinheiro, e o que não é item do jogo (Pip-Boy à escolha) vai para \"Outros itens\". Ou abra mão de tudo e fique com 850 tampinhas."
    },
    {
     "type": "notes",

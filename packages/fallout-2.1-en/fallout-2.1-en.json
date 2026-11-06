@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.2.2",
+ "version": "0.2.3",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -422,7 +422,8 @@
     {
      "type": "add",
      "target": "ap",
-     "value": "-floor(n / 2)"
+     "value": "-floor(n / 2)",
+     "value_text": "− half the levels (rounded down)"
     }
    ]
   },
@@ -435,7 +436,8 @@
     {
      "type": "add",
      "target": "ap",
-     "value": "-floor(n / 2)"
+     "value": "-floor(n / 2)",
+     "value_text": "− half the levels (rounded down)"
     }
    ]
   },
@@ -454,7 +456,8 @@
     {
      "type": "add",
      "target": "ap",
-     "value": "-n"
+     "value": "-n",
+     "value_text": "− 1 per level"
     },
     {
      "type": "note",
@@ -5124,7 +5127,8 @@
      {
       "type": "add",
       "target": "healing_rate",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      }
     ],
     "requires": "(has('human'))"
@@ -5160,7 +5164,8 @@
      {
       "type": "add",
       "target": "healing_rate",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
@@ -5206,7 +5211,8 @@
      {
       "type": "add",
       "target": "healing_rate",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
@@ -5274,7 +5280,8 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "-level"
+      "value": "-level",
+      "value_text": "− your level"
      }
     ],
     "requires": "(has('super_mutant'))"
@@ -5291,7 +5298,8 @@
      {
       "type": "add",
       "target": "healing_rate",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      }
     ],
     "requires": "(has('super_mutant'))"
@@ -5678,12 +5686,14 @@
      {
       "type": "add",
       "target": "hp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
       "target": "sp",
-      "value": "-level"
+      "value": "-level",
+      "value_text": "− your level"
      }
     ]
    },
@@ -5699,12 +5709,14 @@
      {
       "type": "add",
       "target": "hp",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ twice your level"
      },
      {
       "type": "add",
       "target": "sp",
-      "value": "-2 * level"
+      "value": "-2 * level",
+      "value_text": "− twice your level"
      }
     ]
    },
@@ -5840,17 +5852,33 @@
     "name": "Skilled",
     "requirement": "An ability score equal to or lower than 3",
     "description": "Requirement: An ability score equal to or lower than 3\n\nIncrease one Skill modifier by 2. (p. 33)",
-    "requires": "(STR <= 3 or PER <= 3 or END <= 3 or CHA <= 3 or INT <= 3 or AGI <= 3 or LCK <= 3)"
+    "requires": "(STR <= 3 or PER <= 3 or END <= 3 or CHA <= 3 or INT <= 3 or AGI <= 3 or LCK <= 3)",
+    "requires_text": "An ability score equal to or lower than 3",
+    "effects": [
+     {
+      "type": "add",
+      "target": "skill_points",
+      "value": "2"
+     }
+    ]
    },
    {
     "id": "skilled_ww",
     "name": "Skilled (Wild Wasteland)",
-    "requirement": "An ability score equal to or lower than 3",
-    "description": "Requirement: An ability score equal to or lower than 3\n\nPrerequisite: One Ability Score equal to 1. Increase one Skill modifier by 5. (p. 33)\n\nWild Wasteland. Some traits can be modified by this optional rule that doubles all the numerical values for both benefits and negatives for each trait, or grants entirely new abilities. For the truly high risk-high reward players, you can opt to “Wild Wasteland” your chosen trait(s). If you do, modify your trait with the Wild Wasteland section at the end of each trait. (p. 26)",
+    "requirement": "One ability score equal to 1",
+    "description": "Requirement: One ability score equal to 1\n\nIncrease one Skill modifier by 5. (p. 33)\n\nWild Wasteland. Some traits can be modified by this optional rule that doubles all the numerical values for both benefits and negatives for each trait, or grants entirely new abilities. For the truly high risk-high reward players, you can opt to “Wild Wasteland” your chosen trait(s). If you do, modify your trait with the Wild Wasteland section at the end of each trait. (p. 26)",
     "tags": [
      "wild_wasteland"
     ],
-    "requires": "(STR <= 3 or PER <= 3 or END <= 3 or CHA <= 3 or INT <= 3 or AGI <= 3 or LCK <= 3)"
+    "requires": "(STR == 1 or PER == 1 or END == 1 or CHA == 1 or INT == 1 or AGI == 1 or LCK == 1)",
+    "requires_text": "One ability score equal to 1",
+    "effects": [
+     {
+      "type": "add",
+      "target": "skill_points",
+      "value": "5"
+     }
+    ]
    },
    {
     "id": "small_frame",
@@ -5861,12 +5889,14 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
       "target": "hp",
-      "value": "-level"
+      "value": "-level",
+      "value_text": "− your level"
      }
     ]
    },
@@ -5882,12 +5912,14 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ twice your level"
      },
      {
       "type": "add",
       "target": "hp",
-      "value": "-2 * level"
+      "value": "-2 * level",
+      "value_text": "− twice your level"
      }
     ]
    },
@@ -6129,7 +6161,8 @@
      {
       "type": "add",
       "target": "perk_points",
-      "value": "-min(level, 2)"
+      "value": "-min(level, 2)",
+      "value_text": "− your level (at most 2)"
      },
      {
       "type": "add",
@@ -7001,6 +7034,12 @@
      {
       "type": "note",
       "text": "Friend of the Night: You’ve adapted to low-light conditions and you know how to utilize the darkness to your advantage. You no longer have disadvantage on any attack rolls, ability checks, or skill checks inhibited by low-light conditions."
+     },
+     {
+      "type": "note",
+      "text": "Friend of the Night (repeat): If you take this perk again, you’ve mutated or upgraded to adapt to the darkness. You have night vision out to 100 feet. (p. 37)",
+      "if": "qty('perks/friend_of_the_night') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 4",
@@ -7053,6 +7092,12 @@
      {
       "type": "note",
       "text": "Empowered Energy: Whenever you roll damage from an attack from an energy weapon, you can roll an additional damage dice. …"
+     },
+     {
+      "type": "note",
+      "text": "Empowered Energy (repeat): You can take this perk up to a maximum of three times, each time increasing your energy weapon damage dice by one. (p. 38)",
+      "if": "qty('perks/empowered_energy') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 5",
@@ -7071,6 +7116,12 @@
      {
       "type": "note",
       "text": "Standoff: Whenever you roll Combat Sequence, you and one other creature within 30 feet of you gains a bonus equal to your Perception ability modifier."
+     },
+     {
+      "type": "note",
+      "text": "Standoff (repeat): You can take this perk up to a maximum of three times, each time you take it increases the amount of creature you can affect by one. (p. 38)",
+      "if": "qty('perks/standoff') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 5",
@@ -7089,6 +7140,12 @@
      {
       "type": "note",
       "text": "Efficient Diagnosis: Whenever you use a stimpak, first aid kit, or doctor’s bag on another creature; they heal an additional 2 hit points, alternatively you can flip one of your karma caps to heal double the amount you normally would."
+     },
+     {
+      "type": "note",
+      "text": "Efficient Diagnosis (repeat): You can take this perk up to a maximum of three times, each time increasing the number healed by 2. (p. 38)",
+      "if": "qty('perks/efficient_diagnosis') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 5",
@@ -7129,6 +7186,12 @@
      {
       "type": "note",
       "text": "Pack Rat: Each player character’s carry load increases by 10. Additionally, any item you carry that has a load less than 3 is reduced to 1."
+     },
+     {
+      "type": "note",
+      "text": "Pack Rat (repeat): You can take this perk up to a maximum of three times, each time increasing each player character’s carry load by 10. (p. 38)",
+      "if": "qty('perks/pack_rat') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 6",
@@ -7147,6 +7210,12 @@
      {
       "type": "note",
       "text": "Splash Damage: Whenever you attack with a weapon or equipment that has an area of effect, the area is increased by half."
+     },
+     {
+      "type": "note",
+      "text": "Splash Damage (repeat): If you take this perk again, area of effect size is increased by half (effectively doubling your area of effect size). (p. 38)",
+      "if": "qty('perks/splash_damage') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 6",
@@ -7182,6 +7251,12 @@
      {
       "type": "note",
       "text": "Pulsion Perforation: Whenever you make an attack roll with an energy weapon, you can choose to have the attack target up to three creatures that are in a line. The line is drawn starting from your location."
+     },
+     {
+      "type": "note",
+      "text": "Pulsion Perforation (repeat): You can take this perk up to a maximum of twice. If you take this perk again you can target up to six creatures in a line. (p. 38)",
+      "if": "qty('perks/pulsion_perforation') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 7",
@@ -7305,6 +7380,12 @@
      {
       "type": "note",
       "text": "Medicinal Master: When another creature rests for at least an hour, you can use a first aid kit, stimpak, or doctor’s bag to heal them of half of their total hit points. …"
+     },
+     {
+      "type": "note",
+      "text": "Medicinal Master (repeat): If you take this perk again, when another creature rests for at least an hour, you can use a first aid kit, stimpak, or doctor’s bag to heal them of all their hit points. (p. 39)",
+      "if": "qty('perks/medicinal_master') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 10",
@@ -7323,6 +7404,12 @@
      {
       "type": "note",
       "text": "Oracle: Whenever you roll Combat Sequence, you can swap the combat sequence rolls of any number of willing creatures."
+     },
+     {
+      "type": "note",
+      "text": "Oracle (repeat): If you take this perk again, whenever you roll Combat Sequence, you can swap the combat sequence rolls of up to three additional creatures (they do not have to be willing). (p. 39)",
+      "if": "qty('perks/oracle') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "PER >= 10",
@@ -7363,6 +7450,12 @@
      {
       "type": "note",
       "text": "Lifegiver: Your maximum hit points increase by 10 and each other player character’s maximum hit points increase by 1."
+     },
+     {
+      "type": "note",
+      "text": "Lifegiver (repeat): If you take this perk again, your maximum hit points increase by 10 and each other player character’s maximum hit points increase by 1. (p. 40)",
+      "if": "qty('perks/lifegiver') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "END >= 4",
@@ -7386,6 +7479,12 @@
      {
       "type": "note",
       "text": "Toughness: Your DT increases by 1 and whenever you roll a check to resist becoming frightened, you are not frightened if you succeed by 5 or less."
+     },
+     {
+      "type": "note",
+      "text": "Toughness (repeat): If you take this perk again, your DT increases by 1 and you have advantage on checks to resist becoming frightened. (p. 40)",
+      "if": "qty('perks/toughness') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "END >= 5",
@@ -7472,6 +7571,12 @@
      {
       "type": "note",
       "text": "Survivorship Bias: Whenever you can sense another creature, so long as you have rolled combat sequence with the creature type and subtype before; you can spend 3 action points to learn either the hit point, stamina point, action point, AC, or DT total of any of them. …"
+     },
+     {
+      "type": "note",
+      "text": "Survivorship Bias (repeat): You can take this perk up to a maximum of three times. Each time you take this perk you learn an additional statistic, action, or weakness when using your action points. (p. 40)",
+      "if": "qty('perks/survivorship_bias') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "END >= 5",
@@ -7490,6 +7595,12 @@
      {
       "type": "note",
       "text": "Grit: Whenever you are dying, movement does not cost any extra action points and you gain an additional action point at the start of your turn."
+     },
+     {
+      "type": "note",
+      "text": "Grit (repeat): If you take this perk again, you gain two additional action points at the start of your turn while you’re dying (for a total of 3). (p. 40)",
+      "if": "qty('perks/grit') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "END >= 6",
@@ -7559,6 +7670,12 @@
      {
       "type": "note",
       "text": "Roughin’ It: Whenever you rest outside for at least 1 hour, you gain temporary hit points and temporary stamina points equal to your level for the next 8 hours."
+     },
+     {
+      "type": "note",
+      "text": "Roughin’ It (repeat): You can take this perk up to a maximum of twice. When you take it again, each other creature of your choice who also rests with you gains the same bonus. (p. 41)",
+      "if": "qty('perks/roughin_it') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "END >= 7",
@@ -7638,7 +7755,8 @@
      {
       "type": "add",
       "target": "hp",
-      "value": "2 * level"
+      "value": "2 * level",
+      "value_text": "+ twice your level"
      },
      {
       "type": "add",
@@ -7887,6 +8005,12 @@
      {
       "type": "note",
       "text": "Back to Back: When you roll combat sequence, choose one ally. …"
+     },
+     {
+      "type": "note",
+      "text": "Back to Back (repeat): Once a player character has taken this perk, it cannot be taken by any other characters. If you take this perk again, the AC bonus increases by 1, the DT bonus increases by 2, and whenever you or that ally take damage, either you or that ally can choose to reduce that damage to 0. Then, they take the damage instead. (p. 43)",
+      "if": "qty('perks/back_to_back') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "CHA >= 6",
@@ -7905,6 +8029,12 @@
      {
       "type": "note",
       "text": "Keeping Your Cool: During combat, you have advantage on all Charisma checks and your AC increases by 1 so long as you haven’t taken any damage to your hit points during the combat. …"
+     },
+     {
+      "type": "note",
+      "text": "Keeping Your Cool (repeat): You can take this perk up to a maximum of twice. When you take it again, the bonus to your AC increases by 1 (for a total of 2) and whenever you take damage to your stamina points; it is reduced by 1. (p. 43)",
+      "if": "qty('perks/keeping_your_cool') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "CHA >= 7",
@@ -8008,6 +8138,12 @@
      {
       "type": "note",
       "text": "Cunning Strategist: Whenever another player character flips their Karma Cap back over when they roll a 1 on a d20 or if they are hit with a critical hit, you can also flip over your Karma Cap."
+     },
+     {
+      "type": "note",
+      "text": "Cunning Strategist (repeat): You can take this perk up to a maximum of twice, when you take it again; whenever another player character flips their Karma Cap back over when they roll a 1 on a d20 or if they are hit with a critical hit, you can choose for another player character to flip over their Karma Cap. (p. 43)",
+      "if": "qty('perks/cunning_strategist') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "CHA >= 9",
@@ -8332,6 +8468,12 @@
      {
       "type": "note",
       "text": "Quick Repair: You can spend 6 action points to Quick repair. Quick repair removes two levels of decay from an item. Once you Quick repair, you cannot do it again until you rest for at least 8 hours."
+     },
+     {
+      "type": "note",
+      "text": "Quick Repair (repeat): You can take this perk up to a maximum of three times. When you take it again you can Quick repair an additional time per 8 hour rest. (p. 46)",
+      "if": "qty('perks/quick_repair') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "INT >= 9",
@@ -8350,6 +8492,12 @@
      {
       "type": "note",
       "text": "Remedial Atomizer: You can spend 6 action points and two stimpaks to cause each non-robotic creature within 20 feet of you to regain hit points equal to their healing rate. …"
+     },
+     {
+      "type": "note",
+      "text": "Remedial Atomizer (repeat): You can take this perk up to a maximum of twice. If you take this perk again, you can use four stimpaks or robot repair kits to have each creature heal double their healing rate. (p. 46)",
+      "if": "qty('perks/remedial_atomizer') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "INT >= 9",
@@ -8419,7 +8567,8 @@
      {
       "type": "add",
       "target": "ap",
-      "value": "min(2, 15 - min(15, 10 + mod(AGI)))"
+      "value": "min(2, 15 - min(15, 10 + mod(AGI)))",
+      "value_text": "+2 (up to a maximum of 15)"
      },
      {
       "type": "note",
@@ -8837,6 +8986,12 @@
      {
       "type": "note",
       "text": "It Just Works: Whenever any of your weapons or armor would gain a level of decay, roll a Luck check with the DC equal to 12 + the current levels of decay on the weapon or armor. If you fail, the weapon or armor gains a level of decay. …"
+     },
+     {
+      "type": "note",
+      "text": "It Just Works (repeat): You can take this perk up to a maximum of twice, if you take it again; whenever you succeed the aforementioned Luck check, the weapon or armor gains no levels of decay instead. (p. 49)",
+      "if": "qty('perks/it_just_works') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "LCK >= 5",
@@ -9009,6 +9164,12 @@
      {
       "type": "note",
       "text": "Dumb Luck: Additionally, whenever you flip your Karma Cap to gain advantage on an ability or skill check, you can add double your Luck modifier to the total."
+     },
+     {
+      "type": "note",
+      "text": "Dumb Luck (repeat): You can take this perk up to a maximum of twice, if you take it again; all your skill modifiers increase by 2. Additionally, whenever you flip your Karma Cap to gain reroll an ability or skill check, you can add double your Luck modifier to the second roll. (p. 50)",
+      "if": "qty('perks/dumb_luck') >= 2",
+      "if_text": "if taken again"
      }
     ],
     "requires": "LCK >= 8",
@@ -9704,12 +9865,14 @@
      {
       "type": "add",
       "target": "hp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "note",
@@ -9802,7 +9965,8 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      }
     ]
    },
@@ -9840,7 +10004,8 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "add",
@@ -9925,6 +10090,12 @@
     "name": "Slowed",
     "description": "A slowed creature starts their turn with a maximum of 6 AP. (p. 135)",
     "effects": [
+     {
+      "type": "limit",
+      "target": "ap",
+      "value": "6",
+      "value_text": "6"
+     },
      {
       "type": "note",
       "text": "Slowed: you start your turn with a maximum of 6 AP."
@@ -12970,12 +13141,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 0 - floor(wear / 2))"
+      "value": "max(0, 0 - floor(wear / 2))",
+      "value_text": "+0, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -12993,12 +13166,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 11 - floor(wear / 2))"
+      "value": "max(10, 11 - floor(wear / 2))",
+      "value_text": "11, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 1 - floor(wear / 2))"
+      "value": "max(0, 1 - floor(wear / 2))",
+      "value_text": "+1, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -13016,12 +13191,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 12 - floor(wear / 2))"
+      "value": "max(10, 12 - floor(wear / 2))",
+      "value_text": "12, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 0 - floor(wear / 2))"
+      "value": "max(0, 0 - floor(wear / 2))",
+      "value_text": "+0, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -13039,12 +13216,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 2 - floor(wear / 2))"
+      "value": "max(0, 2 - floor(wear / 2))",
+      "value_text": "+2, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -13062,12 +13241,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 12 - floor(wear / 2))"
+      "value": "max(10, 12 - floor(wear / 2))",
+      "value_text": "12, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 3 - floor(wear / 2))"
+      "value": "max(0, 3 - floor(wear / 2))",
+      "value_text": "+3, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -13085,12 +13266,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 13 - floor(wear / 2))"
+      "value": "max(10, 13 - floor(wear / 2))",
+      "value_text": "13, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 2 - floor(wear / 2))"
+      "value": "max(0, 2 - floor(wear / 2))",
+      "value_text": "+2, minus 1 per 2 wear levels (minimum 0)"
      }
     ]
    },
@@ -13110,12 +13293,14 @@
      {
       "type": "set",
       "target": "ac",
-      "value": "max(10, 10 - floor(wear / 2))"
+      "value": "max(10, 10 - floor(wear / 2))",
+      "value_text": "10, minus 1 per 2 wear levels (minimum 10)"
      },
      {
       "type": "add",
       "target": "dt",
-      "value": "max(0, 1 - floor(wear / 2))"
+      "value": "max(0, 1 - floor(wear / 2))",
+      "value_text": "+1, minus 1 per 2 wear levels (minimum 0)"
      },
      {
       "type": "add",
@@ -13272,7 +13457,8 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      }
     ]
    },
@@ -13286,7 +13472,8 @@
      {
       "type": "add",
       "target": "sp",
-      "value": "level"
+      "value": "level",
+      "value_text": "+ your level"
      },
      {
       "type": "note",
@@ -17705,7 +17892,7 @@
     "title": "Race",
     "min": 1,
     "max": 1,
-    "description": "Step 1: choose your Race. (p. 4)"
+    "description": "Choose your Race. (p. 4)"
    },
    {
     "type": "pick",
@@ -17720,7 +17907,7 @@
     "type": "attributes",
     "title": "S.P.E.C.I.A.L.",
     "points": 3,
-    "description": "Step 2: each ability score starts at 5. At 1st level you gain 3 points which you can use to increase any ability score equal to the points used. You can also decrease any ability score to gain extra points equal to the amount decreased. Minimum 1, maximum 10. (p. 4, 19)\nThe text says the modifier \"is equal to 5 minus your score\" (p. 4), but its example and the table (p. 19) use score minus 5. The sheet follows the table."
+    "description": "Each ability score starts at 5. At 1st level you gain 3 points which you can use to increase any ability score equal to the points used. You can also decrease any ability score to gain extra points equal to the amount decreased. Minimum 1, maximum 10. (p. 4, 19)\nThe text says the modifier \"is equal to 5 minus your score\" (p. 4), but its example and the table (p. 19) use score minus 5. The sheet follows the table."
    },
    {
     "type": "pick",
@@ -17737,7 +17924,7 @@
     "title": "Background",
     "min": 1,
     "max": 1,
-    "description": "Step 4: choose your Background. You gain a +2 to three different skills listed in your chosen Background (p. 4), its trait and its starting equipment."
+    "description": "Choose your Background. You gain a +2 to three different skills listed in your chosen Background (p. 4), its trait and its starting equipment."
    },
    {
     "type": "skills",
@@ -17780,7 +17967,23 @@
     "min": 0,
     "max": 1,
     "match_field": "requirement",
-    "description": "Step 7: you can optionally choose a second trait besides your background’s, and optionally modify it with Wild Wasteland (the \"Wild Wasteland\" versions). (p. 4, 26) Traits come before perks because some change how many perks you get."
+    "description": "You can optionally choose a second trait besides your background’s, and optionally modify it with Wild Wasteland (the \"Wild Wasteland\" versions). (p. 4, 26) Traits come before perks because some change how many perks you get."
+   },
+   {
+    "type": "skills",
+    "title": "Skilled: +2 to one skill",
+    "choose": 1,
+    "bonus": 2,
+    "if": "has('skilled')",
+    "description": "Skilled: choose the skill whose modifier increases by 2."
+   },
+   {
+    "type": "skills",
+    "title": "Skilled (Wild Wasteland): +5 to one skill",
+    "choose": 1,
+    "bonus": 5,
+    "if": "has('skilled_ww')",
+    "description": "Skilled (Wild Wasteland): choose the skill whose modifier increases by 5."
    },
    {
     "type": "pick",
@@ -17789,7 +17992,7 @@
     "min": "perk_points",
     "max": "perk_points",
     "if": "perk_points > 0",
-    "description": "Step 23: choose a Perk that you meet the requirements for. (p. 4)"
+    "description": "Choose a Perk that you meet the requirements for. (p. 4)"
    },
    {
     "type": "pick",
@@ -17846,7 +18049,7 @@
       }
      ]
     },
-    "description": "Step 16: add any equipment you gained from your background (the version for your race), with its decay and armor already worn. Alternatively, you can choose to take no equipment and gain 850 caps. (p. 4) What is not an item of the game goes to \"Other items\"."
+    "description": "Add any equipment you gained from your background (the version for your race), with its decay and armor already worn. Alternatively, you can choose to take no equipment and gain 850 caps. (p. 4) What is not an item of the game goes to \"Other items\"."
    },
    {
     "type": "notes",
