@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.20.0",
+ "version": "1.21.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -15954,7 +15954,8 @@
     "custo": "300 tp",
     "carga": 15,
     "description": "Esta maleta inclui ferramentas especializadas, bandagens, gaze e soros de cura para dar auxílio médico. Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.\n\n• Torniquete. Gaste 6 PA e remova até dois níveis de sangramento.\n• Analgésico. Gaste 6 PA para curar 1 ponto de vida de uma criatura morrendo.\n• Costurar Ferimentos. Gaste 10 minutos e cure uma criatura em um número de pontos de vida igual ao dobro do Fator de Cura dela + seu bônus da perícia Medicina.\n• Colocar Osso no Lugar. Gaste 10 minutos e uma criatura com a condição Braço Quebrado ou Perna Quebrada pode removê-la.\n\nDepois de usar três dessas ações, os suprimentos da maleta médica se esgotam e ela deixa de funcionar.",
-    "tags": []
+    "tags": [],
+    "uses": 3
    },
    {
     "id": "medicina_corretivo",
@@ -15970,7 +15971,8 @@
     "custo": "80 tp",
     "carga": 4,
     "description": "Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.\n\n• Torniquete. Gaste 6 PA e remova até dois níveis de sangramento.\n• Analgésico. Gaste 6 PA para curar 1 ponto de vida de uma criatura morrendo.\n• Costurar Ferimentos. Gaste 10 minutos e cure uma criatura em um número de pontos de vida igual ao dobro do Fator de Cura dela + seu bônus da perícia Medicina.\n\nDepois de usar uma dessas ações, os suprimentos do kit de primeiros socorros se esgotam e ele deixa de funcionar.",
-    "tags": []
+    "tags": [],
+    "uses": 1
    },
    {
     "id": "medicina_po_curativo",
@@ -17055,7 +17057,8 @@
       "type": "note",
       "text": "Gazuas: Quando você faz um teste da perícia Sabotagem para arrombar uma fechadura, a CD diminui em 5. Depois de usar essas gazuas um total de cinco vezes, elas quebram e param de funcionar."
      }
-    ]
+    ],
+    "uses": 5
    },
    {
     "id": "itens_e_equipamentos_corda",
@@ -17125,7 +17128,8 @@
       "type": "note",
       "text": "Kit de Reparo de Armas: Você pode gastar 6 PA para inserir qualquer arma no kit de reparo. Depois de 1 minuto, a arma é ejetada e perde 2 níveis de desgaste. …"
      }
-    ]
+    ],
+    "uses": 3
    }
   ],
   "revistas": [
@@ -17311,7 +17315,8 @@
     "custo": "500 tp",
     "carga": 2,
     "effects": [],
-    "description": "Você gasta 6 PA para prender este dispositivo mecânico em qualquer fechadura a até 1,5 m de você que exija um teste da perícia Sabotagem para abrir; no fim do seu turno, a gazua eletrônica abre a fechadura. Por causa dos circuitos delicados e das ganzuas frágeis, a gazua eletrônica quebra depois do uso."
+    "description": "Você gasta 6 PA para prender este dispositivo mecânico em qualquer fechadura a até 1,5 m de você que exija um teste da perícia Sabotagem para abrir; no fim do seu turno, a gazua eletrônica abre a fechadura. Por causa dos circuitos delicados e das ganzuas frágeis, a gazua eletrônica quebra depois do uso.",
+    "uses": 1
    },
    {
     "id": "itens_unicos_gazua_eletronica_mk_ii",
@@ -17319,7 +17324,8 @@
     "custo": "750 tp",
     "carga": 3,
     "description": "Bem mais elegante e robusta no design, a função deste item é idêntica à da gazua eletrônica, exceto que ela quebra depois de três usos, em vez de um.",
-    "effects": []
+    "effects": [],
+    "uses": 3
    }
   ],
   "sucata": [

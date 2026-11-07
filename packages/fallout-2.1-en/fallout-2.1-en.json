@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.2.4",
+ "version": "0.2.5",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -15852,7 +15852,8 @@
     "load": 15,
     "load_text": "15",
     "description": "This bag includes specialized tools, bandages, gauze, and healing serums to provide medical aid. You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions.\n• Tourniquet. Spend 6 AP and remove up to two levels of bleeding.\n• Pain Killer. Spend 6 AP to heal a dying creature 1 hit point.\n• Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus.\n• Set Bone. Spend 10 minutes and a creature with the Broken Arm or Broken Leg condition may remove it.\n\nAfter you have used three of these actions, the doctor’ bag supplies are used and it no longer functions. (p. 86)",
-    "tags": []
+    "tags": [],
+    "uses": 3
    },
    {
     "id": "medicine_fixer",
@@ -15870,7 +15871,8 @@
     "load": 4,
     "load_text": "4",
     "description": "You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions.\n• Tourniquet. Spend 6 AP and remove up to two levels of bleeding.\n• Pain Killer. Spend 6 AP to heal a dying creature 1 hit point.\n• Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus.\n\nAfter you have used one of these actions, the first aid kit’s supplies are used and it no longer functions. (p. 86)",
-    "tags": []
+    "tags": [],
+    "uses": 1
    },
    {
     "id": "medicine_healing_powder",
@@ -17049,7 +17051,8 @@
       "type": "note",
       "text": "Lockpicks: When you make a breach skill check to pick a lock, the DC is reduced by 5. After you use these lockpicks a total of five times, they break and cease function."
      }
-    ]
+    ],
+    "uses": 5
    },
    {
     "id": "items_and_gear_rope",
@@ -17116,7 +17119,8 @@
       "type": "note",
       "text": "Weapon Repair Kit: You can spend 6 AP to insert any weapon into the repair kit. After 1 minute, the weapon is ejected and loses 2 levels of decay. …"
      }
-    ]
+    ],
+    "uses": 3
    }
   ],
   "magazines": [
@@ -17321,14 +17325,16 @@
       "type": "note",
       "text": "Electronic Lockpick: You spend 6 AP to attach this mechanical device to any lock within 5 feet of you that requires a breach skill check to open, at the end of your turn the electronic lockpick opens the lock. …"
      }
-    ]
+    ],
+    "uses": 1
    },
    {
     "id": "unique_items_electronic_lockpick_mk_ii",
     "name": "Electronic Lockpick Mk II",
     "cost": "750c",
     "load": 3,
-    "description": "While far sleeker and more robust in its design, this item’s function is identical to an electronic lockpick except that it breaks after three uses instead of one. (p. 91)"
+    "description": "While far sleeker and more robust in its design, this item’s function is identical to an electronic lockpick except that it breaks after three uses instead of one. (p. 91)",
+    "uses": 3
    }
   ],
   "junk": [
