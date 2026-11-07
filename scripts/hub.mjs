@@ -88,7 +88,8 @@ function index() {
       id: p.id, name: p.name, version: p.version, type: p.type, language: p.language, author: p.author,
       license: p.license, description: p.description, url: posix(f), bytes: statSync(f).size,
     };
-    if (p.type === 'extension') entry.system = p.system;
+    if (p.type === 'extension' || p.type === 'compendium') entry.system = p.system;
+    if (p.type === 'compendium') entry.entries = Array.isArray(p.entries) ? p.entries.length : 0;
     if (p.type === 'table') entry.system = p.system?.id || systemIdFromUrl(f, p.system?.url);
     if (p.type === 'system') entry.entities = Object.values(p.entities || {}).reduce((n, l) => n + (Array.isArray(l) ? l.length : 0), 0);
     packages.push(Object.fromEntries(Object.entries(entry).filter(([, v]) => v !== undefined && v !== '')));
