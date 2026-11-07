@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-en",
  "name": "Fallout TTRPG 2.2 (EN)",
- "version": "0.2.3",
+ "version": "0.2.4",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -147,9 +147,12 @@
   {
    "id": "breach",
    "name": "Breach",
-   "attribute": "PER",
-   "description": "Default ability: Perception. You can use Intelligence instead if your GM allows it (adjust the points to compensate). (2.2)\n\nThe Breach skill measures your ability to open locks, hack computers, disarm traps, or anything that lets you get to places you’re not supposed to. Whenever you make a Breach check, you can re-roll the check a number of times equal to your Luck modifier (up to GM’s discretion). You can optionally choose for your Breach skill to be modified by your Perception modifier instead of Intelligence. (p. 20)\n\nThe Breach skill measures your ability to open locks, hack computers, disarm traps, or anything that lets you get to places you’re not supposed to. Whenever you make a Breach check, you can re-roll the check a number of times equal to your Luck modifier (up to GM’s discretion). You can optionally choose for your Breach skill to be modified by your Intelligence modifier instead of Perception. (p. 23)",
-   "total": "points + mod(PER) + luck_skill_bonus - d20_penalty"
+   "attribute": [
+    "PER",
+    "INT"
+   ],
+   "description": "Uses the higher modifier between Perception and Intelligence; the sheet picks it on its own. (changed in 2.2)\n\nThe Breach skill measures your ability to open locks, hack computers, disarm traps, or anything that lets you get to places you’re not supposed to. Whenever you make a Breach check, you can re-roll the check a number of times equal to your Luck modifier (up to GM’s discretion). (p. 20, 23)",
+   "total": "points + max(mod(PER), mod(INT)) + luck_skill_bonus - d20_penalty"
   },
   {
    "id": "crafting",
@@ -182,16 +185,22 @@
   {
    "id": "intimidation",
    "name": "Intimidation",
-   "attribute": "STR",
-   "description": "Default ability: Strength. You can use Charisma instead if your GM allows it (adjust the points to compensate). (2.2)\n\nThe Intimidation skill measures how physically daunting you are, your ability to frighten others, or even make them re-evaluate confronting you. You can optionally choose for your Intimidation skill to be modified by your Strength modifier instead of Charisma. (p. 20)\n\nThe Intimidation skill measures how threatening you can be, your ability to frighten others, or even make them re-evaluate confronting you. You can optionally choose for your Intimidation skill to be modified by your Charisma modifier instead of Strength. (p. 22)",
-   "total": "points + mod(STR) + luck_skill_bonus - d20_penalty"
+   "attribute": [
+    "STR",
+    "CHA"
+   ],
+   "description": "Uses the higher modifier between Strength and Charisma; the sheet picks it on its own. (changed in 2.2)\n\nThe Intimidation skill measures how daunting you are, physically or in your manner, your ability to frighten others, or even make them re-evaluate confronting you. (p. 20, 22)",
+   "total": "points + max(mod(STR), mod(CHA)) + luck_skill_bonus - d20_penalty"
   },
   {
    "id": "medicine",
    "name": "Medicine",
-   "attribute": "PER",
-   "description": "Default ability: Perception. You can use Intelligence instead if your GM allows it (adjust the points to compensate). (2.2)\n\nThe Medicine skill measures your aptitude for accessing symptoms and properly treating them with care while under pressure. Knowledge of Medicine also allows you to craft chems. To craft most chem recipes, your Medicine skill must be equal to or more than its requirement. If you are within 5 feet of a creature with the bleeding condition, you can spend 6 AP, use 1 cloth junk item, and succeed a DC 15 Medicine skill check to end the condition. If another character is dying and has not failed all of their Death Saves, you can (at GM’s discretion) spend 6 AP to make a Medicine check with the DC equal to 10 − the dying creature’s Endurance modifier. On a success the creature gains 1 hit point. You can optionally choose for your Medicine skill to be modified by your Perception modifier instead of Intelligence. (p. 21; changed in 2.2)\n\nThe Medicine skill measures your knowledge of anatomy, physiology, and methods to keep creatures alive. Knowledge of Medicine also allows you to craft chems. To craft most chem recipes, your Medicine skill must be equal to or more than its requirement. If you are within 5 feet of a creature with the bleeding condition, you can spend 6 AP, use 1 cloth junk item, and succeed a DC 15 Medicine skill check to end the condition. If another character is dying and has not failed all of their Death Saves, you can (at GM’s discretion) spend 6 AP to make a Medicine check with the DC equal to 10 − the dying creature’s Endurance modifier. On a success the creature gains 1 hit point. You can optionally choose for your Medicine skill to be modified by your Intelligence modifier instead of Perception. (p. 23; changed in 2.2)",
-   "total": "points + mod(PER) + luck_skill_bonus - d20_penalty"
+   "attribute": [
+    "PER",
+    "INT"
+   ],
+   "description": "Uses the higher modifier between Perception and Intelligence; the sheet picks it on its own. (changed in 2.2)\n\nThe Medicine skill measures your aptitude for accessing symptoms and properly treating them with care while under pressure, and your knowledge of anatomy, physiology, and methods to keep creatures alive. Knowledge of Medicine also allows you to craft chems. To craft most chem recipes, your Medicine skill must be equal to or more than its requirement. If you are within 5 feet of a creature with the bleeding condition, you can spend 6 AP, use 1 cloth junk item, and succeed a DC 15 Medicine skill check to end the condition. If another character is dying and has not failed all of their Death Saves, you can (at GM’s discretion) spend 6 AP to make a Medicine check with the DC equal to 10 − the dying creature’s Endurance modifier. On a success the creature gains 1 hit point. (p. 21, 23; changed in 2.2)",
+   "total": "points + max(mod(PER), mod(INT)) + luck_skill_bonus - d20_penalty"
   },
   {
    "id": "melee_weapons",
@@ -15826,7 +15835,7 @@
     "cost": "300c",
     "load": 15,
     "load_text": "15",
-    "description": "This bag includes specialized tools, bandages, gauze, and healing serums to provide medical aid. You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions. - Tourniquet. Spend 6 AP and remove up to two levels of bleeding. - Pain Killer. Spend 6 AP to heal a dying creature 1 hit point. - Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus. - Set Bone. Spend 10 minutes and a creature with the Broken Arm or Broken Leg condition may remove it. After you have used three of these actions, the doctor’ bag supplies are used and it no longer functions. (p. 86)",
+    "description": "This bag includes specialized tools, bandages, gauze, and healing serums to provide medical aid. You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions.\n• Tourniquet. Spend 6 AP and remove up to two levels of bleeding.\n• Pain Killer. Spend 6 AP to heal a dying creature 1 hit point.\n• Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus.\n• Set Bone. Spend 10 minutes and a creature with the Broken Arm or Broken Leg condition may remove it.\n\nAfter you have used three of these actions, the doctor’ bag supplies are used and it no longer functions. (p. 86)",
     "tags": []
    },
    {
@@ -15844,7 +15853,7 @@
     "cost": "80c",
     "load": 4,
     "load_text": "4",
-    "description": "You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions. - Tourniquet. Spend 6 AP and remove up to two levels of bleeding. - Pain Killer. Spend 6 AP to heal a dying creature 1 hit point. - Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus. After you have used one of these actions, the first aid kit’s supplies are used and it no longer functions. (p. 86)",
+    "description": "You can use this kit on yourself or another creature so long as they are next to you. When you use it, choose one of the following actions.\n• Tourniquet. Spend 6 AP and remove up to two levels of bleeding.\n• Pain Killer. Spend 6 AP to heal a dying creature 1 hit point.\n• Stitch Wounds. Spend 10 minutes and heal a creature with a number of hit points equal to double their healing rate + your medicine skill bonus.\n\nAfter you have used one of these actions, the first aid kit’s supplies are used and it no longer functions. (p. 86)",
     "tags": []
    },
    {
@@ -17200,7 +17209,7 @@
     "name": "Pip-Boy 2000",
     "cost": "300c",
     "load": 4,
-    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17214,7 +17223,7 @@
     "name": "Pip-Boy 2000 Mark VI",
     "cost": "600c",
     "load": 3,
-    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a heartbeat and electromagnetic sensor; you can spend 2 AP to activate this sensor to know the cardinal direction of any small or larger creatures within 60 feet of you that aren’t covered by at least a foot of lead or steel (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a heartbeat and electromagnetic sensor; you can spend 2 AP to activate this sensor to know the cardinal direction of any small or larger creatures within 60 feet of you that aren’t covered by at least a foot of lead or steel (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17232,7 +17241,7 @@
     "name": "Pip-Boy 3000",
     "cost": "550c",
     "load": 4,
-    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17246,7 +17255,7 @@
     "name": "Pip-Boy 3000 Mark IV",
     "cost": "850c",
     "load": 3,
-    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a heartbeat and electromagnetic sensor; you can spend 2 AP to activate this sensor to know the cardinal direction of any small or larger creatures within 60 feet of you that aren’t covered by at least a foot of lead or steel. Additionally, this model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "This model features a number of new and improved functions. This model functions as a geiger counter, flashlight, and can connect to nearby radio stations. This model features a heartbeat and electromagnetic sensor; you can spend 2 AP to activate this sensor to know the cardinal direction of any small or larger creatures within 60 feet of you that aren’t covered by at least a foot of lead or steel. Additionally, this model functions as a geiger counter, flashlight, and can connect to nearby radio stations. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17264,7 +17273,7 @@
     "name": "Stealth Boy",
     "cost": "500c",
     "load": 3,
-    "description": "A RobCo Stealth Boy 3001 personal stealth device. This technological, pre-war wonder generates a modulating field that transmits the reflected light from one side of an object to the other. You can spend 3 AP to activate a stealth boy, once you activate you become invisible for 1 minute so long as you keep the stealth boy on your body. Once a stealth boy has been activated, it cannot be activated again. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "A RobCo Stealth Boy 3001 personal stealth device. This technological, pre-war wonder generates a modulating field that transmits the reflected light from one side of an object to the other. You can spend 3 AP to activate a stealth boy, once you activate you become invisible for 1 minute so long as you keep the stealth boy on your body. Once a stealth boy has been activated, it cannot be activated again. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17277,7 +17286,7 @@
     "name": "Two-way Radio",
     "cost": "120c",
     "load": 2,
-    "description": "These small militaristic devices allow for long range communication. The dual radios function so long as you spend 6 AP to load an energy cell into each one, in which they each last for a total of 100 activations. You can spend 3 AP to activate one of the radios, when you activate it; any sound made within 5 feet of the radio is transmitted to the other radio which can be heard out to a range of 5 feet. If both radios are activated simultaneously, neither emit any sound. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "These small militaristic devices allow for long range communication. The dual radios function so long as you spend 6 AP to load an energy cell into each one, in which they each last for a total of 100 activations. You can spend 3 AP to activate one of the radios, when you activate it; any sound made within 5 feet of the radio is transmitted to the other radio which can be heard out to a range of 5 feet. If both radios are activated simultaneously, neither emit any sound. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17290,7 +17299,7 @@
     "name": "Electronic Lockpick",
     "cost": "500c",
     "load": 2,
-    "description": "You spend 6 AP to attach this mechanical device to any lock within 5 feet of you that requires a breach skill check to open, at the end of your turn the electronic lockpick opens the lock. Due to its fine tuned circuitry and brittle picks, the electronic lockpick breaks after use. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)",
+    "description": "You spend 6 AP to attach this mechanical device to any lock within 5 feet of you that requires a breach skill check to open, at the end of your turn the electronic lockpick opens the lock. Due to its fine tuned circuitry and brittle picks, the electronic lockpick breaks after use. (p. 91)",
     "effects": [
      {
       "type": "note",
@@ -17303,7 +17312,7 @@
     "name": "Electronic Lockpick Mk II",
     "cost": "750c",
     "load": 3,
-    "description": "While far sleeker and more robust in its design, this item’s function is identical to an electronic lockpick except that it breaks after three uses instead of one. (p. 91)\n\nListed below are items that are typically extremely rare to find in the wasteland or are one of a kind items. They provide incredible benefits and can be considered among the most valued and sought after items in the wasteland. Acquiring any of these items is entirely up to GM’s discretion. If your background’s starting equipment grants you this item, be sure to communicate with your GM that you will start the game with one of these items. (p. 91)"
+    "description": "While far sleeker and more robust in its design, this item’s function is identical to an electronic lockpick except that it breaks after three uses instead of one. (p. 91)"
    }
   ],
   "junk": [
@@ -17913,22 +17922,6 @@
     "description": "Custom Background: choose the trait your background gives, any trait from the list. (p. 13)"
    },
    {
-    "type": "skills",
-    "title": "Recluse: +2 to five skills",
-    "choose": 5,
-    "bonus": 2,
-    "if": "has('recluse')",
-    "description": "Recluse: instead of gaining a perk at 1st level, five different Skill modifiers of your choice increase by 2. (p. 29)"
-   },
-   {
-    "type": "skills",
-    "title": "Talented: −2 to five skills",
-    "choose": 5,
-    "bonus": -2,
-    "if": "has('talented')",
-    "description": "Talented: you gain an extra perk at 1st level. However, five different skill modifiers of your choice decrease by 2. (p. 29)"
-   },
-   {
     "type": "pick",
     "collection": "traits",
     "title": "Trait",
@@ -17952,6 +17945,22 @@
     "bonus": 5,
     "if": "has('skilled_ww')",
     "description": "Skilled (Wild Wasteland): choose the skill whose modifier increases by 5."
+   },
+   {
+    "type": "skills",
+    "title": "Recluse: +2 to five skills",
+    "choose": 5,
+    "bonus": 2,
+    "if": "has('recluse')",
+    "description": "Recluse: instead of gaining a perk at 1st level, five different Skill modifiers of your choice increase by 2. (p. 29)"
+   },
+   {
+    "type": "skills",
+    "title": "Talented: −2 to five skills",
+    "choose": 5,
+    "bonus": -2,
+    "if": "has('talented')",
+    "description": "Talented: you gain an extra perk at 1st level. However, five different skill modifiers of your choice decrease by 2. (p. 29)"
    },
    {
     "type": "pick",

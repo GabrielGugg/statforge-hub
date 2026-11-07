@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.19.0",
+ "version": "1.20.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -196,16 +196,22 @@
   {
    "id": "intimidacao",
    "name": "Intimidação",
-   "attribute": "FOR",
-   "description": "Atributo padrão: Força. Também pode usar Carisma quando o Mestre permitir (ajuste os pontos para compensar).\n\nForça: A perícia Intimidação mede o quão fisicamente imponente você é, sua capacidade de assustar os outros ou até mesmo fazê-los reconsiderar o confronto com você. Você pode, opcionalmente, escolher que sua perícia Intimidação seja modificada pelo seu modificador de Força em vez de Carisma.\n\nCarisma: A perícia Intimidação mede o quão ameaçador você pode ser, sua capacidade de assustar os outros ou até mesmo fazê-los reconsiderar o confronto com você. Você pode, opcionalmente, escolher que sua perícia Intimidação seja modificada pelo seu modificador de Carisma em vez de Força. (Veja Intimidação.)",
-   "total": "points + mod(FOR) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   "attribute": [
+    "FOR",
+    "CAR"
+   ],
+   "description": "Usa o maior modificador entre Força e Carisma; a ficha escolhe sozinha.\n\nA perícia Intimidação mede o quão ameaçador você é, seja pela presença física ou pela postura, e sua capacidade de assustar os outros ou até mesmo fazê-los reconsiderar o confronto com você. (Veja Intimidação.)",
+   "total": "points + max(mod(FOR), mod(CAR)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
   },
   {
    "id": "medicina",
    "name": "Medicina",
-   "attribute": "PER",
-   "description": "Atributo padrão: Percepção. Também pode usar Inteligência quando o Mestre permitir (ajuste os pontos para compensar).\n\nPercepção: A perícia Medicina mede sua aptidão em identificar sintomas e tratá-los, com o devido cuidado, sob pressão. O conhecimento de Medicina também permite fabricar químicos. Para fabricar a maioria das receitas de químicos, sua perícia Medicina deve ser igual ou maior que o requisito da receita. Se você estiver a até 1,5 m de uma criatura com a condição sangramento, você pode gastar 6 PA, usar 1 item de sucata de pano e ser bem-sucedido em um teste de Medicina com CD 15 para encerrar a condição. Se outro personagem estiver morrendo e não tiver falhado em todos os seus Suspiros Finais, você pode (a critério do MJ) gastar 6 PA para fazer um teste de Medicina com CD igual a 10 − o modificador de Resistência da criatura morrendo. Em caso de sucesso, a criatura ganha 1 ponto de vida. Você pode, opcionalmente, escolher que sua perícia Medicina seja modificada pelo seu modificador de Percepção em vez de Inteligência.\n\nInteligência: A perícia Medicina mede seu conhecimento de anatomia, fisiologia e métodos para manter criaturas vivas. O conhecimento de Medicina também permite fabricar químicos. Para fabricar a maioria das receitas de químicos, sua perícia Medicina deve ser igual ou maior que o requisito. Se você estiver a até 1,5 m de uma criatura com a condição sangramento, você pode gastar 6 PA, usar 1 item de sucata de pano e ser bem-sucedido em um teste de Medicina com CD 15 para encerrar a condição. Se outro personagem estiver morrendo e não tiver falhado em todos os seus Suspiros Finais, você pode (a critério do MJ) gastar 6 PA para fazer um teste de Medicina com CD igual a 10 − o modificador de Resistência da criatura morrendo. Em caso de sucesso, a criatura ganha 1 ponto de vida. Você pode, opcionalmente, escolher que sua perícia Medicina seja modificada pelo seu modificador de Inteligência em vez de Percepção. (Veja Medicina.)",
-   "total": "points + mod(PER) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   "attribute": [
+    "PER",
+    "INT"
+   ],
+   "description": "Usa o maior modificador entre Percepção e Inteligência; a ficha escolhe sozinha.\n\nA perícia Medicina mede sua aptidão em identificar sintomas e tratá-los, com o devido cuidado, sob pressão, e seu conhecimento de anatomia, fisiologia e métodos para manter criaturas vivas. O conhecimento de Medicina também permite fabricar químicos. Para fabricar a maioria das receitas de químicos, sua perícia Medicina deve ser igual ou maior que o requisito da receita. Se você estiver a até 1,5 m de uma criatura com a condição sangramento, você pode gastar 6 PA, usar 1 item de sucata de pano e ser bem-sucedido em um teste de Medicina com CD 15 para encerrar a condição. Se outro personagem estiver morrendo e não tiver falhado em todos os seus Suspiros Finais, você pode (a critério do MJ) gastar 6 PA para fazer um teste de Medicina com CD igual a 10 − o modificador de Resistência da criatura morrendo. Em caso de sucesso, a criatura ganha 1 ponto de vida. (Veja Medicina.)",
+   "total": "points + max(mod(PER), mod(INT)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
   },
   {
    "id": "persuasao",
@@ -224,9 +230,12 @@
   {
    "id": "sabotagem",
    "name": "Sabotagem",
-   "attribute": "PER",
-   "description": "Atributo padrão: Percepção. Também pode usar Inteligência quando o Mestre permitir (ajuste os pontos para compensar).\n\nPercepção: A perícia Sabotagem mede sua habilidade de abrir fechaduras, hackear computadores, desarmar armadilhas ou qualquer coisa que permita chegar a lugares aonde você não deveria ir. Sempre que fizer um teste de Sabotagem, você pode rolar o teste de novo um número de vezes igual ao seu modificador de Sorte (a critério do MJ). Você pode, opcionalmente, escolher que sua perícia Sabotagem seja modificada pelo seu modificador de Percepção em vez de Inteligência.\n\nInteligência: A perícia Sabotagem mede sua habilidade de abrir fechaduras, hackear computadores, desarmar armadilhas ou qualquer coisa que permita chegar a lugares aonde você não deveria ir. Sempre que fizer um teste de Sabotagem, você pode rolar o teste de novo um número de vezes igual ao seu modificador de Sorte (a critério do MJ). Você pode, opcionalmente, escolher que sua perícia Sabotagem seja modificada pelo seu modificador de Inteligência em vez de Percepção. (Veja Sabotagem.)",
-   "total": "points + mod(PER) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   "attribute": [
+    "PER",
+    "INT"
+   ],
+   "description": "Usa o maior modificador entre Percepção e Inteligência; a ficha escolhe sozinha.\n\nA perícia Sabotagem mede sua habilidade de abrir fechaduras, hackear computadores, desarmar armadilhas ou qualquer coisa que permita chegar a lugares aonde você não deveria ir. Sempre que fizer um teste de Sabotagem, você pode rolar o teste de novo um número de vezes igual ao seu modificador de Sorte (a critério do MJ). (Veja Sabotagem.)",
+   "total": "points + max(mod(PER), mod(INT)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
   },
   {
    "id": "sobrevivencia",
@@ -15944,7 +15953,7 @@
     "name": "Maleta Médica",
     "custo": "300 tp",
     "carga": 15,
-    "description": "Esta maleta inclui ferramentas especializadas, bandagens, gaze e soros de cura para dar auxílio médico. Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.",
+    "description": "Esta maleta inclui ferramentas especializadas, bandagens, gaze e soros de cura para dar auxílio médico. Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.\n\n• Torniquete. Gaste 6 PA e remova até dois níveis de sangramento.\n• Analgésico. Gaste 6 PA para curar 1 ponto de vida de uma criatura morrendo.\n• Costurar Ferimentos. Gaste 10 minutos e cure uma criatura em um número de pontos de vida igual ao dobro do Fator de Cura dela + seu bônus da perícia Medicina.\n• Colocar Osso no Lugar. Gaste 10 minutos e uma criatura com a condição Braço Quebrado ou Perna Quebrada pode removê-la.\n\nDepois de usar três dessas ações, os suprimentos da maleta médica se esgotam e ela deixa de funcionar.",
     "tags": []
    },
    {
@@ -15960,7 +15969,7 @@
     "name": "Kit de Primeiros Socorros",
     "custo": "80 tp",
     "carga": 4,
-    "description": "Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.",
+    "description": "Você pode usar este kit em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Quando usar, escolha uma das ações a seguir.\n\n• Torniquete. Gaste 6 PA e remova até dois níveis de sangramento.\n• Analgésico. Gaste 6 PA para curar 1 ponto de vida de uma criatura morrendo.\n• Costurar Ferimentos. Gaste 10 minutos e cure uma criatura em um número de pontos de vida igual ao dobro do Fator de Cura dela + seu bônus da perícia Medicina.\n\nDepois de usar uma dessas ações, os suprimentos do kit de primeiros socorros se esgotam e ele deixa de funcionar.",
     "tags": []
    },
    {
@@ -17301,7 +17310,8 @@
     "name": "Gazua Eletrônica",
     "custo": "500 tp",
     "carga": 2,
-    "effects": []
+    "effects": [],
+    "description": "Você gasta 6 PA para prender este dispositivo mecânico em qualquer fechadura a até 1,5 m de você que exija um teste da perícia Sabotagem para abrir; no fim do seu turno, a gazua eletrônica abre a fechadura. Por causa dos circuitos delicados e das ganzuas frágeis, a gazua eletrônica quebra depois do uso."
    },
    {
     "id": "itens_unicos_gazua_eletronica_mk_ii",
@@ -17874,22 +17884,6 @@
     "description": "No Antecedente Personalizado você escolhe o traço que o antecedente daria: qualquer traço da lista."
    },
    {
-    "type": "skills",
-    "title": "Recluso: +2 em cinco perícias",
-    "choose": 5,
-    "bonus": 2,
-    "if": "has('recluso')",
-    "description": "Recluso: em vez de ganhar um talento no 1º nível, cinco perícias à sua escolha recebem +2."
-   },
-   {
-    "type": "skills",
-    "title": "Talentoso: −2 em cinco perícias",
-    "choose": 5,
-    "bonus": -2,
-    "if": "has('talentoso')",
-    "description": "Talentoso: você ganha um talento extra no 1º nível, mas cinco perícias à sua escolha perdem 2."
-   },
-   {
     "type": "pick",
     "collection": "tracos",
     "title": "Traço",
@@ -17913,6 +17907,22 @@
     "bonus": 5,
     "if": "has('habilidoso_ermo')",
     "description": "Habilidoso (Ermo Selvagem): escolha a perícia cujo modificador aumenta em 5."
+   },
+   {
+    "type": "skills",
+    "title": "Recluso: +2 em cinco perícias",
+    "choose": 5,
+    "bonus": 2,
+    "if": "has('recluso')",
+    "description": "Recluso: em vez de ganhar um talento no 1º nível, cinco perícias à sua escolha recebem +2."
+   },
+   {
+    "type": "skills",
+    "title": "Talentoso: −2 em cinco perícias",
+    "choose": 5,
+    "bonus": -2,
+    "if": "has('talentoso')",
+    "description": "Talentoso: você ganha um talento extra no 1º nível, mas cinco perícias à sua escolha perdem 2."
    },
    {
     "type": "pick",
