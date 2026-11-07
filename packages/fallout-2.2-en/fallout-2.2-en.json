@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-en",
  "name": "Fallout TTRPG 2.2 (EN)",
- "version": "0.2.5",
+ "version": "0.2.6",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -18084,5 +18084,10 @@
     "description": "Charisma modifiers added together, then halved (rounded down). Added to Death Saves, and gained as temporary SP when rolling combat sequence."
    }
   ]
+ },
+ "combat": {
+  "initiative": "1d20 + combat_sequence",
+  "hp": "hp",
+  "conditions": "conditions"
  }
 }

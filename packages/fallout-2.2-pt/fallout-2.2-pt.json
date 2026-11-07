@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.21.0",
+ "version": "1.22.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -18046,5 +18046,10 @@
     "description": "Metade (arredondada para baixo) da soma dos modificadores de Carisma. Somada aos Suspiros Finais e dada como PE temporários ao rolar Iniciativa."
    }
   ]
+ },
+ "combat": {
+  "initiative": "1d20 + iniciativa",
+  "hp": "pv",
+  "conditions": "condicoes"
  }
 }
