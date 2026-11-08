@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.22.0",
+ "version": "1.23.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "type": "system",
@@ -18050,6 +18050,19 @@
  "combat": {
   "initiative": "1d20 + iniciativa",
   "hp": "pv",
-  "conditions": "condicoes"
+  "conditions": "condicoes",
+  "stats": [
+   "pv",
+   "pe",
+   "df",
+   "td"
+  ],
+  "damage": [
+   "pe",
+   {
+    "reduce": "td"
+   },
+   "pv"
+  ]
  }
 }

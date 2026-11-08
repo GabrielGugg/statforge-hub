@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-en",
  "name": "Fallout TTRPG 2.2 (EN)",
- "version": "0.2.6",
+ "version": "0.2.7",
  "author": "GabrielGugg",
  "language": "en",
  "type": "system",
@@ -18088,6 +18088,19 @@
  "combat": {
   "initiative": "1d20 + combat_sequence",
   "hp": "hp",
-  "conditions": "conditions"
+  "conditions": "conditions",
+  "stats": [
+   "hp",
+   "sp",
+   "ac",
+   "dt"
+  ],
+  "damage": [
+   "sp",
+   {
+    "reduce": "dt"
+   },
+   "hp"
+  ]
  }
 }
