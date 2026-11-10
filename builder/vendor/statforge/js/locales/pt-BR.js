@@ -109,6 +109,11 @@ export default {
 
   // Início
   'home.title': 'Fichas',
+  'home.backupNever': { one: 'Você tem fichas há {n} dia sem nenhum backup. A sincronização está desligada, então elas só existem neste navegador.', other: 'Você tem fichas há {n} dias sem nenhum backup. A sincronização está desligada, então elas só existem neste navegador.' },
+  'home.backupOld': { one: 'Seu último backup tem {n} dia. A sincronização está desligada, então o que mudou depois só existe neste navegador.', other: 'Seu último backup tem {n} dias. A sincronização está desligada, então o que mudou depois só existe neste navegador.' },
+  'home.backupSync': 'Ligar sincronização',
+  'home.backupLater': 'Lembrar depois',
+  'home.backupDone': 'Backup baixado. Guarde o arquivo num lugar seguro.',
   'home.import': 'Importar ficha',
   'home.new': '+ Nova ficha',
   'home.startTitle': 'Comece instalando um sistema',

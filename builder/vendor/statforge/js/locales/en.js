@@ -109,6 +109,11 @@ export default {
 
   // Home
   'home.title': 'Sheets',
+  'home.backupNever': { one: 'You have had sheets for {n} day without a backup. Cloud sync is off, so they exist only in this browser.', other: 'You have had sheets for {n} days without a backup. Cloud sync is off, so they exist only in this browser.' },
+  'home.backupOld': { one: 'Your last backup is {n} day old. Cloud sync is off, so newer changes exist only in this browser.', other: 'Your last backup is {n} days old. Cloud sync is off, so newer changes exist only in this browser.' },
+  'home.backupSync': 'Turn on sync',
+  'home.backupLater': 'Remind me later',
+  'home.backupDone': 'Backup downloaded. Keep the file somewhere safe.',
   'home.import': 'Import sheet',
   'home.new': '+ New sheet',
   'home.startTitle': 'Start by installing a system',
