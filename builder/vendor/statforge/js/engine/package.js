@@ -4,6 +4,7 @@
 // ============================================================
 import { checkCompendium } from './compendium.js';
 import { parse, FormulaError } from './formula.js';
+import { checkVariants } from './terms.js';
 import { t } from '../i18n.js';
 
 export const FORMAT = 1;
@@ -95,6 +96,7 @@ export function validatePackage(p) {
         else seen.add(e.id);
         checkEffects(e?.effects, `${col}/${e?.id}`, errors);
         checkFormula(e?.requires, `${col}/${e?.id}.requires`, errors);
+        checkVariants(e?.variants, `${col}/${e?.id}`, p, errors, warnings);
       });
     }
     checkFormula(p.rolls?.modifier, 'rolls.modifier', errors);

@@ -2,7 +2,7 @@
  "format": 1,
  "id": "fallout-2.2-pt",
  "name": "Fallout TTRPG 2.2 (pt-BR)",
- "version": "1.23.1",
+ "version": "1.24.0",
  "author": "GabrielGugg",
  "language": "pt-BR",
  "license": "CC-BY-NC-SA-4.0",
@@ -881,6 +881,14 @@
     "efeito": {
      "type": "text",
      "label": "Efeito"
+    },
+    "custo": {
+     "type": "text",
+     "label": "Custo"
+    },
+    "carga": {
+     "type": "number",
+     "label": "Carga"
     }
    },
    "custom": true
@@ -1074,7 +1082,13 @@
     "id": "area_de_efeito",
     "name": "Área de Efeito",
     "secao": "Especiais à Distância",
-    "description": "Quando você ataca com uma arma que tem esta propriedade, você não faz rolagem de ataque. Em vez disso, você usa a munição necessária e quaisquer criaturas ou objetos no alcance sofrem o dano da arma quando o ataque acerta. Você não soma seu modificador de Agilidade a esse dano."
+    "description": "Quando você ataca com uma arma que tem esta propriedade, você não faz rolagem de ataque. Em vez disso, você usa a munição necessária e quaisquer criaturas ou objetos no alcance sofrem o dano da arma quando o ataque acerta. Você não soma seu modificador de Agilidade a esse dano.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "A coluna de área de efeito lista dois números que detalham o raio e o dano de cada explosivo. Cada criatura e objeto no raio do primeiro número que não esteja atrás de cobertura total sofre o dano completo, enquanto cada criatura e objeto no raio do segundo número que não esteja atrás de cobertura total sofre metade do dano. Se um explosivo só tem um número listado, cada criatura e objeto no raio sofre o dano completo. (Exemplo: uma Dinamite tem área de efeito de 1,5 m / 6 m. Cada criatura a até 1,5 m da explosão sofre o dano completo, enquanto cada criatura a até 6 m da explosão sofre metade do dano.)"
+     }
+    ]
    },
    {
     "id": "automatica",
@@ -1104,7 +1118,19 @@
     "id": "debilitante",
     "name": "Debilitante",
     "secao": "Especiais à Distância",
-    "description": "Quando você causa dano nos pontos de vida de uma criatura com um ataque mirado feito com uma arma que tem esta propriedade, você rola duas vezes na tabela de condições e aplica as duas condições. Se tirar a mesma condição duas vezes, os efeitos se acumulam. Se a arma é Certeira, você só pode escolher uma das condições."
+    "description": "Quando você causa dano nos pontos de vida de uma criatura com um ataque mirado feito com uma arma que tem esta propriedade, você rola duas vezes na tabela de condições e aplica as duas condições. Se tirar a mesma condição duas vezes, os efeitos se acumulam. Se a arma é Certeira, você só pode escolher uma das condições.",
+    "variants": [
+     {
+      "collection": "armas",
+      "match": {
+       "pericia": [
+        "Corpo a Corpo",
+        "Pugilismo"
+       ]
+      },
+      "description": "Quando você causa dano nos pontos de vida de uma criatura com um ataque mirado feito com uma arma que tem esta propriedade, você rola duas vezes na tabela de condições e aplica as duas condições. Se tirar a mesma condição duas vezes, os efeitos se acumulam."
+     }
+    ]
    },
    {
     "id": "defensivo",
@@ -1116,19 +1142,43 @@
     "id": "destrutivo",
     "name": "Destrutivo",
     "secao": "Especiais à Distância",
-    "description": "Quando você tira 1 no dado de dano com uma arma à distância que tem esta propriedade, o resultado passa a ser 2."
+    "description": "Quando você tira 1 no dado de dano com uma arma à distância que tem esta propriedade, o resultado passa a ser 2.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando você tira 1 no dado de dano com um explosivo que tem esta propriedade, o resultado passa a ser 2."
+     }
+    ]
    },
    {
     "id": "duravel",
     "name": "Durável",
     "secao": "Especiais à Distância",
-    "description": "Uma arma à distância com esta propriedade não ganha níveis de desgaste quando você tira 1 na rolagem de ataque."
+    "description": "Uma arma à distância com esta propriedade não ganha níveis de desgaste quando você tira 1 na rolagem de ataque.",
+    "variants": [
+     {
+      "collection": "armas",
+      "match": {
+       "pericia": [
+        "Corpo a Corpo",
+        "Pugilismo"
+       ]
+      },
+      "description": "A arma não se desgasta se você a arremessar ou se tirar 1 na rolagem de ataque."
+     }
+    ]
    },
    {
     "id": "eletromagnetico",
     "name": "Eletromagnético",
     "secao": "Especiais à Distância",
-    "description": "Quando um robô, sintético ou criatura feita de material inorgânico sofre dano de uma arma com esta propriedade, o dano é dobrado para ela."
+    "description": "Quando um robô, sintético ou criatura feita de material inorgânico sofre dano de uma arma com esta propriedade, o dano é dobrado para ela.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando um robô, sintético ou criatura feita de material inorgânico sofre dano de um explosivo com esta propriedade, o dano é dobrado para ela."
+     }
+    ]
    },
    {
     "id": "arma_de_energia",
@@ -1140,13 +1190,25 @@
     "id": "congelante",
     "name": "Congelante",
     "secao": "Especiais à Distância",
-    "description": "Quando uma criatura sofre dano de uma arma com esta propriedade, ela fica lenta até o fim do próximo turno dela."
+    "description": "Quando uma criatura sofre dano de uma arma com esta propriedade, ela fica lenta até o fim do próximo turno dela.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando uma criatura sofre dano de um explosivo com esta propriedade, ela fica lenta até o fim do próximo turno dela."
+     }
+    ]
    },
    {
     "id": "incendiario",
     "name": "Incendiário",
     "secao": "Especiais à Distância",
-    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela fica queimando. Se um ataque com uma arma à distância com esta propriedade erra, o projétil pode cair por perto e incendiar objetos inflamáveis (a critério do MJ). Além disso, quaisquer objetos inflamáveis atingidos por uma arma com esta propriedade pegam fogo imediatamente. (Veja a regra de Chamas em O Ambiente.)"
+    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela fica queimando. Se um ataque com uma arma à distância com esta propriedade erra, o projétil pode cair por perto e incendiar objetos inflamáveis (a critério do MJ). Além disso, quaisquer objetos inflamáveis atingidos por uma arma com esta propriedade pegam fogo imediatamente. (Veja a regra de Chamas em O Ambiente.)",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando uma criatura sofre dano de um explosivo com esta propriedade, ela fica queimando."
+     }
+    ]
    },
    {
     "id": "coice",
@@ -1188,7 +1250,13 @@
     "id": "lento",
     "name": "Lento",
     "secao": "Especiais à Distância",
-    "description": "Quando você ataca com uma arma que tem esta propriedade, você só acerta o alvo no início do seu próximo turno. Se o alvo não estiver mais no alcance, você erra o ataque e não causa dano."
+    "description": "Quando você ataca com uma arma que tem esta propriedade, você só acerta o alvo no início do seu próximo turno. Se o alvo não estiver mais no alcance, você erra o ataque e não causa dano.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Um explosivo com esta propriedade detona depois de passado o tempo indicado ao lado do nome da propriedade."
+     }
+    ]
    },
    {
     "id": "recarga_lenta",
@@ -1206,13 +1274,37 @@
     "id": "robusto",
     "name": "Robusto",
     "secao": "Especiais à Distância",
-    "description": "Uma arma à distância com esta propriedade ignora os efeitos negativos dos 2 primeiros níveis de desgaste."
+    "description": "Uma arma à distância com esta propriedade ignora os efeitos negativos dos 2 primeiros níveis de desgaste.",
+    "variants": [
+     {
+      "collection": "armas",
+      "match": {
+       "pericia": [
+        "Corpo a Corpo",
+        "Pugilismo"
+       ]
+      },
+      "description": "A arma não se desgasta se você a arremessar e ignora os efeitos negativos dos 2 primeiros níveis de desgaste."
+     }
+    ]
    },
    {
     "id": "duas_maos",
     "name": "Duas Mãos",
     "secao": "Especiais à Distância",
-    "description": "Se você ataca com apenas uma mão com uma arma à distância que tem esta propriedade, deve gastar 2 PA adicionais. Caso contrário, você tem desvantagem na rolagem de ataque e, depois de atacar, cai caído. Alternativamente, se o seu valor de atributo de Força for maior que o requisito de Força em pelo menos 3, você pode empunhar com uma só mão uma arma à distância com a propriedade Duas Mãos sem ter desvantagem na rolagem de ataque nem cair."
+    "description": "Se você ataca com apenas uma mão com uma arma à distância que tem esta propriedade, deve gastar 2 PA adicionais. Caso contrário, você tem desvantagem na rolagem de ataque e, depois de atacar, cai caído. Alternativamente, se o seu valor de atributo de Força for maior que o requisito de Força em pelo menos 3, você pode empunhar com uma só mão uma arma à distância com a propriedade Duas Mãos sem ter desvantagem na rolagem de ataque nem cair.",
+    "variants": [
+     {
+      "collection": "armas",
+      "match": {
+       "pericia": [
+        "Corpo a Corpo",
+        "Pugilismo"
+       ]
+      },
+      "description": "Se você ataca com uma arma que tem esta propriedade usando só uma mão, tem desvantagem na rolagem de ataque, a menos que gaste 2 PA adicionais para atacar. Alternativamente, se o seu valor de atributo de Força for maior que o requisito de Força em pelo menos 3, você pode empunhar com uma mão uma arma corpo a corpo com a propriedade Duas Mãos sem ter desvantagem na rolagem de ataque."
+     }
+    ]
    },
    {
     "id": "instavel",
@@ -1248,7 +1340,13 @@
     "id": "desmembrar",
     "name": "Desmembrar",
     "secao": "Especiais",
-    "description": "Ataques mirados nos braços ou nas pernas com esta arma não custam PA adicionais. Além disso, se você causar dano suficiente para levar uma criatura a 0 pontos de vida, pode escolher decepar a cabeça ou um membro dela. Cuidado com inimigos que tenham armas com esta propriedade."
+    "description": "Ataques mirados nos braços ou nas pernas com esta arma não custam PA adicionais. Além disso, se você causar dano suficiente para levar uma criatura a 0 pontos de vida, pode escolher decepar a cabeça ou um membro dela. Cuidado com inimigos que tenham armas com esta propriedade.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando um explosivo com esta propriedade causa dano nos pontos de vida de uma criatura no primeiro alcance dele, ela ganha duas condições de perna aleatórias, ou uma condição de braço aleatória se estiver caída quando o explosivo detonar. Se o explosivo causar dano suficiente para levar a criatura alvo a 0 pontos de vida, o membro é decepado em vez disso."
+     }
+    ]
    },
    {
     "id": "fragil",
@@ -1260,7 +1358,13 @@
     "id": "mutilar",
     "name": "Mutilar",
     "secao": "Especiais",
-    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela ganha um nível de sangramento, ou um nível de curto-circuito se for robô ou sintético."
+    "description": "Quando você causa dano nos pontos de vida de uma criatura alvo com uma arma que tem esta propriedade, ela ganha um nível de sangramento, ou um nível de curto-circuito se for robô ou sintético.",
+    "variants": [
+     {
+      "collection": "explosivos",
+      "description": "Quando uma criatura sofre dano nos pontos de vida de um explosivo com esta propriedade, ela fica com a condição sangramento."
+     }
+    ]
    },
    {
     "id": "preciso",
@@ -15108,126 +15212,126 @@
     "name": ".308",
     "tipo": "Munição de Armas de Fogo",
     "custo": "10 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_12_7mm",
     "name": "12,7mm",
     "tipo": "Munição de Armas de Fogo",
     "custo": "12 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_50",
     "name": ".50",
     "tipo": "Munição de Armas de Fogo",
     "custo": "20 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_calibre_20",
     "name": "Calibre 20",
     "tipo": "Munição de Armas de Fogo",
     "custo": "2 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_357_magnum",
     "name": ".357 Magnum",
     "tipo": "Munição de Armas de Fogo",
     "custo": "5 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_5_56mm",
     "name": "5,56mm",
     "tipo": "Munição de Armas de Fogo",
     "custo": "2 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_44_magnum",
     "name": ".44 Magnum",
     "tipo": "Munição de Armas de Fogo",
     "custo": "8 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_5mm",
     "name": "5mm",
     "tipo": "Munição de Armas de Fogo",
     "custo": "5 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_45",
     "name": ".45",
     "tipo": "Munição de Armas de Fogo",
     "custo": "2 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_9mm",
     "name": "9mm",
     "tipo": "Munição de Armas de Fogo",
     "custo": "2 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_45_70_gov_t",
     "name": ".45-70 Gov't.",
     "tipo": "Munição de Armas de Fogo",
     "custo": "12 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_sinalizadores",
     "name": "Sinalizadores",
     "tipo": "Munição de Armas de Fogo",
     "custo": "5 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_10mm",
     "name": "10mm",
     "tipo": "Munição de Armas de Fogo",
     "custo": "4 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_pregos_pacote_de_5",
     "name": "Pregos (pacote de 5)",
     "tipo": "Munição de Armas de Fogo",
     "custo": "2 tp",
-    "carga": 0
+    "carga": 0.5
    },
    {
     "id": "municao_de_armas_de_fogo_calibre_12",
     "name": "Calibre 12",
     "tipo": "Munição de Armas de Fogo",
     "custo": "5 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_armas_de_fogo_cravo_de_trilho",
     "name": "Cravo de Trilho",
     "tipo": "Munição de Armas de Fogo",
     "custo": "5 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_energia_celula_criogenica",
     "name": "Célula Criogênica",
     "tipo": "Munição de Energia",
     "custo": "50 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_energia_nucleo_de_fusao",
     "name": "Núcleo de Fusão",
     "tipo": "Munição de Energia",
     "custo": "200 tp",
-    "carga": 0,
+    "carga": 0.1,
     "description": "A Armadura Potente precisa de um tipo especial de energia nuclear condensada, chamado Núcleo de Fusão, para funcionar. Ele se encaixa nas costas e dá uma autonomia de operação. Você pode gastar 5 PA no seu turno para trocar o Núcleo de Fusão de uma Armadura Potente. Quando a autonomia acaba, a Armadura Potente puxa energia das reservas de emergência, o que dá a ela um minuto de operação. Passado o minuto, a armadura usa o último resquício de energia para abrir as costas e deixar o usuário sair. Depois disso, para de funcionar. Se necessário, você pode escolher anular essa função para continuar dentro da armadura potente. Porém, nesse estado você fica agarrado e contido e só consegue escapar se seu valor de Força for igual a 20. Escapar assim desgasta a Armadura Potente em 10 níveis."
    },
    {
@@ -15235,28 +15339,28 @@
     "name": "Célula de Energia",
     "tipo": "Munição de Energia",
     "custo": "30 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_energia_ce_de_2mm",
     "name": "CE de 2mm",
     "tipo": "Munição de Energia",
     "custo": "40 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_energia_celula_de_microfusao",
     "name": "Célula de Microfusão",
     "tipo": "Munição de Energia",
     "custo": "35 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_de_energia_celula_gama",
     "name": "Célula Gama",
     "tipo": "Munição de Energia",
     "custo": "60 tp",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_pesada_combustivel",
@@ -15285,7 +15389,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Perfura-Blindagem (x3)",
     "efeito": "Se o dano da arma for causado nos pontos de vida de uma criatura, ele ignora até 8 pontos de TD e a armadura da criatura ganha um nível de desgaste.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_saquinho_de_feijao_50",
@@ -15293,7 +15397,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Saquinho de Feijão (-50%)",
     "efeito": "O dano da arma passa a ser 1d4+1 e você não soma seu modificador de Agilidade; se esse dano for causado nos pontos de vida de uma criatura alvo, ela sofre um nível de fadiga. Além disso, se um tiro de saquinho de feijão levar uma criatura a 0 pontos de vida, ela cura 1 ponto automaticamente, a menos que o ataque tenha sido um ataque mirado na cabeça ou nos olhos.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_chumbo_grosso_25",
@@ -15301,7 +15405,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Chumbo Grosso (-25%)",
     "efeito": "Os dois modificadores de alcance da arma aumentam em 4 e ela perde a propriedade Dispersão.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_chumbo_grosso_magnum_x3",
@@ -15309,7 +15413,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Chumbo Grosso Magnum (x3)",
     "efeito": "O dano da arma aumenta em 3, ignora 3 pontos de TD e seus modificadores de alcance aumentam, cada um, em 4. Porém, a arma perde a propriedade Dispersão e, a cada segundo ataque, ganha um nível de desgaste.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_tiro_de_espoleta_x4",
@@ -15317,7 +15421,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Tiro de Espoleta (x4)",
     "efeito": "A arma ganha as propriedades Destrutivo e Mutilar. O dano da arma ignora 2 pontos de TD.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_sopro_do_dragao_x2",
@@ -15325,7 +15429,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Sopro do Dragão (x2)",
     "efeito": "A arma causa metade do dano, mas ganha Incendiário.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_explosiva_x6",
@@ -15333,7 +15437,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Explosiva (x6)",
     "efeito": "Cada criatura e objeto a até 1,5 m do alvo sofre 3d6 de dano explosivo. O alvo cai caído, a menos que seu valor de atributo de Força seja maior que 10.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_dardo_x2",
@@ -15341,7 +15445,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Dardo (x2)",
     "efeito": "O total do dano da arma é reduzido em 1, mas ignora até 6 pontos de TD.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_encamisada_perfurante_x3",
@@ -15349,7 +15453,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Encamisada Perfurante (x3)",
     "efeito": "O dano da arma aumenta em 2. Se esse dano levar uma criatura a 0 PV, o ataque também atinge a próxima criatura atrás dela, em linha.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_ponta_oca_x4",
@@ -15357,7 +15461,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Ponta Oca (x4)",
     "efeito": "Se a arma causar dano nos pontos de vida de uma criatura alvo, ela causa dano extra igual ao seu dano de acerto crítico. Se o dano for reduzido pela TD do alvo, o dano não ganha nenhum bônus de acerto crítico e é reduzido pela metade.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_jfp_x3",
@@ -15365,7 +15469,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "JFP (x3)",
     "efeito": "A arma ganha Destrutivo.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_jsp_x2",
@@ -15373,7 +15477,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "JSP (x2)",
     "efeito": "A arma ganha Quebrável e seu dano aumenta em 3.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_incendiaria_x4",
@@ -15381,7 +15485,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Incendiária (x4)",
     "efeito": "A arma ganha Incendiário.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_match_x2",
@@ -15389,7 +15493,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Match (x2)",
     "efeito": "O dano da arma aumenta em 5 e o modificador de alcance curto diminui em 2.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_magnum_x3",
@@ -15397,7 +15501,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Magnum (x3)",
     "efeito": "O dano da arma aumenta em 3, ignora 3 pontos de TD e seus modificadores de alcance aumentam, cada um, em 2. Porém, a cada segundo ataque, a arma ganha um nível de desgaste.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_borracha_50",
@@ -15405,7 +15509,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Borracha (-50%)",
     "efeito": "O dano da arma passa a ser 1d4+2 e você não soma seu modificador de Agilidade; se esse dano for causado nos pontos de vida de uma criatura alvo, ela sofre um nível de fadiga. Além disso, se uma bala de borracha levar uma criatura a 0 pontos de vida, ela cura 1 ponto automaticamente, a menos que o ataque tenha sido um ataque mirado na cabeça ou nos olhos.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_balote_x4",
@@ -15413,7 +15517,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Balote (x4)",
     "efeito": "Os modificadores de alcance da arma são triplicados e ela ganha as propriedades Certeiro e Destrutivo. Porém, perde as propriedades Dispersão e Poderoso.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_fogo_balote_pulsante_x6",
@@ -15421,7 +15525,7 @@
     "tipo": "Munição Especial (Armas de Fogo)",
     "custo": "Balote Pulsante (x6)",
     "efeito": "A arma ganha os mesmos efeitos da munição Balote. Além disso, ao causar dano a um Robô ou a uma criatura em Armadura Potente, o dano é dobrado.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_energia_a_granel_50",
@@ -15429,7 +15533,7 @@
     "tipo": "Munição Especial (Armas de Energia)",
     "custo": "A Granel (-50%)",
     "efeito": "O dano da arma é reduzido em 3. A arma ganha Durável.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_energia_otimizada_x2",
@@ -15437,7 +15541,7 @@
     "tipo": "Munição Especial (Armas de Energia)",
     "custo": "Otimizada (x2)",
     "efeito": "O dano da arma aumenta em 1 e ignora 1 ponto de TD.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_energia_supercarregada_x3",
@@ -15445,7 +15549,7 @@
     "tipo": "Munição Especial (Armas de Energia)",
     "custo": "Supercarregada (x3)",
     "efeito": "O dano da arma aumenta em 2 e ignora 2 pontos de TD. A arma ganha Quebrável.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_armas_de_energia_carga_maxima_x5",
@@ -15453,7 +15557,7 @@
     "tipo": "Munição Especial (Armas de Energia)",
     "custo": "Carga Máxima (x5)",
     "efeito": "O dano da arma aumenta em 4 e ignora 4 pontos de TD. A arma ganha Quebrável e, a cada terceiro ataque, ganha um nível de desgaste.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_carregador_de_stimpak",
@@ -15461,7 +15565,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "25 tp",
     "efeito": "Esta seringa permite carregá-la com um Stimpak; o alvo ganha os efeitos do Stimpak.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_carregador_de_quimico",
@@ -15469,7 +15573,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "25 tp",
     "efeito": "Esta seringa permite carregá-la com um químico; o alvo ganha os efeitos do químico. Obs.: você não pode carregar um químico que tenha inalador.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_veneno_de_escorpiao_radioativo",
@@ -15477,7 +15581,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "35 tp",
     "efeito": "O alvo fica envenenado por 3 turnos e sofre 1d6 de dano de veneno no início de cada turno dele.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_endangerol",
@@ -15485,7 +15589,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "40 tp",
     "efeito": "A TD do alvo é reduzida em 3 por 1 minuto.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_barriga_amarela",
@@ -15493,7 +15597,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "50 tp",
     "efeito": "O alvo fica amedrontado por 3 rodadas.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_berserk",
@@ -15501,7 +15605,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "55 tp",
     "efeito": "O alvo gasta todos os PA do próximo turno dele para atacar a criatura mais próxima.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_hemorragia",
@@ -15509,7 +15613,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "75 tp",
     "efeito": "O alvo ganha um nível de sangramento.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_articulacao_travada",
@@ -15517,7 +15621,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "85 tp",
     "efeito": "O alvo fica lento por 2 turnos.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_esclerose",
@@ -15525,7 +15629,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "110 tp",
     "efeito": "O alvo fica surdo por 3 rodadas.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_soro_miopico",
@@ -15533,7 +15637,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "160 tp",
     "efeito": "O alvo fica cego por 3 rodadas.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_nuvem_mental",
@@ -15541,7 +15645,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "175 tp",
     "efeito": "Todas as criaturas a mais de 9 m da criatura alvo ficam invisíveis para ela por 1 minuto.",
-    "carga": 0
+    "carga": 0.1
    },
    {
     "id": "municao_especial_seringador_tranquilizante",
@@ -15549,7 +15653,7 @@
     "tipo": "Munição Especial (Seringador)",
     "custo": "500 tp",
     "efeito": "Se a Resistência do alvo for 4 ou menos, ele cai inconsciente por 1 hora. Caso contrário, fica atordoado nos próximos dois turnos dele e cai inconsciente por 1 hora no fim do terceiro turno. Criaturas atordoadas assim podem remover essa condição e evitar cair inconscientes usando qualquer químico com a propriedade estimulante.",
-    "carga": 0
+    "carga": 0.1
    }
   ],
   "quimicos": [
@@ -16754,7 +16858,7 @@
     "custo": "20 tp",
     "carga": 10,
     "carga_texto": "10 quando não vestida",
-    "description": "Uma bolsa de couro, estopa ou tecido com alças ou tira para dar mais espaço de armazenamento. Enquanto você veste uma mochila, sua Capacidade de Carga aumenta em 50.",
+    "description": "Uma bolsa de couro, estopa ou tecido com alças ou tira para dar mais espaço de armazenamento. Enquanto você veste uma mochila, sua Capacidade de Carga aumenta em 50.\n\nHá muitos tipos de bolsa no ermo que permitem carregar itens e aumentar seu espaço. Se você veste mais de uma bolsa com itens guardados, você fica sobrecarregado, a menos que seu valor de Força ou de Resistência seja igual ou maior que 8.",
     "effects": [
      {
       "type": "add",
@@ -16770,7 +16874,7 @@
     "custo": "100 tp",
     "carga": 20,
     "carga_texto": "20 quando não vestida",
-    "description": "Esta mochila grande e reforçada tem cordas de nylon para ajustar, um cinto de cintura para ajudar no equilíbrio, vários bolsos e um compartimento superior para itens maiores. Enquanto você veste uma mochila de acampamento, sua Capacidade de Carga aumenta em 100.",
+    "description": "Esta mochila grande e reforçada tem cordas de nylon para ajustar, um cinto de cintura para ajudar no equilíbrio, vários bolsos e um compartimento superior para itens maiores. Enquanto você veste uma mochila de acampamento, sua Capacidade de Carga aumenta em 100.\n\nHá muitos tipos de bolsa no ermo que permitem carregar itens e aumentar seu espaço. Se você veste mais de uma bolsa com itens guardados, você fica sobrecarregado, a menos que seu valor de Força ou de Resistência seja igual ou maior que 8.",
     "effects": [
      {
       "type": "add",
@@ -16786,7 +16890,7 @@
     "custo": "50 tp",
     "carga": 12,
     "carga_texto": "12 quando não vestida",
-    "description": "Esta bolsa única, de uma só alça, é mais comprida para guardar armas com facilidade. Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade.",
+    "description": "Esta bolsa única, de uma só alça, é mais comprida para guardar armas com facilidade. Você pode guardar na bolsa até três armas que tenham a propriedade Duas Mãos ou Desajeitada; se fizer isso, a carga de cada arma é pela metade.\n\nHá muitos tipos de bolsa no ermo que permitem carregar itens e aumentar seu espaço. Se você veste mais de uma bolsa com itens guardados, você fica sobrecarregado, a menos que seu valor de Força ou de Resistência seja igual ou maior que 8.",
     "effects": [
      {
       "type": "note",
@@ -17138,85 +17242,99 @@
     "id": "revistas_de_pericia_excedentes_militares",
     "name": "Excedentes Militares",
     "efeito": "Seu bônus da perícia Disparo aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_armas_do_futuro_hoje",
     "name": "Armas do Futuro Hoje",
     "efeito": "Seu bônus da perícia Energia aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_livro_de_receitas_do_patriota",
     "name": "Livro de Receitas do Patriota",
     "efeito": "Seu bônus da perícia Explosivos aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_contos_de_cavalaria",
     "name": "Contos de Cavalaria",
     "efeito": "Seu bônus da perícia Corpo a Corpo aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_revista_do_boxe",
     "name": "Revista do Boxe",
     "efeito": "Seu bônus da perícia Pugilismo aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_o_medico_de_hoje",
     "name": "O Médico de Hoje",
     "efeito": "Seu bônus da perícia Medicina aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_leitor_do_chaveiro",
     "name": "Leitor do Chaveiro",
     "efeito": "Seu bônus da perícia Sabotagem aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_consertando_coisas",
     "name": "Consertando Coisas",
     "efeito": "Seu bônus da perícia Criação aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_la_fantoma",
     "name": "¡La Fantoma!",
     "efeito": "Seu bônus da perícia Furtividade aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_vida_de_rapaz",
     "name": "Vida de Rapaz",
     "efeito": "Seu bônus da perícia Sobrevivência aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_vendedor_semanal",
     "name": "Vendedor Semanal",
     "efeito": "Seu bônus da perícia Barganha aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_quadrinhos_de_terror",
     "name": "Quadrinhos de Terror",
     "efeito": "Seu bônus da perícia Intimidação aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_conhecendo_gente",
     "name": "Conhecendo Gente",
     "efeito": "Seu bônus da perícia Persuasão aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    },
    {
     "id": "revistas_de_pericia_manual_do_programador",
     "name": "Manual do Programador",
     "efeito": "Seu bônus da perícia Ciência aumenta em 1 até você descansar.",
-    "carga": 0
+    "carga": 2,
+    "custo": "50 tp"
    }
   ],
   "itens_unicos": [
@@ -17225,7 +17343,7 @@
     "name": "Pip-Boy 2000",
     "custo": "300 tp",
     "carga": 4,
-    "description": "O tipo mais básico de Pip-Boy; este modelo não tem nenhum outro recurso.",
+    "description": "Um computador de vestir que se prende ao pulso e permite uma série de funções úteis. Todo Pip-Boy pode exibir mapas de vários locais, tocar holofitas, rastrear sua localização por satélite, gravar e reproduzir áudio e registrar notas de texto. Além disso, se você veste um Traje de Refúgio com no máximo cinco níveis de desgaste, qualquer Pip-Boy que você vista pode monitorar seus sinais vitais; sempre que você cura pontos de vida, cura uma quantidade adicional igual ao seu nível.\n\nO tipo mais básico de Pip-Boy; este modelo não tem nenhum outro recurso.",
     "effects": [
      {
       "type": "note",
@@ -17239,7 +17357,7 @@
     "name": "Pip-Boy 2000 Mark VI",
     "custo": "600 tp",
     "carga": 3,
-    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço.",
+    "description": "Um computador de vestir que se prende ao pulso e permite uma série de funções úteis. Todo Pip-Boy pode exibir mapas de vários locais, tocar holofitas, rastrear sua localização por satélite, gravar e reproduzir áudio e registrar notas de texto. Além disso, se você veste um Traje de Refúgio com no máximo cinco níveis de desgaste, qualquer Pip-Boy que você vista pode monitorar seus sinais vitais; sempre que você cura pontos de vida, cura uma quantidade adicional igual ao seu nível.\n\nEste modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço.",
     "effects": [
      {
       "type": "note",
@@ -17257,7 +17375,7 @@
     "name": "Pip-Boy 3000",
     "custo": "550 tp",
     "carga": 4,
-    "description": "Este modelo tem várias funções novas e melhoradas. Ele funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
+    "description": "Um computador de vestir que se prende ao pulso e permite uma série de funções úteis. Todo Pip-Boy pode exibir mapas de vários locais, tocar holofitas, rastrear sua localização por satélite, gravar e reproduzir áudio e registrar notas de texto. Além disso, se você veste um Traje de Refúgio com no máximo cinco níveis de desgaste, qualquer Pip-Boy que você vista pode monitorar seus sinais vitais; sempre que você cura pontos de vida, cura uma quantidade adicional igual ao seu nível.\n\nEste modelo tem várias funções novas e melhoradas. Ele funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
     "effects": [
      {
       "type": "note",
@@ -17271,7 +17389,7 @@
     "name": "Pip-Boy 3000 Mark IV",
     "custo": "850 tp",
     "carga": 3,
-    "description": "Este modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço. Além disso, este modelo funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
+    "description": "Um computador de vestir que se prende ao pulso e permite uma série de funções úteis. Todo Pip-Boy pode exibir mapas de vários locais, tocar holofitas, rastrear sua localização por satélite, gravar e reproduzir áudio e registrar notas de texto. Além disso, se você veste um Traje de Refúgio com no máximo cinco níveis de desgaste, qualquer Pip-Boy que você vista pode monitorar seus sinais vitais; sempre que você cura pontos de vida, cura uma quantidade adicional igual ao seu nível.\n\nEste modelo tem um sensor de batimentos cardíacos e eletromagnético; você pode gastar 2 PA para ativar esse sensor e saber a direção cardeal de qualquer criatura pequena ou maior a até 18 m de você que não esteja coberta por pelo menos 30 cm de chumbo ou aço. Além disso, este modelo funciona como contador Geiger e lanterna e pode se conectar a estações de rádio próximas.",
     "effects": [
      {
       "type": "note",
