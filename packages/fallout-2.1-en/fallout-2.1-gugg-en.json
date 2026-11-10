@@ -1,0 +1,1862 @@
+{
+ "format": 1,
+ "type": "extension",
+ "id": "fallout-2.1-gugg-en",
+ "name": "Fallout TTRPG 2.1 - Gugg's Revision",
+ "version": "1.0.0",
+ "language": "en",
+ "author": "GabrielGugg",
+ "license": "CC-BY-NC-SA-4.0",
+ "system": "fallout-2.1-en",
+ "requires": [
+  "fallout-2.1-en@>=0.2.8"
+ ],
+ "description": "GabrielGugg's house rules on top of Fallout TTRPG 2.1 (EN), formerly called \"Fallout 2.2\": higher attribute for two-attribute skills, flat −1 for negative Luck, Perception-based Initiative, rounded Healing Rate, Gen 2 Synths without Stimpaks, Handy with three tools, the Off-Balance condition and other fixes. Load it after the system package.",
+ "patches": [
+  {
+   "op": "modify",
+   "target": "attributes/STR",
+   "fields": {
+    "description": "Strength (S of S.P.E.C.I.A.L.). Raw physical power. A high Strength increases your hit and damage with melee weapons and unarmed attacks. It’s also a great scare tactic against anyone. But most importantly, Strength measures your ability to handle any weapon and carry your equipment across the wasteland. All weapons have a Strength requirement, and if you fail to meet it you’ll have disadvantage to all your attack rolls with the weapon, unless you spend 2 additional AP on the attack (with a ranged weapon, you must also wield it with both hands). If you have a low Strength, opt for lighter weapons. Having a low Strength will also significantly reduce your Carry Load, but a high one will allow you to carry lots of stuff. (p. 20; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/breach",
+   "fields": {
+    "description": "Uses the higher modifier between Perception and Intelligence; the sheet picks it on its own. (changed in Gugg's Revision)\n\nThe Breach skill measures your ability to open locks, hack computers, disarm traps, or anything that lets you get to places you’re not supposed to. Whenever you make a Breach check, you can re-roll the check a number of times equal to your Luck modifier (up to GM’s discretion). (p. 20, 23)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/crafting",
+   "fields": {
+    "description": "The Crafting skill measures your knowledge of schematics to repair and craft items. To craft most weapons, armor, mods, and upgrades; your Crafting skill must be equal to or more than its requirement. If you do not meet the requirement, follow the Crafting Check rules (p. 92): roll a Crafting skill check with the DC equal to 10 + the item’s Crafting DC. On a failure you lose 1d4 of each material used (minimum 1), or 1d6 if you fail by 8 or more; if you succeed by 8 or more, you use 1d4 less of one material. If an item has a level of Decay, you can use your Crafting skill to repair it and remove the level of Decay. The requirements to repair items are listed on the crafting tables on page 1. (p. 23; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/explosives",
+   "fields": {
+    "description": "The Explosives skill measures your know-how in arming, disarming, and overall handling of any explosive device. Whether that be a fragmentation grenade, C-4 explosive, molotov cocktail, plasma grenade, or smoke bomb. When you use your AP to arm and throw an explosive, roll a d20 and add your explosives skill bonus. If the total is a 1, the explosive detonates immediately before you throw it. If the total is a 2 or 3, the explosive is thrown half the distance and detonates at the start of your next turn. If the total is between 4 and 14, the explosive detonates at the start of your next turn. If the result is a 15 or higher, the explosive detonates at the end of your turn. When you use your AP to throw an explosive that has already been armed, roll an Explosives check. If the result is a 12 or below, the explosive is not thrown and explodes immediately. If the result is above an 13, the explosive detonates at the end of your turn. (p. 21; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/intimidation",
+   "fields": {
+    "description": "Uses the higher modifier between Strength and Charisma; the sheet picks it on its own. (changed in Gugg's Revision)\n\nThe Intimidation skill measures how daunting you are, physically or in your manner, your ability to frighten others, or even make them re-evaluate confronting you. (p. 20, 22)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/medicine",
+   "fields": {
+    "description": "Uses the higher modifier between Perception and Intelligence; the sheet picks it on its own. (changed in Gugg's Revision)\n\nThe Medicine skill measures your aptitude for accessing symptoms and properly treating them with care while under pressure, and your knowledge of anatomy, physiology, and methods to keep creatures alive. Knowledge of Medicine also allows you to craft chems. To craft most chem recipes, your Medicine skill must be equal to or more than its requirement. If you are within 5 feet of a creature with the bleeding condition, you can spend 6 AP, use 1 cloth junk item, and succeed a DC 15 Medicine skill check to end the condition. If another character is dying and has not failed all of their Death Saves, you can (at GM’s discretion) spend 6 AP to make a Medicine check with the DC equal to 10 − the dying creature’s Endurance modifier. On a success the creature gains 1 hit point. (p. 21, 23; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/sneak",
+   "fields": {
+    "description": "The Sneak skill measures your ability to remain quiet or inconspicuous. On your turn you can spend 6 AP to hide. When you hide you roll a Sneak skill check, if you have cover against any creatures and your Sneak skill check total is greater than their passive Perception, then you are hidden from them and they cannot see you. If you attack a creature who you are hidden from, you gain advantage on the attack roll. If a creature is aware of your presence, but cannot see you because you are hidden, they may make a Perception check contested against a Sneak check from you. If their total is higher, you are no longer hidden. If your total is higher, then you remain hidden. Player characters, while traveling, can move at half pace and use their Group Sneak to remain stealthy while traveling. Your Group Sneak is equal to each player character’s Sneak skill bonus divided by the number of player characters. (Simply put; Group Sneak is the mean, or average, Sneak skill bonus of each player character). (p. 24; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/unarmed",
+   "fields": {
+    "description": "The Unarmed skill measures your ability to punch, strike, wrestle, kick, elbow, knee, or grapple other creatures. When you make an unarmed attack roll, you add your Unarmed skill bonus to the attack roll. Unarmed attack rolls deal 1d4 + your Strength or Agility modifier bludgeoning damage, they critically hit when you roll a 20 on the attack roll and deal double the total amount of damage (like a weapon with a 20, x2 critical hit). Unarmed attacks can be non-lethal. (p. 20; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/combat_sequence",
+   "fields": {
+    "formula": "mod(PER)",
+    "description": "Your Perception modifier plus the Combat Sequence bonuses from traits and perks (already added here). The book never gives this formula (p. 20); Gugg's Revision uses Perception, which the Nightkin text says affects it (p. 12)."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/healing_rate",
+   "fields": {
+    "formula": "floor((level + END) / 2)",
+    "description": "Your Healing Rate is equal to your level + your Endurance ability score added together, then halved (rounded down). (p. 4; rounding settled in Gugg's Revision) You heal this many hit points whenever you rest for 6 hours, eat certain foods, use the First Aid perk, a stimpak, or RobCo Quick Fix-It. (p. 21; 6 hours instead of 8 in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/party_nerve",
+   "fields": {
+    "description": "Manual: it depends on the whole party. Your Party Nerve bonus is equal to every player character’s Charisma modifier added together, then halved. It is added to your Death Saves, and whenever you roll combat sequence you gain temporary SP equal to it. (p. 4, 22) Gugg's Revision settles that it uses the modifier, not the score."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/group_sneak",
+   "fields": {
+    "description": "Manual: it depends on the whole party. Your Group Sneak is equal to the player characters’ Sneak skill bonuses added together, divided by the number of player characters. (p. 4, 24; skill bonus instead of modifier in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/luck_skill_bonus",
+   "fields": {
+    "formula": "if(qty('dumb_luck') > 0, mod(LCK) + 2 * (qty('dumb_luck') - 1), if(mod(LCK) >= 0, floor(mod(LCK) / 2), -1))",
+    "description": "All your skills gain a bonus equal to half your Luck modifier (rounded down). (p. 4, 25) If your Luck modifier is negative, your skills are reduced by only 1. (p. 25; settled in Gugg's Revision) Already added to every skill."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "resources/hp",
+   "fields": {
+    "recovery": "Resting for 6 hours: hit points equal to your Healing Rate. (p. 21; 6 hours instead of 8 in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "resources/sp",
+   "fields": {
+    "recovery": "Resting for 1 hour: half; sleeping comfortably: all. (p. 24; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "counters/fatigue",
+   "fields": {
+    "description": "Whenever you roll a d20 (besides Luck), the total is subtracted by 1 for each level of fatigue you have. You can only ever have a total of nine levels of fatigue. Fatigue does not go away on its own: you lose one level of fatigue for every 10 minutes of rest. (p. 133; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "remove",
+   "target": "collections/rule_choices"
+  },
+  {
+   "op": "modify",
+   "target": "races/human",
+   "fields": {
+    "description": "“What a contradiction a human is. To be lacking in so many capabilities, but being blessed with such a tapestry of emotions.” - Curie. “Humans are the dominant species of Earth. In the post– apocalyptic age, “human” is more specifically used to denote those that have been more-or-less unaffected by radiation as opposed to mutants like ghouls and super mutants, even though said mutant types originate from humans. Non–mutated humans are sometimes called normals, smoothskins, humies, or bleeders by their mutant counterparts. Despite the existence of various mutations, humans are still the most common humanoid creatures on Earth. Post-nuclear humans, as a direct result of the radiation and exposition to the Forced Evolutionary Virus and some other biochemical agents released into the environment during and after the Great War, exhibit more diversity, primarily in genetic structure. The aforementioned factors have resulted in an increased rate of mutations in humans, although very few of these result in phenotypic changes. Most of these changes are non-lethal, non-damaging variations in the human DNA that simply increase the gene pool variety. Also, humans with minor mutations, like additional toes, skin lesions due to TDC infection, permanent red eyes, permanent varicose veins, or complete lack of hair are still considered to be humans.” - Excerpt from the “Human” page written on the Fallout Fandom Wiki. (p. 7)\n\nRACE TRAITS\n\nAge. Humans reach adulthood in their late teens and live less than a century. Though, those who live this long are far and few between in the wasteland. (p. 7)\n\nSize. Humans vary widely in height and build, your size is Medium or Small. (p. 7; changed in Gugg's Revision) Gugg's Revision sizes: Small is 2 to 4 feet tall, Medium 4 to 9 feet, Large 9 to 12 feet.\n\nTenacity. When you roll death saves, you die when you fail your fourth death save instead of your third. (p. 7)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "races/ghoul",
+   "fields": {
+    "description": "“The future. Survival anywhere. We surpass the norms.” - Set. Ghouls are mutated humans affected by the phenomenon of ghoulification. Despite their zombie-like appearance, the flesh of ghouls is not actually rotten. Intense and prolonged radiation has ravaged their skin, much of their flesh, and in some cases many of their ligaments. Despite their infertility and in some cases mental deterioration, they have greatly extended overall lifespans and are immune to (and sometimes even healed by) background radiation and/or nuclear fallout. Ghouls typically can live well in human societies, but they are nevertheless a minority. There do exist Ghoul communities and cities. The Necropolis was once one, before it was partially destroyed by Super Mutants. Many pre-war farming cities in California including Broken Hills, Dayglow, and Gecko. Due to their near immortal lifespan, Ghouls often take on entire new personas every century or so. They learn new skills and inherit an entirely different identity until moving on to the next. - Summarized excerpt from the “Ghoul” page written on the Fallout Fandom Wiki. (p. 8)\n\nRACE TRAITS\n\nAge. Ghouls are nearly immortal, their lifespan is unknown. Some Ghouls have survived from even before the Great War over 200 years ago. (p. 8)\n\nSize. Ghouls vary widely in height and build, your size is Medium or Small. (p. 8; changed in Gugg's Revision) Gugg's Revision sizes: Small is 2 to 4 feet tall, Medium 4 to 9 feet, Large 9 to 12 feet.\n\nEvolution. You cannot gain levels of radiation and you are immune to radiation damage. Additionally, you gain no Irradiated levels from consuming food or water. (p. 8)\n\nResilient Anatomy. You are resistant to poison damage. Any stamina points you would gain from consuming food, drinks, or chems is halved (rounded down). Any hit points you would gain from stimpaks is halved (rounded down). You cannot gain hit points from healing powder. Syringes that aren’t ‘loaders’ have no effect on you. Additionally, whenever you take damage from the bleeding condition, you take half as much. (p. 8)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "races/gen_2_synth",
+   "fields": {
+    "description": "“All the parts, minus a few red blood cells.” - Nick Valentine. Synth (short for synthetic humanoids, also called androids or artificial humans) is a common term used to refer to biological and mechanical robots manufactured within the Institute laboratories. Synths in extremely rare cases can escape the clutches of the Institute and live their own lives. Sometimes even having their memory erased and filled with new ones to live out their lives. Gen 2 Synths however are a different story, they are much more clear to be androids with plastic like skin, exposed insides, and metal pieces. The most common variant of mechanical synth. Gen-2s still possess limited A.I. and superficially resemble a mannequin more than a human. - Summarized excerpt from the “Synth” page written on the Fallout Fandom Wiki. (p. 8)\n\nRACE TRAITS\n\nAge. Gen-2 Synths can live hundreds of years before their inorganic materials begin to corrode and their programming deteriorates. However, a Synth who keeps consistent repairs is nigh immortal. (p. 8)\n\nSize. Gen-2 Synths vary widely in height and build, your size is Medium or Small. (p. 8; changed in Gugg's Revision) Gugg's Revision sizes: Small is 2 to 4 feet tall, Medium 4 to 9 feet, Large 9 to 12 feet.\n\nInorganic Body. You are immune to radiation and poison. You gain no effects from Chems, Drinks or Food. Additionally you have no need to breathe, sleep, eat, or drink. (p. 8)\n\nNo stimpak (including diluted and super stimpaks) has any effect on you. (Gugg's Revision)",
+    "effects": [
+     {
+      "type": "block",
+      "collection": "chems"
+     },
+     {
+      "type": "block",
+      "collection": "food"
+     },
+     {
+      "type": "block",
+      "tag": "stimpak"
+     },
+     {
+      "type": "immunity",
+      "text": "Radiation and poison",
+      "ref": [
+       "rads",
+       "conditions/poisoned"
+      ]
+     },
+     {
+      "type": "immunity",
+      "text": "No effects from chems, drinks or food; no need to breathe, sleep, eat, or drink",
+      "ref": [
+       "hunger",
+       "dehydration",
+       "conditions/buzzed",
+       "conditions/drunk",
+       "conditions/hammered",
+       "conditions/wasted"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "races/robot",
+   "fields": {
+    "description": "“I spent the first ten years trying to keep the floors waxed, but nothing gets out nuclear fallout from vinyl wood. Nothing!” - Codsworth. “A robot is a machine that is capable of autonomously completing tasks. Depending upon the robot, these tasks may be simple or complex and may require little human intervention or complete oversight. Robots had been constructed by pre-War society to fill all niches and occupations. From general-purpose utility droids to fullfledged military battle machines, robots could be found in almost any environment and function. Some of the robots in the Fallout universe will attack immediately but some will aid in battle or remain ambivalent.” - Excerpt from the “Robot” page written on the Fallout Fandom Wiki. (p. 9)\n\nRACE TRAITS\n\nAge. Robots can live hundreds of years before their inorganic materials begin to corrode and their programming deteriorates. However, a Robot who keeps consistent repairs is nigh immortal. (p. 9)\n\nInorganic Body. You cannot gain radiation levels, you are immune to radiation damage and poison damage. You cannot gain levels of bleeding. You gain no effects from Chems, Drinks or Food. Additionally, you have no need to breathe, sleep, eat, or drink. (p. 9)\n\nSize. While there are many types of Robots, most were built to maintain a similar size to humans. Handy’s are about 2 and a half feet to 3 and a half feet in height but hover 2 to 3 feet off the ground. Protectrons rarely were built taller than 5 feet. And Robobrains typically sit around 5 and a half feet. Regardless, your size is medium. (p. 9; changed in Gugg's Revision) Gugg's Revision sizes: Small is 2 to 4 feet tall, Medium 4 to 9 feet, Large 9 to 12 feet.\n\nSevered Limbs. Luckily for most robots, reattaching limbs is commonplace when they break or fall off. If any of your limbs are severed, you do not go into shock and they can be reattached with 3 steel and 1 circuitry junk item. When you or a creature reattaches a limb, it takes a number of minutes equal to 10 - their or your crafting skill bonus. If the amount of time is reduced to 0, it takes 6 AP to reattach the limb instead. (p. 9)\n\nArmor and Weapons. You can use armor and weapons just as any other race would. If your robot sub-type grants you a weapon, you can upgrade and modify this weapon just like any other weapon. However, you cannot use power armor. (p. 9)\n\nRobot Type. There are three types of robot that you (p. 9)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "races/super_mutant",
+   "fields": {
+    "description": "“Never really hated humans. We just had a better way. These new governments, they think they’ve got all the answers. Blah, blah. Been there, seen that, got the scars.” - Marcus. “Super mutants are genetically enhanced humans who were created to be superior in every way to a typical human. Originally planned to be super soldiers, the first Super mutants were created by exposure to the Forced Evolutionary Virus II from the vats of the Mariposa Military Base in California. Other strains of Super mutants are found throughout the wasteland created from various sources, often varying in size and intelligence. Regardless of their origin, all Super mutants were created by way of the Forced Evolutionary Virus having mutated from humans. With the creation of the FEV-II strain, scientists were able to create powerful super-soldiers, exhibiting superior physical prowess, resistance to combat damage, aging, and disease, as well as a negligible loss of intelligence and inevitable infertility. People who were turned into mutants via would have their skin turn a shade of green, yellow, or olive with their entire body growing huge with more muscle mass being added by the Virus. But those who were turned into mutants had only fleeting memories of their human lives. They could not breed, as the FEV turned them sterile, thus limiting the generations of mutants. A strain of mutants known as night-kin had their skin change to a gray-purple color after long exposure to stealth boys.” - Excerpt from the “Super Mutant” page written on the Fallout Fandom Wiki. (p. 11)\n\nRACE TRAITS\n\nAge. Super mutants are nearly immortal, their lifespan is unknown. Some have lived for hundreds of years. (p. 11)\n\nSize. Super mutants rarely vary in height and build, but they can range from 7 to 9 feet in height. Your size is Medium. Due to the specifics required for it, you cannot use power armor unless it is specifically modded to your body type. (p. 11; changed in Gugg's Revision) Gugg's Revision sizes: Small is 2 to 4 feet tall, Medium 4 to 9 feet, Large 9 to 12 feet.\n\nEvolution. You cannot gain levels of radiation and you are immune to radiation damage. Additionally, you gain no Irradiated levels from consuming food or water. (p. 11)\n\nSuperior Strength. Due to your increased mass in muscle, your Strength score increases by 1 and cannot be lower than 6. Additionally your Carry Load is increased by 40. (p. 11)\n\nMass Exertion. The amount of required food and water you need each day with gaining levels of hunger and dehydration is doubled. (p. 12)\n\nBulky. Super mutants have many advantages but precision does not come easy, whenever your weapons or armor would gain a level of decay, they gain an additional one. (p. 12)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "variants/handy",
+   "fields": {
+    "description": "Robot type (required).\n\n“The Handy robot is a maintenance and construction robot with multiple, multi-jointed appendages, which levitates thanks to its powerful jet-powered engine. They were generally in use as butlers, maintenance workers and sometimes also employed as guards before the Great War.” - Excerpt from the “Mister Handy” page written on the Fallout Fandom Wiki. While oftentimes their name suggests a gender role, “Mister Handy” or “Miss Handy” is simply a name to describe the robot’s model. Handy’s have multitudes of voices, personalities, and names and can present themselves as any gender. (p. 9)\n\nLimbs and Targeted Attacks. Handy’s have a less human shape to them than other robots, floating off the ground with three appendages and three eyes attached to a large round core. You have three arms, three eyes, and can have up to three hands if you choose to have three Grippers in the Incredible Multi-Talented Appliance section below. You do not have a head, groin, or legs that can be targeted by targeted attacks or severed. Instead; targeted attacks to your eyes cost 2 less AP and creatures can target your jet engine. The jet engine functions exactly the same as a targeted attack to the legs, except the attack costs 2 more AP. If your jet engine is severed, you fall prone and cannot move until it is reattached. (p. 9)\n\nFuel. You require fuel to continue to operate. Every week, 7 days, or 168 hours; you can spend 6 AP to fill your tank with a gallon of fuel or six oil junk items which are consumed upon use. If you fail to consume a gallon of fuel after the week, you must succeed a DC 12 Endurance check for each hour past 168. For each successful check, the DC increases by 2. On a fail, you become unconscious until another creature fills your tank with fuel. Alternatively, you can load a fusion core into your chassis. If you do, you can operate for 30 days without requiring fuel. (p. 9)\n\nJet Engine. You hover a few feet off the ground while active and moving. You don’t trigger any floor based traps or activated effects. However, if you are knocked prone, become stunned, or fall unconscious; you fall to the ground. (p. 9)\n\nIncredible Multi-Talented Appliance. Handy’s are built with three special tools that are attached and built into three of their arms. These tools and weapons can be modified like any other weapon, only require one hand to use, and do not cost AP to equip or stow. Additionally, they cannot be detached from you unless the arm that the tool or weapon is attached to is severed. Choose one tool or weapon from the following list for each of your three arms; you can choose the same one more than once. (p. 9; changed in Gugg's Revision)\n\nBuzz Saw. A mechanical saw housed in a metal frame used to cut wood, food, bodies, or debris. Melee Weapon. 5 Action Points. 1d8 slashing. Critical Hit: 20, x2, applies bleeding. Special Properties: Cleave, Durable. (See page 47 for details on these properties). (p. 9)\n\nClippers. A large, sharp set of clippers for wiring, gardening, or opening boxes. Melee Weapon. 3 Action Points. 1d4 piercing. Critical Hit: 19, 20. 1d4 piercing. Special Properties: Dismember, Durable. (See page 47 for details on these properties). (p. 9)\n\nDrill. This drill has interchanging bits used for screws, nuts, bolts, and pilot holes. Melee Weapon. 6 Action Points. 1d8 slashing. Critical Hit: 20, 2d8 slashing. Special Properties: Durable, Mangle. (See page 47 for details on these properties). (p. 9)\n\nGripper. The Gripper is two finger-like appendages that can grab, twist, operate, use weapons, and hold items. Operating at similar efficiency to a human hand. If you do not have at least two of these tools, you effectively only have one hand. (This affects some weapons which have the two handed, unwieldy, or kickback special properties on page 55) (p. 9)\n\nTorch. This kitchen tool emits a flame with an adjustable nozzle for cooking, flambéing, taking care of pesky bug nests, or lighting candles. Ranged Weapon, 10 ft. line. 5 Action Points. 1d10 fire. Ammo: fuel, 5 rounds. Special Properties: Area of Effect, Durable, Incendiary (see page 56 for details on these properties). (p. 9)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "backgrounds/pit_fighter",
+   "fields": {
+    "description": "It takes a lot to get back up and keep going, but it’s all you’ve known. Wastelanders place their hard earned caps on your ability to fight, that burden fuels your every punch. You’ve taken down many competitors, and have felt the bitter taste of defeat but it only ever makes your victory that much sweeter. However, something has happened to your establishment. And now you must wander the wastes with your skills to find a new purpose in life. (p. 16)\n\nSkills: +2 to Barter, Melee Weapons, Unarmed. (p. 16)\n\nTrait: Endure the Battle (granted with the background, shown in Traits). (p. 16)\n\nStarting Equipment (Human, Ghoul or Super Mutant Pit Fighter): x1 metal armor with one level of decay, x1 lead pipe with two levels of decay, x1 brass knuckles, x1 spiked knuckles, x1 bandolier, x1 ball bearings, x1 sleeping bag, x1 one person tent, x3 cram, x1 vodka, x3 healing powder, x3 purified water, x1 diluted stimpak, and x50 caps. (p. 16; changed in Gugg's Revision)\n\nStarting Equipment (Gen 2 Synth or Robot Pit Fighter): x1 metal armor with one level of decay, x1 lead pipe with two levels of decay, x1 brass knuckles, x1 spiked knuckles, x1 bandolier, x1 ball bearings, x1 RobCo Quick Fix-it 2.0, and x50 caps. (p. 16)",
+    "starting_items": [
+     {
+      "ref": "armor/armor_metal",
+      "qty": 1,
+      "wear": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "weapons/melee_weapons_blunt_weapons_lead_pipe",
+      "qty": 1,
+      "wear": 2,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "weapons/melee_weapons_unarmed_weapons_brass_knuckles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "weapons/melee_weapons_unarmed_weapons_spiked_knuckles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_bandolier",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_ball_bearings",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_sleeping_bag",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_tent_one_person",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_pre_made_food_cram",
+      "qty": 3,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_drinks_vodka",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "medicine/medicine_healing_powder",
+      "qty": 3,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_drinks_purified_water",
+      "qty": 3,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "medicine/medicine_stimpak_diluted",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "currency/caps",
+      "qty": 50,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "armor/armor_metal",
+      "qty": 1,
+      "wear": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "weapons/melee_weapons_blunt_weapons_lead_pipe",
+      "qty": 1,
+      "wear": 2,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "weapons/melee_weapons_unarmed_weapons_brass_knuckles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "weapons/melee_weapons_unarmed_weapons_spiked_knuckles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "gear/items_and_gear_bandolier",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "gear/items_and_gear_ball_bearings",
+      "qty": 1,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "medicine/medicine_robco_quick_fix_it_2_0",
+      "qty": 1,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "currency/caps",
+      "qty": 50,
+      "if": "has('gen_2_synth') or has('robot')"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "backgrounds/vault_dweller",
+   "fields": {
+    "description": "For all your life you’ve only known the cold steel walls of a deep underground vault. Everyone wears blue-yellow jumpsuits, wears a pip-boy, and fears the outside. Many of the vaults host some sort of experiment or simulation that torments those inside. However, yours either didn’t have one, or it was so subtle you never realized. But all of that changed when you finally stepped foot outside. The world was never what you thought, the people are different, and it’s larger than you could ever imagine. (p. 18)\n\nSkills: +2 to Medicine, Speech, Science. (p. 18)\n\nTrait: Talented (granted with the background, shown in Traits). (p. 18)\n\nStarting Equipment (Human, Ghoul, or Super Mutant Vault Dweller): x1 vault suit, x1 10mm pistol, x10 10mm ammo, x1 backpack, x1 sleeping bag, x1 one person tent, x1 canteen, x1 weapon repair kit, x1 pip-boy (any), x1 BlamCo Mac & Cheese, x1 Salisbury Steak, Yum Yum Deviled Eggs, x1 coffee, x4 purified water, x1 stimpak. (p. 18)\n\nStarting Equipment (Gen-2 Synth or Robot Vault Dweller): x1 vault suit, x1 laser pistol, x2 energy cell, x1 backpack, x1 pipboy (any), x2 RobCo Quick Fix-it 2.0, x1 Programmer’s Digest magazine, and x1 data scrubber. (p. 18; no caps in Gugg's Revision: the vault has no contact with the surface economy)\n\nThe starting equipment in this background grants powerful unique items, consult with your GM before you take these items. (p. 18)",
+    "starting_items": [
+     {
+      "ref": "armor/unique_items_vault_suit",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "weapons/ranged_weapons_handguns_10mm_pistol",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "ammo/ammunition_guns_ammunition_10mm",
+      "qty": 10,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_bag_backpack",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_sleeping_bag",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_tent_one_person",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_canteen",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "gear/items_and_gear_weapon_repair_kit",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_pre_made_food_blamco_mac_cheese",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_pre_made_food_salisbury_steak",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_pre_made_food_yum_yum_deviled_eggs",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_drinks_coffee",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "food/food_and_drinks_drinks_purified_water",
+      "qty": 4,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "medicine/medicine_stimpak",
+      "qty": 1,
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "text": "1× pip-boy (any)",
+      "if": "has('ghoul') or has('human') or has('super_mutant')"
+     },
+     {
+      "ref": "armor/unique_items_vault_suit",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "weapons/ranged_weapons_energy_weapons_laser_pistol",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "ammo/ammunition_energy_ammunition_energy_cell",
+      "qty": 2,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "gear/items_and_gear_bag_backpack",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "medicine/medicine_robco_quick_fix_it_2_0",
+      "qty": 2,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "magazines/skill_magazines_programmers_digest",
+      "qty": 1,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "ref": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_data_scrubber",
+      "qty": 1,
+      "if": "has('gen_2_synth') or has('robot')"
+     },
+     {
+      "text": "1× pipboy (any)",
+      "if": "has('gen_2_synth') or has('robot')"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "traits/hardened_by_the_earth",
+   "fields": {
+    "description": "You’ve known long days and hard work, you have advantage whenever you roll an Endurance check to resist a level of Hunger or Fatigue. However, you start dying if you reach 8 levels of Hunger or Fatigue instead of 10. (p. 28; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "perks/alertness",
+   "fields": {
+    "description": "Requirement: Perception 5\n\nYou’ve learned to keep your senses alert to any danger. If you do not move from a singular location no larger than a 20 foot radius for at least 10 minutes; you gain a bonus to your passive sense equal to your Perception ability modifier. (Simply put, your passive sense is equal to 12 + double your Perception ability modifier) (p. 37; changed in Gugg's Revision)",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Alertness: If you do not move from a singular location no larger than a 20 foot radius for at least 10 minutes; you gain a bonus to your passive sense equal to your Perception ability modifier. …"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "perks/evolution",
+   "fields": {
+    "name": "Supreme Evolution",
+    "description": "Requirement: Super Mutant, Level 10\n\nYour AC increases by 1, your DT increases by 1, your hit points increase by a number equal to your level, and your stamina points increase by a number equal to your level. Additionally, choose one damage type. Whenever you take that damage type to your hit points, the total amount is halved (rounded down). (p. 54)\n\nCalled \"Evolution\" in the book; renamed in Gugg's Revision so it does not share the Super Mutant trait’s name.",
+    "effects": [
+     {
+      "type": "add",
+      "target": "ac",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "dt",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "hp",
+      "value": "level",
+      "value_text": "+ your level"
+     },
+     {
+      "type": "add",
+      "target": "sp",
+      "value": "level",
+      "value_text": "+ your level"
+     },
+     {
+      "type": "note",
+      "text": "Supreme Evolution: Your AC increases by 1, your DT increases by 1, your hit points increase by a number equal to your level, and your stamina points increase by a number equal to your level. Additionally, choose one damage type. …"
+     }
+    ]
+   }
+  },
+  {
+   "op": "remove",
+   "target": "rule_choices/negative_luck_minus_one"
+  },
+  {
+   "op": "remove",
+   "target": "rule_choices/negative_luck_half"
+  },
+  {
+   "op": "add",
+   "collection": "conditions",
+   "entity": {
+    "id": "off_balance",
+    "name": "Off-balance",
+    "description": "An off-balance creature (for example, while climbing or swimming) has disadvantage on attack rolls, and its AC decreases by 2. The condition ends when the creature stops climbing or swimming, or when its cause ends. (The book uses it without defining it; defined in Gugg's Revision)",
+    "effects": [
+     {
+      "type": "disadvantage",
+      "target": "attack",
+      "text": "Attack rolls"
+     },
+     {
+      "type": "add",
+      "target": "ac",
+      "value": "-2"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "conditions/shadowed",
+   "fields": {
+    "description": "A shadowed creature is impossible to see for creatures who do not have night vision, as if it were invisible. The creature’s location can be detected by any noise it makes or any tracks it leaves. Attack rolls against the creature have disadvantage, and the creature’s attack rolls have advantage. Creatures with night vision see the shadowed creature normally, and this condition has no effect against them. If a creature is aware of the shadowed creature’s presence and does not have night vision, it can attempt to target it with a blind attack. Hiding (Sneak) makes you shadowed. (p. 135; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "remove",
+   "target": "weapons/melee_weapons_unarmed_weapons_hunting_trap_fist"
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/insulated_1",
+   "fields": {
+    "description": "Rank 1: You are insulated against hypothermia. However, your maximum AP decreases by 1 to a minimum of 6. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/insulated_2",
+   "fields": {
+    "description": "Rank 2: Your AP is no longer decreased and you remain insulated. However, this upgrade costs 800 caps instead of 100. (p. 57)\n\nEarlier ranks (included):\nRank 1: You are insulated against hypothermia. However, your maximum AP decreases by 1 to a minimum of 6.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/camouflage_1",
+   "fields": {
+    "description": "Rank 1: You gain advantage on sneak checks relying on sight. Your passive sneak increases by 3. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/camouflage_2",
+   "fields": {
+    "description": "Rank 2: You gain advantage on sneak checks relying on sound. Your passive sneak increases by 3. (p. 57)\n\nEarlier ranks (included):\nRank 1: You gain advantage on sneak checks relying on sight. Your passive sneak increases by 3.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/camouflage_3",
+   "fields": {
+    "description": "Rank 3: While in dim light, you become shadowed. Your passive sneak increases by 3. (p. 57)\n\nEarlier ranks (included):\nRank 1: You gain advantage on sneak checks relying on sight. Your passive sneak increases by 3.\nRank 2: You gain advantage on sneak checks relying on sound. Your passive sneak increases by 3.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/light_1",
+   "fields": {
+    "description": "Rank 1: Load reduced by 5. Strength req. reduced by 1. DT reduced by 1. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/light_2",
+   "fields": {
+    "description": "Rank 2: Load reduced by 10 (minimum of 3). (p. 57)\n\nEarlier ranks (included):\nRank 1: Load reduced by 5. Strength req. reduced by 1. DT reduced by 1.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/light_3",
+   "fields": {
+    "description": "Rank 3: If you spend at least 4 AP on your turn to move, you can move an additional 10 feet. (p. 57)\n\nEarlier ranks (included):\nRank 1: Load reduced by 5. Strength req. reduced by 1. DT reduced by 1.\nRank 2: Load reduced by 10 (minimum of 3).\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/fitted_1",
+   "fields": {
+    "description": "Rank 1: When you take damage from an area of effect, your DT is doubled. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/fitted_2",
+   "fields": {
+    "description": "Rank 2: Your maximum stamina points increase by a number equal to your level. (p. 57)\n\nEarlier ranks (included):\nRank 1: When you take damage from an area of effect, your DT is doubled.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/fitted_3",
+   "fields": {
+    "description": "Rank 3: You have advantage on combat sequence rolls. If you already have advantage, you gain a +5. (p. 57)\n\nEarlier ranks (included):\nRank 1: When you take damage from an area of effect, your DT is doubled.\nRank 2: Your maximum stamina points increase by a number equal to your level.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/lead_lined_1",
+   "fields": {
+    "description": "Rank 1: Radiation DC decreases by 2. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/lead_lined_2",
+   "fields": {
+    "description": "Rank 2: Radiation DC decreases by 2. (p. 57)\n\nEarlier ranks (included):\nRank 1: Radiation DC decreases by 2.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/lead_lined_3",
+   "fields": {
+    "description": "Rank 3: Radiation DC decreases by 2. (p. 57)\n\nEarlier ranks (included):\nRank 1: Radiation DC decreases by 2.\nRank 2: Radiation DC decreases by 2.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/strengthened_1",
+   "fields": {
+    "description": "Rank 1: When you take damage from a critical hit, your DT increases by 3. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/strengthened_2",
+   "fields": {
+    "description": "Rank 2: When you take damage from a critical hit, your DT increases by 5. (p. 57)\n\nEarlier ranks (included):\nRank 1: When you take damage from a critical hit, your DT increases by 3.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/strengthened_3",
+   "fields": {
+    "description": "Rank 3: If you would gain a severe injury, you instead gain a random limb condition. (p. 57)\n\nEarlier ranks (included):\nRank 1: When you take damage from a critical hit, your DT increases by 3.\nRank 2: When you take damage from a critical hit, your DT increases by 5.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/sturdy_1",
+   "fields": {
+    "description": "Rank 1: You ignore the negative effects of the first 2 levels of decay for the armor. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/sturdy_2",
+   "fields": {
+    "description": "Rank 2: You ignore the negative effects of the first 4 levels of decay for the armor. (p. 57)\n\nEarlier ranks (included):\nRank 1: You ignore the negative effects of the first 2 levels of decay for the armor.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/sturdy_3",
+   "fields": {
+    "description": "Rank 3: Your armor no longer decays from being damaged by a critical hit. (p. 57)\n\nEarlier ranks (included):\nRank 1: You ignore the negative effects of the first 2 levels of decay for the armor.\nRank 2: You ignore the negative effects of the first 4 levels of decay for the armor.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/pocketed_1",
+   "fields": {
+    "description": "Rank 1: Your carry load is increased by 10. (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/pocketed_2",
+   "fields": {
+    "description": "Rank 2: Your carry load is increased by 15. (p. 57)\n\nEarlier ranks (included):\nRank 1: Your carry load is increased by 10.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/pocketed_3",
+   "fields": {
+    "description": "Rank 3: Your carry load is increased by 25. (p. 57)\n\nEarlier ranks (included):\nRank 1: Your carry load is increased by 10.\nRank 2: Your carry load is increased by 15.\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/reinforced_1",
+   "fields": {
+    "description": "Rank 1: +1 bonus to DT (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/reinforced_2",
+   "fields": {
+    "description": "Rank 2: +1 bonus to DT (p. 57)\n\nEarlier ranks (included):\nRank 1: +1 bonus to DT\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/reinforced_3",
+   "fields": {
+    "description": "Rank 3: +2 bonus to DT (p. 57)\n\nEarlier ranks (included):\nRank 1: +1 bonus to DT\nRank 2: +1 bonus to DT\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/hardened_1",
+   "fields": {
+    "description": "Rank 1: +1 bonus to AC (p. 57)\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/hardened_2",
+   "fields": {
+    "description": "Rank 2: +1 bonus to AC (p. 57)\n\nEarlier ranks (included):\nRank 1: +1 bonus to AC\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armor_upgrades/hardened_3",
+   "fields": {
+    "description": "Rank 3: +1 bonus to AC (p. 57)\n\nEarlier ranks (included):\nRank 1: +1 bonus to AC\nRank 2: +1 bonus to AC\n\nOnly one upgrade of each type per armor, up to its slots. Mark it as equipped with the worn armor.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor/power_armor_t_45",
+   "fields": {
+    "cost": "40,500c",
+    "description": "POWER ARMOR “Got... cooked by those flames, but... thanks to my power armor I’m still in one piece.” - Paladin Danse. Power Armor is heavy duty, hydraulically engineered, full body armor. Power Armor operates as an extremely complicated piece of machinery that opens from the back, allowing its operator to step inside and become enveloped by the thick metal plating, acting as a pilot to a tank-like suit. Adding about a foot to their height, and extending their limbs by about half a foot. Even the lower end models of Power Armor provide immense protection and power to its wearer. Operating Power Armor provides a list of benefits and can fundamentally change how your character operates, fights, and interacts with the world. The following abilities detail your benefits and requirements while operating any suit of Power Armor. Armor Type Base Cost AC DT Slots Load. and STR Req. Cloth 50c 10 0 8 Load: 5, STR req: 1 Leather 175c 11 1 6 Load: 15, STR req: 1 Metal 250c 12 0 4 Load: 20, STR req: 5 Multilayered 275c 10 2 5 Load: 40, STR req: 3 Ballistic Weave 800c 12 3 2 Load: 10, STR req: 3 Steel 650c 13 2 2 Load: 50, STR req: 6 Operation. It costs 6 AP on your turn to enter or exit Power Armor. Defense Points. When you enter Power Armor you gain a new set of points called defense points (abbreviated to DP). Defense points operate similarly to stamina points; whenever you take damage you may subtract the damage from your defense points instead of your hit points or stamina points. However, defense points are not modified by any ability scores, instead the total you gain is a flat amount described in the Power Armor table below. If you exit Power Armor, you no longer have defense points. If any creature enters the armor, they gain defense points equal to the amount that previous user had when they exited. When your defense points hit 0, the Power Armor gains a level of decay and you regain defense points equal to its total. If the Power Armor has 10 levels of decay, you no longer regain defense points. (Example: You have 15 DP. You take 20 damage. Your DP falls to 0, and the Power Armor gains a level of decay, you gain 15 more DP, and subtract the remaining 5 for a total of 10 DP.) Hydraulic Machine. Your Strength ability score is considered 12 and your size is Large. Longer Strides. If you sprint in Power Armor, you move an additional 20 feet. Calibrated Impact Servos. If an effect, weapon, ability, or perk would knock you prone; you can choose to instead spend 5 defense points and not fall prone. If you are subjected to an effect that would push you back or pull you, you move half the distance you normally would. Additionally, you are resistant to impact damage. Automatic Injector. Stimpaks and Chems cost 1 AP to use. Lead Plated Exoskeleton. You ignore limb conditions and your limbs cannot be severed. You are immune to Radiation so long as the power armor has less than six levels of decay. If the armor has six to nine levels of decay or more, you have advantage on Rad Resist checks, and if the armor has ten levels of decay; it offers no protection against radiation. Oxygen Tank. You can breathe underwater, however you cannot swim and you sink at a rate of 100 feet each round. Upgrade Slots. Power Armor can be upgraded just like regular armor. The number of upgrades it can have is listed in the table below. (For more details on upgrades, see Power Armor Upgrades below). Unlike regular armor, Power Armor upgrades can be attached to all pieces of armor unless otherwise specified. Repair. Unlike other weapons and armor, levels of decay do not apply any negative effects to the armor or user (besides a loss in defense points) and Power Armor does not cease to function when it reaches 10 levels of decay. To repair any levels of decay from Power Armor Upgrades Upgrade Name Base Cost Rank 1 Effect Rank 2 Effect Rank 3 Effect Insulated 100c You are insulated against hypothermia. However, your maximum AP decreases by 1 to a minimum of 6. Your AP is no longer decreased and you remain insulated. However, this upgrade costs 800 caps instead of 100. - Camouflage 125c You gain advantage on sneak checks relying on sight. Your passive sneak increases by 3. You gain advantage on sneak checks relying on sound. Your passive sneak increases by 3. While in dim light, you become shadowed. Your passive sneak increases by 3. Light 75c Load reduced by 5. Strength req. reduced by 1. DT reduced by 1. Load reduced by 10 (minimum of 3). If you spend at least 4 AP on your turn to move, you can move an additional 10 feet. Fitted 175c When you take damage from an area of effect, your DT is doubled. Your maximum stamina points increase by a number equal to your level. You have advantage on combat sequence rolls. If you already have advantage, you gain a +5. Lead Lined 125c Radiation DC decreases by 2. Radiation DC decreases by 2. Radiation DC decreases by 2. Strengthened 410c When you take damage from a critical hit, your DT increases by 3. When you take damage from a critical hit, your DT increases by 5. If you would gain a severe injury, you instead gain a random limb condition. Sturdy 475c You ignore the negative effects of the first 2 levels of decay for the armor. You ignore the negative effects of the first 4 levels of decay for the armor. Your armor no longer decays from being damaged by a critical hit. Pocketed 210c Your carry load is increased by 10. Your carry load is increased by 15. Your carry load is increased by 25. Reinforced 450c +1 bonus to DT +1 bonus to DT +2 bonus to DT Hardened 800c +1 bonus to AC +1 bonus to AC +1 bonus to AC Armor, you must; spend at least 15 minutes per level of decay you attempt to repair, have the materials (5 steel, 3 circuitry, 3 aluminum, and 3 adhesive), and roll a successful Crafting check against the DC listed in the Repair section. Carry Load and Strength Requirement. All Power Armor has a load of 100. If you are wearing the Power Armor, its load is equal to 0, Power Armor has no Strength Requirement as its interior chassis supports its user entirely. Even if you are missing limbs, you can still use Power Armor. Fusion Core. Power Armor requires a special type of condensed nuclear power called a Fusion Core to operate. It slots into its back and provides an allotted time of operation. You can spend 5 AP on your turn to replace the Fusion Core on a set of Power Armor. Once the allotted time is up, the Power Armor pulls power from its emergency reserves granting it a minute of operation. After the minute is up, the power armor uses its last amount of power to open its back to allow its user to exit the armor. Then, it ceases function. If necessary, you can choose to override this function to keep yourself in the power armor. However, while in this state you are grappled and restrained and you cannot escape unless your Strength score is equal to 20. Escaping in this way decays the Power Armor by 10 levels. Fusion Core Targeting. Power Armor has one weakness; its fusion core is exposed to allow itself to cool. Any creature who can see the back of another creature that wears power armor can make a targeted attack against it. To make this targeted attack you must spend an additional 5 AP and the attack deals no damage to the armor or its operator and applies no condition. But, each time the fusion core has taken at least 30 damage; it becomes overheated until the start of its operator’s next turn (see Overheating below). Overheating. If you spend more than 15 AP on a turn while you wear Power Armor, it overheats until the end of your next turn. When Power Armor first becomes overheated, or is overheated at the start of your turn; the armor must spend additional energy to cool itself and the fusion core, draining its energy significantly, losing 30 minutes of its allotted time. If a fusion core only has 30 minutes of its allotted time, and becomes overheated, the Power Armor ejects the user and ceases function. You can choose to override the automatic cooling so as to not lose any allotted time. However, if you do, the fusion core explodes at the end of your next turn. This explosion has a small radius of 20 feet and a large radius of 50 feet. All creatures and objects in the short radius take 20d10 explosive damage, or half as much in the large radius. The Power Armor is destroyed, and if its user was still inside; they incinerate into carbon molecules. Additionally, the area of the explosion becomes a Level 5 Irradiated Zone, decreasing in its level by 1 every 24 hours. Power Armor Types and Statistics Name Base Cost AC DP Slots Repair Allotted Time T-45 4,050c 14 15 6 DC 16 4 hours. T-51 80,250c 17 20 5 DC 23 6 hours. T-60 85,750c 16 30 6 DC 20 4 hours. X-01 133,500c 16 45 4 DC 25 3 hours. X-02 155,000c 18 40 4 DC 25 3 hours. (p. 56)\n\nCost: 40,500 caps instead of 4,050. (Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_shielding_1",
+   "fields": {
+    "description": "Rank 1: Reduce explosive damage taken by 5 (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_shielding_2",
+   "fields": {
+    "description": "Rank 2: Reduce explosive damage taken by 10 (p. 59)\n\nEarlier ranks (included):\nRank 1: Reduce explosive damage taken by 5\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_shielding_3",
+   "fields": {
+    "description": "Rank 3: Reduce explosive damage taken by 15 (p. 59)\n\nEarlier ranks (included):\nRank 1: Reduce explosive damage taken by 5\nRank 2: Reduce explosive damage taken by 10\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/prism_shielding_1",
+   "fields": {
+    "description": "Rank 1: Reduce laser and plasma damage taken by 5 (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/prism_shielding_2",
+   "fields": {
+    "description": "Rank 2: Reduce laser and plasma damage taken by 5 (p. 59)\n\nEarlier ranks (included):\nRank 1: Reduce laser and plasma damage taken by 5\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/prism_shielding_3",
+   "fields": {
+    "description": "Rank 3: Reduce laser and plasma damage taken by 10 (p. 59)\n\nEarlier ranks (included):\nRank 1: Reduce laser and plasma damage taken by 5\nRank 2: Reduce laser and plasma damage taken by 5\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/by_10_emergency_protocols_1",
+   "fields": {
+    "description": "Rank 1: If you start your turn with less than half your hit points, you can spend 1 AP to move 10 feet. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/by_10_emergency_protocols_2",
+   "fields": {
+    "description": "Rank 2: If you start your turn with less than half your hit points, your DT increases by 5 (only for damage against HP). (p. 59)\n\nEarlier ranks (included):\nRank 1: If you start your turn with less than half your hit points, you can spend 1 AP to move 10 feet.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/kinetic_dynamo_1",
+   "fields": {
+    "description": "Rank 1: You gain an additional AP at the start of your turn for each level of decay the power armor gained since your last turn. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/tesla_coils_1",
+   "fields": {
+    "description": "Rank 1: Spend 3 AP to activate or deactivate, each creature within 10 feet of you takes 1d6 electricity damage when you activate and at the start of their turns. For each round active, remove 10 minutes from allotted time. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/tesla_coils_2",
+   "fields": {
+    "description": "Rank 2: Electricity damage increases by 1d6. For each round active, remove an additional 5 minutes from allotted time. (p. 59)\n\nEarlier ranks (included):\nRank 1: Spend 3 AP to activate or deactivate, each creature within 10 feet of you takes 1d6 electricity damage when you activate and at the start of their turns. For each round active, remove 10 minutes from allotted time.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/tesla_coils_3",
+   "fields": {
+    "description": "Rank 3: Electricity damage increases by 2d6. For each round active, remove an additional 10 minutes from allotted time. (p. 59)\n\nEarlier ranks (included):\nRank 1: Spend 3 AP to activate or deactivate, each creature within 10 feet of you takes 1d6 electricity damage when you activate and at the start of their turns. For each round active, remove 10 minutes from allotted time.\nRank 2: Electricity damage increases by 1d6. For each round active, remove an additional 5 minutes from allotted time.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/reactive_plates_1",
+   "fields": {
+    "description": "Rank 1: When you take damage from a melee attack, the attacker takes a quarter (rounded down) of the damage they dealt. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/reactive_plates_2",
+   "fields": {
+    "description": "Rank 2: The attacker takes another quarter (rounded down) of the damage they dealt. (effectively half of the total). (p. 59)\n\nEarlier ranks (included):\nRank 1: When you take damage from a melee attack, the attacker takes a quarter (rounded down) of the damage they dealt.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/reactive_plates_3",
+   "fields": {
+    "description": "Rank 3: When you take damage from a melee attack, the attacker is knocked by 15 feet. (p. 59)\n\nEarlier ranks (included):\nRank 1: When you take damage from a melee attack, the attacker takes a quarter (rounded down) of the damage they dealt.\nRank 2: The attacker takes another quarter (rounded down) of the damage they dealt. (effectively half of the total).\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/core_assembly_1",
+   "fields": {
+    "description": "Rank 1: Spending more than 18 AP on your turn causes overheating instead of 15. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/core_assembly_2",
+   "fields": {
+    "description": "Rank 2: Spending more than 20 AP on your turn causes overheating instead of 15. (p. 59)\n\nEarlier ranks (included):\nRank 1: Spending more than 18 AP on your turn causes overheating instead of 15.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/core_assembly_3",
+   "fields": {
+    "description": "Rank 3: Overheating requires 15 minutes of allotted time loss instead of 30. (p. 59)\n\nEarlier ranks (included):\nRank 1: Spending more than 18 AP on your turn causes overheating instead of 15.\nRank 2: Spending more than 20 AP on your turn causes overheating instead of 15.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/jet_pack_1",
+   "fields": {
+    "description": "Rank 1: You can spend 1 AP on your turn to fly 5 feet. For every 10 feet you fly or every second that you fly you use 1 minute of the fusion core’s allotted time. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/sensor_array_1",
+   "fields": {
+    "description": "Rank 1: Passive sense increases by 5. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/sensor_array_2",
+   "fields": {
+    "description": "Rank 2: Passive sense increases by 5. (p. 59)\n\nEarlier ranks (included):\nRank 1: Passive sense increases by 5.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/sensor_array_3",
+   "fields": {
+    "description": "Rank 3: Passive sense increases by 10. (p. 59)\n\nEarlier ranks (included):\nRank 1: Passive sense increases by 5.\nRank 2: Passive sense increases by 5.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/vats_matrix_overlay_1",
+   "fields": {
+    "description": "Rank 1: Whenever you make a targeted attack roll, reduce the additional AP cost by 1. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/vats_matrix_overlay_2",
+   "fields": {
+    "description": "Rank 2: Whenever you make a targeted attack roll, reduce the additional AP cost by 1. (p. 59)\n\nEarlier ranks (included):\nRank 1: Whenever you make a targeted attack roll, reduce the additional AP cost by 1.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/internal_database_1",
+   "fields": {
+    "description": "Rank 1: If you can see a creature, you can spend 6 AP on your turn to learn its HP total, SP total, AC, or DT. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/targeting_hud_1",
+   "fields": {
+    "description": "Rank 1: If you can see a creature, you can spend 3 AP to mark it. You can only have one marked creature at a time. Whenever you deal damage to a marked creature, you deal an additional die of damage. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/targeting_hud_2",
+   "fields": {
+    "description": "Rank 2: You can mark up to two more creatures. Whenever you deal damage to a marked creature, you deal an additional die of damage. (p. 59)\n\nEarlier ranks (included):\nRank 1: If you can see a creature, you can spend 3 AP to mark it. You can only have one marked creature at a time. Whenever you deal damage to a marked creature, you deal an additional die of damage.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/headlamp_1",
+   "fields": {
+    "description": "Rank 1: You can spend 1 AP on your turn to turn on your headlamp. The headlamp shines bright light in a 40 foot cone and dim light for an additional 40. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/headlamp_2",
+   "fields": {
+    "description": "Rank 2: The bright and dim light both shine an additional 10 feet. (p. 59)\n\nEarlier ranks (included):\nRank 1: You can spend 1 AP on your turn to turn on your headlamp. The headlamp shines bright light in a 40 foot cone and dim light for an additional 40.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/headlamp_3",
+   "fields": {
+    "description": "Rank 3: The bright and dim light both shine an additional 10 feet. If you turn on this light while in darkness, each creature within 5 feet of you becomes blinded for one round. (p. 59)\n\nEarlier ranks (included):\nRank 1: You can spend 1 AP on your turn to turn on your headlamp. The headlamp shines bright light in a 40 foot cone and dim light for an additional 40.\nRank 2: The bright and dim light both shine an additional 10 feet.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/rusty_knuckles_1",
+   "fields": {
+    "description": "Rank 1: If you hit a creature with an unarmed attack, they bleed. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/optimized_bracers_1",
+   "fields": {
+    "description": "Rank 1: You can spend 6 AP on your turn to make a powerful unarmed attack that deals 2d6 bludgeoning damage. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/optimized_bracers_2",
+   "fields": {
+    "description": "Rank 2: The damage increases by 1d6. (p. 59)\n\nEarlier ranks (included):\nRank 1: You can spend 6 AP on your turn to make a powerful unarmed attack that deals 2d6 bludgeoning damage.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/optimized_bracers_3",
+   "fields": {
+    "description": "Rank 3: The damage increases by 1d6 and pushes targets 15 feet back. (p. 59)\n\nEarlier ranks (included):\nRank 1: You can spend 6 AP on your turn to make a powerful unarmed attack that deals 2d6 bludgeoning damage.\nRank 2: The damage increases by 1d6.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/calibrated_shocks_1",
+   "fields": {
+    "description": "Rank 1: Carry Load increases by 15. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/calibrated_shocks_2",
+   "fields": {
+    "description": "Rank 2: Carry Load increases by 15. (p. 59)\n\nEarlier ranks (included):\nRank 1: Carry Load increases by 15.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/calibrated_shocks_3",
+   "fields": {
+    "description": "Rank 3: Carry Load increases by 20. (p. 59)\n\nEarlier ranks (included):\nRank 1: Carry Load increases by 15.\nRank 2: Carry Load increases by 15.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/overclock_hydraulics_1",
+   "fields": {
+    "description": "Rank 1: While overheated, your maximum AP increases by 2, you have advantage on all attack rolls, you can move 15 feet with 1 AP, and your unarmed attacks deal an additional 3d6 fire damage. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/overclock_hydraulics_2",
+   "fields": {
+    "description": "Rank 2: You can spend 3 AP to overheat the fusion core. (p. 59)\n\nEarlier ranks (included):\nRank 1: While overheated, your maximum AP increases by 2, you have advantage on all attack rolls, you can move 15 feet with 1 AP, and your unarmed attacks deal an additional 3d6 fire damage.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/overclock_hydraulics_3",
+   "fields": {
+    "description": "Rank 3: Your maximum AP increases by 2. (p. 59)\n\nEarlier ranks (included):\nRank 1: While overheated, your maximum AP increases by 2, you have advantage on all attack rolls, you can move 15 feet with 1 AP, and your unarmed attacks deal an additional 3d6 fire damage.\nRank 2: You can spend 3 AP to overheat the fusion core.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_vent_1",
+   "fields": {
+    "description": "Rank 1: If you fall at least 15 feet, when you hit the ground you can choose to activate this upgrade. Each creature within 20 feet of you takes 3d6 fire damage and 3d6 explosive damage. Remove 20 minutes from the armor’s allotted time each time you activate this upgrade. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_vent_2",
+   "fields": {
+    "description": "Rank 2: The fire and explosive damage each increase by 1d6. (p. 59)\n\nEarlier ranks (included):\nRank 1: If you fall at least 15 feet, when you hit the ground you can choose to activate this upgrade. Each creature within 20 feet of you takes 3d6 fire damage and 3d6 explosive damage. Remove 20 minutes from the armor’s allotted time each time you activate this upgrade.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/explosive_vent_3",
+   "fields": {
+    "description": "Rank 3: The radius increases by 10 feet. (p. 59)\n\nEarlier ranks (included):\nRank 1: If you fall at least 15 feet, when you hit the ground you can choose to activate this upgrade. Each creature within 20 feet of you takes 3d6 fire damage and 3d6 explosive damage. Remove 20 minutes from the armor’s allotted time each time you activate this upgrade.\nRank 2: The fire and explosive damage each increase by 1d6.\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "power_armor_upgrades/super_mutant_fitting_1",
+   "fields": {
+    "description": "Rank 1: The armor is modified and fitted to allow a super mutant to use it. However, humans and ghouls can no longer use the armor. Once this upgrade has been added, it requires the same price or crafting materials to remove it. (p. 59)\n\nRanks (Gugg's Revision): if a rank repeats an effect of a lower rank with a bigger value, the new value replaces the old one; if it repeats the same value, they add up."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_buffout",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_buffjet",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_bufftats",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_calmex",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_cigarette",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_coyote_tobacco_chew",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_daddy_o",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_day_tripper",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_fury",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_hydra",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_jet",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_jet_fuel",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_rocket",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_ultrajet",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_med_x",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_mentats",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_berry_mentats",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_grape_mentats",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_orange_mentats",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_overdrive",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_psycho",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_psycho_buff",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_chems_psycho_jet",
+   "fields": {
+    "description": "Usage. You can use a chem with 4 AP. (p. 88)\n\nChem Limit. Using too many chems in a short period of time can result in overdosing. Your chem limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each Chem that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 88)\n\nDuration. All chem effects last for 1 hour. (p. 88)\n\nAddiction and Side Effects. Every chem has this property. If you use a chem you must succeed an Endurance ability check equal to 6. If you fail, you become addicted to the chem. While you are addicted to the chem, and not under the chem’s effects, you gain the associated effect listed below. You lose your chem addiction if you spend a number of weeks equal to 6 minus your Endurance ability ability modifier (minimum 1). Buffout, Buffjet, and Bufftats. Disadvantage on all Strength and Endurance ability and skill checks. Calmex, Jet, Jet fuel, Rocket, and Ultrajet. Disadvantage on all Agility ability and skill checks. Cigarette and Coyote tobacco chew. Disadvantage on all Perception ability and skill checks. Daddy-O. Your passive sense decreases by 5. Day Tripper. Your karma cap does not flip back over when you critically fail your attack roll, nor when you are hit by a critical hit. Fury, Overdrive, and all Psychos. Your AC decreases by 2. Hydra. Your maximum HP is reduced by a number equal to your level. Med-X. When you take damage to your hit points, the damage is increased by 2. All Mentats. Disadvantage on all Charisma ability and skill checks. (p. 88; Rebound and Steady removed in Gugg's Revision, the book never defines them)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_cache_clearer",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_coolant_rerouter",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_data_scrubber",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_eisenhower_protocol",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_incoming_projectile_predictor",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_military_auto_tank_ai_upload",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_military_turret_operating_system",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_overclock_hardware",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_overclock_hardware_v2_0",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "chems/chems_and_robot_overclock_programs_robot_overclock_programs_servo_override",
+   "fields": {
+    "description": "Usage. You can use a program with 4 AP. (p. 90)\n\nRAM Limit. Using too many programs in a short period of time can result in lag and overheating when your random-access memory isn’t large enough. Your RAM limit is equal to 2 plus half of your Endurance modifier (rounded down) (minimum of 1, maximum of 4). For each program that you use beyond your limit within a day, you gain 5 levels of exhaustion. (p. 90)\n\nDuration. All program effects last for 1 hour. (p. 90)\n\nTruncated Bytes and Faulty Programming. Every program has this property. If you use a program you must succeed an Endurance ability check equal to 6. If you fail, your system becomes more attuned to functioning with the program rather than without and thus; your programming becomes faulty. While your programming is faulty, and you are not under the program’s effects, you gain the associated effect listed below. Your programming becomes no longer faulty if you use 5 circuitry junk items and make a crafting skill check with the DC equal to 20. On a failure, you lose the circuitry and your programming is still faulty. Servo Override. Disadvantage on all Strength and Endurance ability and skill checks. Coolant Rerouter. Disadvantage on all Perception ability and skill checks. Cache Clearer. Disadvantage on all Charisma ability and skill checks. Data Scrubber. Your passive sense decreases by 5. EISENHOWER PROTOCOL, Military Auto-Tank AI Upload, Military Turret Operating System. Your AC decreases by 2. Incoming Projectile Predictor. When you take damage to your hit points, the damage is increased by 2. Overclock Hardware, including v.2.0. Disadvantage on all Agility ability and skill checks. (p. 90; Cache Clearer, Coolant Rerouter and Overclock Hardware changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "medicine/medicine_stimpak_diluted",
+   "fields": {
+    "description": "You can spend 4 AP to use this medicinal item on yourself or another creature so long as they are next to you. If that creature is a human, mutant, abomination, animal, or insect; they heal a number of hit points equal to half their healing rate. If that creature is a ghoul; they heal a number of hit points equal to a quarter of their healing rate. (p. 87; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "medicine/medicine_super_stimpak",
+   "fields": {
+    "description": "You can spend 4 AP to use this medicinal item on yourself or another creature so long as they are next to you. If that creature is a human, mutant, abomination, animal, or insect; they heal a number of hit points equal to double their healing rate. If that creature is a ghoul; they heal a number of hit points equal to their healing rate. (p. 87; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "gear/items_and_gear_caltrops",
+   "fields": {
+    "description": "You can spend 3 AP to scatter these small sharp objects across a flat surface in a 5 foot radius. Any creature who walks or runs through the area takes 2 piercing damage to their hit points for every 5 feet of movement they make through the area (this damage is not subtracted by DT), unless the creature has a passive sense above 15 or has otherwise noticed the caltrops; they must spend 2 AP for every 5 feet of movement. (p. 82; changed in Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "gear/items_and_gear_hazmat_suit",
+   "fields": {
+    "cost": "700c",
+    "description": "This large yellow suit is lined with layers of lead to provide the most protection from radiation without wearing power armor. Due to its bulky design; it takes 1 minute to don or doff, and you cannot wear armor over the suit. However, you can wear armor underneath the suit. While you wear the hazmat suit your radiation DC decreases by 10 and you are immune to radiation damage. If you succeed on a radiation check, your radiation DC does not increase. For every 5 points of damage you take to your hit points while wearing a hazmat suit, it gains a level of decay. Each level of decay increases your radiation score by 1. To repair a hazmat suit, the crafting DC is equal to 12 (+2) and requires x2 lead and x1 cloth. (p. 82; changed in Gugg's Revision) Cost: 700 caps instead of 10. (Gugg's Revision)"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "layout",
+   "fields": {
+    "tabs": [
+     {
+      "id": "status",
+      "name": "Status",
+      "blocks": [
+       {
+        "block": "resources",
+        "id": "hp",
+        "items": [
+         "hp"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "sp",
+        "items": [
+         "sp"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "ap",
+        "items": [
+         "ap"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "karma",
+        "items": [
+         "karma"
+        ],
+        "w": 3
+       },
+       {
+        "block": "attributes",
+        "id": "special",
+        "title": "S.P.E.C.I.A.L.",
+        "w": 8
+       },
+       {
+        "block": "derived",
+        "id": "combat",
+        "title": "Combat",
+        "items": [
+         "ac",
+         "dt",
+         "combat_sequence",
+         "passive_sense",
+         "healing_rate",
+         "radiation_dc",
+         "death_saves"
+        ],
+        "w": 4
+       },
+       {
+        "block": "counters",
+        "id": "survival",
+        "title": "Survival",
+        "only_active": true,
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "conditions",
+        "id": "conditions",
+        "w": 6
+       },
+       {
+        "block": "derived",
+        "id": "party",
+        "title": "Party (manual)",
+        "items": [
+         "party_nerve",
+         "group_sneak"
+        ],
+        "w": 12
+       },
+       {
+        "block": "effects",
+        "id": "effects",
+        "w": 12
+       }
+      ]
+     },
+     {
+      "id": "skills",
+      "name": "Skills",
+      "blocks": [
+       {
+        "block": "skills",
+        "wide": true,
+        "budget": "skill_points + 6 * has('custom_background') + 10 * has('recluse') - 10 * has('talented')"
+       },
+       {
+        "block": "derived",
+        "title": "Progression",
+        "items": [
+         "skill_points",
+         "skill_points_per_grant",
+         "perk_points",
+         "luck_skill_bonus",
+         "d20_penalty"
+        ]
+       }
+      ]
+     },
+     {
+      "id": "character",
+      "name": "Character",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "races"
+       },
+       {
+        "block": "list",
+        "collection": "variants"
+       },
+       {
+        "block": "list",
+        "collection": "backgrounds",
+        "columns": [
+         "skills"
+        ]
+       },
+       {
+        "block": "list",
+        "collection": "traits"
+       },
+       {
+        "block": "list",
+        "collection": "perks",
+        "columns": [
+         "group"
+        ],
+        "wide": true
+       },
+       {
+        "block": "notes",
+        "id": "story",
+        "title": "Story and appearance"
+       }
+      ]
+     },
+     {
+      "id": "weapons",
+      "name": "Weapons",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "weapons",
+        "view": "equipped",
+        "columns": [
+         "damage",
+         "ap",
+         "crit",
+         "range",
+         "properties"
+        ],
+        "id": "weapons",
+        "title": "Equipped weapons",
+        "w": 12
+       },
+       {
+        "block": "list",
+        "collection": "ammo",
+        "id": "ammo",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "explosives",
+        "columns": [
+         "damage"
+        ],
+        "id": "explosives",
+        "w": 6
+       }
+      ]
+     },
+     {
+      "id": "equipment",
+      "name": "Equipment",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "armor",
+        "view": "equipped",
+        "columns": [
+         "ac",
+         "dt",
+         "slots",
+         "built_in"
+        ],
+        "id": "armor",
+        "title": "Worn armor",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "armor_upgrades",
+        "view": "equipped",
+        "columns": [
+         "rank"
+        ],
+        "hide_empty": true,
+        "id": "armor_upgrades",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "power_armor",
+        "view": "equipped",
+        "columns": [
+         "ac",
+         "dp",
+         "allotted_time"
+        ],
+        "hide_empty": true,
+        "id": "power_armor",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "power_armor_upgrades",
+        "view": "equipped",
+        "columns": [
+         "rank"
+        ],
+        "hide_empty": true,
+        "id": "power_armor_upgrades",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "gear",
+        "view": "equipped",
+        "hide_empty": true,
+        "id": "gear",
+        "title": "Equipped items",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "unique_items",
+        "view": "equipped",
+        "hide_empty": true,
+        "id": "unique_items",
+        "w": 6
+       }
+      ]
+     },
+     {
+      "id": "inventory",
+      "name": "Inventory",
+      "blocks": [
+       {
+        "block": "derived",
+        "id": "load",
+        "title": "Load",
+        "items": [
+         "load",
+         "carry_load"
+        ],
+        "w": 6
+       },
+       {
+        "block": "money",
+        "id": "money",
+        "collection": "currency",
+        "w": 6
+       },
+       {
+        "block": "inventory",
+        "id": "items",
+        "collections": [
+         "weapons",
+         "armor",
+         "armor_upgrades",
+         "power_armor",
+         "power_armor_upgrades",
+         "mods",
+         "explosives",
+         "ammo",
+         "chems",
+         "medicine",
+         "food",
+         "gear",
+         "magazines",
+         "unique_items",
+         "junk"
+        ],
+        "w": 12,
+        "card_fields": {
+         "*": [
+          "load"
+         ]
+        },
+        "list_fields": [
+         "load"
+        ]
+       },
+       {
+        "block": "notes",
+        "id": "inventory",
+        "title": "Other items",
+        "w": 12
+       }
+      ]
+     },
+     {
+      "id": "notes",
+      "name": "Notes",
+      "blocks": [
+       {
+        "block": "notebook",
+        "id": "notes",
+        "title": "Notes",
+        "w": 12,
+        "import_notes": [
+         "session"
+        ],
+        "import_titles": {
+         "session": "Session notes"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "creation",
+   "fields": {
+    "steps": [
+     {
+      "type": "pick",
+      "collection": "races",
+      "title": "Race",
+      "min": 1,
+      "max": 1,
+      "description": "Choose your Race. (p. 4)"
+     },
+     {
+      "type": "pick",
+      "collection": "variants",
+      "title": "Race variant",
+      "match_field": "race",
+      "min": "has('robot')",
+      "max": "if(has('human'), 2, 1)",
+      "description": "Robots must choose their type: Handy, Protectron or Robobrain. (p. 9) The other races can, if your GM allows it, start with the variant abilities (p. 7–12). Humans can take Variant Human, Gen 3 Synth, both or neither."
+     },
+     {
+      "type": "attributes",
+      "title": "S.P.E.C.I.A.L.",
+      "points": 3,
+      "description": "Each ability score starts at 5. At 1st level you gain 3 points which you can use to increase any ability score equal to the points used. You can also decrease any ability score to gain extra points equal to the amount decreased. Minimum 1, maximum 10. (p. 4, 19)\nYour ability modifier is your score minus 5 (table, p. 19)."
+     },
+     {
+      "type": "pick",
+      "collection": "backgrounds",
+      "title": "Background",
+      "min": 1,
+      "max": 1,
+      "description": "Choose your Background. You gain a +2 to three different skills listed in your chosen Background (p. 4), its trait and its starting equipment."
+     },
+     {
+      "type": "skills",
+      "title": "Background skills",
+      "choose": 3,
+      "bonus": 2,
+      "if": "has('custom_background')",
+      "description": "Custom Background: choose the three skills that get +2. (p. 13) The other backgrounds already add their +2."
+     },
+     {
+      "type": "pick",
+      "collection": "traits",
+      "title": "Background trait",
+      "min": 1,
+      "max": 1,
+      "match_field": "requirement",
+      "if": "has('custom_background')",
+      "description": "Custom Background: choose the trait your background gives, any trait from the list. (p. 13)"
+     },
+     {
+      "type": "pick",
+      "collection": "traits",
+      "title": "Trait",
+      "min": 0,
+      "max": 1,
+      "match_field": "requirement",
+      "description": "You can optionally choose a second trait besides your background’s, and optionally modify it with Wild Wasteland (the \"Wild Wasteland\" versions). (p. 4, 26) Traits come before perks because some change how many perks you get."
+     },
+     {
+      "type": "skills",
+      "title": "Skilled: +2 to one skill",
+      "choose": 1,
+      "bonus": 2,
+      "if": "has('skilled')",
+      "description": "Skilled: choose the skill whose modifier increases by 2."
+     },
+     {
+      "type": "skills",
+      "title": "Skilled (Wild Wasteland): +5 to one skill",
+      "choose": 1,
+      "bonus": 5,
+      "if": "has('skilled_ww')",
+      "description": "Skilled (Wild Wasteland): choose the skill whose modifier increases by 5."
+     },
+     {
+      "type": "skills",
+      "title": "Recluse: +2 to five skills",
+      "choose": 5,
+      "bonus": 2,
+      "if": "has('recluse')",
+      "description": "Recluse: instead of gaining a perk at 1st level, five different Skill modifiers of your choice increase by 2. (p. 29)"
+     },
+     {
+      "type": "skills",
+      "title": "Talented: −2 to five skills",
+      "choose": 5,
+      "bonus": -2,
+      "if": "has('talented')",
+      "description": "Talented: you gain an extra perk at 1st level. However, five different skill modifiers of your choice decrease by 2. (p. 29)"
+     },
+     {
+      "type": "pick",
+      "collection": "perks",
+      "title": "Perk",
+      "min": "perk_points",
+      "max": "perk_points",
+      "if": "perk_points > 0",
+      "description": "Choose a Perk that you meet the requirements for. (p. 4)"
+     },
+     {
+      "type": "pick",
+      "collection": "weapons",
+      "tag": "protectron_tool",
+      "title": "Protectron: built-in tool",
+      "min": 1,
+      "max": 1,
+      "if": "has('protectron')",
+      "description": "Protect and Serve: choose one tool or weapon built into one of your arms. (p. 10)"
+     },
+     {
+      "type": "pick",
+      "collection": "weapons",
+      "tag": "handy_tool",
+      "title": "Handy: first arm",
+      "min": 1,
+      "max": 1,
+      "if": "has('handy')",
+      "description": "Incredible Multi-Talented Appliance: choose the tool or weapon built into your first arm. You choose one for each of your three arms and can choose the same one more than once. (p. 9; changed in Gugg's Revision)"
+     },
+     {
+      "type": "pick",
+      "collection": "weapons",
+      "tag": "handy_tool",
+      "title": "Handy: second arm",
+      "min": 1,
+      "max": 1,
+      "if": "has('handy')",
+      "description": "Incredible Multi-Talented Appliance: choose the tool or weapon built into your second arm. You choose one for each of your three arms and can choose the same one more than once. (p. 9; changed in Gugg's Revision)"
+     },
+     {
+      "type": "pick",
+      "collection": "weapons",
+      "tag": "handy_tool",
+      "title": "Handy: third arm",
+      "min": 1,
+      "max": 1,
+      "if": "has('handy')",
+      "description": "Incredible Multi-Talented Appliance: choose the tool or weapon built into your third arm. You choose one for each of your three arms and can choose the same one more than once. (p. 9; changed in Gugg's Revision)"
+     },
+     {
+      "type": "items",
+      "title": "Equipment",
+      "from": "backgrounds",
+      "note": "inventory",
+      "take_label": "Take the background equipment",
+      "alternative": {
+       "label": "Take 850 caps instead",
+       "items": [
+        {
+         "ref": "currency/caps",
+         "qty": 850
+        }
+       ]
+      },
+      "description": "Add any equipment you gained from your background (the version for your race), with its decay and armor already worn. Alternatively, you can choose to take no equipment and gain 850 caps. (p. 4) What is not an item of the game goes to \"Other items\"."
+     },
+     {
+      "type": "notes",
+      "title": "Story",
+      "items": [
+       {
+        "id": "story",
+        "title": "Story and appearance",
+        "placeholder": "Where you come from, what you look like, what you seek in the wasteland…"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

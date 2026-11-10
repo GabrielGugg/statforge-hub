@@ -428,8 +428,8 @@ export const PATCH_OPS = () => [
 
 export function dependenciesSpec() {
   return [
-    { key: 'system', label: L('Sistema (id)', 'System (id)'), kind: 'text', required: true, help: L('O id do sistema que esta extensão modifica, ex.: fallout-2.2-pt', 'The id of the system this changes, e.g. fallout-2.2') },
-    { key: 'requires', label: L('Requer', 'Requires'), kind: 'tags', placeholder: 'fallout-2.2-pt@>=1.0', help: L('Pacotes que precisam estar ativos. id@>=versão', 'Packages that must be active. id@>=version') },
+    { key: 'system', label: L('Sistema (id)', 'System (id)'), kind: 'text', required: true, help: L('O id do sistema que esta extensão modifica, ex.: fallout-2.1-pt', 'The id of the system this changes, e.g. fallout-2.1-en') },
+    { key: 'requires', label: L('Requer', 'Requires'), kind: 'tags', placeholder: 'fallout-2.1-pt@>=1.0', help: L('Pacotes que precisam estar ativos. id@>=versão', 'Packages that must be active. id@>=version') },
     { key: 'conflicts', label: L('Conflita com', 'Conflicts with'), kind: 'tags' },
     { key: 'load_after', label: L('Carregar depois de', 'Load after'), kind: 'tags' },
   ];

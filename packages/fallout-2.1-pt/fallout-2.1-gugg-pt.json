@@ -1,0 +1,1323 @@
+{
+ "format": 1,
+ "type": "extension",
+ "id": "fallout-2.1-gugg-pt",
+ "name": "Fallout TTRPG 2.1 - Revisão por Gugg",
+ "version": "1.0.0",
+ "language": "pt-BR",
+ "author": "GabrielGugg",
+ "license": "CC-BY-NC-SA-4.0",
+ "system": "fallout-2.1-pt",
+ "requires": [
+  "fallout-2.1-pt@>=1.0.0"
+ ],
+ "description": "Regras da casa de GabrielGugg sobre o Fallout TTRPG 2.1 (BR), antes chamadas de \"Fallout 2.2\": atributo maior nas perícias de dois atributos, Sorte negativa fixa em −1, Iniciativa por Percepção, Fator de Cura arredondado, Sintético Gen 2 sem Stimpak, Mãozinha com três ferramentas, condição Desequilibrado e outras correções. Aplique depois do pacote do sistema.",
+ "patches": [
+  {
+   "op": "modify",
+   "target": "skills/barganha",
+   "fields": {
+    "total": "points + mod(CAR) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/ciencia",
+   "fields": {
+    "total": "points + mod(INT) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/corpo_a_corpo",
+   "fields": {
+    "total": "points + mod(FOR) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/criacao",
+   "fields": {
+    "description": "A perícia Criação mede seu conhecimento de esquemas para reparar e fabricar itens. Para fabricar a maioria das armas, armaduras, modificações e melhorias, sua perícia Criação deve ser igual ou maior que o requisito. Se você não cumprir o requisito, pode fazer um teste da perícia Criação com CD igual a 10 + a CD de Fabricação do item. Em caso de sucesso, você fabrica o item; em caso de falha, você não o fabrica e perde parte dos materiais (veja Fabricação, Teste de Criação). Se um item tiver um Nível de Desgaste (ND), você pode usar sua perícia Criação para repará-lo e remover o nível de Desgaste. Os requisitos para reparar itens estão listados nas tabelas de fabricação em Desgaste e Reparos.",
+    "total": "points + mod(INT) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/disparo",
+   "fields": {
+    "total": "points + mod(AGI) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/energia",
+   "fields": {
+    "total": "points + mod(PER) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/explosivos",
+   "fields": {
+    "description": "A perícia Explosivos mede seu conhecimento em armar, desarmar e manusear de forma geral qualquer dispositivo explosivo, seja uma granada de fragmentação, explosivo C-4, coquetel molotov, granada de plasma ou bomba de fumaça. Quando você usa seus PA para armar e lançar um explosivo, role um d20 e some seu bônus de Explosivos. Se o total for 1, o explosivo detona imediatamente antes de ser lançado. Se o total for 2 ou 3, o explosivo é lançado à metade da distância e detona no início do seu próximo turno. Se o total estiver entre 4 e 14, o explosivo detona no início do seu próximo turno. Se o resultado for 15 ou mais, o explosivo detona no fim do seu turno. Quando você usa seus PA para lançar um explosivo que já foi armado, faça um teste de Explosivos. Se o resultado for 12 ou menos, o explosivo não é lançado e explode imediatamente. Se o resultado for acima de 13, o explosivo detona no fim do seu turno.",
+    "total": "points + mod(PER) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/furtividade",
+   "fields": {
+    "description": "A perícia Furtividade mede sua habilidade de permanecer quieto ou discreto. No seu turno, você pode gastar 6 PA para se esconder. Ao se esconder, você faz um teste da perícia Furtividade; se você tiver cobertura contra alguma criatura e o total do seu teste for maior que os Sentidos Passivos dela, então você está escondido dela e ela não pode vê-lo. Se você atacar uma criatura da qual está escondido, você ganha vantagem na rolagem de ataque. Se uma criatura souber da sua presença, mas não puder vê-lo porque você está escondido, ela pode fazer um teste de Percepção contra um teste de Furtividade seu. Se o total dela for maior, você deixa de estar escondido. Se o seu total for maior, você continua escondido. Personagens dos jogadores, ao viajar, podem se mover em meio ritmo e usar a Furtividade da Equipe para permanecerem furtivos durante a viagem. Sua Furtividade da Equipe é igual ao bônus da perícia Furtividade de cada personagem dos jogadores somado, dividido pelo número de personagens dos jogadores. (Simplificando: a Furtividade da Equipe é a média dos bônus de Furtividade de cada personagem dos jogadores.)",
+    "total": "points + mod(AGI) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/intimidacao",
+   "fields": {
+    "description": "Usa o maior modificador entre Força e Carisma; a ficha escolhe sozinha.\n\nA perícia Intimidação mede o quão ameaçador você é, seja pela presença física ou pela postura, e sua capacidade de assustar os outros ou até mesmo fazê-los reconsiderar o confronto com você. (Veja Intimidação.)",
+    "total": "points + max(mod(FOR), mod(CAR)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/medicina",
+   "fields": {
+    "description": "Usa o maior modificador entre Percepção e Inteligência; a ficha escolhe sozinha.\n\nA perícia Medicina mede sua aptidão em identificar sintomas e tratá-los, com o devido cuidado, sob pressão, e seu conhecimento de anatomia, fisiologia e métodos para manter criaturas vivas. O conhecimento de Medicina também permite fabricar químicos. Para fabricar a maioria das receitas de químicos, sua perícia Medicina deve ser igual ou maior que o requisito da receita. Se você estiver a até 1,5 m de uma criatura com a condição sangramento, você pode gastar 6 PA, usar 1 item de sucata de pano e ser bem-sucedido em um teste de Medicina com CD 15 para encerrar a condição. Se outro personagem estiver morrendo e não tiver falhado em todos os seus Suspiros Finais, você pode (a critério do MJ) gastar 6 PA para fazer um teste de Medicina com CD igual a 10 − o modificador de Resistência da criatura morrendo. Em caso de sucesso, a criatura ganha 1 ponto de vida. (Veja Medicina.)",
+    "total": "points + max(mod(PER), mod(INT)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/persuasao",
+   "fields": {
+    "total": "points + mod(CAR) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/pugilismo",
+   "fields": {
+    "description": "A perícia Pugilismo mede sua capacidade de socar, golpear, lutar, chutar, dar cotoveladas, joelhadas ou agarrar outras criaturas. Ao fazer uma rolagem de ataque desarmado, você soma seu bônus da perícia Pugilismo à rolagem. Ataques desarmados causam 1d4 + seu modificador de Força ou Agilidade de dano de contusão, acertam criticamente quando você rola um 20 na rolagem de ataque e, no crítico, causam o dobro do dano total (como uma arma com crítico 20, x2). Ataques desarmados podem ser não letais.",
+    "total": "points + mod(FOR) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/sabotagem",
+   "fields": {
+    "description": "Usa o maior modificador entre Percepção e Inteligência; a ficha escolhe sozinha.\n\nA perícia Sabotagem mede sua habilidade de abrir fechaduras, hackear computadores, desarmar armadilhas ou qualquer coisa que permita chegar a lugares aonde você não deveria ir. Sempre que fizer um teste de Sabotagem, você pode rolar o teste de novo um número de vezes igual ao seu modificador de Sorte (a critério do MJ). (Veja Sabotagem.)",
+    "total": "points + max(mod(PER), mod(INT)) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "skills/sobrevivencia",
+   "fields": {
+    "total": "points + mod(RES) + if(mod(SOR) < 0, -1, floor(mod(SOR) / 2)) - penalidade_d20"
+   }
+  },
+  {
+   "op": "replace",
+   "target": "derived/iniciativa",
+   "entity": {
+    "id": "iniciativa",
+    "name": "Iniciativa",
+    "abbr": "Inic.",
+    "formula": "mod(PER)",
+    "description": "Modificador de Percepção mais os bônus de iniciativa (traços, talentos…). A iniciativa passiva fica com o MJ."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "derived/fator_cura",
+   "fields": {
+    "formula": "floor((level + RES) / 2)",
+    "description": "6 horas de descanso restauram PV iguais ao Fator de Cura."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "resources/pv",
+   "fields": {
+    "recovery": "6 horas de descanso: PV iguais ao Fator de Cura."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "resources/pe",
+   "fields": {
+    "recovery": "1 hora de descanso: metade; dormir confortavelmente: todos."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "counters/fadiga",
+   "fields": {
+    "description": "Sempre que você rolar um d20 (exceto Sorte), o total é reduzido em 1 para cada nível de fadiga que você tem. Você só pode ter um total de nove níveis de fadiga. A fadiga não some sozinha: você perde um nível de fadiga a cada 10 minutos de descanso."
+   }
+  },
+  {
+   "op": "remove",
+   "target": "collections/escolhas_de_regra"
+  },
+  {
+   "op": "modify",
+   "target": "racas/sintetico",
+   "fields": {
+    "effects": [
+     {
+      "type": "block",
+      "collection": "quimicos"
+     },
+     {
+      "type": "block",
+      "collection": "comida"
+     },
+     {
+      "type": "block",
+      "tag": "stimpak"
+     },
+     {
+      "type": "immunity",
+      "text": "Radiação e veneno",
+      "ref": [
+       "radiacao",
+       "condicoes/envenenado"
+      ]
+     },
+     {
+      "type": "immunity",
+      "text": "Comida, bebida e químicos não têm efeito; não precisa comer, beber, dormir nem respirar",
+      "ref": [
+       "fome",
+       "desidratacao",
+       "condicoes/bebado",
+       "condicoes/mamado"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "variantes/maozinha",
+   "fields": {
+    "description": "Modelo de robô (obrigatório).\n\n\"O robô Mãozinha é um robô de manutenção e construção com múltiplos apêndices, que levita graças ao seu potente motor a jato. Eles eram geralmente usados como mordomos, trabalhadores de manutenção e, às vezes, também empregados como guardas antes da Grande Guerra.\"\n\n— Trecho da página \"Mister Handy\" na Fallout Fandom Wiki\n\nEmbora frequentemente seus nomes sugiram um gênero (\"Sr. Mãozinha\" ou \"Sra. Mãozinha\"), isso é simplesmente o nome do modelo. Mãozinhas têm múltiplas vozes, personalidades e podem apresentar-se em qualquer gênero.\n\nMembros e Ataques Mirados. Mãozinhas têm uma forma bem menos humana que a dos outros robôs: flutuam acima do chão, com três apêndices e três olhos presos a um grande núcleo redondo. Você tem três braços, três olhos e pode ter até três mãos, se escolher ter três Pinças na seção \"Incrível Aparelho Multitalentoso!\" abaixo. Você não tem cabeça, virilha nem pernas que possam ser alvo de ataques mirados ou decepadas. Em vez disso, ataques mirados aos seus olhos custam 2 PA a menos, e criaturas podem mirar no seu motor a jato. O motor a jato funciona exatamente como um ataque mirado nas pernas, exceto que o ataque custa 2 PA a mais. Se o seu motor a jato for decepado, você fica caído e não pode se mover até que ele seja reconectado.\n\nCombustível. Você precisa de combustível para continuar funcionando. A cada semana, 7 dias ou 168 horas, você pode gastar 6 PA para encher seu tanque com um galão de combustível ou seis itens de sucata de óleo, que são consumidos no uso. Se você não consumir um galão de combustível depois da semana, você deve ser bem-sucedido em um teste de Resistência com CD 12 para cada hora além das 168. A cada teste bem-sucedido, a CD aumenta em 2. Em uma falha, você fica inconsciente até que outra criatura encha seu tanque de combustível. Alternativamente, você pode instalar um núcleo de fusão no seu chassi. Se fizer isso, você pode funcionar por 30 dias sem precisar de combustível.\n\nMotor a Jato. Você flutua a alguns palmos do chão enquanto está ativo e em movimento. Você não aciona armadilhas de piso nem efeitos ativados por pisadas. Porém, se você for derrubado, ficar atordoado ou cair inconsciente, você cai no chão.\n\nIncrível Aparelho Multitalentoso. Mãozinhas são construídos com três ferramentas especiais, acopladas e embutidas em três dos seus braços. Essas ferramentas e armas podem ser modificadas como qualquer outra arma, exigem apenas uma mão para serem usadas e não custam PA para equipar ou guardar. Além disso, não podem ser removidas de você a menos que o braço ao qual a ferramenta ou arma está acoplada seja decepado. Escolha uma ferramenta ou arma da lista a seguir para cada um dos seus três braços; a mesma pode se repetir.\n\nSerra Circular. Uma serra mecânica alojada em estrutura de metal, usada para cortar madeira, comida, corpos ou detritos. Arma Corpo a Corpo. 5 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, x2, aplica sangramento. Propriedades Especiais: Talhar, Durável. (Veja Propriedades Especiais para detalhes).\n\nAlicates. Um conjunto grande e afiado de alicates para fiação, jardinagem ou abertura de caixas. Arma Corpo a Corpo. 3 Pontos de Ação. 1d4 perfurante. Acerto Crítico: 19, 20. 1d4 perfurante. Propriedades Especiais: Desmembrar, Durável. (Veja Propriedades Especiais para detalhes).\n\nBroca. Esta broca tem pontas intercambiáveis usadas para parafusos, porcas, cavilhas e furos-piloto. Arma Corpo a Corpo. 6 Pontos de Ação. 1d8 cortante. Acerto Crítico: 20, 2d8 cortante. Propriedades Especiais: Durável, Mutilar. (Veja Propriedades Especiais para detalhes).\n\nPinça. A Pinça é um apêndice com dois dedos que pode agarrar, torcer, operar, usar armas e segurar itens. Opera com eficiência semelhante a uma mão humana. Se você não tiver pelo menos duas dessas ferramentas, você efetivamente só tem uma mão. (Isso afeta armas com as propriedades Duas Mãos, Desajeitada ou Coice; veja Propriedades Especiais para detalhes.)\n\nMaçarico. Esta ferramenta de cozinha emite uma chama com um bico ajustável para cozinhar, flambar, cuidar de ninhos de insetos incômodos ou acender velas. Arma de Longo Alcance, linha de 3 m. 5 Pontos de Ação. 1d10 de fogo. Munição: combustível, 5 cargas. Propriedades Especiais: Área de Efeito, Durável, Incendiária. (Veja Propriedades Especiais para detalhes)."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "antecedentes/lutador_de_arena",
+   "fields": {
+    "description": "É preciso muita força para se levantar e continuar, mas é tudo o que você conhece. Os habitantes do ermo apostam suas tampinhas suadas em sua capacidade de lutar, e esse fardo alimenta cada um de seus socos. Você derrubou muitos competidores e sentiu o gosto amargo da derrota, mas isso só torna sua vitória ainda mais doce. No entanto, algo aconteceu com seu estabelecimento. E agora você deve vagar pelo ermo com suas habilidades para encontrar um novo propósito na vida.\n\nPerícias: +2 em Barganha, Corpo a Corpo, Pugilismo.\n\nTraço de antecedente: Sobreviver à Batalha (vem junto e aparece em Traços).\n\nEquipamento (Lutador de Arena Humano, Necrótico ou Super Mutante): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 saco de dormir, x1 barraca individual, x3 cram, x1 vodca, x3 pó curativo, x3 água purificada, x1 Stimpak (Diluído) e x50 tampinhas.\n\nEquipamento (Lutador de Arena Sintético Gen 2 ou Robô): x1 armadura de metal com um Nível de Desgaste, x1 cano de chumbo com dois Níveis de Desgaste, x1 soco inglês, x1 punho cravado, x1 bandoleira, x1 esferas de aço, x1 RobCo ConsertaJá 2.0 e x50 tampinhas.",
+    "starting_items": [
+     {
+      "ref": "armaduras/armaduras_metal",
+      "qty": 1,
+      "wear": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armas/armas_contundentes_cano_de_chumbo",
+      "qty": 1,
+      "wear": 2,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armas/armas_desarmadas_soco_ingles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armas/armas_desarmadas_punho_cravado",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_bandoleira",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_esferas_de_aco",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_saco_de_dormir",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_barraca_uma_pessoa",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/comida_pronta_cram",
+      "qty": 3,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/bebidas_vodca",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "medicina/medicina_po_curativo",
+      "qty": 3,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/bebidas_agua_purificada",
+      "qty": 3,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "medicina/medicina_stimpak_diluido",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "moedas/tampinha",
+      "qty": 50,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armaduras/armaduras_metal",
+      "qty": 1,
+      "wear": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "armas/armas_contundentes_cano_de_chumbo",
+      "qty": 1,
+      "wear": 2,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "armas/armas_desarmadas_soco_ingles",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "armas/armas_desarmadas_punho_cravado",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_bandoleira",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_esferas_de_aco",
+      "qty": 1,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "medicina/medicina_robco_consertaja_2_0",
+      "qty": 1,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "moedas/tampinha",
+      "qty": 50,
+      "if": "has('robo') or has('sintetico')"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "antecedentes/morador_do_refugio",
+   "fields": {
+    "description": "Por toda a sua vida, você só conheceu as frias paredes de aço de um refúgio subterrâneo. Todos usam macacões azul-amarelo, pip-boy e temem o lado de fora. Muitos refúgios hospedam algum tipo de experimento ou simulação que atormenta aqueles que estão dentro. No entanto, o seu ou não tinha um, ou era tão sutil que você nunca percebeu. Mas tudo isso mudou quando você finalmente colocou os pés para fora. O mundo nunca foi o que você pensou, as pessoas são diferentes e ele é maior do que você jamais imaginou.\n\nPerícias: +2 em Medicina, Persuasão, Ciência.\n\nTraço de antecedente: Talentoso (vem junto e aparece em Traços).\n\nEquipamento (Morador do Refúgio Humano, Necrótico ou Super Mutante): x1 Roupa do Refúgio, x1 pistola 10mm, x10 munição 10mm, x1 mochila, x1 saco de dormir, x1 barraca individual, x1 cantil, x1 kit de reparo de arma, x1 pip-boy (qualquer), x1 Macarrão com Queijo BlamCo, x1 Bife à Salisbury, x1 Ovos Recheados Yum Yum, x1 café, x4 água purificada e x1 Stimpak.\n\nEquipamento (Morador do Refúgio Sintético Gen 2 ou Robô): x1 Roupa do Refúgio, x1 pistola laser, x2 célula de energia, x1 mochila, x1 pip-boy (qualquer), x2 RobCo ConsertaJá 2.0, x1 revista Manual do Programador e x1 Depurador Neural.\n\nO equipamento inicial neste antecedente concede itens únicos poderosos, consulte seu MJ antes de pegar estes itens.",
+    "starting_items": [
+     {
+      "ref": "armaduras/itens_unicos_traje_de_refugio",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armas/armas_de_mao_pistola_10mm",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "municao/municao_de_armas_de_fogo_10mm",
+      "qty": 10,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_mochila",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_saco_de_dormir",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_barraca_uma_pessoa",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_cantil",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_kit_de_reparo_de_armas",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/comida_pronta_macarrao_com_queijo_blamco",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/comida_pronta_bife_a_salisbury",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/comida_pronta_ovos_recheados_yum_yum",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/bebidas_cafe",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "comida/bebidas_agua_purificada",
+      "qty": 4,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "medicina/medicina_stimpak",
+      "qty": 1,
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "text": "1× pip-boy (qualquer)",
+      "if": "has('humano') or has('necrotico') or has('super_mutante')"
+     },
+     {
+      "ref": "armaduras/itens_unicos_traje_de_refugio",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "armas/armas_de_energia_pistola_laser",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "municao/municao_de_energia_celula_de_energia",
+      "qty": 2,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "equipamentos/itens_e_equipamentos_mochila",
+      "qty": 1,
+      "equipped": true,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "medicina/medicina_robco_consertaja_2_0",
+      "qty": 2,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "revistas/revistas_de_pericia_manual_do_programador",
+      "qty": 1,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "ref": "quimicos/programas_de_overclock_de_robo_depurador_neural",
+      "qty": 1,
+      "if": "has('robo') or has('sintetico')"
+     },
+     {
+      "text": "1× pip-boy (qualquer)",
+      "if": "has('robo') or has('sintetico')"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "tracos/endurecido_pela_terra",
+   "fields": {
+    "description": "Você conheceu dias longos e trabalho duro: você tem vantagem sempre que fizer um teste de Resistência para resistir a um nível de Fome ou Fadiga. Porém, você fica morrendo se chegar a 8 níveis de Fome ou Fadiga, em vez de 10."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "talentos/alerta",
+   "fields": {
+    "description": "Requisito: Percepção 5\n\nVocê aprendeu a manter seus sentidos atentos a qualquer perigo. Se você não sair de um único local, de no máximo 6 m de raio, por pelo menos 10 minutos, você ganha um bônus nos seus Sentidos Passivos igual ao seu modificador de Percepção. (Simplificando: seus Sentidos Passivos são iguais a 12 + o dobro do seu modificador de Percepção.)",
+    "effects": [
+     {
+      "type": "note",
+      "text": "Alerta: Você aprendeu a manter seus sentidos atentos a qualquer perigo. Se você não sair de um único local, de no máximo 6 m de raio, por pelo menos 10 minutos, você ganha um bônus nos seus Sentidos Passivos igual ao seu modificador de Percepção. …"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "talentos/evolucao_suprema",
+   "fields": {
+    "name": "Evolução Suprema",
+    "effects": [
+     {
+      "type": "add",
+      "target": "df",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "td",
+      "value": "1"
+     },
+     {
+      "type": "add",
+      "target": "pv",
+      "value": "level",
+      "value_text": "+ seu nível"
+     },
+     {
+      "type": "add",
+      "target": "pe",
+      "value": "level",
+      "value_text": "+ seu nível"
+     },
+     {
+      "type": "note",
+      "text": "Evolução Suprema: Sua DF aumenta em 1, sua TD aumenta em 1, seus pontos de vida aumentam em um valor igual ao seu nível e seus pontos de estamina aumentam em um valor igual ao seu nível. Além disso, escolha um tipo de dano. …"
+     }
+    ]
+   }
+  },
+  {
+   "op": "add",
+   "collection": "condicoes",
+   "entity": {
+    "id": "desequilibrado",
+    "name": "Desequilibrado",
+    "description": "Uma criatura desequilibrada (por exemplo, enquanto escala ou nada) tem desvantagem em rolagens de ataque, e sua DF diminui em 2. A condição termina quando a criatura deixa de escalar ou nadar, ou quando a causa acaba.",
+    "effects": [
+     {
+      "type": "disadvantage",
+      "target": "ataque",
+      "text": "Rolagens de ataque"
+     },
+     {
+      "type": "add",
+      "target": "df",
+      "value": "-2"
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "condicoes/oculto",
+   "fields": {
+    "description": "Uma criatura oculta é impossível de ver para criaturas que não tenham visão noturna, como se estivesse invisível. A localização da criatura pode ser detectada por qualquer ruído que ela faça ou por quaisquer rastros que deixe. Rolagens de ataque contra a criatura têm desvantagem, e as rolagens de ataque da criatura têm vantagem. Criaturas com visão noturna enxergam a criatura oculta normalmente, e essa condição não tem efeito contra elas. Se uma criatura tem consciência da presença da criatura oculta e não tem visão noturna, ela pode tentar mirar nela com um ataque às cegas."
+   }
+  },
+  {
+   "op": "remove",
+   "target": "armas/armas_desarmadas_punho_de_armadilha_de_caca"
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/isolamento_1",
+   "fields": {
+    "description": "Nível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/isolamento_2",
+   "fields": {
+    "description": "Nível 2: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100.\n\nNíveis anteriores (já incluídos):\nNível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/camuflagem_1",
+   "fields": {
+    "description": "Nível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/camuflagem_2",
+   "fields": {
+    "description": "Nível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/camuflagem_3",
+   "fields": {
+    "description": "Nível 3: Na penumbra, você fica oculto. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\nNível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/leve_1",
+   "fields": {
+    "description": "Nível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/leve_2",
+   "fields": {
+    "description": "Nível 2: Carga reduzida em 10 (mínimo de 3).\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/leve_3",
+   "fields": {
+    "description": "Nível 3: Se você gastar pelo menos 4 PA no seu turno para se mover, pode se mover 3 m adicionais.\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\nNível 2: Carga reduzida em 10 (mínimo de 3).\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/justa_1",
+   "fields": {
+    "description": "Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/justa_2",
+   "fields": {
+    "description": "Nível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/justa_3",
+   "fields": {
+    "description": "Nível 3: Você tem vantagem nas rolagens de Iniciativa. Se já tem vantagem, ganha +5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\nNível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/chumbada_1",
+   "fields": {
+    "description": "Nível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/chumbada_2",
+   "fields": {
+    "description": "Nível 2: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/chumbada_3",
+   "fields": {
+    "description": "Nível 3: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\nNível 2: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/fortalecida_1",
+   "fields": {
+    "description": "Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/fortalecida_2",
+   "fields": {
+    "description": "Nível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/fortalecida_3",
+   "fields": {
+    "description": "Nível 3: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\nNível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/robusta_1",
+   "fields": {
+    "description": "Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/robusta_2",
+   "fields": {
+    "description": "Nível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/robusta_3",
+   "fields": {
+    "description": "Nível 3: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\nNível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/cheia_de_bolsos_1",
+   "fields": {
+    "description": "Nível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/cheia_de_bolsos_2",
+   "fields": {
+    "description": "Nível 2: Sua Capacidade de Carga aumenta em 15.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/cheia_de_bolsos_3",
+   "fields": {
+    "description": "Nível 3: Sua Capacidade de Carga aumenta em 25.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\nNível 2: Sua Capacidade de Carga aumenta em 15.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/reforcada_1",
+   "fields": {
+    "description": "Nível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/reforcada_2",
+   "fields": {
+    "description": "Nível 2: +1 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/reforcada_3",
+   "fields": {
+    "description": "Nível 3: +2 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\nNível 2: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/endurecida_1",
+   "fields": {
+    "description": "Nível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/endurecida_2",
+   "fields": {
+    "description": "Nível 2: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias/endurecida_3",
+   "fields": {
+    "description": "Nível 3: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\nNível 2: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "armadura_potente/tipos_de_armadura_potente_t_45",
+   "fields": {
+    "custo": "40.500 tp"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "medicina/medicina_stimpak_diluido",
+   "fields": {
+    "description": "Você pode gastar 4 PA para usar este item medicinal em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Se a criatura é humana, mutante, abominação, animal ou inseto, ela cura pontos de vida iguais à metade do Fator de Cura dela. Se a criatura é um necrótico, ela cura pontos de vida iguais a um quarto do Fator de Cura dela."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "medicina/medicina_super_stimpak",
+   "fields": {
+    "description": "Você pode gastar 4 PA para usar este item medicinal em si mesmo ou em outra criatura, desde que ela esteja ao seu lado. Se a criatura é humana, mutante, abominação, animal ou inseto, ela cura pontos de vida iguais ao dobro do Fator de Cura dela. Se a criatura é um necrótico, ela cura pontos de vida iguais ao Fator de Cura dela."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "equipamentos/itens_e_equipamentos_estrepes",
+   "fields": {
+    "description": "Você pode gastar 3 PA para espalhar esses pequenos objetos pontiagudos em uma superfície plana, num raio de 1,5 m. Qualquer criatura que ande ou corra pela área sofre 2 de dano perfurante nos pontos de vida a cada 1,5 m de movimento pela área (esse dano não é reduzido pela TD), a menos que a criatura tenha Sentidos Passivos acima de 15 ou tenha notado os estrepes de outro jeito; nesse caso, ela deve gastar 2 PA a cada 1,5 m de movimento."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "equipamentos/itens_e_equipamentos_traje_hazmat",
+   "fields": {
+    "custo": "700 tp",
+    "description": "Este traje amarelo grande é forrado com camadas de chumbo para dar a maior proteção contra radiação possível sem vestir armadura potente. Por causa do design volumoso, leva 1 minuto para vestir ou tirar, e você não pode vestir armadura por cima do traje. Porém, você pode vestir armadura por baixo do traje. Enquanto você veste o traje hazmat, seu Limiar de Radiação diminui em 10 e você é imune a dano de radiação. Quando você passa em um teste de radiação, seu Limiar de Radiação não aumenta. A cada 5 pontos de dano que você sofre nos seus pontos de vida enquanto veste um traje hazmat, ele ganha um nível de desgaste. Cada nível de desgaste aumenta sua pontuação de radiação em 1. Para reparar um traje hazmat, a CD de Criação é 12 (+2) e exige x2 de chumbo e x1 de tecido.",
+    "effects": [
+     {
+      "type": "add",
+      "target": "lr",
+      "value": "-10"
+     },
+     {
+      "type": "immunity",
+      "text": "Dano de radiação"
+     },
+     {
+      "type": "note",
+      "text": "Traje Hazmat: passar no teste de radiação não aumenta o LR."
+     }
+    ]
+   }
+  },
+  {
+   "op": "remove",
+   "target": "escolhas_de_regra/sorte_negativa_menos_um"
+  },
+  {
+   "op": "remove",
+   "target": "escolhas_de_regra/sorte_negativa_metade"
+  },
+  {
+   "op": "modify",
+   "target": "layout",
+   "fields": {
+    "tabs": [
+     {
+      "id": "status",
+      "name": "Status",
+      "blocks": [
+       {
+        "block": "resources",
+        "id": "pv",
+        "items": [
+         "pv"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "pe",
+        "items": [
+         "pe"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "pa",
+        "items": [
+         "pa"
+        ],
+        "w": 3
+       },
+       {
+        "block": "resources",
+        "id": "karma",
+        "items": [
+         "karma"
+        ],
+        "w": 3
+       },
+       {
+        "block": "attributes",
+        "id": "special",
+        "title": "S.P.E.C.I.A.L.",
+        "w": 8
+       },
+       {
+        "block": "derived",
+        "id": "combate",
+        "title": "Combate",
+        "items": [
+         "df",
+         "td",
+         "iniciativa",
+         "sentidos",
+         "fator_cura",
+         "lr"
+        ],
+        "w": 4
+       },
+       {
+        "block": "counters",
+        "id": "sobrevivencia",
+        "title": "Sobrevivência",
+        "only_active": true,
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "condicoes",
+        "id": "condicoes",
+        "w": 6
+       },
+       {
+        "block": "effects",
+        "id": "efeitos",
+        "w": 12
+       }
+      ]
+     },
+     {
+      "id": "pericias",
+      "name": "Perícias",
+      "blocks": [
+       {
+        "block": "skills",
+        "wide": true,
+        "budget": "pontos_pericia + 6 * has('antecedente_personalizado') + 10 * has('recluso') - 10 * has('talentoso')"
+       },
+       {
+        "block": "derived",
+        "title": "Progressão",
+        "items": [
+         "pontos_pericia",
+         "pericia_por_concessao",
+         "pontos_talento",
+         "penalidade_d20"
+        ]
+       }
+      ]
+     },
+     {
+      "id": "personagem",
+      "name": "Personagem",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "racas"
+       },
+       {
+        "block": "list",
+        "collection": "variantes"
+       },
+       {
+        "block": "list",
+        "collection": "antecedentes",
+        "columns": [
+         "pericias"
+        ]
+       },
+       {
+        "block": "list",
+        "collection": "tracos"
+       },
+       {
+        "block": "list",
+        "collection": "talentos",
+        "columns": [
+         "grupo"
+        ],
+        "wide": true
+       },
+       {
+        "block": "notes",
+        "id": "historia",
+        "title": "História e aparência"
+       }
+      ]
+     },
+     {
+      "id": "combate",
+      "name": "Armas",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "armas",
+        "view": "equipped",
+        "columns": [
+         "dano",
+         "pa",
+         "critico",
+         "alcance",
+         "propriedades"
+        ],
+        "id": "armas",
+        "title": "Armas equipadas",
+        "w": 12
+       },
+       {
+        "block": "list",
+        "collection": "municao",
+        "id": "municao",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "explosivos",
+        "columns": [
+         "dano"
+        ],
+        "id": "explosivos",
+        "w": 6
+       }
+      ]
+     },
+     {
+      "id": "armaduras",
+      "name": "Equipamentos",
+      "blocks": [
+       {
+        "block": "list",
+        "collection": "armaduras",
+        "view": "equipped",
+        "columns": [
+         "df",
+         "td",
+         "espacos",
+         "embutidas"
+        ],
+        "id": "armaduras",
+        "title": "Armadura vestida",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "melhorias",
+        "view": "equipped",
+        "columns": [
+         "nivel"
+        ],
+        "hide_empty": true,
+        "id": "melhorias",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "armadura_potente",
+        "view": "equipped",
+        "columns": [
+         "df",
+         "pd",
+         "autonomia"
+        ],
+        "hide_empty": true,
+        "id": "armadura_potente",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "melhorias_potente",
+        "view": "equipped",
+        "columns": [
+         "nivel"
+        ],
+        "hide_empty": true,
+        "id": "melhorias_potente",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "equipamentos",
+        "view": "equipped",
+        "hide_empty": true,
+        "id": "equipamentos",
+        "title": "Itens equipados",
+        "w": 6
+       },
+       {
+        "block": "list",
+        "collection": "itens_unicos",
+        "view": "equipped",
+        "hide_empty": true,
+        "id": "itens_unicos",
+        "w": 6
+       }
+      ]
+     },
+     {
+      "id": "inventario",
+      "name": "Inventário",
+      "blocks": [
+       {
+        "block": "derived",
+        "id": "carga",
+        "title": "Carga",
+        "items": [
+         "carga",
+         "carga_max"
+        ],
+        "w": 6
+       },
+       {
+        "block": "money",
+        "id": "dinheiro",
+        "collection": "moedas",
+        "w": 6
+       },
+       {
+        "block": "inventory",
+        "id": "itens",
+        "collections": [
+         "armas",
+         "armaduras",
+         "melhorias",
+         "armadura_potente",
+         "melhorias_potente",
+         "mods",
+         "explosivos",
+         "municao",
+         "quimicos",
+         "medicina",
+         "comida",
+         "equipamentos",
+         "revistas",
+         "itens_unicos",
+         "sucata"
+        ],
+        "w": 12,
+        "card_fields": {
+         "*": [
+          "carga"
+         ]
+        },
+        "list_fields": [
+         "carga"
+        ]
+       },
+       {
+        "block": "notes",
+        "id": "inventario",
+        "title": "Outros itens",
+        "w": 12
+       }
+      ]
+     },
+     {
+      "id": "notas",
+      "name": "Notas",
+      "blocks": [
+       {
+        "block": "notebook",
+        "id": "notas",
+        "title": "Notas",
+        "w": 12,
+        "import_notes": [
+         "sessao"
+        ],
+        "import_titles": {
+         "sessao": "Anotações da sessão"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "modify",
+   "target": "creation",
+   "fields": {
+    "steps": [
+     {
+      "type": "pick",
+      "collection": "racas",
+      "title": "Raça",
+      "min": 1,
+      "max": 1,
+      "description": "Escolha sua raça. Ela define imunidades, limites e o que funciona em você (químicos, comida, stimpaks)."
+     },
+     {
+      "type": "pick",
+      "collection": "variantes",
+      "title": "Variante de raça",
+      "match_field": "raca",
+      "min": "has('robo')",
+      "max": "if(has('humano'), 2, 1)",
+      "description": "Robôs escolhem o modelo (Mãozinha, Guardatron ou Miolotron). As outras raças podem, se o MJ permitir, escolher uma variante, que traz todos os seus traços. Humanos podem ter Humano Variante, Sintético Gen 3, as duas ou nenhuma."
+     },
+     {
+      "type": "attributes",
+      "title": "S.P.E.C.I.A.L.",
+      "points": 3,
+      "description": "Cada atributo começa em 5 e você tem 3 pontos para aumentar. Diminuir um atributo devolve pontos. Mínimo 1, máximo 10.\nO modificador é o valor menos 5. Metade do modificador de Sorte (para baixo) vai em todas as perícias; se for negativo, as perícias perdem só 1."
+     },
+     {
+      "type": "pick",
+      "collection": "antecedentes",
+      "title": "Antecedente",
+      "min": 1,
+      "max": 1,
+      "description": "Seu antecedente dá +2 em três perícias, um traço de antecedente e o equipamento inicial."
+     },
+     {
+      "type": "skills",
+      "title": "Perícias do antecedente",
+      "choose": 3,
+      "bonus": 2,
+      "if": "has('antecedente_personalizado')",
+      "description": "No Antecedente Personalizado você escolhe as três perícias que recebem +2. (Os outros antecedentes já aplicam o +2 sozinhos.)"
+     },
+     {
+      "type": "pick",
+      "collection": "tracos",
+      "title": "Traço do antecedente",
+      "min": 1,
+      "max": 1,
+      "match_field": "requisito",
+      "if": "has('antecedente_personalizado')",
+      "description": "No Antecedente Personalizado você escolhe o traço que o antecedente daria: qualquer traço da lista."
+     },
+     {
+      "type": "pick",
+      "collection": "tracos",
+      "title": "Traço",
+      "min": 0,
+      "max": 1,
+      "match_field": "requisito",
+      "description": "Você pode escolher 1 traço da lista, além do traço do seu antecedente. As versões \"Ermo Selvagem\" são a variante mais dura de cada traço. Os traços vêm antes dos talentos porque alguns mudam quantos talentos você ganha."
+     },
+     {
+      "type": "skills",
+      "title": "Habilidoso: +2 em uma perícia",
+      "choose": 1,
+      "bonus": 2,
+      "if": "has('habilidoso')",
+      "description": "Habilidoso: escolha a perícia cujo modificador aumenta em 2."
+     },
+     {
+      "type": "skills",
+      "title": "Habilidoso (Ermo Selvagem): +5 em uma perícia",
+      "choose": 1,
+      "bonus": 5,
+      "if": "has('habilidoso_ermo')",
+      "description": "Habilidoso (Ermo Selvagem): escolha a perícia cujo modificador aumenta em 5."
+     },
+     {
+      "type": "skills",
+      "title": "Recluso: +2 em cinco perícias",
+      "choose": 5,
+      "bonus": 2,
+      "if": "has('recluso')",
+      "description": "Recluso: em vez de ganhar um talento no 1º nível, cinco perícias à sua escolha recebem +2."
+     },
+     {
+      "type": "skills",
+      "title": "Talentoso: −2 em cinco perícias",
+      "choose": 5,
+      "bonus": -2,
+      "if": "has('talentoso')",
+      "description": "Talentoso: você ganha um talento extra no 1º nível, mas cinco perícias à sua escolha perdem 2."
+     },
+     {
+      "type": "pick",
+      "collection": "talentos",
+      "title": "Talento",
+      "min": "pontos_talento",
+      "max": "pontos_talento",
+      "if": "pontos_talento > 0",
+      "description": "Escolha um talento cujos pré-requisitos você cumpra (veja o campo Requisito)."
+     },
+     {
+      "type": "pick",
+      "collection": "armas",
+      "tag": "ferramenta_guardatron",
+      "title": "Guardatron: ferramenta embutida",
+      "min": 1,
+      "max": 1,
+      "if": "has('guardatron')",
+      "description": "Proteger e Servir: escolha uma ferramenta ou arma embutida em um dos seus braços."
+     },
+     {
+      "type": "pick",
+      "collection": "armas",
+      "tag": "ferramenta_maozinha",
+      "title": "Mãozinha: primeiro braço",
+      "min": 1,
+      "max": 1,
+      "if": "has('maozinha')",
+      "description": "Incrível Aparelho Multitalentoso!: escolha a ferramenta ou arma do seu primeiro braço. Você escolhe uma para cada um dos três braços, e a mesma pode se repetir."
+     },
+     {
+      "type": "pick",
+      "collection": "armas",
+      "tag": "ferramenta_maozinha",
+      "title": "Mãozinha: segundo braço",
+      "min": 1,
+      "max": 1,
+      "if": "has('maozinha')",
+      "description": "Escolha a ferramenta ou arma do seu segundo braço (pode repetir a do primeiro)."
+     },
+     {
+      "type": "pick",
+      "collection": "armas",
+      "tag": "ferramenta_maozinha",
+      "title": "Mãozinha: terceiro braço",
+      "min": 1,
+      "max": 1,
+      "if": "has('maozinha')",
+      "description": "Escolha a ferramenta ou arma do seu terceiro braço (pode repetir as anteriores)."
+     },
+     {
+      "type": "items",
+      "title": "Equipamento",
+      "from": "antecedentes",
+      "note": "inventario",
+      "take_label": "Levar o equipamento do antecedente",
+      "alternative": {
+       "label": "Trocar por 850 tampinhas",
+       "items": [
+        {
+         "ref": "moedas/tampinha",
+         "qty": 850
+        }
+       ]
+      },
+      "description": "O equipamento do seu antecedente (na versão da sua raça) vai direto para a ficha, com o desgaste certo e a armadura já vestida. As tampinhas vão para o Dinheiro, e o que não é item do jogo (Pip-Boy à escolha) vai para \"Outros itens\". Ou abra mão de tudo e fique com 850 tampinhas."
+     },
+     {
+      "type": "notes",
+      "title": "História",
+      "items": [
+       {
+        "id": "historia",
+        "title": "História e aparência",
+        "placeholder": "De onde você vem, como é, o que busca no ermo…"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

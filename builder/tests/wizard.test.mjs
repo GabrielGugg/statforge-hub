@@ -65,5 +65,5 @@ test('light background makes a light theme', () => {
 test('table and extension are valid', () => {
   valid(buildTable({ name: 'Mesa', author: 'A', language: 'pt-BR', system: { url: 'https://x.org/s.json' }, extensions: [{ url: 'https://x.org/e.json' }], theme: { url: 'https://x.org/t.json' } }));
   valid(buildTable({ name: 'Mesa', author: 'A', language: 'en', system: { url: 'https://x.org/s.json' } }));
-  valid(buildExtension({ name: 'Casa', author: 'A', language: 'pt-BR', system: 'fallout-2.2-pt' }));
+  valid(buildExtension({ name: 'Casa', author: 'A', language: 'pt-BR', system: 'fallout-2.1-pt' }));
 });
