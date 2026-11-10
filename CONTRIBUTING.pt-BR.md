@@ -14,7 +14,7 @@ Obrigado por compartilhar seu trabalho! Estas regras deixam o hub fácil de usar
 
 - Uma pasta por projeto: `packages/<pasta>/`. Se quiser, junte um sistema com seus temas e mesa.
 - Nomes de arquivo em minúsculas, com `-` no lugar de espaços: `meu-sistema.json`.
-- Todo pacote precisa de `author` (seu nome ou usuário do GitHub), `version` e `language`. Coloque `license` (por exemplo `CC-BY-4.0`, `MIT` ou `Todos os direitos reservados`) para os jogadores saberem como podem reutilizar.
+- Todo pacote precisa de `author` (seu nome ou usuário do GitHub), `version` e `language`. Coloque `license` (por exemplo `CC-BY-4.0`, `CC-BY-NC-SA-4.0`, `MIT` ou `Todos os direitos reservados`) para os jogadores saberem como podem reutilizar. Se o seu pacote for baseado no jogo de outra pessoa, siga os termos desse jogo.
 - O `id` precisa ser único no hub e nunca mudar depois de publicado: as fichas se referem aos pacotes pelo id. Uma tradução é um pacote novo com id próprio (`meu-sistema-en`, `meu-sistema-pt`).
 - Links relativos numa mesa (`"url": "meu-sistema.json"`) funcionam, já que os arquivos da mesma pasta ficam lado a lado.
 

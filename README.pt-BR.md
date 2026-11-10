@@ -46,4 +46,4 @@ As regras completas estão em [CONTRIBUTING.pt-BR.md](CONTRIBUTING.pt-BR.md).
 
 ## Licença
 
-Arquivos do hub: MIT © GabrielGugg. Cada pacote pertence ao seu autor e segue o próprio campo `license`.
+Arquivos do hub: MIT © GabrielGugg. Cada pacote pertence ao seu autor e segue o próprio campo `license`. Os pacotes do GabrielGugg (sistemas e temas de Fallout) são [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br).

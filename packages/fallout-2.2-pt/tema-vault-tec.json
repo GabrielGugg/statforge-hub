@@ -2,9 +2,10 @@
   "format": 1,
   "id": "tema-vault-tec",
   "name": "Vault-Tec",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "GabrielGugg",
   "language": "*",
+  "license": "CC-BY-NC-SA-4.0",
   "type": "theme",
   "description": "Azul e amarelo da Vault-Tec. Claro ou escuro, conforme o aparelho. / Vault-Tec blue and yellow. Light or dark, following the device.",
   "colors": {

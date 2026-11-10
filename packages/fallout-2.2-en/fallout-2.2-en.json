@@ -2,9 +2,10 @@
  "format": 1,
  "id": "fallout-2.2-en",
  "name": "Fallout TTRPG 2.2 (EN)",
- "version": "0.2.7",
+ "version": "0.2.8",
  "author": "GabrielGugg",
  "language": "en",
+ "license": "CC-BY-NC-SA-4.0",
  "type": "system",
  "description": "Arcane Arcade’s Fallout TTRPG 2.1 in its original English, with the house rules of Fallout 2.2: contradictions settled, broken rules fixed and a few prices and kits corrected. Texts keep their book page; anything changed says \"changed in 2.2\".",
  "rolls": {

@@ -2,9 +2,10 @@
  "format": 1,
  "id": "fallout-2.1-en",
  "name": "Fallout TTRPG 2.1 (EN)",
- "version": "0.2.7",
+ "version": "0.2.8",
  "author": "GabrielGugg",
  "language": "en",
+ "license": "CC-BY-NC-SA-4.0",
  "type": "system",
  "description": "Arcane Arcade’s Fallout TTRPG 2.1, as written in the original English PDF, with no house rules. Where the book contradicts itself the sheet lets you choose (and explains), or leaves the value manual. Every text cites its page.",
  "rolls": {

@@ -14,7 +14,7 @@ Thanks for sharing your work! These rules keep the hub easy to use and safe for 
 
 - One folder per project: `packages/<folder>/`. Put a system together with its themes and table, if you like.
 - File names in lowercase, with `-` instead of spaces: `my-system.json`.
-- Every package needs `author` (your name or GitHub user), `version` and `language`. Add `license` (for example `CC-BY-4.0`, `MIT`, or `All rights reserved`) so players know how they may reuse it.
+- Every package needs `author` (your name or GitHub user), `version` and `language`. Add `license` (for example `CC-BY-4.0`, `CC-BY-NC-SA-4.0`, `MIT`, or `All rights reserved`) so players know how they may reuse it. If your package is based on someone else's game, follow that game's terms.
 - The `id` must be unique in the hub and never change after it is published: sheets refer to packages by id. A translation is a new package with its own id (`my-system-en`, `my-system-pt`).
 - Relative links in a table (`"url": "my-system.json"`) work, since files in the same folder sit side by side.
 
