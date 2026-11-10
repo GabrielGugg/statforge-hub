@@ -47,9 +47,15 @@ function tokenize(src) {
 // Binary operator precedence (higher binds tighter).
 const BIN = { '||': 1, '&&': 2, '==': 3, '!=': 3, '<': 4, '<=': 4, '>': 4, '>=': 4, '+': 5, '-': 5, '*': 6, '/': 6, '%': 6 };
 
+// Limits so a formula from a package or a shared sheet cannot exhaust the stack or the CPU.
+export const MAX_FORMULA_LENGTH = 5000;
+export const MAX_FORMULA_DEPTH = 100;
+
 export function parse(src) {
-  const toks = tokenize(String(src));
-  let p = 0;
+  const text = String(src);
+  if (text.length > MAX_FORMULA_LENGTH) throw new FormulaError(t('formula.tooLong', { max: MAX_FORMULA_LENGTH }));
+  const toks = tokenize(text);
+  let p = 0, depth = 0;
   const peek = () => toks[p];
   const expect = v => {
     const tk = toks[p++];
@@ -81,6 +87,7 @@ export function parse(src) {
   }
 
   function expr(min) {
+    if (++depth > MAX_FORMULA_DEPTH) throw new FormulaError(t('formula.tooDeep', { max: MAX_FORMULA_DEPTH }));
     let left = primary();
     for (;;) {
       const tk = peek();
@@ -88,6 +95,7 @@ export function parse(src) {
       p++;
       left = { k: 'bin', op: tk.v, a: left, b: expr(BIN[tk.v]) };
     }
+    depth--;
     return left;
   }
 

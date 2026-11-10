@@ -8,10 +8,10 @@ A coleção oficial de pacotes do [StatForge](https://github.com/GabrielGugg/sta
 
 No StatForge, abra **Pacotes › Hub**. Busque, filtre por tipo ou idioma e toque em **Instalar**. O app também avisa quando um pacote que você tem ganha versão nova.
 
-Também dá para instalar um pacote só, por link. Todo arquivo daqui funciona como link, por exemplo:
+Também dá para instalar um pacote só, por link: todo arquivo daqui funciona como link. Para testar, a mesa de exemplo do StatForge instala um sistema, um homebrew e um tema de uma vez:
 
 ```
-https://raw.githubusercontent.com/GabrielGugg/statforge-hub/main/packages/fallout-2.2-pt/mesa-vault-texas.json
+https://raw.githubusercontent.com/GabrielGugg/statforge/main/examples/pt-BR/table.json
 ```
 
 ## Para criadores: envie seu pacote

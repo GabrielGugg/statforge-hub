@@ -8,10 +8,10 @@ The official collection of packages for [StatForge](https://github.com/GabrielGu
 
 In StatForge, open **Packages › Hub**. Search, filter by type or language, and tap **Install**. The app also tells you when a package you have gets a new version.
 
-You can also install a single package by link. Every file here works as a link, for example:
+You can also install a single package by link: every file here works as a link. To try it, the example table from StatForge installs a system, a homebrew and a theme at once:
 
 ```
-https://raw.githubusercontent.com/GabrielGugg/statforge-hub/main/packages/fallout-2.2-pt/mesa-vault-texas.json
+https://raw.githubusercontent.com/GabrielGugg/statforge/main/examples/en/table.json
 ```
 
 ## For creators: add your package

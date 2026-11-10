@@ -32,6 +32,8 @@ export default {
   'formula.unknownValue': 'Unknown value: {name}',
   'formula.unknownFunction': 'Unknown function: {name}',
   'formula.invalid': 'Invalid formula',
+  'formula.tooLong': 'Formula too long (at most {max} characters)',
+  'formula.tooDeep': 'Formula nested too deeply (at most {max} levels)',
 
   // Package validation
   'val.notObject': 'The file is not a JSON object.',
@@ -513,6 +515,11 @@ export default {
   'settings.backup': 'Backup',
   'settings.backupText': 'Saves all packages, sheets and settings to a file. Useful to switch device or browser. The file leaves out your Google sign-in, your shares with the GM and the copies of other players\' sheets.',
   'settings.downloadBackup': 'Download backup',
+  'settings.storageKept': 'This browser keeps your data on this device.',
+  'settings.storageMayClear': 'This browser may clear your data to free space (Safari does after about 7 days without a visit). Turn on sync or download backups.',
+  'settings.storageUnknown': 'This browser does not say whether it keeps your data. Turn on sync or download backups.',
+  'settings.storageAsk': 'Ask to keep it',
+  'settings.storageDenied': 'The browser did not agree. Sync or backups keep your sheets safe.',
   'settings.restoreBackup': 'Restore backup',
   'settings.restoreTitle': 'Restore backup',
   'settings.restoreAsk': 'Restore {packages} package(s) and {sheets} sheet(s)? Items with the same id will be replaced. Only restore backups you made yourself: packages are checked, and Google sign-in, shares and custom addresses (hub, Client ID) are never taken from a file.',

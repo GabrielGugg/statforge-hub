@@ -32,6 +32,8 @@ export default {
   'formula.unknownValue': 'Valor desconhecido: {name}',
   'formula.unknownFunction': 'Função desconhecida: {name}',
   'formula.invalid': 'Fórmula inválida',
+  'formula.tooLong': 'Fórmula longa demais (no máximo {max} caracteres)',
+  'formula.tooDeep': 'Fórmula com níveis demais (no máximo {max})',
 
   // Validação de pacotes
   'val.notObject': 'O arquivo não é um objeto JSON.',
@@ -513,6 +515,11 @@ export default {
   'settings.backup': 'Backup',
   'settings.backupText': 'Salva todos os pacotes, fichas e configurações num arquivo. Útil para trocar de aparelho ou de navegador. O arquivo não leva o seu login do Google, os compartilhamentos com o mestre nem as cópias das fichas de outros jogadores.',
   'settings.downloadBackup': 'Baixar backup',
+  'settings.storageKept': 'Este navegador guarda os seus dados neste aparelho.',
+  'settings.storageMayClear': 'Este navegador pode apagar os seus dados para liberar espaço (o Safari apaga depois de uns 7 dias sem uso). Ligue a sincronização ou baixe backups.',
+  'settings.storageUnknown': 'Este navegador não informa se guarda os seus dados. Ligue a sincronização ou baixe backups.',
+  'settings.storageAsk': 'Pedir para guardar',
+  'settings.storageDenied': 'O navegador não aceitou. A sincronização ou os backups mantêm as suas fichas seguras.',
   'settings.restoreBackup': 'Restaurar backup',
   'settings.restoreTitle': 'Restaurar backup',
   'settings.restoreAsk': 'Restaurar {packages} pacote(s) e {sheets} ficha(s)? Itens com o mesmo id serão substituídos. Só restaure backups feitos por você: os pacotes são conferidos, e o login do Google, os compartilhamentos e endereços personalizados (hub, Client ID) nunca vêm de um arquivo.',
