@@ -2,8 +2,47 @@
   "format": 1,
   "name": "StatForge Hub",
   "owner": "GabrielGugg",
-  "count": 5,
+  "count": 6,
   "packages": [
+    {
+      "id": "fallout-2.1-gugg-en",
+      "name": "Fallout TTRPG 2.1 - Gugg's Revision",
+      "version": "1.0.0",
+      "type": "extension",
+      "language": "en",
+      "author": "GabrielGugg",
+      "license": "CC-BY-NC-SA-4.0",
+      "description": "GabrielGugg's house rules on top of Fallout TTRPG 2.1 (EN), formerly called \"Fallout 2.2\": higher attribute for two-attribute skills, flat −1 for negative Luck, Perception-based Initiative, rounded Healing Rate, Gen 2 Synths without Stimpaks, Handy with three tools, the Off-Balance condition and other fixes. Load it after the system package.",
+      "url": "packages/fallout-2.1-en/fallout-2.1-gugg-en.json",
+      "bytes": 162946,
+      "system": "fallout-2.1-en"
+    },
+    {
+      "id": "fallout-2.1-gugg-pt",
+      "name": "Fallout TTRPG 2.1 - Revisão por Gugg",
+      "version": "1.0.0",
+      "type": "extension",
+      "language": "pt-BR",
+      "author": "GabrielGugg",
+      "license": "CC-BY-NC-SA-4.0",
+      "description": "Regras da casa de GabrielGugg sobre o Fallout TTRPG 2.1 (BR), antes chamadas de \"Fallout 2.2\": atributo maior nas perícias de dois atributos, Sorte negativa fixa em −1, Iniciativa por Percepção, Fator de Cura arredondado, Sintético Gen 2 sem Stimpak, Mãozinha com três ferramentas, condição Desequilibrado, regra dos níveis de melhoria e outras correções. Aplique depois do pacote do sistema.",
+      "url": "packages/fallout-2.1-pt/fallout-2.1-gugg-pt.json",
+      "bytes": 78756,
+      "system": "fallout-2.1-pt"
+    },
+    {
+      "id": "fallout-2.1-pt",
+      "name": "Fallout TTRPG 2.1 (BR)",
+      "version": "1.0.0",
+      "type": "system",
+      "language": "pt-BR",
+      "author": "GabrielGugg",
+      "license": "CC-BY-NC-SA-4.0",
+      "description": "Fallout TTRPG 2.1 da Arcane Arcade traduzido para o português, como no livro original, sem regras da casa. Onde o livro se contradiz, a ficha deixa você escolher (e explica) ou deixa o valor manual. Para as regras da casa de GabrielGugg (a antiga \"versão 2.2\"), instale a extensão \"Fallout TTRPG 2.1 - Revisão por Gugg\".",
+      "url": "packages/fallout-2.1-pt/fallout-2.1-pt.json",
+      "bytes": 745739,
+      "entities": 950
+    },
     {
       "id": "fallout-2.1-en",
       "name": "Fallout TTRPG 2.1 (EN)",
@@ -18,33 +57,7 @@
       "entities": 969
     },
     {
-      "id": "fallout-2.2-en",
-      "name": "Fallout TTRPG 2.2 (EN)",
-      "version": "0.2.8",
-      "type": "system",
-      "language": "en",
-      "author": "GabrielGugg",
-      "license": "CC-BY-NC-SA-4.0",
-      "description": "Arcane Arcade’s Fallout TTRPG 2.1 in its original English, with the house rules of Fallout 2.2: contradictions settled, broken rules fixed and a few prices and kits corrected. Texts keep their book page; anything changed says \"changed in 2.2\".",
-      "url": "packages/fallout-2.2-en/fallout-2.2-en.json",
-      "bytes": 927702,
-      "entities": 967
-    },
-    {
-      "id": "fallout-2.2-pt",
-      "name": "Fallout TTRPG 2.2 (pt-BR)",
-      "version": "1.24.0",
-      "type": "system",
-      "language": "pt-BR",
-      "author": "GabrielGugg",
-      "license": "CC-BY-NC-SA-4.0",
-      "description": "Fallout TTRPG 2.1 da Arcane Arcade traduzido, com as regras da casa da versão 2.2 (veja a nota \"Changelog 2.1 - 2.2\"). Distribua o S.P.E.C.I.A.L. começando em 5 com 3 pontos extras; cada atributo vai de 1 a 10.",
-      "url": "packages/fallout-2.2-pt/fallout-2.2-pt.json",
-      "bytes": 744922,
-      "entities": 948
-    },
-    {
-      "id": "tema-pipboy",
+      "id": "theme-pipboy",
       "name": "Pip-Boy",
       "version": "1.1.1",
       "type": "theme",
@@ -52,11 +65,11 @@
       "author": "GabrielGugg",
       "license": "CC-BY-NC-SA-4.0",
       "description": "Verde fósforo sobre preto, no estilo do Pip-Boy. / Phosphor green on black, Pip-Boy style.",
-      "url": "packages/fallout-2.2-pt/tema-pipboy.json",
-      "bytes": 668
+      "url": "packages/themes/theme-pipboy.json",
+      "bytes": 669
     },
     {
-      "id": "tema-vault-tec",
+      "id": "theme-vault-tec",
       "name": "Vault-Tec",
       "version": "1.1.1",
       "type": "theme",
@@ -64,8 +77,8 @@
       "author": "GabrielGugg",
       "license": "CC-BY-NC-SA-4.0",
       "description": "Azul e amarelo da Vault-Tec. Claro ou escuro, conforme o aparelho. / Vault-Tec blue and yellow. Light or dark, following the device.",
-      "url": "packages/fallout-2.2-pt/tema-vault-tec.json",
-      "bytes": 1044
+      "url": "packages/themes/theme-vault-tec.json",
+      "bytes": 1045
     }
   ]
 }
