@@ -1,11 +1,11 @@
 // ============================================================
-// Loads the StatForge engine (validator, formulas, sheet math).
-// First from the StatForge repository itself, so the builder checks
-// packages with exactly the rules of the current app; if that fails
-// (offline, CDN down), from the copy in ../vendor/statforge.
+// Loads the StatForge engine (validator, formulas, sheet math)
+// from the copy in ../vendor/statforge, on this same site.
+// The builder never runs code from another site (no CDN): the copy is
+// refreshed with `node scripts/update-vendor.mjs` after each StatForge
+// release, and vendor/statforge/COMMIT says which version it is.
 // ============================================================
 
-const REMOTE = 'https://cdn.jsdelivr.net/gh/GabrielGugg/statforge@main/site/js/';
 const LOCAL = new URL('../vendor/statforge/js/', import.meta.url).href;
 
 let loaded = null;
@@ -23,13 +23,11 @@ async function from(base) {
 }
 
 /** Returns the engine; `source` says where it came from. */
-export function loadEngine({ preferLocal = false } = {}) {
+export function loadEngine() {
   if (!loaded) {
     loaded = (async () => {
-      if (!preferLocal) {
-        try { return { ...(await from(REMOTE)), remote: true }; } catch (e) { console.warn('StatForge engine: CDN failed, using local copy', e); }
-      }
-      return { ...(await from(LOCAL)), remote: false };
+      const version = await fetch(new URL('../COMMIT', LOCAL)).then(r => (r.ok ? r.text() : '')).catch(() => '');
+      return { ...(await from(LOCAL)), version: version.trim() };
     })();
   }
   return loaded;

@@ -11,7 +11,7 @@ Open `builder/index.html` through any web server (GitHub Pages, or `npx serve .`
 - **Create with the assistant** (recommended for beginners): one question per step, like the character creation in the app. A system asks for the dice, attributes (with D&D, Fallout or simple templates), skills, resources and character creation; a theme needs three colors; a table is picked from the hub's systems, homebrews and themes. At the end, download the .json or keep going in the full editor. A half-done assistant is kept in the browser and can be resumed.
 - **Start blank** in the full editor, or **open** an existing package (file, link or pasted JSON).
 - The draft is saved in your browser as you type. **Export .json** downloads the file.
-- The **Check** panel uses the validator from the StatForge app itself, loaded from the StatForge repository, so the builder and the app always agree. Offline, it uses the copy in `vendor/statforge/`.
+- The **Check** panel uses the validator from the StatForge app itself, from the copy in `vendor/statforge/` on this same site (the panel shows its version). The builder never loads code from another site, and a Content Security Policy enforces that.
 - Opening a package and exporting it without changes gives back the same file, byte for byte.
 - **Collection items → Spreadsheet** downloads a collection as .csv and imports rows pasted from Excel or Google Sheets (same id updates, new ids are added).
 - For an extension, the base system is loaded from the hub by its id (or from a file) and remembered, so patch targets can be picked from a list.
@@ -26,9 +26,9 @@ Plain HTML, CSS and JavaScript modules; no build step.
 | `js/main.js` | Screens, state, draft saving, import and export. |
 | `js/wizard.js`, `js/wizard-model.js` | The assistant: its steps, and the pure functions that turn the answers into a package (tested in `tests/wizard.test.mjs`). |
 | `js/model.js` | Package model (pure functions, also used by the tests). |
-| `js/engine.js` | Loads the StatForge engine (CDN first, then `vendor/`). |
+| `js/engine.js` | Loads the StatForge engine from `vendor/`. |
 | `js/i18n.js` | Interface text in pt-BR and English. |
-| `vendor/statforge/` | Copy of the StatForge engine (`COMMIT` says which commit or version). Refresh it by copying `site/js/engine/{package,formula,calc}.js`, `site/js/i18n.js` and `site/js/locales/` from StatForge. |
+| `vendor/statforge/` | Copy of the StatForge engine (`COMMIT` says which version). Refresh it after every StatForge release with `node scripts/update-vendor.mjs ../statforge` (it copies the engine and everything it imports). |
 | `tests/` | `npm test` inside `builder/`: every hub package must round-trip unchanged and new packages must pass the validator. |
 
 ---
@@ -39,4 +39,4 @@ Um editor visual para criar pacotes do StatForge (sistema, extensão, tema ou me
 
 Para quem está começando, use **Criar com o assistente**: uma pergunta por passo, como a criação de personagem do app (dados, atributos com modelos D&D, Fallout ou simples, perícias, recursos e criação; tema com três cores; mesa escolhendo do Hub). No fim, baixe o .json ou continue no editor completo. O assistente pela metade fica salvo no navegador.
 
-Abra `builder/index.html` por um servidor web (GitHub Pages, ou `npx serve .` / `python -m http.server` na raiz do repositório e depois `/builder/`). O rascunho fica salvo no navegador, **Exportar .json** baixa o arquivo e o painel **Verificação** usa o validador do próprio app StatForge.
+Abra `builder/index.html` por um servidor web (GitHub Pages, ou `npx serve .` / `python -m http.server` na raiz do repositório e depois `/builder/`). O rascunho fica salvo no navegador, **Exportar .json** baixa o arquivo e o painel **Verificação** usa o validador do próprio app StatForge, da cópia em `vendor/statforge/` neste mesmo site (o painel mostra a versão). O construtor nunca carrega código de outro site, e uma Content Security Policy garante isso. Depois de cada versão do StatForge, atualize a cópia com `node scripts/update-vendor.mjs ../statforge`.

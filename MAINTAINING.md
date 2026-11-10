@@ -20,6 +20,15 @@ Branch protection is optional: only you can push to `main`; everyone else can on
 3. If someone updates a package they did not create, ask the original author first.
 4. **Merge**. The index is rebuilt and the package appears in the app.
 
+## After each StatForge release
+
+1. With both repositories side by side, run `node scripts/update-vendor.mjs ../statforge`. It refreshes `builder/vendor/statforge`, the only copy of the engine the builder uses.
+2. Run `node --test builder/tests/*.test.mjs` and commit `builder/vendor`.
+
+## Workflows
+
+The workflows pin every GitHub Action to a commit (the tag is in a comment). To update one, replace the commit with the one of the new tag. Checkouts that never push use `persist-credentials: false`.
+
 ## Submissions by issue
 
 Download the attached file, put it in `packages/<folder>/`, commit, and close the issue with a thank-you.

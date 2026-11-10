@@ -20,6 +20,15 @@ Proteger a branch é opcional: só você consegue dar push na `main`; os outros 
 3. Se alguém atualizar um pacote que não criou, pergunte antes ao autor original.
 4. **Merge**. O índice é refeito e o pacote aparece no app.
 
+## Depois de cada versão do StatForge
+
+1. Com os dois repositórios lado a lado, rode `node scripts/update-vendor.mjs ../statforge`. Ele atualiza `builder/vendor/statforge`, a única cópia do motor que o construtor usa.
+2. Rode `node --test builder/tests/*.test.mjs` e faça o commit de `builder/vendor`.
+
+## Workflows
+
+Os workflows fixam cada GitHub Action num commit (a tag fica num comentário). Para atualizar uma, troque o commit pelo da tag nova. Os checkouts que nunca fazem push usam `persist-credentials: false`.
+
 ## Envios por issue
 
 Baixe o arquivo anexado, coloque em `packages/<pasta>/`, faça o commit e feche a issue agradecendo.

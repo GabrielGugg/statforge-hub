@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <!-- Security: scripts only from this site (the StatForge engine is a copy in vendor/, never a CDN); no plugins.
+       Packages can be opened from any https link, so data and images may load from https. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https:; img-src 'self' data: blob: https:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Construtor de pacotes StatForge</title>
   <meta name="description" content="Crie pacotes para o StatForge (sistema, homebrew, tema ou mesa) sem escrever código e exporte o .json.">

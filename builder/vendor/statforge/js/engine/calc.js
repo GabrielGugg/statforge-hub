@@ -95,7 +95,7 @@ export function compute(rules, sheet) {
   const lists = Object.fromEntries(LIST_TYPES.map(x => [x, []]));
   for (const f of active) {
     for (const ef of f.effects) {
-      if (ef.type === 'add' || ef.type === 'set') (byTarget[ef.target] ||= []).push({ ef, f });
+      if (ef.type === 'add' || ef.type === 'set' || ef.type === 'limit') (byTarget[ef.target] ||= []).push({ ef, f });
       else if (LIST_TYPES.includes(ef.type)) lists[ef.type].push({ ef, f });
     }
   }
@@ -107,6 +107,12 @@ export function compute(rules, sheet) {
   const modFormula = rules.rolls?.modifier || 'value';
   const items = sheet.items || [];
   const matches = (i, ref) => i.ref === ref || key(i.collection, i.ref) === ref;
+  // A fixed value (a compendium stat block) replaces the formula of a skill, derived value or resource maximum;
+  // effects still go on top.
+  const fixedOf = id => {
+    const v = sheet.fixed?.[id];
+    return v === undefined || v === null || v === '' || !Number.isFinite(Number(v)) ? null : Number(v);
+  };
 
   const functions = {
     mod: v => num(run(modFormula, { value: num(v) })),
@@ -139,17 +145,25 @@ export function compute(rules, sheet) {
   }
 
   function applyEffects(id, base) {
-    let sets = null, add = 0;
+    let sets = null, add = 0, limit = null;
     for (const { ef, f } of byTarget[id] || []) {
       try {
         if (ef.if && !run(ef.if, f.vars)) continue;
         const v = num(run(ef.value, f.vars));
         if (ef.type === 'set') sets = sets === null ? v : Math.max(sets, v);
+        else if (ef.type === 'limit') limit = limit === null ? v : Math.min(limit, v);
         else add += v;
       } catch (e) { warn(t('calc.effectError', { source: f.ent.name || f.k, target: id, error: e.message })); }
     }
-    // "set" replaces the base value (highest wins); "add" goes on top.
-    return (sets !== null ? sets : base) + add;
+    // "set" replaces the base value (highest wins); "add" goes on top; "limit" caps the result (lowest wins).
+    const total = (sets !== null ? sets : base) + add;
+    return limit !== null ? Math.min(total, limit) : total;
+  }
+
+  // A skill's attribute modifier; with several attributes ("attribute": ["STR", "CHA"]) the highest one.
+  function skillMod(def) {
+    const attrs = skillAttributes(rules, def);
+    return attrs.length ? Math.max(...attrs.map(a => functions.mod(value(a)))) : 0;
   }
 
   function value(id) {
@@ -163,12 +177,13 @@ export function compute(rules, sheet) {
       if (sec === 'attributes') v = applyEffects(id, num(sheet.attributes?.[id] ?? def.default ?? def.min ?? 0));
       else if (sec === 'skills') {
         const points = num(sheet.skills?.[id]);
-        const base = def.total
+        const fx = fixedOf(id);
+        const base = fx !== null ? fx : def.total
           ? run(def.total, { points })
-          : points + (def.attribute && rules.attributes[def.attribute] ? functions.mod(value(def.attribute)) : 0);
+          : points + skillMod(def);
         v = applyEffects(id, num(base));
-      } else if (sec === 'derived') v = applyEffects(id, num(run(def.formula))) + (def.editable_bonus ? num(sheet.bonus?.[id]) : 0);
-      else if (sec === 'resources') v = applyEffects(id, num(run(def.max)));
+      } else if (sec === 'derived') v = applyEffects(id, fixedOf(id) ?? num(run(def.formula))) + (def.editable_bonus ? num(sheet.bonus?.[id]) : 0);
+      else if (sec === 'resources') v = applyEffects(id, fixedOf(id) ?? num(run(def.max)));
       else if (sec === 'counters') v = num(sheet.counters?.[id]);
     } catch (e) {
       warn(`"${id}": ${e.message}`);
@@ -185,9 +200,12 @@ export function compute(rules, sheet) {
     try { return run(f, vars); } catch (e) { warn(e.message); return 0; }
   }
 
-  // List effects (immunity, advantage...) also honor "if".
+  // List effects (immunity, advantage...) also honor "if". An entity taken twice ("repeat") lists each one once.
   for (const type of LIST_TYPES) {
+    const shown = new Set();
     lists[type] = lists[type].filter(({ ef, f }) => {
+      if (shown.has(ef)) return false;
+      shown.add(ef);
       if (!ef.if) return true;
       try { return !!run(ef.if, f.vars); } catch (e) { warn(t('calc.effectError', { source: f.ent.name || f.k, target: type, error: e.message })); return true; }
     });
@@ -218,10 +236,13 @@ export function compute(rules, sheet) {
     if (sec === 'attributes') base = num(sheet.attributes?.[id] ?? def.default ?? def.min ?? 0);
     else if (sec === 'skills') {
       vars = { points: num(sheet.skills?.[id]) };
-      formula = def.total || (def.attribute && rules.attributes[def.attribute] ? `points + mod(${def.attribute})` : 'points');
+      const attrs = skillAttributes(rules, def);
+      formula = def.total || (attrs.length > 1 ? `points + max(${attrs.map(a => `mod(${a})`).join(', ')})` : attrs.length ? `points + mod(${attrs[0]})` : 'points');
     } else if (sec === 'derived') formula = def.formula;
     else if (sec === 'resources') formula = def.max;
     else return null;
+    const fixed = sec !== 'attributes' ? fixedOf(id) : null;
+    if (fixed !== null) { formula = null; base = fixed; }
     if (formula !== null) base = num(safe(formula, vars));
     const parts = (byTarget[id] || []).map(({ ef, f }) => {
       let on = true, v = 0;
@@ -229,7 +250,7 @@ export function compute(rules, sheet) {
       return { source: f.ent.name || f.k, type: ef.type, formula: String(ef.value), filled: fill(ef.value, f.vars), if: ef.if, on, value: v };
     });
     return { formula: formula === null ? null : String(formula ?? 0), filled: formula === null ? null : fill(formula, vars), base, parts,
-      bonus: sec === 'derived' && def.editable_bonus ? num(sheet.bonus?.[id]) : 0, total: value(id) };
+      bonus: sec === 'derived' && def.editable_bonus ? num(sheet.bonus?.[id]) : 0, fixed: fixed !== null, total: value(id) };
   }
   function safe(f, vars) { try { return run(f, vars); } catch { return 0; } }
   // The formula with each value it names replaced by its number (quoted text is left alone).
@@ -250,9 +271,15 @@ export function compute(rules, sheet) {
 
   return {
     value, formula, visible, immune, explain, errors, lists, sources, active,
+    fixed: id => fixedOf(id) !== null,
     mod: v => functions.mod(v),
     blocked: sources.filter(blocked),
   };
+}
+
+/** The attributes a skill uses: "attribute" may be one id or a list (then the highest modifier counts). */
+export function skillAttributes(rules, def) {
+  return [].concat(def?.attribute ?? []).filter(a => rules.attributes?.[a]);
 }
 
 const fmtNum = v => (typeof v === 'number' ? String(Math.round(v * 100) / 100) : String(v));

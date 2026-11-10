@@ -71,7 +71,7 @@ function renderCheck() {
   if (!box) return;
   const { errors, warnings } = state.check;
   const engineNote = state.engine
-    ? t('check.engine', { source: t(state.engine.remote ? 'check.engine.remote' : 'check.engine.local') })
+    ? t('check.engine', { source: state.engine.version || t('check.engine.local') })
     : t('check.loading');
   mount(box,
     h('h2', t('nav.check')),

@@ -190,7 +190,8 @@ export function parseTable(text) {
     else if (c === sep) { row.push(cell); cell = ''; } else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; } else cell += c;
   }
   if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
-  return rows.filter(r => r.some(x => x.trim() !== ''));
+  // Undo csvSafe: a ' in front of = + - @ was put there by the export.
+  return rows.filter(r => r.some(x => x.trim() !== '')).map(r => r.map(x => (/^'[=+\-@\t\r]/.test(x) ? x.slice(1) : x)));
 }
 
 const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -269,7 +270,15 @@ export function tableOf(collection = {}, list = [], lang = 'en') {
 }
 
 /** Rows to CSV text, quoted when needed. Excel in Portuguese expects ";" as separator. */
+// A cell that starts with = + - @ (or a tab / carriage return) runs as a formula in Excel and
+// LibreOffice, so a package could carry a command into someone's spreadsheet. Those cells get
+// a leading ' (the spreadsheet shows it as text); plain numbers like -2 stay as they are.
+// parseTable takes the ' off again, so export → import gives back the same text.
+const RISKY = /^[=+\-@\t\r]/;
+const NUMBER = /^-?\d+([.,]\d+)?$/;
+export const csvSafe = s => (RISKY.test(s) && !NUMBER.test(s) ? `'${s}` : s);
+
 export function toCsv(rows, sep = ',') {
   const q = s => (/[",\n;\t]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
-  return rows.map(r => r.map(c => q(String(c))).join(sep)).join('\n') + '\n';
+  return rows.map(r => r.map(c => q(csvSafe(String(c)))).join(sep)).join('\n') + '\n';
 }

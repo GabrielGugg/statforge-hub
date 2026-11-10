@@ -45,7 +45,7 @@ test('setKey keeps existing order and places new keys', () => {
   assert.deepEqual(Object.keys(p), ['format', 'id', 'name', 'version', 'type', 'attributes', 'layout']);
 });
 
-import { parseTable, importRows, tableOf, toCsv } from '../js/model.js';
+import { parseTable, importRows, tableOf, toCsv, csvSafe } from '../js/model.js';
 
 test('spreadsheet paste becomes entities', () => {
   const col = { fields: { dano: { type: 'dice', label: 'Dano' }, carga: { type: 'number', label: 'Carga' }, pesada: { type: 'boolean', label: 'Pesada' } } };
@@ -67,4 +67,16 @@ test('collection table round trip through csv', () => {
   assert.deepEqual(back.list, list);
   const pt = importRows(parseTable(toCsv(tableOf(col, list, 'pt-BR'), ';')), col, []);
   assert.deepEqual(pt.list, list);
+});
+
+test('csv export never hands a spreadsheet a formula, and import undoes it', () => {
+  assert.equal(csvSafe('=HYPERLINK("http://x")'), `'=HYPERLINK("http://x")`);
+  assert.equal(csvSafe('+2 em Furtividade'), "'+2 em Furtividade");
+  assert.equal(csvSafe('@SUM(1)'), "'@SUM(1)");
+  assert.equal(csvSafe('-cmd'), "'-cmd");
+  assert.equal(csvSafe('-2'), '-2');
+  assert.equal(csvSafe('1,5'), '1,5');
+  assert.equal(csvSafe('Faca'), 'Faca');
+  const rows = [['id', 'nome'], ['a', '=1+1'], ['b', '+2 PV']];
+  assert.deepEqual(parseTable(toCsv(rows, ';')), rows);
 });
