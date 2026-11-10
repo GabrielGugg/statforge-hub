@@ -6,8 +6,8 @@ Fallout TTRPG 2.1 (Arcane Arcade) traduzido para o português, como no livro ori
 | --- | --- |
 | `fallout-2.1-pt.json` | sistema |
 | `fallout-2.1-gugg-pt.json` | extensão: Fallout TTRPG 2.1 - Revisão por Gugg |
-| `tema-pipboy.json` | tema |
-| `tema-vault-tec.json` | tema |
+
+Os temas Pip-Boy e Vault-Tec ficam em [`packages/themes`](../themes/README.md).
 
 ## Revisão por Gugg
 
@@ -17,6 +17,7 @@ As regras da casa de GabrielGugg, que antes formavam o pacote "Fallout TTRPG 2.2
 - Sorte negativa tira só 1 de todas as perícias (sem a escolha de regra);
 - Iniciativa calculada pela Percepção e Fator de Cura arredondado;
 - Sintéticos Gen 2 não usam Stimpak; Mãozinha com três ferramentas;
+- a regra dos níveis de melhoria de armadura e armadura potente: valor maior substitui o anterior, valor igual se soma;
 - a condição Desequilibrado, preços e textos corrigidos (Traje Hazmat, T-45, Estrepes, Lutador de Arena, Morador do Refúgio e outros).
 
 Para usar: instale o sistema e a extensão, e ative a extensão na ficha. Ela pode ser combinada com outras extensões do 2.1 (BR), como a revisão de outro fã: o app aplica as extensões na ordem da tela Pacotes, e quando duas mexem na mesma coisa vale a de baixo (o app avisa). A Revisão por Gugg muda o passo a passo da criação e o layout inteiros, então, se outra extensão também mudar esses dois, vale a que estiver mais abaixo.

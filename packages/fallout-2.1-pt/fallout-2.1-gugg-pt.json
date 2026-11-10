@@ -11,7 +11,7 @@
  "requires": [
   "fallout-2.1-pt@>=1.0.0"
  ],
- "description": "Regras da casa de GabrielGugg sobre o Fallout TTRPG 2.1 (BR), antes chamadas de \"Fallout 2.2\": atributo maior nas perícias de dois atributos, Sorte negativa fixa em −1, Iniciativa por Percepção, Fator de Cura arredondado, Sintético Gen 2 sem Stimpak, Mãozinha com três ferramentas, condição Desequilibrado e outras correções. Aplique depois do pacote do sistema.",
+ "description": "Regras da casa de GabrielGugg sobre o Fallout TTRPG 2.1 (BR), antes chamadas de \"Fallout 2.2\": atributo maior nas perícias de dois atributos, Sorte negativa fixa em −1, Iniciativa por Percepção, Fator de Cura arredondado, Sintético Gen 2 sem Stimpak, Mãozinha com três ferramentas, condição Desequilibrado, regra dos níveis de melhoria e outras correções. Aplique depois do pacote do sistema.",
  "patches": [
   {
    "op": "modify",
@@ -559,203 +559,203 @@
    "op": "modify",
    "target": "melhorias/isolamento_1",
    "fields": {
-    "description": "Nível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/isolamento_2",
    "fields": {
-    "description": "Nível 2: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100.\n\nNíveis anteriores (já incluídos):\nNível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Seu PA deixa de diminuir e você continua isolado. Porém, esta melhoria passa a custar 800 tp em vez de 100.\n\nNíveis anteriores (já incluídos):\nNível 1: Você fica isolado contra hipotermia. Porém, seu máximo de PA diminui em 1, até o mínimo de 6.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/camuflagem_1",
    "fields": {
-    "description": "Nível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/camuflagem_2",
    "fields": {
-    "description": "Nível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/camuflagem_3",
    "fields": {
-    "description": "Nível 3: Na penumbra, você fica oculto. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\nNível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Na penumbra, você fica oculto. Sua Furtividade passiva aumenta em 3.\n\nNíveis anteriores (já incluídos):\nNível 1: Você tem vantagem em testes de Furtividade que dependem da visão. Sua Furtividade passiva aumenta em 3.\nNível 2: Você tem vantagem em testes de Furtividade que dependem do som. Sua Furtividade passiva aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/leve_1",
    "fields": {
-    "description": "Nível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/leve_2",
    "fields": {
-    "description": "Nível 2: Carga reduzida em 10 (mínimo de 3).\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Carga reduzida em 10 (mínimo de 3).\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/leve_3",
    "fields": {
-    "description": "Nível 3: Se você gastar pelo menos 4 PA no seu turno para se mover, pode se mover 3 m adicionais.\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\nNível 2: Carga reduzida em 10 (mínimo de 3).\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Se você gastar pelo menos 4 PA no seu turno para se mover, pode se mover 3 m adicionais.\n\nNíveis anteriores (já incluídos):\nNível 1: Carga reduzida em 5. Requisito de Força reduzido em 1. TD reduzida em 1.\nNível 2: Carga reduzida em 10 (mínimo de 3).\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/justa_1",
    "fields": {
-    "description": "Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/justa_2",
    "fields": {
-    "description": "Nível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/justa_3",
    "fields": {
-    "description": "Nível 3: Você tem vantagem nas rolagens de Iniciativa. Se já tem vantagem, ganha +5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\nNível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Você tem vantagem nas rolagens de Iniciativa. Se já tem vantagem, ganha +5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de uma área de efeito, sua TD é dobrada.\nNível 2: Seus pontos de estamina máximos aumentam em um valor igual ao seu nível.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/chumbada_1",
    "fields": {
-    "description": "Nível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/chumbada_2",
    "fields": {
-    "description": "Nível 2: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/chumbada_3",
    "fields": {
-    "description": "Nível 3: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\nNível 2: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: O LR diminui em 2.\n\nNíveis anteriores (já incluídos):\nNível 1: O LR diminui em 2.\nNível 2: O LR diminui em 2.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/fortalecida_1",
    "fields": {
-    "description": "Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/fortalecida_2",
    "fields": {
-    "description": "Nível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/fortalecida_3",
    "fields": {
-    "description": "Nível 3: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\nNível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Se você fosse sofrer um ferimento grave, sofre em vez disso uma condição de membro aleatória.\n\nNíveis anteriores (já incluídos):\nNível 1: Quando você sofre dano de um acerto crítico, sua TD aumenta em 3.\nNível 2: Quando você sofre dano de um acerto crítico, sua TD aumenta em 5.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/robusta_1",
    "fields": {
-    "description": "Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/robusta_2",
    "fields": {
-    "description": "Nível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/robusta_3",
    "fields": {
-    "description": "Nível 3: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\nNível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Sua armadura não se desgasta mais ao sofrer dano de um acerto crítico.\n\nNíveis anteriores (já incluídos):\nNível 1: Você ignora os efeitos negativos dos 2 primeiros níveis de desgaste da armadura.\nNível 2: Você ignora os efeitos negativos dos 4 primeiros níveis de desgaste da armadura.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/cheia_de_bolsos_1",
    "fields": {
-    "description": "Nível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/cheia_de_bolsos_2",
    "fields": {
-    "description": "Nível 2: Sua Capacidade de Carga aumenta em 15.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: Sua Capacidade de Carga aumenta em 15.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/cheia_de_bolsos_3",
    "fields": {
-    "description": "Nível 3: Sua Capacidade de Carga aumenta em 25.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\nNível 2: Sua Capacidade de Carga aumenta em 15.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: Sua Capacidade de Carga aumenta em 25.\n\nNíveis anteriores (já incluídos):\nNível 1: Sua Capacidade de Carga aumenta em 10.\nNível 2: Sua Capacidade de Carga aumenta em 15.\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/reforcada_1",
    "fields": {
-    "description": "Nível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/reforcada_2",
    "fields": {
-    "description": "Nível 2: +1 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: +1 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/reforcada_3",
    "fields": {
-    "description": "Nível 3: +2 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\nNível 2: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: +2 de bônus na TD\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na TD\nNível 2: +1 de bônus na TD\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/endurecida_1",
    "fields": {
-    "description": "Nível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/endurecida_2",
    "fields": {
-    "description": "Nível 2: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 2: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
    "op": "modify",
    "target": "melhorias/endurecida_3",
    "fields": {
-    "description": "Nível 3: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\nNível 2: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida."
+    "description": "Nível 3: +1 de bônus na DF\n\nNíveis anteriores (já incluídos):\nNível 1: +1 de bônus na DF\nNível 2: +1 de bônus na DF\n\nSó uma melhoria de cada tipo por armadura, até o limite de espaços. Marque como equipada junto com a armadura vestida.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
@@ -763,6 +763,314 @@
    "target": "armadura_potente/tipos_de_armadura_potente_t_45",
    "fields": {
     "custo": "40.500 tp"
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_antiexplosao_1",
+   "fields": {
+    "description": "Nível 1: Reduz em 5 o dano explosivo sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_antiexplosao_2",
+   "fields": {
+    "description": "Nível 2: Reduz em 10 o dano explosivo sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_antiexplosao_3",
+   "fields": {
+    "description": "Nível 3: Reduz em 15 o dano explosivo sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_de_prisma_1",
+   "fields": {
+    "description": "Nível 1: Reduz em 5 o dano de laser e de plasma sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_de_prisma_2",
+   "fields": {
+    "description": "Nível 2: Reduz em 5 o dano de laser e de plasma sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/blindagem_de_prisma_3",
+   "fields": {
+    "description": "Nível 3: Reduz em 10 o dano de laser e de plasma sofrido\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/protocolos_de_emergencia_1",
+   "fields": {
+    "description": "Nível 1: Se você começa o turno com menos da metade dos seus pontos de vida, pode gastar 1 PA para se mover 3 m.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/protocolos_de_emergencia_2",
+   "fields": {
+    "description": "Nível 2: Se você começa o turno com menos da metade dos seus pontos de vida, sua TD aumenta em 5 (só contra dano nos PV).\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/dinamo_cinetico_1",
+   "fields": {
+    "description": "Nível 1: Você ganha 1 PA adicional no início do seu turno para cada nível de desgaste que a armadura potente ganhou desde o seu último turno.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bobinas_de_tesla_1",
+   "fields": {
+    "description": "Nível 1: Gaste 3 PA para ativar ou desativar; cada criatura a até 3 m de você sofre 1d6 de dano de eletricidade quando você ativa e no início dos turnos delas. Para cada rodada ativa, remova 10 minutos da autonomia.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bobinas_de_tesla_2",
+   "fields": {
+    "description": "Nível 2: O dano de eletricidade aumenta em 1d6. Para cada rodada ativa, remova 5 minutos adicionais da autonomia.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bobinas_de_tesla_3",
+   "fields": {
+    "description": "Nível 3: O dano de eletricidade aumenta em 2d6. Para cada rodada ativa, remova 10 minutos adicionais da autonomia.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/placas_reativas_1",
+   "fields": {
+    "description": "Nível 1: Quando você sofre dano de um ataque corpo a corpo, o atacante sofre um quarto (arredondado para baixo) do dano que causou.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/placas_reativas_2",
+   "fields": {
+    "description": "Nível 2: O atacante sofre mais um quarto (arredondado para baixo) do dano que causou (na prática, metade do total).\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/placas_reativas_3",
+   "fields": {
+    "description": "Nível 3: Quando você sofre dano de um ataque corpo a corpo, o atacante é empurrado 4,5 m.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/nucleo_montado_1",
+   "fields": {
+    "description": "Nível 1: Gastar mais de 18 PA no seu turno causa superaquecimento, em vez de 15.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/nucleo_montado_2",
+   "fields": {
+    "description": "Nível 2: Gastar mais de 20 PA no seu turno causa superaquecimento, em vez de 15.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/nucleo_montado_3",
+   "fields": {
+    "description": "Nível 3: O superaquecimento custa 15 minutos de autonomia, em vez de 30.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/mochila_a_jato_1",
+   "fields": {
+    "description": "Nível 1: Você pode gastar 1 PA no seu turno para voar 1,5 m. A cada 3 m que você voar, ou a cada segundo que voar, você gasta 1 minuto da autonomia do núcleo de fusão.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/matriz_de_sensores_1",
+   "fields": {
+    "description": "Nível 1: Seus Sentidos Passivos aumentam em 5.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/matriz_de_sensores_2",
+   "fields": {
+    "description": "Nível 2: Seus Sentidos Passivos aumentam em mais 5.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/matriz_de_sensores_3",
+   "fields": {
+    "description": "Nível 3: Seus Sentidos Passivos aumentam em mais 10.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/sobreposicao_vats_1",
+   "fields": {
+    "description": "Nível 1: Sempre que você fizer uma rolagem de ataque mirado, reduza em 1 o custo adicional de PA.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/sobreposicao_vats_2",
+   "fields": {
+    "description": "Nível 2: Sempre que você fizer uma rolagem de ataque mirado, reduza em mais 1 o custo adicional de PA.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/banco_de_dados_interno_1",
+   "fields": {
+    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 6 PA no seu turno para descobrir o total de PV, de PE, a DF ou a TD dela.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/hud_de_mira_1",
+   "fields": {
+    "description": "Nível 1: Se você consegue ver uma criatura, pode gastar 3 PA para marcá-la. Você só pode ter uma criatura marcada por vez. Sempre que você causar dano a uma criatura marcada, causa um dado de dano adicional.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/hud_de_mira_2",
+   "fields": {
+    "description": "Nível 2: Você pode marcar até duas criaturas a mais. Sempre que causar dano a uma criatura marcada, causa um dado de dano adicional.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/farolete_1",
+   "fields": {
+    "description": "Nível 1: Você pode gastar 1 PA no seu turno para ligar seu farolete. Ele ilumina com luz forte um cone de 12 m e com penumbra por mais 12 m.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/farolete_2",
+   "fields": {
+    "description": "Nível 2: A luz forte e a penumbra iluminam 3 m a mais.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/farolete_3",
+   "fields": {
+    "description": "Nível 3: A luz forte e a penumbra iluminam 3 m a mais. Se você ligar essa luz no escuro, cada criatura a até 1,5 m de você fica cega por uma rodada.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/soqueira_enferrujada_1",
+   "fields": {
+    "description": "Nível 1: Se você acertar uma criatura com um ataque de pugilismo, ela sangra.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bracadeiras_otimizadas_1",
+   "fields": {
+    "description": "Nível 1: Você pode gastar 6 PA no seu turno para fazer um ataque de pugilismo poderoso que causa 2d6 de dano de contusão.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bracadeiras_otimizadas_2",
+   "fields": {
+    "description": "Nível 2: O dano aumenta em 1d6.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/bracadeiras_otimizadas_3",
+   "fields": {
+    "description": "Nível 3: O dano aumenta em 1d6 e empurra os alvos 4,5 m para trás.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/amortecedores_calibrados_1",
+   "fields": {
+    "description": "Nível 1: Sua Capacidade de Carga aumenta em 15.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/amortecedores_calibrados_2",
+   "fields": {
+    "description": "Nível 2: Sua Capacidade de Carga aumenta em mais 15.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/amortecedores_calibrados_3",
+   "fields": {
+    "description": "Nível 3: Sua Capacidade de Carga aumenta em mais 20.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/hidraulica_em_overclock_1",
+   "fields": {
+    "description": "Nível 1: Enquanto estiver superaquecido, seu máximo de PA aumenta em 2, você tem vantagem em todas as rolagens de ataque, pode se mover 4,5 m com 1 PA e seus ataques de pugilismo causam 3d6 adicionais de dano de fogo.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/hidraulica_em_overclock_2",
+   "fields": {
+    "description": "Nível 2: Você pode gastar 3 PA para superaquecer o núcleo de fusão.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/hidraulica_em_overclock_3",
+   "fields": {
+    "description": "Nível 3: Seu máximo de PA aumenta em 2.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/duto_explosivo_1",
+   "fields": {
+    "description": "Nível 1: Se você cair pelo menos 4,5 m, ao atingir o chão pode escolher ativar esta melhoria. Cada criatura a até 6 m de você sofre 3d6 de dano de fogo e 3d6 de dano explosivo. Remova 20 minutos da autonomia da armadura cada vez que ativar esta melhoria.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/duto_explosivo_2",
+   "fields": {
+    "description": "Nível 2: O dano de fogo e o dano explosivo aumentam, cada um, em 1d6.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/duto_explosivo_3",
+   "fields": {
+    "description": "Nível 3: O raio aumenta em 3 m.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
+   }
+  },
+  {
+   "op": "modify",
+   "target": "melhorias_potente/ajuste_para_super_mutante_1",
+   "fields": {
+    "description": "Nível 1: A armadura é modificada e ajustada para permitir que um Super Mutante a use. Porém, humanos e necróticos não podem mais usá-la. Depois que esta melhoria é instalada, é preciso pagar o mesmo preço ou usar os mesmos materiais de fabricação para removê-la.\n\nNíveis (Revisão por Gugg): se um nível repete um efeito de um nível anterior com um valor maior, o novo valor substitui o anterior; se repete o mesmo valor, os valores se somam."
    }
   },
   {
