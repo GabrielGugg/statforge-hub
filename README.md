@@ -46,4 +46,4 @@ The full rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-The hub's own files: MIT © GabrielGugg. Each package belongs to its author and follows its own `license` field. GabrielGugg's packages (Fallout systems and themes) are [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+The hub's own files: MIT © GabrielGugg. Each package belongs to its author and follows its own `license` field. GabrielGugg's packages (Fallout systems, Gugg's Revision and themes) are [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

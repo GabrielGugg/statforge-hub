@@ -13,6 +13,8 @@ export const TYPES = ['system', 'extension', 'theme', 'table', 'compendium'];
 // System sections that are lists of objects with an id. In the result
 // they become id → object maps, and can be patch targets ("section/id").
 export const SECTIONS = ['attributes', 'skills', 'derived', 'resources', 'counters'];
+// targets an extension patches as a whole (op modify replaces top-level keys)
+export const WHOLE = ['layout', 'creation', 'progression'];
 const OPS = ['add', 'replace', 'modify', 'remove', 'rename'];
 const ID_OK = /^[a-z0-9][a-z0-9_.-]*$/i;
 const LANG_OK = /^[a-z]{2,3}(-[a-z0-9]{2,8})*$/i;
@@ -147,8 +149,15 @@ export function validatePackage(p) {
         if (!pt.collection) errors.push(t('val.needs', { where, op: 'add', field: 'collection' }));
         if (!pt.entity?.id) errors.push(t('val.addEntity', { where }));
         checkEffects(pt.entity?.effects, where, errors);
-      } else if (!pt.target || (!['layout', 'creation'].includes(pt.target) && !pt.target.includes('/'))) {
+      } else if (!pt.target || (!WHOLE.includes(pt.target) && !pt.target.includes('/'))) {
         errors.push(t('val.target', { where }));
+      }
+      if (pt.target === 'progression' && pt.op !== 'remove') {
+        const pr = pt.op === 'replace' ? pt.entity : pt.fields;
+        if (pr && typeof pr === 'object') {
+          checkFormula(pr.xp_per_level, `${where}.xp_per_level`, errors);
+          if (pr.level_up) checkCreation(pr.level_up, errors, `${where}.level_up`);
+        }
       }
       if (pt.op === 'replace' && !pt.entity) errors.push(t('val.needs', { where, op: 'replace', field: 'entity' }));
       if (pt.op === 'modify' && !pt.fields) errors.push(t('val.needs', { where, op: 'modify', field: 'fields' }));
@@ -233,11 +242,11 @@ export function buildRules(system, extensions = []) {
         rules.origin[target] = ext.id;
         continue;
       }
-      if (pt.target === 'layout' || pt.target === 'creation') {
-        const k = pt.target;
-        if (pt.op === 'replace') rules[k] = clone(pt.entity);
+      if (WHOLE.includes(pt.target)) {
+        const k = pt.target, empty = k === 'progression' ? {} : null; // progression is always an object
+        if (pt.op === 'replace') rules[k] = clone(pt.entity) || empty;
         else if (pt.op === 'modify') rules[k] = { ...(rules[k] || {}), ...clone(pt.fields) };
-        else if (pt.op === 'remove') rules[k] = null;
+        else if (pt.op === 'remove') rules[k] = empty;
         (touched[k] ||= []).push(ext.id);
         continue;
       }
