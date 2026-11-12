@@ -2,8 +2,20 @@
   "format": 1,
   "name": "StatForge Hub",
   "owner": "GabrielGugg",
-  "count": 6,
+  "count": 8,
   "packages": [
+    {
+      "id": "fallout-2.1-fuse-en",
+      "name": "Fallout TTRPG 2.1 - Fuse's Rewrite",
+      "version": "0.1.0",
+      "type": "extension",
+      "language": "en",
+      "author": "Fuse (rules), GabrielGugg (package)",
+      "description": "Fuse's Rewrite of Arcane Arcade's Fallout TTRPG 2.1, as an extension: core rules, races and variants (with Feral Levels), backgrounds, traits, perks, weapons, explosives, ammunition, armor, power armor, consumables, addictions, gear, materials and junk. Statblocks and the experimental documents are not included. Rules by Fuse; package by GabrielGugg. Needs StatForge 1.25.0 or later.",
+      "url": "packages/fallout-2.1-en/fallout-2.1-fuse-en.json",
+      "bytes": 948965,
+      "system": "fallout-2.1-en"
+    },
     {
       "id": "fallout-2.1-gugg-en",
       "name": "Fallout TTRPG 2.1 - Gugg's Revision",
@@ -28,6 +40,18 @@
       "description": "Regras da casa de GabrielGugg sobre o Fallout TTRPG 2.1 (BR), antes chamadas de \"Fallout 2.2\": atributo maior nas perícias de dois atributos, Sorte negativa fixa em −1, Iniciativa por Percepção, Fator de Cura arredondado, Sintético Gen 2 sem Stimpak, Mãozinha com três ferramentas, condição Desequilibrado, regra dos níveis de melhoria e outras correções. Aplique depois do pacote do sistema.",
       "url": "packages/fallout-2.1-pt/fallout-2.1-gugg-pt.json",
       "bytes": 78756,
+      "system": "fallout-2.1-pt"
+    },
+    {
+      "id": "fallout-2.1-fuse-pt",
+      "name": "Fallout TTRPG 2.1 - Rewrite do Fuse",
+      "version": "0.1.0",
+      "type": "extension",
+      "language": "pt-BR",
+      "author": "Fuse (regras), GabrielGugg (pacote e tradução)",
+      "description": "O Rewrite do Fuse para o Fallout TTRPG 2.1 da Arcane Arcade, traduzido para o português, como extensão: regras básicas, raças e variantes (com Níveis Ferais), antecedentes, traços, talentos, armas, explosivos, munição, armaduras, armadura potente, consumíveis, vícios, equipamentos, materiais e sucata. Ficam de fora os statblocks e os documentos experimentais. Regras de Fuse; pacote e tradução de GabrielGugg. Precisa do StatForge 1.25.0 ou mais novo.",
+      "url": "packages/fallout-2.1-pt/fallout-2.1-fuse-pt.json",
+      "bytes": 955133,
       "system": "fallout-2.1-pt"
     },
     {
