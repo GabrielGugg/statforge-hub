@@ -207,6 +207,9 @@ function checkCreation(c, errors, name = 'creation') {
       || (st.roll.table !== undefined && (!Array.isArray(st.roll.table) || !st.roll.table.every(r => Number.isFinite(Number(r?.max)) && Number.isFinite(Number(r?.value))))))) {
       errors.push(t('val.attrRoll', { where }));
     }
+    if (st.type === 'pick' && st.source !== undefined && ![].concat(st.source).every(x => typeof x === 'string')) {
+      errors.push(t('val.stepSource', { where }));
+    }
     if (st.type === 'pick' && st.groups !== undefined) {
       if (!Array.isArray(st.groups)) errors.push(t('val.notList', { what: `${where}.groups` }));
       else st.groups.forEach((g, j) => checkFormula(g?.if, `${where}.groups[${j}].if`, errors));

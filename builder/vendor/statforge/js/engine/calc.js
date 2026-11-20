@@ -102,7 +102,8 @@ export function compute(rules, sheet) {
     for (const ef of ent.effects || []) {
       if (ef.type === 'grant' && ef.ref) {
         const [c, i] = ef.ref.split('/');
-        addEntity(c, i, null, ent.name);
+        // An item the assistant tagged with where it came from ("Kliren") passes that on to what it grants.
+        addEntity(c, i, null, item?.source || ent.name);
       }
     }
   }
