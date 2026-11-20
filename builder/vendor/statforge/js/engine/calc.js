@@ -24,6 +24,41 @@ export function emptySheet(rules, extra = {}) {
   };
 }
 
+const plain = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+/** Id of a specialty: "craft" + "Armorer" → "craft_armorer". */
+export function specialtyId(skillId, name) {
+  const slug = plain(name).replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  return slug ? `${skillId}_${slug}` : null;
+}
+
+/**
+ * Specialties the sheet has: a skill with "specialties" (like Craft) is really several skills, one per
+ * specialty ("Craft (Armorer)"), each with its own points. Returns { id: def }, the def copied from the skill.
+ */
+export function specialtiesOf(rules, sheet) {
+  const out = {};
+  for (const [id, sp] of Object.entries(sheet?.specialties || {})) {
+    const base = rules.skills?.[sp?.skill];
+    if (!base?.specialties || rules.skills[id] || typeof sp.name !== 'string' || !sp.name.trim()) continue;
+    out[id] = { ...base, id, name: `${base.name} (${sp.name.trim()})`, specialty: sp.name.trim(), of: base.id, effects: undefined };
+  }
+  return out;
+}
+
+/** Adds a specialty to the sheet (if new) and returns its id; null for an empty name or a skill without specialties. */
+export function addSpecialty(rules, sheet, skillId, name) {
+  const clean = String(name ?? '').replace(/\s+/g, ' ').trim().slice(0, 40);
+  const id = specialtyId(skillId, clean);
+  if (!id || !rules.skills?.[skillId]?.specialties || rules.skills[id]) return null;
+  sheet.specialties ||= {};
+  if (!sheet.specialties[id]) sheet.specialties[id] = { skill: skillId, name: clean };
+  return id;
+}
+
+/** Suggested specialty names of a skill ("specialties": [...]); true means any name. */
+export const specialtySuggestions = def => (Array.isArray(def?.specialties) ? def.specialties.filter(x => typeof x === 'string') : []);
+
 /** Key used to reference an entity: "collection/id". */
 export const key = (col, id) => `${col}/${id}`;
 
@@ -103,7 +138,23 @@ export function compute(rules, sheet) {
   // 4) Values, memoized, with cycle detection.
   const memo = new Map();
   const computing = new Set();
-  const sectionOf = id => VALUE_SECTIONS.find(s => Object.hasOwn(rules[s], id) && rules[s][id]);
+  const specs = specialtiesOf(rules, sheet);
+  const sectionOf = id => (Object.hasOwn(specs, id) ? 'skills' : VALUE_SECTIONS.find(s => Object.hasOwn(rules[s], id) && rules[s][id]));
+  const defOf = (sec, id) => (sec === 'skills' && Object.hasOwn(specs, id) ? specs[id] : rules[sec]?.[id]);
+  // An effect on a skill with specialties reaches every specialty ("−2 in all Craft") unless it names one
+  // ("specialty": "Armorer") or lets the player choose ("specialty": "choose", saved in sheet.specialtyChoice).
+  const reaches = ({ ef, f }, spec) => {
+    if (ef.specialty === undefined || ef.specialty === null || ef.specialty === '') return true;
+    if (ef.specialty === 'choose') return sheet.specialtyChoice?.[f.k] === spec.id;
+    return plain(ef.specialty) === plain(spec.specialty) || specialtyId(spec.of, ef.specialty) === spec.id;
+  };
+  const effectsOn = id => {
+    const spec = specs[id];
+    if (spec) return [...(byTarget[id] || []), ...(byTarget[spec.of] || []).filter(x => reaches(x, spec))];
+    // The skill itself (no specialty named) only gets the effects meant for all of them.
+    if (rules.skills[id]?.specialties) return (byTarget[id] || []).filter(({ ef }) => ef.specialty === undefined || ef.specialty === null || ef.specialty === '');
+    return byTarget[id] || [];
+  };
   const modFormula = rules.rolls?.modifier || 'value';
   const items = sheet.items || [];
   const matches = (i, ref) => i.ref === ref || key(i.collection, i.ref) === ref;
@@ -119,7 +170,8 @@ export function compute(rules, sheet) {
     has: ref => (String(ref).includes('/') ? active.some(f => f.k === ref) : active.some(f => f.ent.id === ref)),
     owns: ref => items.some(i => matches(i, ref)),
     // The points the sheet has in a skill (in a system where 1 point means "trained", points('fight') >= 1 asks for training).
-    points: id => num(sheet.skills?.[id]),
+    // For a skill with specialties, the best of them: "trained in Craft" holds with any Craft.
+    points: id => Math.max(num(sheet.skills?.[id]), ...Object.values(specs).filter(s => s.of === id).map(s => num(sheet.skills?.[s.id]))),
     // What the creation / level-up assistant picked in this run (the sheet carries the list only while it is open).
     picked: ref => (Array.isArray(sheet.picked) ? sheet.picked : []).some(r => r === ref || String(r).split('/')[1] === ref),
     qty: ref => items.filter(i => matches(i, ref)).reduce((s, i) => s + num(i.qty ?? 1), 0),
@@ -150,7 +202,7 @@ export function compute(rules, sheet) {
 
   function applyEffects(id, base) {
     let sets = null, add = 0, limit = null;
-    for (const { ef, f } of byTarget[id] || []) {
+    for (const { ef, f } of effectsOn(id)) {
       try {
         if (ef.if && !run(ef.if, f.vars)) continue;
         const v = num(run(ef.value, f.vars));
@@ -177,7 +229,7 @@ export function compute(rules, sheet) {
     let v = 0;
     try {
       const sec = sectionOf(id);
-      const def = rules[sec]?.[id];
+      const def = defOf(sec, id);
       if (sec === 'attributes') v = applyEffects(id, num(sheet.attributes?.[id] ?? def.default ?? def.min ?? 0));
       else if (sec === 'skills') {
         const points = num(sheet.skills?.[id]);
@@ -234,7 +286,7 @@ export function compute(rules, sheet) {
    */
   function explain(id) {
     const sec = sectionOf(id);
-    const def = rules[sec]?.[id];
+    const def = defOf(sec, id);
     if (!def) return null;
     let formula = null, vars = {}, base;
     if (sec === 'attributes') base = num(sheet.attributes?.[id] ?? def.default ?? def.min ?? 0);
@@ -248,7 +300,7 @@ export function compute(rules, sheet) {
     const fixed = sec !== 'attributes' ? fixedOf(id) : null;
     if (fixed !== null) { formula = null; base = fixed; }
     if (formula !== null) base = num(safe(formula, vars));
-    const parts = (byTarget[id] || []).map(({ ef, f }) => {
+    const parts = effectsOn(id).map(({ ef, f }) => {
       let on = true, v = 0;
       try { on = !ef.if || !!run(ef.if, f.vars); v = num(run(ef.value, f.vars)); } catch { on = false; }
       return { source: f.ent.name || f.k, type: ef.type, formula: String(ef.value), filled: fill(ef.value, f.vars), if: ef.if, on, value: v };
@@ -273,8 +325,29 @@ export function compute(rules, sheet) {
     try { return !!run(def.if); } catch { return true; }
   }
 
+  /** Every skill in order, each specialty right after its skill. */
+  function skillList() {
+    return Object.values(rules.skills).flatMap(s => [s, ...Object.values(specs).filter(x => x.of === s.id).sort((a, b) => a.name.localeCompare(b.name))]);
+  }
+
+  /** Effects that give a bonus to one specialty of the player's choice: { key, source, skill, text, chosen }. */
+  function specialtyChoices() {
+    const out = [];
+    for (const f of active) {
+      for (const ef of f.effects) {
+        if (ef.specialty !== 'choose' || !rules.skills[ef.target]?.specialties || (ef.type !== 'add' && ef.type !== 'set')) continue;
+        if (ef.if) { try { if (!run(ef.if, f.vars)) continue; } catch { continue; } }
+        if (out.some(o => o.key === f.k && o.skill === ef.target)) continue;
+        const chosen = sheet.specialtyChoice?.[f.k];
+        out.push({ key: f.k, source: f.ent.name || f.k, skill: ef.target, text: ef.value_text ?? String(ef.value), chosen: specs[chosen] ? chosen : null });
+      }
+    }
+    return out;
+  }
+
   return {
     value, formula, visible, immune, explain, errors, lists, sources, active,
+    skills: skillList, specialties: specs, specialtyChoices,
     fixed: id => fixedOf(id) !== null,
     mod: v => functions.mod(v),
     blocked: sources.filter(blocked),

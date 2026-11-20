@@ -53,6 +53,7 @@ function checkEffects(effects, where, errors) {
     if (!ef || !ef.type) errors.push(t('val.effectNoType', { where: at }));
     if (['add', 'set'].includes(ef?.type)) checkFormula(ef.value, at, errors);
     if (ef?.if) checkFormula(ef.if, at, errors);
+    if (ef?.specialty !== undefined && (typeof ef.specialty !== 'string' || !ef.specialty.trim())) errors.push(t('val.effectSpecialty', { where: at }));
   });
 }
 
@@ -83,6 +84,10 @@ export function validatePackage(p) {
         else seen.add(o.id);
         for (const k of ['formula', 'max', 'if', 'total']) checkFormula(o?.[k], `${s}/${o?.id}`, errors);
         checkEffects(o?.effects, `${s}/${o?.id}`, errors);
+        if (s === 'skills' && o?.specialties !== undefined && o.specialties !== true
+          && !(Array.isArray(o.specialties) && o.specialties.every(x => typeof x === 'string'))) {
+          errors.push(t('val.skillSpecialties', { where: `${s}/${o?.id}` }));
+        }
       });
     }
     if (p.collections && typeof p.collections !== 'object') errors.push(t('val.collectionsObject'));
