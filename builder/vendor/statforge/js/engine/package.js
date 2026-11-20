@@ -229,6 +229,7 @@ export function buildRules(system, extensions = []) {
     rolls: clone(system.rolls) || {},
     combat: clone(system.combat) || null,
     origin: {}, // "section/id" → id of the last package that touched it
+    addedBy: {}, // "collection/id" → id of the package that brought the entity (changes by others don't count)
   };
   for (const s of SECTIONS) {
     rules[s] = {};
@@ -236,7 +237,7 @@ export function buildRules(system, extensions = []) {
   }
   for (const [col, list] of Object.entries(system.entities || {})) {
     rules.entities[col] = {};
-    for (const e of list) { rules.entities[col][e.id] = { ...clone(e), collection: col }; rules.origin[`${col}/${e.id}`] = system.id; }
+    for (const e of list) { rules.entities[col][e.id] = { ...clone(e), collection: col }; rules.origin[`${col}/${e.id}`] = rules.addedBy[`${col}/${e.id}`] = system.id; }
   }
 
   const touched = {}; // target → [ids of extensions that touched it]
@@ -254,7 +255,7 @@ export function buildRules(system, extensions = []) {
         if (map[pt.entity.id]) log.push({ level: 'warning', package: ext.id, msg: t('build.existed', { target }) });
         map[pt.entity.id] = { ...clone(pt.entity), ...(SECTIONS.includes(pt.collection) || pt.collection === 'collections' ? {} : { collection: pt.collection }) };
         (touched[target] ||= []).push(ext.id);
-        rules.origin[target] = ext.id;
+        rules.origin[target] = rules.addedBy[target] = ext.id;
         continue;
       }
       if (WHOLE.includes(pt.target)) {
