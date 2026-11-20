@@ -191,6 +191,7 @@ function checkCreation(c, errors, name = 'creation') {
     if (!STEP_TYPES.includes(st?.type)) { errors.push(t('val.stepType', { where, types: STEP_TYPES.join(', ') })); return; }
     if (st.type === 'pick' && !st.collection) errors.push(t('val.needs', { where, op: 'pick', field: 'collection' }));
     if (st.type === 'items' && !st.from) errors.push(t('val.needs', { where, op: 'items', field: 'from' }));
+    if (st.type === 'skills' && st.grant && (!st.from?.collection || !st.from?.field)) errors.push(t('val.needs', { where, op: 'grant', field: 'from' }));
     if (st.type === 'choice' && !st.options?.length) errors.push(t('val.needs', { where, op: 'choice', field: 'options' }));
     for (const k of ['if', 'min', 'max', 'points', 'choose', 'bonus', 'max_per_skill']) checkFormula(st[k], `${where}.${k}`, errors);
     if (st.type === 'attributes' && st.cost !== undefined
