@@ -2,6 +2,7 @@
 // Package validation and rule assembly for a sheet
 // (system + extensions in list order, applying patches).
 // ============================================================
+import { parseDice } from './attrgen.js';
 import { checkCompendium } from './compendium.js';
 import { parse, FormulaError } from './formula.js';
 import { checkVariants } from './terms.js';
@@ -192,6 +193,14 @@ function checkCreation(c, errors, name = 'creation') {
     if (st.type === 'items' && !st.from) errors.push(t('val.needs', { where, op: 'items', field: 'from' }));
     if (st.type === 'choice' && !st.options?.length) errors.push(t('val.needs', { where, op: 'choice', field: 'options' }));
     for (const k of ['if', 'min', 'max', 'points', 'choose', 'bonus', 'max_per_skill']) checkFormula(st[k], `${where}.${k}`, errors);
+    if (st.type === 'attributes' && st.cost !== undefined
+      && (!st.cost || typeof st.cost !== 'object' || Array.isArray(st.cost) || !Object.entries(st.cost).every(([k, v]) => Number.isFinite(Number(k)) && typeof v === 'number'))) {
+      errors.push(t('val.attrCost', { where }));
+    }
+    if (st.type === 'attributes' && st.roll !== undefined && (!parseDice(st.roll?.dice)
+      || (st.roll.table !== undefined && (!Array.isArray(st.roll.table) || !st.roll.table.every(r => Number.isFinite(Number(r?.max)) && Number.isFinite(Number(r?.value))))))) {
+      errors.push(t('val.attrRoll', { where }));
+    }
     if (st.type === 'pick' && st.groups !== undefined) {
       if (!Array.isArray(st.groups)) errors.push(t('val.notList', { what: `${where}.groups` }));
       else st.groups.forEach((g, j) => checkFormula(g?.if, `${where}.groups[${j}].if`, errors));
