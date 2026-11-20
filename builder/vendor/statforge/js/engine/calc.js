@@ -118,6 +118,8 @@ export function compute(rules, sheet) {
     mod: v => num(run(modFormula, { value: num(v) })),
     has: ref => (String(ref).includes('/') ? active.some(f => f.k === ref) : active.some(f => f.ent.id === ref)),
     owns: ref => items.some(i => matches(i, ref)),
+    // What the creation / level-up assistant picked in this run (the sheet carries the list only while it is open).
+    picked: ref => (Array.isArray(sheet.picked) ? sheet.picked : []).some(r => r === ref || String(r).split('/')[1] === ref),
     qty: ref => items.filter(i => matches(i, ref)).reduce((s, i) => s + num(i.qty ?? 1), 0),
     count: col => items.filter(i => i.collection === col).length,
     sum: (col, field, onlyActive) => items
