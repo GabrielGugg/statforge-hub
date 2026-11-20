@@ -70,6 +70,7 @@ export function validatePackage(p) {
   if (p.language === undefined) warnings.push(t('val.noLanguage'));
   else if (typeof p.language !== 'string' || (p.language !== ANY_LANGUAGE && !LANG_OK.test(p.language))) errors.push(t('val.language'));
 
+  if (p.skill_points_text !== undefined && (typeof p.skill_points_text !== 'string' || !p.skill_points_text.includes('{skill}'))) errors.push(t('val.skillPointsText'));
   if (p.type === 'system') {
     for (const s of SECTIONS) {
       if (p[s] === undefined) continue;
@@ -215,6 +216,7 @@ export function buildRules(system, extensions = []) {
     layout: clone(system.layout) || null,
     creation: clone(system.creation) || null,
     auto_conditions: clone(system.auto_conditions) || [],
+    skill_points_text: typeof system.skill_points_text === 'string' ? system.skill_points_text : null,
     rolls: clone(system.rolls) || {},
     combat: clone(system.combat) || null,
     origin: {}, // "section/id" → id of the last package that touched it
