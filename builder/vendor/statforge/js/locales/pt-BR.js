@@ -66,6 +66,7 @@ export default {
   'val.effectSpecialty': '{where}: "specialty" é o nome de uma especialização ou "choose".',
   'val.skillSpecialties': '{where}: "specialties" é true ou uma lista de nomes sugeridos.',
   'val.stepSource': '{where}: "source" é o id de uma coleção ou uma lista de ids.',
+  'val.itemEffects': '{where}: "item_effects" é uma lista de { "field", "add" (número ou dados), "margin", "mult", "min" }.',
   'val.attrRoll': '{where}: "roll" precisa de "dice" como "4d6kh3" e, se tiver "table", uma lista de { "max", "value" }.',
   'val.themeColors': 'Tema sem "colors".',
   'val.combatRef': 'combat.{field}: "{id}" não existe no sistema.',

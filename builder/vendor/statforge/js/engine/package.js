@@ -45,6 +45,18 @@ function checkFormula(txt, where, errors) {
   }
 }
 
+/** "item_effects" of a mod: what it changes in the item it is installed in. */
+function checkItemEffects(list, where, errors) {
+  if (list === undefined) return;
+  if (!Array.isArray(list)) { errors.push(t('val.itemEffects', { where })); return; }
+  for (const e of list) {
+    const ok = e && typeof e.field === 'string' && e.field
+      && (e.add === undefined || typeof e.add === 'number' || (typeof e.add === 'string' && /^\d*d\d+$/i.test(e.add.trim())))
+      && ['margin', 'mult', 'min'].every(k => e[k] === undefined || typeof e[k] === 'number');
+    if (!ok) errors.push(t('val.itemEffects', { where }));
+  }
+}
+
 function checkEffects(effects, where, errors) {
   if (effects === undefined) return;
   if (!Array.isArray(effects)) { errors.push(t('val.effectsNotList', { where })); return; }
@@ -104,6 +116,7 @@ export function validatePackage(p) {
         else if (seen.has(e.id)) errors.push(t('val.dupId', { what: `entities.${col}`, id: e.id }));
         else seen.add(e.id);
         checkEffects(e?.effects, `${col}/${e?.id}`, errors);
+        checkItemEffects(e?.item_effects, `${col}/${e?.id}`, errors);
         checkFormula(e?.requires, `${col}/${e?.id}.requires`, errors);
         checkVariants(e?.variants, `${col}/${e?.id}`, p, errors, warnings);
       });
@@ -156,6 +169,7 @@ export function validatePackage(p) {
         if (!pt.collection) errors.push(t('val.needs', { where, op: 'add', field: 'collection' }));
         if (!pt.entity?.id) errors.push(t('val.addEntity', { where }));
         checkEffects(pt.entity?.effects, where, errors);
+        checkItemEffects(pt.entity?.item_effects, where, errors);
       } else if (!pt.target || (!WHOLE.includes(pt.target) && !pt.target.includes('/'))) {
         errors.push(t('val.target', { where }));
       }

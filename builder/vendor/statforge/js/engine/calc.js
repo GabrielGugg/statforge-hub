@@ -62,11 +62,71 @@ export const specialtySuggestions = def => (Array.isArray(def?.specialties) ? de
 /** Key used to reference an entity: "collection/id". */
 export const key = (col, id) => `${col}/${id}`;
 
-/** Is a sheet item active? (equippable ones only when equipped) */
-export function itemActive(rules, item) {
+/** The collections used as "mods" of other collections (an id, or { collection }). */
+const modCollections = rules => new Set(Object.values(rules.collections || {})
+  .map(c => (typeof c?.mods === 'string' ? c.mods : c?.mods?.collection)).filter(Boolean));
+
+/** The item a mod is installed in, if any. */
+export const hostOf = (sheet, item) => (sheet?.items || []).find(x => x !== item && (x.mods || []).includes(item.uid));
+
+/**
+ * Is a sheet item active? Equippable ones only when equipped. With the sheet: a mod (an item of a
+ * collection used as mods) only works installed in an active item, not loose in the inventory.
+ */
+export function itemActive(rules, item, sheet) {
   const col = rules.collections[item.collection];
   if (isBroken(rules, item)) return false;
+  if (sheet && modCollections(rules).has(item.collection)) {
+    const host = hostOf(sheet, item);
+    return !!host && itemActive(rules, host, sheet);
+  }
   return !col?.equippable || !!item.equipped;
+}
+
+/** Mods installed in an item. */
+export const modsOf = (sheet, item) => (item?.mods || []).map(u => (sheet?.items || []).find(x => x.uid === u)).filter(Boolean);
+
+// d20 critical ("19", "x3", "19/x3"): threat from (20 = only a natural 20) and multiplier.
+function parseCrit(v) {
+  const s = String(v ?? '').replace(/\s/g, '');
+  const m = s.match(/^(\d+)?(?:[-–]20)?\/?(?:x(\d+))?$/i);
+  if (!m || (!m[1] && !m[2])) return null;
+  return { from: m[1] ? Number(m[1]) : 20, mult: m[2] ? Number(m[2]) : 2 };
+}
+const showCrit = c => (c.from < 20 ? (c.mult !== 2 ? `${c.from}/x${c.mult}` : `${c.from}`) : `x${c.mult}`);
+
+/**
+ * An item's field with what its installed mods change ("item_effects" on the mod's entity):
+ * { "field": "defense", "add": 1, "min": 0 } for numbers; "add" a number or dice ("1d6") for dice fields;
+ * "margin": 1 (threat range +1), "margin_double": true (doubled first) and "mult": 1 for "crit" fields.
+ */
+export function itemField(rules, sheet, item, field) {
+  const ent = rules.entities[item?.collection]?.[item?.ref];
+  const v = ent?.[field];
+  const efs = modsOf(sheet, item).flatMap(m => rules.entities[m.collection]?.[m.ref]?.item_effects || [])
+    .filter(e => e && e.field === field);
+  if (!efs.length) return v;
+  const type = rules.collections[item.collection]?.fields?.[field]?.type;
+  if (type === 'crit') {
+    const c = parseCrit(v);
+    if (!c) return v;
+    let range = 21 - c.from;
+    if (efs.some(e => e.margin_double)) range *= 2;
+    range += efs.reduce((n, e) => n + num(e.margin), 0);
+    c.from = Math.max(2, 21 - range);
+    c.mult += efs.reduce((n, e) => n + num(e.mult), 0);
+    return showCrit(c);
+  }
+  if (type === 'dice') {
+    const dice = efs.map(e => e.add).filter(a => typeof a === 'string' && /^\d*d\d+$/i.test(a.trim()));
+    const flat = efs.reduce((n, e) => n + (typeof e.add === 'number' ? e.add : 0), 0);
+    if (!v && !dice.length && !flat) return v;
+    return [v, ...dice].filter(Boolean).join('+') + (flat ? (flat > 0 ? `+${flat}` : `${flat}`) : '');
+  }
+  if (typeof v !== 'number' && v !== undefined && v !== null && v !== '' && isNaN(Number(v))) return v;
+  let out = num(v) + efs.reduce((n, e) => n + num(e.add), 0);
+  for (const e of efs) if (typeof e.min === 'number') out = Math.max(out, e.min);
+  return out;
 }
 
 /** Collections with "wear": { "breaks": true } stop working at the maximum wear. */
@@ -108,7 +168,7 @@ export function compute(rules, sheet) {
     }
   }
   for (const item of sheet.items || []) {
-    if (itemActive(rules, item)) addEntity(item.collection, item.ref, item, null);
+    if (itemActive(rules, item, sheet)) addEntity(item.collection, item.ref, item, null);
   }
   for (const s of ['attributes', 'skills', 'derived', 'resources']) {
     for (const o of Object.values(rules[s])) {
@@ -177,14 +237,15 @@ export function compute(rules, sheet) {
     picked: ref => (Array.isArray(sheet.picked) ? sheet.picked : []).some(r => r === ref || String(r).split('/')[1] === ref),
     qty: ref => items.filter(i => matches(i, ref)).reduce((s, i) => s + num(i.qty ?? 1), 0),
     count: col => items.filter(i => i.collection === col).length,
+    // Item fields count what their mods change (a reinforced armor's Defense).
     sum: (col, field, onlyActive) => items
-      .filter(i => i.collection === col && (!onlyActive || itemActive(rules, i)))
-      .reduce((s, i) => s + num(rules.entities[col]?.[i.ref]?.[field]) * num(i.qty ?? 1), 0),
+      .filter(i => i.collection === col && (!onlyActive || itemActive(rules, i, sheet)))
+      .reduce((s, i) => s + num(itemField(rules, sheet, i, field)) * num(i.qty ?? 1), 0),
     tag: x => active.some(f => (f.ent.tags || []).includes(x)),
     current: id => num(sheet.resources?.[id] ?? value(id)),
     maxof: (col, field, onlyActive) => items
-      .filter(i => i.collection === col && (!onlyActive || itemActive(rules, i)))
-      .reduce((m, i) => Math.max(m, num(rules.entities[col]?.[i.ref]?.[field])), 0),
+      .filter(i => i.collection === col && (!onlyActive || itemActive(rules, i, sheet)))
+      .reduce((m, i) => Math.max(m, num(itemField(rules, sheet, i, field))), 0),
   };
 
   function variable(name) {
