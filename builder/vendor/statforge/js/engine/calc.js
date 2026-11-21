@@ -64,7 +64,7 @@ export const key = (col, id) => `${col}/${id}`;
 
 /** The collections used as "mods" of other collections (an id, or { collection }). */
 const modCollections = rules => new Set(Object.values(rules.collections || {})
-  .map(c => (typeof c?.mods === 'string' ? c.mods : c?.mods?.collection)).filter(Boolean));
+  .flatMap(c => [].concat(c?.mods || []).map(m => (typeof m === 'string' ? m : m?.collection))).filter(Boolean));
 
 /** The item a mod is installed in, if any. */
 export const hostOf = (sheet, item) => (sheet?.items || []).find(x => x !== item && (x.mods || []).includes(item.uid));
