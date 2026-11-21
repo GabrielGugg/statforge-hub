@@ -83,6 +83,51 @@ export function itemActive(rules, item, sheet) {
   return !col?.equippable || !!item.equipped;
 }
 
+/**
+ * Does a mod fit the item ("host", its entity)? The group's "tags" (any), and every condition of the mod's own
+ * "fits" (one or a list): { "field", "values": [...] } the item's field is one of them; { "field", "not": [...] }
+ * it is none of them. "field" can be "id" or a list field such as "tags" (then any of its values counts).
+ */
+export function modFits(group, e, host) {
+  const tags = group?.tags || [];
+  if (tags.length && !tags.some(tg => (e?.tags || []).includes(tg))) return false;
+  return [].concat(e?.fits || []).every(f => {
+    if (!f || typeof f.field !== 'string') return true;
+    const raw = f.field === 'id' ? host?.id : host?.[f.field];
+    const have = (Array.isArray(raw) ? raw : [raw ?? '']).map(plain);
+    if (Array.isArray(f.values) && !f.values.some(v => have.includes(plain(v)))) return false;
+    if (Array.isArray(f.not) && f.not.some(v => have.includes(plain(v)))) return false;
+    return true;
+  });
+}
+
+/**
+ * Why mod entity "e" (of "collection") can't be in an item with the "others" mods (sheet items), or null:
+ * { type: 'excludes', name } "excludes": [refs] never together (either side may say it);
+ * { type: 'needs', names } "needs": { "refs": [...] } one of them first;
+ * { type: 'needsOther' } "needs": { "tag" } another mod with that tag first. "needs.text" replaces the message.
+ * A ref is "id" (the mod's own collection) or "collection/id".
+ */
+export function modConflict(rules, e, collection, others) {
+  const key = (r, c) => (String(r).includes('/') ? String(r) : `${c}/${r}`);
+  const keyOf = m => `${m.collection}/${m.ref}`;
+  const entOf = m => rules.entities[m.collection]?.[m.ref];
+  const mine = `${collection}/${e.id}`;
+  const clash = others.find(m => [].concat(e.excludes || []).map(r => key(r, collection)).includes(keyOf(m))
+    || [].concat(entOf(m)?.excludes || []).map(r => key(r, m.collection)).includes(mine));
+  if (clash) return { type: 'excludes', name: entOf(clash)?.name || clash.ref };
+  const n = e.needs;
+  if (!n || typeof n !== 'object') return null;
+  const text = typeof n.text === 'string' && n.text ? n.text : undefined;
+  const refs = [].concat(n.refs || []).map(r => key(r, collection));
+  if (refs.length && !others.some(m => refs.includes(keyOf(m)))) {
+    const names = refs.map(r => { const [c, id] = r.split('/'); return rules.entities[c]?.[id]?.name || id; });
+    return { type: 'needs', names, text };
+  }
+  if (typeof n.tag === 'string' && !others.some(m => (entOf(m)?.tags || []).includes(n.tag))) return { type: 'needsOther', text };
+  return null;
+}
+
 /** Mods installed in an item. */
 export const modsOf = (sheet, item) => (item?.mods || []).map(u => (sheet?.items || []).find(x => x.uid === u)).filter(Boolean);
 

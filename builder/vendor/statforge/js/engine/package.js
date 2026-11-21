@@ -57,6 +57,20 @@ function checkItemEffects(list, where, errors) {
   }
 }
 
+// A mod's own rules: "fits" (one or a list of { field, values, not }), "needs" { refs, tag, text },
+// "excludes" (a list of refs) and "counts_as" (a positive number).
+function checkModRules(e, where, errors) {
+  const strs = v => Array.isArray(v) && v.every(x => typeof x === 'string');
+  const fitsOk = e.fits === undefined || [].concat(e.fits).every(f => f && typeof f === 'object' && typeof f.field === 'string'
+    && (f.values === undefined || Array.isArray(f.values)) && (f.not === undefined || Array.isArray(f.not)));
+  const n = e.needs;
+  const needsOk = n === undefined || (n && typeof n === 'object' && (n.refs === undefined || strs(n.refs))
+    && (n.tag === undefined || typeof n.tag === 'string') && (n.text === undefined || typeof n.text === 'string'));
+  const ok = fitsOk && needsOk && (e.excludes === undefined || strs(e.excludes))
+    && (e.counts_as === undefined || (typeof e.counts_as === 'number' && e.counts_as > 0));
+  if (!ok) errors.push(t('val.modRules', { where }));
+}
+
 function checkEffects(effects, where, errors) {
   if (effects === undefined) return;
   if (!Array.isArray(effects)) { errors.push(t('val.effectsNotList', { where })); return; }
@@ -117,6 +131,7 @@ export function validatePackage(p) {
         else seen.add(e.id);
         checkEffects(e?.effects, `${col}/${e?.id}`, errors);
         checkItemEffects(e?.item_effects, `${col}/${e?.id}`, errors);
+        if (e && typeof e === 'object') checkModRules(e, `${col}/${e.id}`, errors);
         checkFormula(e?.requires, `${col}/${e?.id}.requires`, errors);
         checkVariants(e?.variants, `${col}/${e?.id}`, p, errors, warnings);
       });
